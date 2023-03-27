@@ -8,35 +8,108 @@
 </head>
 <body>
      <header>
+        <!--Header-->
         <h1>Välkommen till oss</h1>
+        <nav></nav>
+        <section class="search-section">
+            <!--Search section? Where to place it?-->
+            <p>Sökruta</p>
+        </section>
     </header>
-    <section class="search-section">
-        <p>Sökruta</p>
-    </section>
-    <br>
-    <p>----------------------------</p>
-    <br>
-    <section class="recipe-selection-section">
-        <div class="Grid">
-            <div><h1>Recept</h1></div>
-            <div><h1>Recept</h1></div>
-            <div><h1>Recept</h1></div>
-            <div><h1>Recept</h1></div>
+
+    <p>-------------------------//Divider\\--------------------------</p>
+     <section class="main-page">
+        <!--Main page, showing all recipes and search result-->
+
+        <section class="ad-section">
+            <!--Ad between recipe cards-->
+            <h1>Annons</h1>
+        </section>
+        
+        <section class="recipe-selection-section">
+            <!--Recipe section, section for grouping-->
+            
+            <div class="grid-section flex-wrap">
+                <!--Grid for holding multiple cards, use grid for adjusting responsivity-->
+
+                <h1>Recept</h1>
+                <div class="recipe-card-grid layout">
+                    <!--placeholder for recipe-card, used for general design for all cards-->
+                    <div class="recipe-card info" data-id="integer">
+                        <!--individual info, collected from api-->
+                        recipe info from api via ID
+                    </div>
+                </div>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ad-section">
+            <!--Ad between recipe cards-->
+            <h1>Annons</h1>
+        </section>
+
+        <section class="recipe-selection-section">
+            <!--Recipe section-->
+            
+            <div class="grid-section">
+                <!--Grid for holding multiple cards-->
+
+                <h1>//Recept</h1>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="show-more-button">
+            <!--Button for loading more recipes-->
+            Show more button
         </div>
+
     </section>
-    <section class="ad-section">
-        <h1>Annons</h1>
-    </section>
-    <section class="recipe-selection-section">
-        <div class="Grid">
-            <div><h1>Recept</h1></div>
-            <div><h1>Recept</h1></div>
-            <div><h1>Recept</h1></div>
-            <div><h1>Recept</h1></div>
-        </div>
-    </section>
-    <div class="show-more-button"></div>
+    
+    <p>----------------------------------//Divider\\----------------------------------</p>
     <footer>
+        <!--Footer-->
         This is a Footer
     </footer>
    
