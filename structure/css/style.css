@@ -1,0 +1,16 @@
+/* CSS RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* COMMON */
+
+/* INDEX */
+
+/* RECIPE */
+
+/* DESKTOP, px-count not final */
+@media screen and(min-width: 800px) {
+    
+}
