@@ -5,6 +5,59 @@
   box-sizing: border-box;
 }
 
+/*COLORS*/
+.color-brand{
+  background-color: #AD4C10;
+}
+.color-interact{
+  background-color: #399C9D;
+}
+
+/*TYPOGRAPHY*/
+p {
+  font-size: 1rem;
+}
+
+/*COMMON COMPONENTS*/
+.max-width-container{
+  max-width: 1600px;/*px-count not final*/
+}
+.flex-separate{
+  display: flex;
+  justify-content: space-between;
+}
+.flex-left{
+  align-items: flex-start;
+}
+.flex-right{
+  align-items: flex-end;
+}
+
+/*MAIN COMPONENTS*/
+body {
+  background-color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+footer {
+width: 100%;
+padding: 0.2rem;
+}
+
+/*****************************************/
+/**********   INDEX  *********************/
+/*****************************************/
+
+/*CSS for specific design on index page*/
+
+
+
+
+/*****************************************/
+/**********   RECIPE  ********************/
+/*****************************************/
+
+/*CSS for specific design on recipe page*/
+
 .body {
   background-color: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
