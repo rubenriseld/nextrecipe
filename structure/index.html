@@ -4,38 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
     <header>
-        <!--Header-->
-        <h1>Välkommen till oss</h1>
-        <section class="company-head">
-            <!--Company slogan and logo-->
-            <p class="slogan">Slogan</p>
-    
-            <img class="company-logo" src=""> Company logo
-    
-            <p class="slogan">Slogan</p>
+        <!--Header-->                   
+            <div class="color-interact">
+                <a href="#home" class="color-brand">Logo</a>
+                <div id="myLinks">  <!--Nedan är menyval plus länkar i hamburgermenyn-->
+                <a href="#recipes">Recipes</a>
+                <a href="#cuisine">The Cuisine of the World</a>
+                <a href="#about">About</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="barFunc()">  <!--Länka klickfunktion till fil.js-->
+                <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        
+        <section>   <!--Denna section är för searchbar-->
+            <form id="form"> 
+                <input type="search" id="query" name="q" placeholder="Search...">
+                <button>Search</button> <!--Ska ersättas med filterknapp-->
+              </form>
         </section>
-    
-        <!--Geolocation and picture-->
-        <section>
-            <div class="geo">
-                <img src=""> Geo pic
-                <h3 class="geo-text">Geolocation</h3>
-            </div>                                
-        </section>
-    
-        <nav>
-            <a href="/">Home</a>
-        </nav>
-        <section class="search-section">
-            <!--Search section? Where to place it?-->
-            <p>Sökruta</p>
-        </section>
-                   
+        <script>
+            function barFunc() {
+              var x = document.getElementById("myLinks");
+              if (x.style.display === "block") {
+                x.style.display = "none";
+              } else {
+                x.style.display = "block";
+              }
+            }
+            </script>                       
     </header>
     
 
