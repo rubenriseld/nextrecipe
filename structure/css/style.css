@@ -1,3 +1,10 @@
+/* CSS RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .body {
   background-color: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -39,4 +46,10 @@ h2 {
 p{
   font-size: 35px;
   margin-left: 20px;
+}
+
+
+/* DESKTOP, px-count not final */
+@media screen and(min-width: 800px) {
+    
 }
