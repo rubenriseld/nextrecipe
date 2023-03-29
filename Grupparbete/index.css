@@ -1,0 +1,42 @@
+.body {
+  background-color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.title{
+  background-color: grey;
+  min-height: 100px;
+  height: auto;
+}
+.title h1 {
+  color: black;
+  font-size: 45px;
+  padding: 10px;
+}
+.star {
+  font-size: 75px;
+  color: black;
+}
+.img {
+  width: 95%;
+  height: 600px;
+  border-radius: 20px;
+}
+h2 {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: black;
+  font-size: 35px;
+}
+.info {
+  height: auto;
+  width: auto;
+  background-color: grey;
+  border-radius: 25px;
+}
+.checkbox {
+  zoom: 3;
+}
+p{
+  font-size: 35px;
+  margin-left: 20px;
+}
