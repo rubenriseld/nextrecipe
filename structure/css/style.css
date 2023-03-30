@@ -48,7 +48,37 @@ padding: 0.2rem;
 /*****************************************/
 
 /*CSS for specific design on index page*/
+.card-container{
+  flex-direction: column;
+  display:flex;
+  flex-wrap: wrap;
+}
 
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-text {
+  padding: 20px;
+}
+
+.card-text h2 {
+  margin-top: 0;
+}
+
+.card-text p {
+  margin-bottom: 0;
+}
 
 
 
@@ -102,7 +132,16 @@ p{
 }
 
 
+
+
+
 /* DESKTOP, px-count not final */
-@media screen and(min-width: 800px) {
-    
+@media screen and (min-width: 800px) {
+    .card {
+      width:25%;
+    }
+    .card-container{
+      flex-direction: row;
+      display:flex;
+    }
 }
