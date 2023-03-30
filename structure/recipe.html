@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/050b4fa1ca.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <title>Recipe page</title>
   </head>
   <body class="recipe-page">
-    <header>
-      <!--Header-->
-          <div class="color-interact">
-              <a href="#home" class="color-brand">Logo</a>
-              <div id="myLinks">  <!--Nedan är menyval plus länkar i hamburgermenyn-->
-              <a href="#recipes">Recipes</a>
-              <a href="#cuisine">The Cuisine of the World</a>
-              <a href="#about">About</a>
-              </div>
-              <a href="javascript:void(0);" class="icon" onclick="barFunc()">  <!--Länka klickfunktion till fil.js-->
-              <i class="fa fa-bars"></i>
-              </a>
-          </div>
-          
-      <script>
-          function barFunc() {
-            var x = document.getElementById("myLinks");
-            if (x.style.display === "block") {
-              x.style.display = "none";
-            } else {
-              x.style.display = "block";
-            }
-          }
-          </script>                       
-  </header>
+
+   <!--Header-->
+   <header class="mobile-container color-brand">                 
+    <nav class="topnav max-width-container">                
+        <a href="/" class="company-logo nav-btn">
+          <i class="fa-solid fa-earth-americas text-color-interact"></i>
+        </a>
+        
+        <div id="menuLinks">  <!--Nedan är menyval plus länkar i hamburgermenyn-->
+          <a href="/recipe.html" class="text-color-interact nav-btn">Recipe</a>
+            <a href="#recommendations" class="text-color-interact nav-btn">Recommendations</a>
+            <a href="#world" class="text-color-interact nav-btn">Around the World</a> 
+            <a href="#about" class="text-color-interact nav-btn">About Us</a>
+        </div>
+
+        <a href="javascript:void(0);" class="icon nav-btn burger" onclick="barFunc()">  <!--Länka klickfunktion till fil.js-->
+          <i class="fa fa-bars text-color-interact"></i>
+        </a>
+    </nav>
+<script>
+    function barFunc() {
+      let links = document.getElementById("menuLinks");
+      if (links.style.display === "block") {
+        links.style.display = "none";
+      } else {
+        links.style.display = "block";
+      }
+    }
+    </script>                       
+</header>           
+
+
+
   <div class="flex-center">
     <div class="max-width-container" style="background-color: white">
       <!-- Receptnamn -->
       <div class="mb-4">
-        <h1 class="recipe-title m-4">Delicious food and shit</h1>
+        <h1 class="recipe-title text-color-brand m-4">Delicious food and shit</h1>
       </div>
 
 
@@ -68,11 +74,11 @@
             </div>
             <!-- Stjärnor -->
             <div class="d-flex">
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9734;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9734;</h1>
             </div>
           </div>
         </div>

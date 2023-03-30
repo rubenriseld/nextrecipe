@@ -14,31 +14,36 @@
 </head>
 
 <body>
-    <header>
         <!--Header-->
-            <div class="color-interact">
-                <a href="#home" class="color-brand">Logo</a>
-                <div id="myLinks">  <!--Nedan är menyval plus länkar i hamburgermenyn-->
-                <a href="#recipes">Recipes</a>
-                <a href="#cuisine">The Cuisine of the World</a>
-                <a href="#about">About</a>
-                </div>
-                <a href="javascript:void(0);" class="icon" onclick="barFunc()">  <!--Länka klickfunktion till fil.js-->
-                <i class="fa fa-bars"></i>
-                </a>
-            </div>
-            
-        <script>
-            function barFunc() {
-              var x = document.getElementById("myLinks");
-              if (x.style.display === "block") {
-                x.style.display = "none";
-              } else {
-                x.style.display = "block";
+        <header class="mobile-container color-brand">                 
+              <nav class="topnav max-width-container">                
+                  <a href="/" class="company-logo nav-btn">
+                    <i class="fa-solid fa-earth-americas text-color-interact"></i>
+                  </a>
+                  
+                  <div id="menuLinks">  <!--Nedan är menyval plus länkar i hamburgermenyn-->
+                      <a href="/recipe.html" class="text-color-interact nav-btn">Recipe</a>
+                      <a href="#recommendations" class="text-color-interact nav-btn">Recommendations</a>
+                      <a href="#world" class="text-color-interact nav-btn">Around the World</a> 
+                      <a href="#about" class="text-color-interact nav-btn">About Us</a>
+                  </div>
+
+                  <a href="javascript:void(0);" class="icon nav-btn burger" onclick="barFunc()">  <!--Länka klickfunktion till fil.js-->
+                    <i class="fa fa-bars text-color-interact"></i>
+                  </a>
+              </nav>
+          <script>
+              function barFunc() {
+                let links = document.getElementById("menuLinks");
+                if (links.style.display === "block") {
+                  links.style.display = "none";
+                } else {
+                  links.style.display = "block";
+                }
               }
-            }
-            </script>                       
-    </header>
+              </script>                       
+      </header>                    
+
     <!--Searchbar me filterknapp och geo location knapp-->
     <div class="flex-center search-geo-background color-brand-secondary">
       <div class="max-width-container">
@@ -313,6 +318,9 @@
           </div>
         </div>
       </div>
+      <div class="banner-container1">
+        <div class="banner">AD-SPACE</div>
+      </div>
     </section>
 
   </div>
@@ -321,8 +329,8 @@
   <footer class="color-brand">
     <div class="max-width-container flex-separate">
       <section class="flex-left">
-        <h2 class="company-name">GLOBE GRUB</h2>
-        <p class="slogan">slogan</p>
+        <h2 class="company-name text-color-interact">GLOBE GRUB</h2>
+        <p class="slogan text-color-interact">slogan</p>
       </section>
       <section class="flex-right footer-info-section">
         <p>info</p>

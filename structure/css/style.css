@@ -18,15 +18,30 @@
 .color-brand {
   background-color: #ad4c10;
 }
+.text-color-brand {
+  color: #ad4c10;
+}
 .color-brand-secondary {
   background-color: #FAA570;
 }
 .color-interact {
   background-color: #399c9d;
 }
+.text-color-interact {
+  color: #399c9d;
+}
 .color-interact-secondary{
   background-color: #86d3d4;
 }
+
+.nav-btn:hover{
+  background-color: rgba(0,0,0,0.2);
+}
+a:hover{
+  color: #399c9d!important;
+  font-weight: bold;
+}
+
 
 /*TYPOGRAPHY*/
 .company-name{
@@ -39,6 +54,7 @@ p {
   font-size: 1.5rem;
   margin-bottom: 0.2rem;
 }
+
 .tag{
   font-size: 1rem;
   padding: 0 1rem 0 1rem;
@@ -48,6 +64,7 @@ p {
 .recipe-title{
   font-size: 4rem;
   font-weight: bolder;
+  text-decoration: underline;
 }
 .ingredients-title{
   font-size: 3rem;
@@ -66,6 +83,7 @@ p {
   max-width: 1920px; /*px-count not final*/
   width: 100%;
   align-self: center;
+  padding: 1rem;
 }
 .flex-center{
   display: flex;
@@ -104,9 +122,55 @@ footer {
   width: 100%;
   padding: 0.2rem;
   margin-top: 2rem;
-  display: flex;
+  display: flex!important;
   justify-content: center;
   flex-direction: row;
+}
+
+/*****************************************/
+/**********   NAV  *********************/
+/*****************************************/
+
+.topnav{
+  overflow: hidden;
+  background-color: #AD4C10;
+  position: relative;
+  /* display: flex; */
+  width: 100%;
+  margin:auto;
+  padding: 0 1rem 0 1rem;
+}
+
+.topnav #menuLinks {
+  display: none;
+}
+
+.topnav a {
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 30px;
+  margin-left: 20;
+  display: block;
+  position: relative;
+}
+
+
+.topnav a.icon {
+  background: #AD4C10;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+/* 
+.topnav a:hover {
+  background-color: #ddd;
+} */
+
+.company-logo{
+  width: auto;
+  max-width: 100px;
+  position: relative;
 }
 
 /*****************************************/
@@ -247,7 +311,7 @@ footer {
 }
 .star {
   font-size: 3.5rem;
-  color: black;
+  /* color: black; */
 }
 .img {
   width: 95%;
@@ -276,11 +340,25 @@ footer {
 /* DESKTOP, px-count not final */
 @media screen and (min-width: 1000px) {
 
+    .burger{
+      display: none!important;
+    }
+    .topnav{
+      display:flex!important;
+      justify-content: space-between;
+    }
+    #menuLinks{
+      display:flex!important;
+    }
+
+
+
   .tag-container{
     margin-top: 0;
   }
   .tag{
     font-size: 1rem;
+    margin-bottom: 0;
   }
   /*geo section och sökbar*/
   /*geo section o sökbar*/
