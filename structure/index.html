@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ikoner finns på https://fontawesome.com/search -->
+    <script src="https://kit.fontawesome.com/050b4fa1ca.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
     <header>
-        <!--Header-->                   
+        <!--Header-->
             <div class="color-interact">
                 <a href="#home" class="color-brand">Logo</a>
                 <div id="myLinks">  <!--Nedan är menyval plus länkar i hamburgermenyn-->
@@ -22,13 +24,21 @@
                 <i class="fa fa-bars"></i>
                 </a>
             </div>
-        
-        <section>   <!--Denna section är för searchbar-->
-            <form id="form"> 
-                <input type="search" id="query" name="q" placeholder="Search...">
-                <button>Search</button> <!--Ska ersättas med filterknapp-->
-              </form>
-        </section>
+            <!--Searchbar me filterknapp och geo location knapp-->
+            <section id="search_geo_section">
+                <div class="geo_div">
+                    <button type="button" id="geo_btn">
+                        <i class="fa-solid fa-location-dot geoStyle"></i>
+                    </button>
+                    <p id="geo_p">Find Recipes matching your region!</p>
+                </div>
+                <div class="searchbar_div">
+                    <input id="searchbar" type="search" name="queryvalue" value="search.."/>
+                    <button type="button" id="searchbar_btn"> <!--Här ska filterknappen o popupmenyn vara-->
+                        <i class="fa-solid fa-sliders sliderStyle"></i>
+                    </button>
+                </div>
+            </section>
         <script>
             function barFunc() {
               var x = document.getElementById("myLinks");
