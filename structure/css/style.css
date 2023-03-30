@@ -6,11 +6,11 @@
 }
 
 /*COLORS*/
-.color-brand{
-  background-color: #AD4C10;
+.color-brand {
+  background-color: #ad4c10;
 }
-.color-interact{
-  background-color: #399C9D;
+.color-interact {
+  background-color: #399c9d;
 }
 
 /*TYPOGRAPHY*/
@@ -19,17 +19,17 @@ p {
 }
 
 /*COMMON COMPONENTS*/
-.max-width-container{
-  max-width: 1600px;/*px-count not final*/
+.max-width-container {
+  max-width: 1300px; /*px-count not final*/
 }
-.flex-separate{
+.flex-separate {
   display: flex;
   justify-content: space-between;
 }
-.flex-left{
+.flex-left {
   align-items: flex-start;
 }
-.flex-right{
+.flex-right {
   align-items: flex-end;
 }
 
@@ -37,10 +37,12 @@ p {
 body {
   background-color: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
 }
 footer {
-width: 100%;
-padding: 0.2rem;
+  width: 100%;
+  padding: 0.2rem;
 }
 
 /*****************************************/
@@ -49,60 +51,64 @@ padding: 0.2rem;
 
 /*CSS for specific design on index page*/
 
-
-
-
 /*****************************************/
 /**********   RECIPE  ********************/
 /*****************************************/
 
 /*CSS for specific design on recipe page*/
 
-.body {
-  background-color: white;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-.title{
-  background-color: grey;
-  min-height: 100px;
+.title {
+  background-color: #ad4c10;
+  min-height: 2%;
   height: auto;
 }
 .title h1 {
   color: black;
-  font-size: 45px;
+  font-size: 3rem;
   padding: 10px;
 }
 .star {
-  font-size: 75px;
+  font-size: 3.5rem;
   color: black;
 }
 .img {
   width: 95%;
-  height: 600px;
   border-radius: 20px;
 }
-h2 {
+.h2recipe {
   padding-left: 10px;
   padding-right: 10px;
   color: black;
-  font-size: 35px;
+  font-size: 2rem;
 }
 .info {
   height: auto;
   width: auto;
-  background-color: grey;
   border-radius: 25px;
 }
 .checkbox {
   zoom: 3;
 }
-p{
-  font-size: 35px;
+.instructions {
+  font-size: 2rem;
   margin-left: 20px;
 }
-
+.section {
+  display: flex;
+  flex-direction: column;
+}
 
 /* DESKTOP, px-count not final */
-@media screen and(min-width: 800px) {
-    
+@media screen and (min-width: 1000px) {
+  .section {
+    display: flex;
+    flex-direction: row;
+  }
+  .s {
+    margin-top: 70px;
+  }
+  .instructions {
+    margin-top: 20px;
+    font-size: 2.2rem;
+  }
 }
