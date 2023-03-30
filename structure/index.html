@@ -14,174 +14,72 @@
 </head>
 
 <body>
-    <header>
         <!--Header-->
-            <div class="color-interact">
-                <a href="#home" class="color-brand">Logo</a>
-                <div id="myLinks">  <!--Nedan är menyval plus länkar i hamburgermenyn-->
-                <a href="#recipes">Recipes</a>
-                <a href="#cuisine">The Cuisine of the World</a>
-                <a href="#about">About</a>
-                </div>
-                <a href="javascript:void(0);" class="icon" onclick="barFunc()">  <!--Länka klickfunktion till fil.js-->
-                <i class="fa fa-bars"></i>
-                </a>
-            </div>
-            
-        <script>
-            function barFunc() {
-              var x = document.getElementById("myLinks");
-              if (x.style.display === "block") {
-                x.style.display = "none";
-              } else {
-                x.style.display = "block";
+        <header class="mobile-container color-brand">                 
+              <nav class="topnav max-width-container">                
+                  <a href="/" class="company-logo nav-btn">
+                    <i class="fa-solid fa-earth-americas text-color-interact"></i>
+                  </a>
+                  
+                  <div id="menuLinks">  <!--Nedan är menyval plus länkar i hamburgermenyn-->
+                      <a href="/recipe.html" class="text-color-interact nav-btn">Recipe</a>
+                      <a href="#recommendations" class="text-color-interact nav-btn">Recommendations</a>
+                      <a href="#world" class="text-color-interact nav-btn">Around the World</a> 
+                      <a href="#about" class="text-color-interact nav-btn">About Us</a>
+                  </div>
+
+                  <a href="javascript:void(0);" class="icon nav-btn burger" onclick="barFunc()">  <!--Länka klickfunktion till fil.js-->
+                    <i class="fa fa-bars text-color-interact"></i>
+                  </a>
+              </nav>
+          <script>
+              function barFunc() {
+                let links = document.getElementById("menuLinks");
+                if (links.style.display === "block") {
+                  links.style.display = "none";
+                } else {
+                  links.style.display = "block";
+                }
               }
-            }
-            </script>                       
-    </header>
+              </script>                       
+      </header>                    
+
     <!--Searchbar me filterknapp och geo location knapp-->
-    <section id="search_geo_section">
-      <div class="geo_div">
-          <button type="button" id="geo_btn">
+    <div class="flex-center search-geo-background color-brand-secondary">
+      <div class="max-width-container">
+        <section id="search_geo_section">
+          <div class="geo_div">
+            <button type="button" id="geo_btn">
               <i class="fa-solid fa-location-dot geoStyle"></i>
-          </button>
-          <p id="geo_p">Find Recipes matching your region!</p>
-      </div>
-      <div class="searchbar_div">
-          <input id="searchbar" type="search" name="queryvalue" value="search.."/>
-          <button type="button" id="searchbar_btn"> <!--Här ska filterknappen o popupmenyn vara-->
+            </button>
+            <p id="geo_p">Find Recipes matching your region!</p>
+          </div>
+          <div class="searchbar_div color-interact-secondary">
+            <input id="searchbar" type="search" name="queryvalue" value="search.."/>
+            <button type="button" id="searchbar_btn"> <!--Här ska filterknappen o popupmenyn vara-->
               <i class="fa-solid fa-sliders sliderStyle"></i>
-          </button>
+            </button>
+          </div>
+        </section>
       </div>
-  </section>
-
+    </div>
+    
+    
+    
     <!-- <p>-------------------------//Divider\\--------------------------</p> -->
-     <section class="main-page">
-        <!--Main page, showing all recipes and search result-->
-
-        <section class="ad-section">
-            <!--Ad between recipe cards-->
-            <h1>Annons</h1>
-        </section>
-        
-        <section class="recipe-selection-section">
-            <!--Recipe section, section for grouping-->
-            
-            <div class="grid-section flex-wrap">
-                <!--Grid for holding multiple cards, use grid for adjusting responsivity-->
-
-                <h1>Recept</h1>
-                <div class="recipe-card-grid layout">
-                    <!--placeholder for recipe-card, used for general design for all cards-->
-                    <div class="recipe-card info" data-id="integer">
-                        <!--individual info, collected from api-->
-                        recipe info from api via ID
-                    </div>
-                </div>
-                <div class="recipe-card-grid">
-                    <!--placeholder for recipe-card-->
-                    <div class="recipe-card" data-id="integer">
-                        recipe info from api via ID
-                    </div>
-                </div>
-                <div class="recipe-card-grid">
-                    <!--placeholder for recipe-card-->
-                    <div class="recipe-card" data-id="integer">
-                        recipe info from api via ID
-                    </div>
-                </div>
-                <div class="recipe-card-grid">
-                    <!--placeholder for recipe-card-->
-                    <div class="recipe-card" data-id="integer">
-                        recipe info from api via ID
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="ad-section">
-            <!--Ad between recipe cards-->
-            <h1>Annons</h1>
-        </section>
-
-        <section class="recipe-selection-section">
-            <!--Recipe section-->
-            
-            <div class="grid-section">
-                <!--Grid for holding multiple cards-->
-
-                <h1>//Recept</h1>
-                <div class="recipe-card-grid">
-                    <!--placeholder for recipe-card-->
-                    <div class="recipe-card" data-id="integer">
-                        recipe info from api via ID
-                    </div>
-                </div>
-                <div class="recipe-card-grid">
-                    <!--placeholder for recipe-card-->
-                    <div class="recipe-card" data-id="integer">
-                        recipe info from api via ID
-                    </div>
-                </div>
-                <div class="recipe-card-grid">
-                    <!--placeholder for recipe-card-->
-                    <div class="recipe-card" data-id="integer">
-                        recipe info from api via ID
-                    </div>
-                </div>
-                <div class="recipe-card-grid">
-                    <!--placeholder for recipe-card-->
-                    <div class="recipe-card" data-id="integer">
-                        recipe info from api via ID
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="show-more-button">
-            <!--Button for loading more recipes-->
-            Show more button
-        </div>
-
-    <section> <!--Denna section är för searchbar-->
-      <form id="form">
-        <input type="search" id="query" name="q" placeholder="Search...">
-        <button>Search</button> <!--Ska ersättas med filterknapp-->
-      </form>
-    </section>
-    <script>
-      function barFunc() {
-        var x = document.getElementById("myLinks");
-        if (x.style.display === "block") {
-          x.style.display = "none";
-        } else {
-          x.style.display = "block";
-        }
-      }
-    </script>
-  </header>
-
-
-  <!-- <p>-------------------------//Divider\\--------------------------</p> -->
-  <section class="main-page">
+    <div class="max-width-container">
+    <section class="main-page flex-center">
     <!--Main page, showing all recipes and search result-->
 
     <section class="ad-section">
-      <div class="banner-container1">
-        <div class="banner">AD-SPACE</div>
-      </div>
+      <!--Ad between recipe cards-->
+      <h1>Annons</h1>
     </section>
 
     <section class="recipe-selection-section">
       <!--Recipe section, section for grouping-->
       <h1>Recept</h1>
-      <div class="recipe-card-grid layout">
-        <!--placeholder for recipe-card, used for general design for all cards-->
-        <div class="recipe-card info" data-id="integer">
-          <!--individual info, collected from api-->
-          recipe info from api via ID
-        </div>
-      </div>
+      
       <div class="card-container">
         <!--Grid for holding multiple cards, use grid for adjusting responsivity-->
 
@@ -190,16 +88,16 @@
         <div class="card">
           <img src="img/chickckckcn.png" alt="Image">
           <div class="card-text">
-            <h2>hejhej</h2>
+            <h3>hejhej</h3>
             <div class="d-flex">
-              <div class="info mr-2">
-                <h2>20 min</h2>
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
               </div>
-              <div class="info mr-2">
-                <h2>asia</h2>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
               </div>
-              <div class="info">
-                <h2>vegan</h2>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
               </div>
             </div>
             <!-- Stjärnor -->
@@ -213,20 +111,22 @@
             <p>Casasfasfs</p>
           </div>
         </div>
+
+
         <!--placeholder for recipe-card-->
         <div class="card">
           <img src="img/chickckckcn.png" alt="Image">
           <div class="card-text">
-            <h2>smörtårta5</h2>
+            <h3>smörtårta5</h3>
             <div class="d-flex">
-              <div class="info mr-2">
-                <h2>20 min</h2>
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
               </div>
-              <div class="info mr-2">
-                <h2>asia</h2>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
               </div>
-              <div class="info">
-                <h2>vegan</h2>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
               </div>
             </div>
             <!-- Stjärnor -->
@@ -240,20 +140,23 @@
             <p>3apor</p>
           </div>
         </div>
+
+
+
         <!--placeholder for recipe-card-->
         <div class="card">
           <img src="img/chickckckcn.png" alt="Image">
           <div class="card-text">
-            <h2>Spaghetti sås</h2>
+            <h3>Spaghetti sås</h3>
             <div class="d-flex">
-              <div class="info mr-2">
-                <h2>20 min</h2>
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
               </div>
-              <div class="info mr-2">
-                <h2>asia</h2>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
               </div>
-              <div class="info">
-                <h2>vegan</h2>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
               </div>
             </div>
             <!-- Stjärnor -->
@@ -267,19 +170,140 @@
             <p>God sås spaghet teehee</p>
           </div>
         </div>
+
+
         <div class="card">
           <img src="img/chickckckcn.png" alt="Image">
           <div class="card-text">
-            <h2>Spaghetti sås</h2>
+            <h3>Spaghetti sås</h3>
             <div class="d-flex">
-              <div class="info mr-2">
-                <h2>20 min</h2>
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
               </div>
-              <div class="info mr-2">
-                <h2>asia</h2>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
               </div>
-              <div class="info">
-                <h2>vegan</h2>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
+              </div>
+            </div>
+            <!-- Stjärnor -->
+            <div class="d-flex">
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9734;</h1>
+            </div>
+            <p>God sås spaghet teehee</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="banner-container1">
+        <div class="banner">AD-SPACE</div>
+      </div>
+
+
+      <div class="card-container">
+        <div class="card">
+          <img src="img/chickckckcn.png" alt="Image">
+          <div class="card-text">
+            <h3>Spaghetti sås</h3>
+            <div class="d-flex">
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
+              </div>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
+              </div>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
+              </div>
+            </div>
+            <!-- Stjärnor -->
+            <div class="d-flex">
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9734;</h1>
+            </div>
+            <p>God sås spaghet teehee</p>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <img src="img/chickckckcn.png" alt="Image">
+          <div class="card-text">
+            <h3>Spaghetti sås</h3>
+            <div class="d-flex">
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
+              </div>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
+              </div>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
+              </div>
+            </div>
+            <!-- Stjärnor -->
+            <div class="d-flex">
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9734;</h1>
+            </div>
+            <p>God sås spaghet teehee</p>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <img src="img/chickckckcn.png" alt="Image">
+          <div class="card-text">
+            <h3>Spaghetti sås</h3>
+            <div class="d-flex">
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
+              </div>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
+              </div>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
+              </div>
+            </div>
+            <!-- Stjärnor -->
+            <div class="d-flex">
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9733;</h1>
+              <h1 class="star">&#9734;</h1>
+            </div>
+            <p>God sås spaghet teehee</p>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <img src="img/chickckckcn.png" alt="Image">
+          <div class="card-text">
+            <h3>Spaghetti sås</h3>
+            <div class="d-flex">
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
+              </div>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
+              </div>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
               </div>
             </div>
             <!-- Stjärnor -->
@@ -297,166 +321,16 @@
       <div class="banner-container1">
         <div class="banner">AD-SPACE</div>
       </div>
-      <div class="card-container">
-        <div class="card">
-          <img src="img/chickckckcn.png" alt="Image">
-          <div class="card-text">
-            <h2>Spaghetti sås</h2>
-            <div class="d-flex">
-              <div class="info mr-2">
-                <h2>20 min</h2>
-              </div>
-              <div class="info mr-2">
-                <h2>asia</h2>
-              </div>
-              <div class="info">
-                <h2>vegan</h2>
-              </div>
-            </div>
-            <!-- Stjärnor -->
-            <div class="d-flex">
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9734;</h1>
-            </div>
-            <p>God sås spaghet teehee</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="img/chickckckcn.png" alt="Image">
-          <div class="card-text">
-            <h2>Spaghetti sås</h2>
-            <div class="d-flex">
-              <div class="info mr-2">
-                <h2>20 min</h2>
-              </div>
-              <div class="info mr-2">
-                <h2>asia</h2>
-              </div>
-              <div class="info">
-                <h2>vegan</h2>
-              </div>
-            </div>
-            <!-- Stjärnor -->
-            <div class="d-flex">
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9734;</h1>
-            </div>
-            <p>God sås spaghet teehee</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="img/chickckckcn.png" alt="Image">
-          <div class="card-text">
-            <h2>Spaghetti sås</h2>
-            <div class="d-flex">
-              <div class="info mr-2">
-                <h2>20 min</h2>
-              </div>
-              <div class="info mr-2">
-                <h2>asia</h2>
-              </div>
-              <div class="info">
-                <h2>vegan</h2>
-              </div>
-            </div>
-            <!-- Stjärnor -->
-            <div class="d-flex">
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9734;</h1>
-            </div>
-            <p>God sås spaghet teehee</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="img/chickckckcn.png" alt="Image">
-          <div class="card-text">
-            <h2>Spaghetti sås</h2>
-            <div class="d-flex">
-              <div class="info mr-2">
-                <h2>20 min</h2>
-              </div>
-              <div class="info mr-2">
-                <h2>asia</h2>
-              </div>
-              <div class="info">
-                <h2>vegan</h2>
-              </div>
-            </div>
-            <!-- Stjärnor -->
-            <div class="d-flex">
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9733;</h1>
-              <h1 class="star">&#9734;</h1>
-            </div>
-            <p>God sås spaghet teehee</p>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <section class="ad-section">
-      <!--Ad between recipe cards-->
-      <h1>Annons</h1>
-    </section>
-
-    <section class="recipe-selection-section">
-      <!--Recipe section-->
-
-      <div class="grid-section">
-        <!--Grid for holding multiple cards-->
-
-        <h1>//Recept</h1>
-        <div class="recipe-card-grid">
-          <!--placeholder for recipe-card-->
-          <div class="recipe-card" data-id="integer">
-            recipe info from api via ID
-          </div>
-        </div>
-        <div class="recipe-card-grid">
-          <!--placeholder for recipe-card-->
-          <div class="recipe-card" data-id="integer">
-            recipe info from api via ID
-          </div>
-        </div>
-        <div class="recipe-card-grid">
-          <!--placeholder for recipe-card-->
-          <div class="recipe-card" data-id="integer">
-            recipe info from api via ID
-          </div>
-        </div>
-        <div class="recipe-card-grid">
-          <!--placeholder for recipe-card-->
-          <div class="recipe-card" data-id="integer">
-            recipe info from api via ID
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="show-more-button">
-      <!--Button for loading more recipes-->
-      Show more button
-    </div>
-
-  </section>
+  </div>
 
   <!-- <p>----------------------------------//Divider\\----------------------------------</p> -->
   <footer class="color-brand">
     <div class="max-width-container flex-separate">
       <section class="flex-left">
-        <h2>GLOBE GRUB</h2>
-        <p>slogan</p>
+        <h2 class="company-name text-color-interact">GLOBE GRUB</h2>
+        <p class="slogan text-color-interact">slogan</p>
       </section>
       <section class="flex-right footer-info-section">
         <p>info</p>
