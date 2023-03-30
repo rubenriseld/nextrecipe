@@ -50,7 +50,47 @@ padding: 0.2rem;
 /*CSS for specific design on index page*/
 
 
+.topnav{
+  overflow: hidden;
+  background-color: #AD4C10;
+  position: relative;
+  display: flex;
+  width: auto;
+}
 
+.topnav #menuLinks {
+  display: none;
+
+}
+
+.topnav a {
+  color: rgb(0, 0, 0);
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 30px;
+  margin-left: 20;
+  display: block;
+  position: relative;
+}
+
+
+.topnav a.icon {
+  background: #AD4C10;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+}
+
+.company-logo{
+  width: auto;
+  max-width: 100px;
+  position: relative;
+}
 
 /*****************************************/
 /**********   RECIPE  ********************/
