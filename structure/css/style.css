@@ -50,6 +50,52 @@ footer {
 /*****************************************/
 
 /*CSS for specific design on index page*/
+.card-container{
+  flex-direction: column;
+  display:flex;
+  flex-wrap: wrap;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-text {
+  padding: 20px;
+}
+
+.card-text h2 {
+  margin-top: 0;
+}
+
+.card-text p {
+  margin-bottom: 0;
+}
+/*ADS*/
+
+.banner-container1 {
+  display: flex;
+  flex-direction: column;
+  height: 6rem; 
+}
+
+.banner {
+  background-color: #000000;
+  height: 100px;
+  color: aliceblue;
+  text-align: center;
+  font-size: 300%;
+  padding-top: 0.68rem;
+}
 /*neliz, section med geo och searchbar*/
 
 /*har lagt två divvar i denna section, en för geo knappen o en för searchbar o filterknappen*/
@@ -157,6 +203,19 @@ footer {
 .instructions {
   font-size: 2rem;
   margin-left: 20px;
+}
+
+/* DESKTOP, px-count not final */
+@media screen and (min-width: 800px) {
+    .card {
+      width:20%;
+      margin: 2% 2% 2% 2%;
+    }
+    .card-container{
+      justify-content: center;
+      flex-direction: row;
+      display:flex;
+    }
 }
 .section {
   display: flex;
