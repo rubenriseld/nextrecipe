@@ -10,14 +10,42 @@
     <link rel="stylesheet" href="css/style.css" />
     <title>Recipe page</title>
   </head>
-  <body>
+  <body class="recipe-page">
+    <header>
+      <!--Header-->
+          <div class="color-interact">
+              <a href="#home" class="color-brand">Logo</a>
+              <div id="myLinks">  <!--Nedan är menyval plus länkar i hamburgermenyn-->
+              <a href="#recipes">Recipes</a>
+              <a href="#cuisine">The Cuisine of the World</a>
+              <a href="#about">About</a>
+              </div>
+              <a href="javascript:void(0);" class="icon" onclick="barFunc()">  <!--Länka klickfunktion till fil.js-->
+              <i class="fa fa-bars"></i>
+              </a>
+          </div>
+          
+      <script>
+          function barFunc() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+              x.style.display = "none";
+            } else {
+              x.style.display = "block";
+            }
+          }
+          </script>                       
+  </header>
+  <div class="flex-center">
     <div class="max-width-container" style="background-color: white">
       <!-- Receptnamn -->
-      <div class="title mb-4">
-        <h1>Delicious food and shit</h1>
+      <div class="mb-4">
+        <h1 class="recipe-title m-4">Delicious food and shit</h1>
       </div>
-      <section class="section">
-        <div>
+
+
+      <section class="recipe-container">
+        <div class="recipe-image">
           <!-- Bild på maten -->
           <div>
             <img class="img mr-4 ml-4" src="img/chickckckcn.png" />
@@ -27,15 +55,15 @@
             class="d-flex mb-4 mr-4 ml-4 justify-content-between align-items-center"
           >
             <!-- Taggar -->
-            <div class="d-flex">
-              <div class="info color-brand mr-2">
-                <h2 class="h2recipe">20 min</h2>
+            <div class="d-flex tag-container">
+              <div class="info color-interact mr-2">
+                <p class="tag">20 min</p>
               </div>
-              <div class="info color-brand mr-2">
-                <h2 class="h2recipe">asia</h2>
+              <div class="info color-interact mr-2">
+                <p class="tag">asia</p>
               </div>
-              <div class="info color-brand">
-                <h2 class="h2recipe">vegan</h2>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
               </div>
             </div>
             <!-- Stjärnor -->
@@ -48,37 +76,39 @@
             </div>
           </div>
         </div>
-        <div>
+
+        <div class="recipe-ingredients">
           <!-- Portioner -->
-          <div class="ml-4 mt-3">
-            <h2 class="h2recipe">Ingredients for 4 portions</h2>
+          <div class="ml-4">
+            <h2 class="ingredients-title">Ingredients for 4 portions</h2>
           </div>
           <!-- Ingridiensermått och ingredienser  -->
           <div class="d-flex m-4">
             <!-- Ingrediensmått -->
             <div class="d-flex flex-column mt-2">
-              <div class="m mb-2"><h2 class="h2recipe">2 cloves</h2></div>
-              <div class="m mb-2"><h2 class="h2recipe">2 tbsp</h2></div>
-              <div class="m mb-2"><h2 class="h2recipe">1.7 kg</h2></div>
-              <div class="m mb-2"><h2 class="h2recipe">50 mg</h2></div>
-              <div class="m mb-2"><h2 class="h2recipe">6 pcs</h2></div>
-              <div class="m mb-2"><h2 class="h2recipe">A little</h2></div>
+              <div class="m mb-2"><p class="ingredient">2 cloves</p></div>
+              <div class="m mb-2"><p class="ingredient">2 tbsp</p></div>
+              <div class="m mb-2"><p class="ingredient">1.7 kg</p></div>
+              <div class="m mb-2"><p class="ingredient">50 mg</p></div>
+              <div class="m mb-2"><p class="ingredient">6 pcs</p></div>
+              <div class="m mb-2"><p class="ingredient">A little</p></div>
             </div>
             <!-- Ingredienser -->
             <div class="d-flex flex-column mt-2">
-              <div class="i mb-2 ml-5"><h2 class="h2recipe">Garlic</h2></div>
-              <div class="i mb-2 ml-5"><h2 class="h2recipe">Olive Oil</h2></div>
-              <div class="i mb-2 ml-5"><h2 class="h2recipe">Chicken</h2></div>
-              <div class="i mb-2 ml-5"><h2 class="h2recipe">Butter</h2></div>
-              <div class="i mb-2 ml-5"><h2 class="h2recipe">Potatoes</h2></div>
-              <div class="i mb-2 ml-5"><h2 class="h2recipe">Sea Salt</h2></div>
+              <div class="i mb-2 ml-5"><p class="ingredient">Garlic</p></div>
+              <div class="i mb-2 ml-5"><p class="ingredient">Olive Oil</p></div>
+              <div class="i mb-2 ml-5"><p class="ingredient">Chicken</p></div>
+              <div class="i mb-2 ml-5"><p class="ingredient">Butter</p></div>
+              <div class="i mb-2 ml-5"><p class="ingredient">Potatoes</p></div>
+              <div class="i mb-2 ml-5"><p class="ingredient">Sea Salt</p></div>
             </div>
           </div>
         </div>
-      </section>
+      
       <!-- Checkbox och beskrivning -->
-      <section class="s">
-        <div class="ml-4">
+      <!-- <section class="s"> -->
+        <!-- <div> -->
+        <div class="ml-4 recipe-instructions">
           <div class="d-flex">
             <input type="checkbox" class="checkbox" />
             <p class="instructions" style="color: black">
@@ -115,12 +145,15 @@
             </p>
           </div>
         </div>
+
       </section>
+    </div>
+      <!-- </section> -->
       <footer class="color-brand">
         <div class="max-width-container flex-separate">
           <section class="flex-left">
-            <h2>GLOBE GRUB</h2>
-            <p>slogan</p>
+            <h2 class="company-name">GLOBE GRUB</h2>
+            <p class="slogan">slogan</p>
           </section>
           <section class="flex-right footer-info-section">
             <p>info</p>

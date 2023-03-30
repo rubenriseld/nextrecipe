@@ -6,21 +6,71 @@
 }
 
 /*COLORS*/
+.all-colors{
+  background-color: #3EABAD;
+  background-color: #BEF6F7;
+
+  background-color: #ad4c10;
+  background-color: #FAA570;
+  background-color: #FCE2D2;
+}
+
 .color-brand {
   background-color: #ad4c10;
+}
+.color-brand-secondary {
+  background-color: #FAA570;
 }
 .color-interact {
   background-color: #399c9d;
 }
-
-/*TYPOGRAPHY*/
-p {
-  font-size: 1rem;
+.color-interact-secondary{
+  background-color: #86d3d4;
 }
 
+/*TYPOGRAPHY*/
+.company-name{
+  font-size: 3rem;
+}
+.slogan{
+  font-size: 2rem;
+}
+p {
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+.tag{
+  font-size: 1rem;
+  padding: 0 1rem 0 1rem;
+  color: #000000;
+    font-weight: bold;
+}
+.recipe-title{
+  font-size: 4rem;
+  font-weight: bolder;
+}
+.ingredients-title{
+  font-size: 3rem;
+  font-weight: bold;
+}
+.ingredient{
+  font-size: 2rem;
+  font-weight: 400;
+}
+.instructions{
+  font-size: 2rem;
+  margin-left: 2rem;
+}
 /*COMMON COMPONENTS*/
 .max-width-container {
-  max-width: 1300px; /*px-count not final*/
+  max-width: 1920px; /*px-count not final*/
+  width: 100%;
+  align-self: center;
+}
+.flex-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .flex-separate {
   display: flex;
@@ -32,17 +82,31 @@ p {
 .flex-right {
   align-items: flex-end;
 }
-
+.tag-container{
+  margin-top: 2rem;
+}
 /*MAIN COMPONENTS*/
 body {
   background-color: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+/* .recipe-page{
+  display: flex;
+  justify-content: center;
+} */
+header{
+  width: 100%;
 }
 footer {
   width: 100%;
   padding: 0.2rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 
 /*****************************************/
@@ -53,7 +117,7 @@ footer {
 .card-container{
   flex-direction: column;
   display:flex;
-  flex-wrap: wrap;
+  margin: 1rem 0 1rem 0;
 }
 .card {
   display: flex;
@@ -85,28 +149,27 @@ footer {
 .banner-container1 {
   display: flex;
   flex-direction: column;
-  height: 6rem; 
+  height: 10rem; 
 }
 
 .banner {
   background-color: #000000;
-  height: 100px;
+  height: 100%;
   color: aliceblue;
   text-align: center;
   font-size: 300%;
-  padding-top: 0.68rem;
+  padding-top: 2rem;
 }
 /*neliz, section med geo och searchbar*/
 
 /*har lagt två divvar i denna section, en för geo knappen o en för searchbar o filterknappen*/
 #search_geo_section{
-  border-color: #399C9D;
-  border-style:solid;
-  padding: 3px 0px 5px 0px;
+  margin-top:1rem;
+  margin-bottom:2rem;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
- align-items: center;
+  align-items: center;
 }
 .geo_div{ /*div med geo location knapp och "find recipes matching your region"*/
   display: flex;
@@ -136,12 +199,13 @@ footer {
 }
 .searchbar_div{
   margin-top: 7%;
-  background-color:rgba(57, 155, 157, 0.437);
+  /* background-color:rgba(57, 155, 157, 0.437); */
   border-radius: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 70%;
+  max-height: 3rem;
 }
 #searchbar{ /*div för searchbar och filterknapp*/
   background-color: transparent;
@@ -154,11 +218,14 @@ footer {
   border-radius: 50%;
   border-style: none;
   background-color:#399C9D;
-  padding: 9px 10px 9px 10px; 
+  height: 3rem;
+  width: 3rem;
+  /* padding: 9px 10px 9px 10px;  */
 }
 .sliderStyle{
   color: rgba(255, 255, 255, 0.864);
   font-size: 150%;
+  width: 3rem;
 }
 /*geo section o sökbar slut*/
 
@@ -200,35 +267,26 @@ footer {
 .checkbox {
   zoom: 3;
 }
-.instructions {
-  font-size: 2rem;
-  margin-left: 20px;
-}
-
-/* DESKTOP, px-count not final */
-@media screen and (min-width: 800px) {
-    .card {
-      width:20%;
-      margin: 2% 2% 2% 2%;
-    }
-    .card-container{
-      justify-content: center;
-      flex-direction: row;
-      display:flex;
-    }
-}
-.section {
+.recipe-container {
   display: flex;
   flex-direction: column;
 }
 
-/* DESKTOP, px-count not final */
-@media screen and (min-width: 470px) {
 
+/* DESKTOP, px-count not final */
+@media screen and (min-width: 1000px) {
+
+  .tag-container{
+    margin-top: 0;
+  }
+  .tag{
+    font-size: 1rem;
+  }
   /*geo section och sökbar*/
+  /*geo section o sökbar*/
   #search_geo_section{
     flex-direction: row;
-    justify-content:space-around;
+    justify-content:space-between;
   }
   #geo_p{
     font-size: 100%;
@@ -248,7 +306,7 @@ footer {
     border-radius: 50%;
     border-style: none;
     background-color:#399C9D;
-    padding: 3% 3.5% 3% 3.5%; 
+    /* padding: 3% 3.5% 3% 3.5%;  */
   }
   .sliderStyle{
     color: rgba(255, 255, 255, 0.864);
@@ -259,18 +317,43 @@ footer {
      width: 110%;
      font-size: 110%; 
   }
-  /*geo section o sökbar*/
-}
-@media screen and (min-width: 1000px) {
-  .section {
+
+  /*recept*/
+  .recipe-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .recipe-image{
+    width: 50%;
+    order: 2;
+  }
+  .recipe-ingredients{
+    width: 50%;
+  }
+  .recipe-instructions{
+    order:3;
+    align-self: flex-end;
   }
   .s {
     margin-top: 70px;
   }
   .instructions {
     margin-top: 20px;
-    font-size: 2.2rem;
+    font-size: 1.2rem;
+  }
+
+  /*card*/
+  .card {
+    width:23%;
+  }
+  .card-container{
+    justify-content: center;
+    flex-direction: row;
+    display:flex;
+  flex-wrap: wrap;
+
+    justify-content: space-between;
   }
 }
