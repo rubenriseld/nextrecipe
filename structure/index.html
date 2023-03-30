@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/050b4fa1ca.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
@@ -13,19 +14,134 @@
 </head>
 
 <body>
-  <header>
-    <!--Header-->
-    <div class="color-interact">
-      <a href="#home" class="color-brand">Logo</a>
-      <div id="myLinks"> <!--Nedan är menyval plus länkar i hamburgermenyn-->
-        <a href="#recipes">Recipes</a>
-        <a href="#cuisine">The Cuisine of the World</a>
-        <a href="#about">About</a>
+    <header>
+        <!--Header-->
+            <div class="color-interact">
+                <a href="#home" class="color-brand">Logo</a>
+                <div id="myLinks">  <!--Nedan är menyval plus länkar i hamburgermenyn-->
+                <a href="#recipes">Recipes</a>
+                <a href="#cuisine">The Cuisine of the World</a>
+                <a href="#about">About</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="barFunc()">  <!--Länka klickfunktion till fil.js-->
+                <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            
+        <script>
+            function barFunc() {
+              var x = document.getElementById("myLinks");
+              if (x.style.display === "block") {
+                x.style.display = "none";
+              } else {
+                x.style.display = "block";
+              }
+            }
+            </script>                       
+    </header>
+    <!--Searchbar me filterknapp och geo location knapp-->
+    <section id="search_geo_section">
+      <div class="geo_div">
+          <button type="button" id="geo_btn">
+              <i class="fa-solid fa-location-dot geoStyle"></i>
+          </button>
+          <p id="geo_p">Find Recipes matching your region!</p>
       </div>
-      <a href="javascript:void(0);" class="icon" onclick="barFunc()"> <!--Länka klickfunktion till fil.js-->
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
+      <div class="searchbar_div">
+          <input id="searchbar" type="search" name="queryvalue" value="search.."/>
+          <button type="button" id="searchbar_btn"> <!--Här ska filterknappen o popupmenyn vara-->
+              <i class="fa-solid fa-sliders sliderStyle"></i>
+          </button>
+      </div>
+  </section>
+
+    <!-- <p>-------------------------//Divider\\--------------------------</p> -->
+     <section class="main-page">
+        <!--Main page, showing all recipes and search result-->
+
+        <section class="ad-section">
+            <!--Ad between recipe cards-->
+            <h1>Annons</h1>
+        </section>
+        
+        <section class="recipe-selection-section">
+            <!--Recipe section, section for grouping-->
+            
+            <div class="grid-section flex-wrap">
+                <!--Grid for holding multiple cards, use grid for adjusting responsivity-->
+
+                <h1>Recept</h1>
+                <div class="recipe-card-grid layout">
+                    <!--placeholder for recipe-card, used for general design for all cards-->
+                    <div class="recipe-card info" data-id="integer">
+                        <!--individual info, collected from api-->
+                        recipe info from api via ID
+                    </div>
+                </div>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ad-section">
+            <!--Ad between recipe cards-->
+            <h1>Annons</h1>
+        </section>
+
+        <section class="recipe-selection-section">
+            <!--Recipe section-->
+            
+            <div class="grid-section">
+                <!--Grid for holding multiple cards-->
+
+                <h1>//Recept</h1>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+                <div class="recipe-card-grid">
+                    <!--placeholder for recipe-card-->
+                    <div class="recipe-card" data-id="integer">
+                        recipe info from api via ID
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="show-more-button">
+            <!--Button for loading more recipes-->
+            Show more button
+        </div>
 
     <section> <!--Denna section är för searchbar-->
       <form id="form">
