@@ -139,9 +139,11 @@ p{
 /* DESKTOP, px-count not final */
 @media screen and (min-width: 800px) {
     .card {
-      width:25%;
+      width:20%;
+      margin: 2% 2% 2% 2%;
     }
     .card-container{
+      justify-content: center;
       flex-direction: row;
       display:flex;
     }
