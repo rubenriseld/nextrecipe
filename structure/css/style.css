@@ -54,7 +54,6 @@ padding: 0.2rem;
   display:flex;
   flex-wrap: wrap;
 }
-
 .card {
   display: flex;
   flex-direction: column;
@@ -80,8 +79,22 @@ padding: 0.2rem;
 .card-text p {
   margin-bottom: 0;
 }
+/*ADS*/
 
+.banner-container1 {
+  display: flex;
+  flex-direction: column;
+  height: 6rem; 
+}
 
+.banner {
+  background-color: #000000;
+  height: 100px;
+  color: aliceblue;
+  text-align: center;
+  font-size: 300%;
+  padding-top: 0.68rem;
+}
 
 /*****************************************/
 /**********   RECIPE  ********************/
@@ -131,10 +144,6 @@ p{
   font-size: 35px;
   margin-left: 20px;
 }
-
-
-
-
 
 /* DESKTOP, px-count not final */
 @media screen and (min-width: 800px) {
