@@ -1,11 +1,11 @@
 export default function Root() {
     return(
         <>
-        <div id="header" class="header">
+        <section class="header">
             {/* header */}
-            </div>
+            </section>
 
-        <section id="geosearch" class="geosearch">
+        <section class="geosearch">
             
             <section class="geo">
                 <button class="geo-btn"></button>
@@ -17,13 +17,16 @@ export default function Root() {
                 class="searchbar"
                 type="search"
                 name="q"
-                value="..."
                 />
                 <button type="button" class="searchbar_btn">
                 {/* Här ska filterknappen och popuppmenyn vara */}
                 </button>
             </section>
 
+        </section>
+
+        <section class="footer">
+            {/* footer */}
         </section>
         </>
     )
