@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/050b4fa1ca.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <title>Document</title>
+</head>
+
+<body>
+        <!--Header-->
+        <header class="mobile-container color-brand">                 
+              <nav class="topnav max-width-container">                
+                  <a href="/" class="company-logo nav-btn">
+                    <i class="fa-solid fa-earth-americas text-color-interact"></i>
+                  </a>
+                  
+                  <div id="menuLinks">  <!--Nedan är menyval plus länkar i hamburgermenyn-->
+                      <a href="/recipe.html" class="text-color-interact nav-btn">Recipe</a>
+                      <a href="#recommendations" class="text-color-interact nav-btn">Recommendations</a>
+                      <a href="#world" class="text-color-interact nav-btn">Around the World</a> 
+                      <a href="#about" class="text-color-interact nav-btn">About Us</a>
+                  </div>
+
+                  <a href="javascript:void(0);" class="icon nav-btn burger" onclick="barFunc()">  <!--Länka klickfunktion till fil.js-->
+                    <i class="fa fa-bars text-color-interact"></i>
+                  </a>
+              </nav>
+          <script>
+              function barFunc() {
+                let links = document.getElementById("menuLinks");
+                if (links.style.display === "block") {
+                  links.style.display = "none";
+                } else {
+                  links.style.display = "block";
+                }
+              }
+              </script>                       
+      </header>                    
+
+    <!--Searchbar me filterknapp och geo location knapp-->
+    <div class="flex-center search-geo-background color-brand-secondary">
+      <div class="max-width-container">
+        <section id="search_geo_section">
+          <div class="geo_div">
+            <button type="button" id="geo_btn">
+              <i class="fa-solid fa-location-dot geoStyle"></i>
+            </button>
+            <p id="geo_p">Find Recipes matching your region!</p>
+          </div>
+          <div class="searchbar_div color-interact-secondary">
+            <input id="searchbar" type="search" name="queryvalue" value="search.."/>
+            <button type="button" id="searchbar_btn"> <!--Här ska filterknappen o popupmenyn vara-->
+              <i class="fa-solid fa-sliders sliderStyle"></i>
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+    
+    
+    
+    <!-- <p>-------------------------//Divider\\--------------------------</p> -->
+    <div class="max-width-container">
+    <section class="main-page flex-center">
+    <!--Main page, showing all recipes and search result-->
+
+    <section class="ad-section">
+      <!--Ad between recipe cards-->
+      <h1>Annons</h1>
+    </section>
+
+    <section class="recipe-selection-section">
+      <!--Recipe section, section for grouping-->
+      <h1>Recept</h1>
+      
+      <div class="card-container">
+        <!--Grid for holding multiple cards, use grid for adjusting responsivity-->
+
+
+        <!--placeholder for recipe-card-->
+        <div class="card">
+          <img src="img/chickckckcn.png" alt="Image">
+          <div class="card-text">
+            <h3>hejhej</h3>
+            <div class="d-flex">
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
+              </div>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
+              </div>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
+              </div>
+            </div>
+            <!-- Stjärnor -->
+            <div class="d-flex">
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9734;</h1>
+            </div>
+            <p>Casasfasfs</p>
+          </div>
+        </div>
+
+
+        <!--placeholder for recipe-card-->
+        <div class="card">
+          <img src="img/chickckckcn.png" alt="Image">
+          <div class="card-text">
+            <h3>smörtårta5</h3>
+            <div class="d-flex">
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
+              </div>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
+              </div>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
+              </div>
+            </div>
+            <!-- Stjärnor -->
+            <div class="d-flex">
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9734;</h1>
+            </div>
+            <p>3apor</p>
+          </div>
+        </div>
+
+
+
+        <!--placeholder for recipe-card-->
+        <div class="card">
+          <img src="img/chickckckcn.png" alt="Image">
+          <div class="card-text">
+            <h3>Spaghetti sås</h3>
+            <div class="d-flex">
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
+              </div>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
+              </div>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
+              </div>
+            </div>
+            <!-- Stjärnor -->
+            <div class="d-flex">
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9734;</h1>
+            </div>
+            <p>God sås spaghet teehee</p>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <img src="img/chickckckcn.png" alt="Image">
+          <div class="card-text">
+            <h3>Spaghetti sås</h3>
+            <div class="d-flex">
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
+              </div>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
+              </div>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
+              </div>
+            </div>
+            <!-- Stjärnor -->
+            <div class="d-flex">
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9734;</h1>
+            </div>
+            <p>God sås spaghet teehee</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="banner-container1">
+        <div class="banner">AD-SPACE</div>
+      </div>
+
+
+      <div class="card-container">
+        <div class="card">
+          <img src="img/chickckckcn.png" alt="Image">
+          <div class="card-text">
+            <h3>Spaghetti sås</h3>
+            <div class="d-flex">
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
+              </div>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
+              </div>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
+              </div>
+            </div>
+            <!-- Stjärnor -->
+            <div class="d-flex">
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9734;</h1>
+            </div>
+            <p>God sås spaghet teehee</p>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <img src="img/chickckckcn.png" alt="Image">
+          <div class="card-text">
+            <h3>Spaghetti sås</h3>
+            <div class="d-flex">
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
+              </div>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
+              </div>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
+              </div>
+            </div>
+            <!-- Stjärnor -->
+            <div class="d-flex">
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9734;</h1>
+            </div>
+            <p>God sås spaghet teehee</p>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <img src="img/chickckckcn.png" alt="Image">
+          <div class="card-text">
+            <h3>Spaghetti sås</h3>
+            <div class="d-flex">
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
+              </div>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
+              </div>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
+              </div>
+            </div>
+            <!-- Stjärnor -->
+            <div class="d-flex">
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9734;</h1>
+            </div>
+            <p>God sås spaghet teehee</p>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <img src="img/chickckckcn.png" alt="Image">
+          <div class="card-text">
+            <h3>Spaghetti sås</h3>
+            <div class="d-flex">
+              <div class="info mr-2 color-interact">
+                <p class="tag">20 min</p>
+              </div>
+              <div class="info mr-2 color-interact">
+                <p class="tag">asia</p>
+              </div>
+              <div class="info color-interact">
+                <p class="tag">vegan</p>
+              </div>
+            </div>
+            <!-- Stjärnor -->
+            <div class="d-flex">
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9733;</h1>
+              <h1 class="star text-color-interact">&#9734;</h1>
+            </div>
+            <p>God sås spaghet teehee</p>
+          </div>
+        </div>
+      </div>
+      <div class="banner-container1">
+        <div class="banner">AD-SPACE</div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- <p>----------------------------------//Divider\\----------------------------------</p> -->
+  <footer class="color-brand">
+    <div class="max-width-container flex-separate">
+      <section class="flex-left">
+        <h2 class="company-name text-color-interact">GLOBE GRUB</h2>
+        <p class="slogan text-color-interact">slogan</p>
+      </section>
+      <section class="flex-right footer-info-section">
+        <p>info</p>
+        <p>info</p>
+        <p>info</p>
+      </section>
+    </div>
+  </footer>
+
+</body>
+
+</html>
