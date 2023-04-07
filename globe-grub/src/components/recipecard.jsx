@@ -1,6 +1,5 @@
 
 function RecipeCard(){
-
     return(
         <section class="recipe-selection-section">
       {/*Recipe section, section for grouping*/}
