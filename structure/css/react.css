@@ -1,0 +1,530 @@
+/*****************************************
+                CSS RESET  
+*****************************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*****************************************
+                COLORS  
+*****************************************/
+.color-primary {
+    background-color: #006a4a;
+}
+
+.text-color-primary {
+    color: #006a4a!important;
+}
+
+.color-secondary {
+    background-color: #006a4a7c;
+}
+
+.text-color-secondary {
+    color: #006a4a3f!important;
+}
+
+.background-primary {
+    background-color: #fafafa;
+
+}
+
+.background-secondary {
+    background-color: #f0efee;
+}
+
+.color-accent {
+    background-color: #ce340e;
+}
+
+.text-color-accent {
+    color: #ce340e;
+}
+
+
+/*****************************************
+                TYPOGRAPHY
+*****************************************/
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*if necessary*/
+h1 {}
+
+h2 {}
+
+h3 {}
+
+p {
+    font-size: 1.1rem;
+}
+
+.company-name {
+    /*stå bredvid loggan eller kommer namnet va i loggan???*/
+}
+
+.slogan {
+    /*grub my globes*/
+}
+
+nav a {
+    text-decoration: none;
+        /*ta bort underline från menylänkar*/
+    font-size: 1.5rem;
+}
+
+/*****************************************
+            COMMON COMPONENTS
+*****************************************/
+/*---GENERAL STRUCTURE & LAYOUT---*/
+/*****fleximojs******/
+.flex { 
+    display: flex;
+}
+.flex-column { 
+    flex-direction: column;
+}
+.flex-center {
+    justify-content: center;
+}
+.align-items-center{
+    align-items: center;
+}
+
+.flex-separate {
+    justify-content: space-between;
+}
+
+.flex-left {
+    align-items: flex-start;
+}
+
+.flex-right {
+    align-items: flex-end;
+}
+/*********************/
+
+
+.max-width-container {
+    /*ser till så innehållet i containern inte blir hur bred som helst*/
+    max-width: 1600px;
+    /*px-count not final*/
+    width: 100%;
+    align-self: center;
+    padding: 1rem;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/*---HEADER---*/
+header {
+    width: 100%;
+}
+
+/*LOGO*/
+.company-logo {
+    /* width: auto; */
+    /* max-width: 100px; */
+    position: relative;
+}
+
+/*MENU*/
+.menu {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    margin: auto;
+    padding: 0 1rem 0 1rem;
+}
+.menu-links {
+    /*navlänkarna som ligger i hamburgermenyn på mobile*/
+    display: none;
+}
+
+.menu a {
+    /*länkarna*/
+    padding: 1rem;
+    margin: 0.5rem;
+    display: block;
+    position: relative;
+}
+
+.menu a.icon {
+    /*hamburgermenyn*/
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/*---GEOSEARCH---*/
+/*GEO*/
+    /*har lagt två divvar i denna section, en för geo knappen o en för searchbar o filterknappen*/
+.geosearch {
+    /*gemensam section för geo + search*/
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.geo-container {
+    /*div med geo-location-knapp (geo-btn) och "find recipes matching your region (geo-text"*/
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.geo-icon {
+    /*geo-ikonen*/
+    color: #ffffff;
+    font-size: 40px;
+}
+
+.geo-btn {
+    /*geo-ikonens knapp*/
+    padding: 20px 25px 20px 25px;
+    margin: 4px 0px 15px 0px;
+    border-radius: 50%;
+    border-style: none;
+    z-index: 1;
+}
+
+.geo-text {
+    /*"find recipes matching your region"*/
+    font-size: 15px;
+    background-color: gray;
+    color: white;
+    margin: 5%;
+    width: 135%;
+    padding: 1%;
+    text-align: center;
+}
+
+/*SEARCH*/
+.searchbar-container {
+    /*container för sökrutan samt filterknapp/kommande meny*/
+    margin-top: 7%;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    max-height: 3rem;
+}
+
+.searchbar {
+    /*div för searchbar och filterknapp*/
+    background-color: transparent;
+    border-style: none;
+    color: white;
+    padding: 4% 0% 4% 5%;
+    width: 1100%;
+}
+
+.search-btn {
+    /*sökknappen (om inget står i sökrutan öppnar den filtermenyn)*/
+    border-radius: 50%;
+    border-style: none;
+    height: 3rem;
+    width: 3rem;
+    /* padding: 9px 10px 9px 10px;  */
+}
+
+.search-icon {
+    /*kommande sök-ikon som byter ut slider-ikonen när något skrivs i sökrutan*/
+}
+
+.slider-icon {
+    /*ikon för filtermenyn*/
+    color: rgba(255, 255, 255, 0.864);
+    font-size: 150%;
+    width: 3rem;
+}
+
+/*FILTER*/
+    /*css för filtermenyn, ej implementerad */
+
+/*---ADS---*/
+.ad {
+    /*reklambanner*/
+    background-color: #000000;
+    height: 100%;
+    color: aliceblue;
+    text-align: center;
+    font-size: 300%;
+    margin: 1rem -1rem 1rem -1rem;
+    height: 10rem;
+}
+
+/*---TAGS---*/
+.tag {
+    /*kategoritaggar på receptkort och receptsida*/
+    margin-right: 0.3rem;
+    font-size: 1rem;
+    padding: 0 0.5rem 0 0.5rem;
+    color: #000000;
+    font-weight: bold;
+    height: auto;
+    width: auto;
+    border-radius: 25px;
+}
+
+/*---STARS---*/
+.star {
+    /*stjärnorna (betyg på recepten)*/
+    font-size: 2.4rem;
+    margin-top: -0.4rem;
+    /*negativ margin så de hamnar i linje med taggar, kan behöva ändras om vi använder ikoner ist för "text*/
+}
+
+/*---FOOTER---*/
+footer {
+    /*jag har ont i foten*/
+    width: 100%;
+    padding: 0.2rem;
+    margin-top: 2rem;
+    display: flex !important;
+    justify-content: center;
+    flex-direction: row;
+}
+
+/*INFO*/
+
+/*****************************************
+              MAIN COMPONENTS
+*****************************************/
+/*---INDEX---*/
+.result-container {}
+
+.recipe-card-container {
+    flex-direction: column;
+    display: flex;
+    margin: 1rem 0 1rem 0;
+}
+
+/*RECIPE CARD*/
+.recipe-card {
+    /*de små korten för recepten på resultatdelen*/
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+}
+
+.recipe-card img {
+    /*thumbnails på receptkorten*/
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.recipe-card-title {
+    /*namnet på receptet (på kortet)*/
+    margin-bottom: 1rem;
+}
+
+.recipe-card-info {
+    padding: 1rem;
+}
+
+/*SHOW-MORE-BUTTON*/
+.show-more {}
+
+
+/*---RECIPE---*/
+    /*sidan för enskilda recept med all info*/
+
+.recipe-container {
+    /*container för receptets alla delar*/
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-title {
+    /*recepttiteln högst upp*/
+    min-height: 2%;
+    height: auto;
+    color: black;
+}
+.recipe-visual-container{
+    /*container för receptets bild, taggar och stjärnor*/
+    margin-top:1rem;
+}
+.recipe-image {
+    /*receptbilden*/
+    width: 100%;
+    border-radius: 20px;
+}
+.recipe-ingredients{
+    margin-top: 1rem;
+}
+.ingredients-title {
+    margin-bottom: 1rem;
+}
+.ingredient{
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+.checkbox-container{
+    margin: 1rem 1rem 1rem 0;
+}
+.instruction {
+    /* margin-top: 20px; */
+    margin-left: 0.5rem;
+}
+
+
+/*CHECKBOX INSTRUCTION*/
+.checkbox {
+    zoom: 3;
+}
+
+/*****************************************
+            DESKTOP (RESPONSIVE)
+*****************************************/
+@media screen and (min-width: 1000px) {
+
+    /*****************************************
+            COMMON COMPONENTS
+    *****************************************/
+    /*---GENERAL STRUCTURE & LAYOUT---*/
+    /*---HEADER---*/
+    /*LOGO*/
+    /*MENU*/
+    .burger {
+        display: none !important;
+    }
+
+    .menu {
+        display: flex !important;
+        justify-content: space-between;
+    }
+
+    .menu-links {
+        display: flex !important;
+    }
+
+    /*---GEOSEARCH---*/
+    .geosearch {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /*GEO*/
+    .geo-text {
+        font-size: 100%;
+        margin: -5%;
+        padding: 1% 1% 1% 4%;
+    }
+
+    .geo-container {
+        flex-direction: row;
+        align-items: left;
+    }
+
+    /*SEARCH*/
+    .searchbar-container {
+        margin-top: 0;
+        width: 50%;
+        border-radius: 3rem;
+    }
+
+    .search-btn {
+        border-radius: 50%;
+        border-style: none;
+        /* padding: 3% 3.5% 3% 3.5%;  */
+    }
+
+    .slider-icon {
+        font-size: 140%;
+    }
+
+    .searchbar {
+        padding: 3% 0% 3% 3%;
+        width: 110%;
+        font-size: 110%;
+    }
+
+    /*FILTER*/
+
+    /*---ADS---*/
+
+
+    /*---TAGS---*/
+    .tag-container {
+        margin-top: 0;
+    }
+
+    .tag {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+
+    /*---STARS---*/
+    /*---FOOTER---*/
+    /*INFO*/
+
+    /*****************************************
+              MAIN COMPONENTS
+    *****************************************/
+    /*---INDEX---*/
+    /*RECIPE CARD*/
+    /*SHOW-MORE-BUTTON*/
+
+    /*---RECIPE---*/
+    /*CHECKBOX INSTRUCTION*/
+
+
+    /*geo section och sökbar*/
+    /*geo section o sökbar*/
+
+
+    /*recept*/
+    .recipe-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .recipe-title{
+        font-size: 3rem;
+    }
+    .recipe-visual-container {
+        width: 50%;
+        order: 2;
+    }
+    .recipe-ingredients {
+        width: 50%;
+    }
+
+    .recipe-instructions {
+        order: 3;
+        align-self: flex-end;
+    }
+
+    /* .s {
+        margin-top: 70px;
+    } */
+    
+    /*card*/
+    .recipe-card {
+        width: 23%;
+    }
+
+    .recipe-card-container {
+        justify-content: center;
+        flex-direction: row;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
