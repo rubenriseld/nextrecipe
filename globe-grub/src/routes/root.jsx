@@ -2,6 +2,7 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import Ad from "../components/ad"
 import Result from "../components/resultcontainer"
+import GeoSearch from "../components/geosearch"
 
 
 
@@ -9,28 +10,16 @@ export default function Root() {
     return(
         <>
         <Header/>
+        <GeoSearch/>
 
-    <section className="geosearch flex-center background-secondary max-width-container">
+            {/* resultatdel */}
+            <Result title="Hej, detta är ditt resultat:"/>
+            <Ad/>
+            <Result title="Hej, detta är ditt resultat 2:"/>
+            <Ad/>
 
-        <div className="geo-container">
-            <button type="button" className="geo-btn color-accent">
-                <i className="fa-solid fa-location-dot geo-icon"></i>
-            </button>
-            <p className="geo-text">Find Recipes matching your region!</p>
-        </div>
+            {/* receptsida */}
 
-        <div className="searchbar-container color-secondary">
-            <input className="searchbar" type="search" name="queryvalue" value="search.." />
-            <button type="button" className="search-btn color-primary">
-
-                <i className="fa-solid fa-sliders slider-icon"></i>
-
-            </button>
-        </div>
-    </section>
-        <Result title="Hej, detta är ditt resultat:"/>
-        <Ad/>
-        <Result title="Hej, detta är ditt resultat 2:"/>
         <Footer/>
         </>
     )
