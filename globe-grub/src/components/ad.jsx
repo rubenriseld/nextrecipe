@@ -2,7 +2,7 @@
 function Ad(){
     return(
         <>
-    <section class="ad-section">
+    <section className="ad">
     {/*Ad between recipe cards*/}
     <h1>Annons</h1>
     </section>
