@@ -20,13 +20,17 @@
     <header>
         <!-- MENU COMPONENT -->
         <nav class="menu max-width-container">
+
             <!-- LOGO COMPONENT -->
-            <a href="./index.html" class="company-logo">
+            <!-- ska loggan kanske ligga utanför nav:en och fungera som en extra home-länk? -->
+            <a href="./index.html" class="company-logo"> 
                 <i class="fa-solid fa-earth-americas text-color-primary"></i>
             </a>
+            <!-- END OF LOGO COMPONENT -->
 
             <!-- navigation links-->
             <div class="menu-links">
+                <a href="./index.html" class="text-color-primary">Home</a>
                 <a href="./recipe.html" class="text-color-primary">Recipe</a>
                 <a href="#recommendations" class="text-color-primary">Recommendations</a>
                 <a href="#world" class="text-color-primary">Around the World</a>
@@ -38,6 +42,8 @@
                 <i class="fa fa-bars text-color-primary"></i>
             </a>
         </nav>
+        <!-- END OF MENU COMPONENT  -->
+
         <script>
             function barFunc() {
                 let links = document.querySelector(".menu-links");
@@ -49,9 +55,11 @@
             }
         </script>
     </header>
+    <!-- END OF HEADER COMPONENT -->
 
     <!--GEOSEARCH COMPONENT-->
     <section class="geosearch flex-center background-secondary max-width-container">
+
         <!-- GEO COMPONENT -->
         <div class="geo-container">
             <button type="button" class="geo-btn color-accent">
@@ -59,17 +67,25 @@
             </button>
             <p class="geo-text">Find Recipes matching your region!</p>
         </div>
+        <!-- END OF GEO COMPONENT -->
+
         <!-- SEARCH COMPONENT  -->
         <div class="searchbar-container color-secondary">
             <input class="searchbar" type="search" name="queryvalue" value="search.." />
             <button type="button" class="search-btn color-primary">
+
                 <!-- FILTERMENU COMPONENT -->
                 <i class="fa-solid fa-sliders slider-icon"></i>
                 <!--ska kunna bli en fin ruta med filterval å så-->
+                <!-- END OF FILTERMENU COMPONENT  -->
+
             </button>
         </div>
+        <!-- END OF SEARCH COMPONENT -->
     </section>
+    <!-- END OF GEOSEARCH COMPONENT -->
 
+    <!-- RECIPE PAGE COMPONENT -->
     <div class="flex-center">
         <section class="max-width-container">
             <!-- Receptnamn -->
@@ -86,17 +102,27 @@
                     <div class="flex flex-separate align-items-center">
                         <!-- Taggar -->
                         <div class="flex tag-container">
+                            <!--  ----   TAG COMPONENTS ---- -->
+                            <!-- vi kommer göra en komponent för en enskild tagg, så på receptkorts-komponenter
+                                kommer vi ha tre tagg-komponenter
+                             -->
                             <p class="tag color-secondary">20 min</p>
                             <p class="tag color-secondary">asia</p>
                             <p class="tag color-secondary">vegan</p>
+                            <!-- END OF TAG COMPONENTS -->
+
                         </div>
                         <!-- Stjärnor -->
                         <div class="flex">
+                            <!-- STAR/RATING COMPONENT -->
+                            <!-- kommer kanske ha som en enda komponent?? -->
                             <p class="star text-color-secondary">&#9733;</p>
                             <p class="star text-color-secondary">&#9733;</p>
                             <p class="star text-color-secondary">&#9733;</p>
                             <p class="star text-color-secondary">&#9733;</p>
                             <p class="star text-color-secondary">&#9734;</p>
+                            <!-- END OF STAR/RATING COMPONENT -->
+
                         </div>
                     </div>
                 </div>
@@ -126,6 +152,7 @@
                     </div>
                 </div>
                 <div class="recipe-instructions">
+                    <!-- CHECKBOX COMPONENT -->
                     <div class="flex checkbox-container">
                         <input type="checkbox" class="checkbox" />
                         <p class="instruction" style="color: black">
@@ -133,6 +160,9 @@
                             eiusmod tempor incididunt ut.
                         </p>
                     </div>
+                    <!-- END OF CHECKBOX COMPONENT -->
+
+                    <!-- CHECKBOX COMPONENT -->
                     <div class="flex checkbox-container">
                         <input type="checkbox" class="checkbox" />
                         <p class="instruction" style="color: black">
@@ -140,12 +170,18 @@
                             eiusmod tempor incididunt ut labore et dolore.
                         </p>
                     </div>
+                    <!-- END OF CHECKBOX COMPONENT -->
+                    
+                    <!-- CHECKBOX COMPONENT -->
                     <div class="flex checkbox-container">
                         <input type="checkbox" class="checkbox" />
                         <p class="instruction" style="color: black">
                             Lorem ipsum dolor sit amet, consectetur.
                         </p>
                     </div>
+                    <!-- END OF CHECKBOX COMPONENT -->
+                    
+                    <!-- CHECKBOX COMPONENT -->
                     <div class="flex checkbox-container">
                         <input type="checkbox" class="checkbox" />
                         <p class="instruction" style="color: black">
@@ -153,23 +189,34 @@
                             eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                     </div>
+                    <!-- END OF CHECKBOX COMPONENT -->
+                    
+                    <!-- CHECKBOX COMPONENT -->
                     <div class="flex checkbox-container">
                         <input type="checkbox" class="checkbox" />
                         <p class="instruction" style="color: black">
                             Lorem ipsum dolor sit amet.
                         </p>
                     </div>
+                    <!-- END OF CHECKBOX COMPONENT -->
+
                 </div>
             </article>
 
         </section>
     </div>
+    <!-- END OF RECIPE PAGE COMPONENT -->
 
+    <!-- FOOTER COMPONENT -->
     <footer>
         <div class="max-width-container flex flex-separate">
             <section class="flex-left">
+
+                <!-- LOGO COMPONENT -->
                 <h2 class="company-name text-color-primary">GLOBE GRUB</h2>
                 <p class="slogan text-color-primary">slogan</p>
+                <!-- END OF LOGO COMPONENT -->
+
             </section>
             <section class="flex-right footer-info-section">
                 <p>info</p>
@@ -178,7 +225,7 @@
             </section>
         </div>
     </footer>
-    </div>
-</body>
+    <!-- END OF FOOTER COMPONENT -->
 
+</body>
 </html>
