@@ -4,22 +4,20 @@ import Ad from "../components/ad"
 import Result from "../components/resultcontainer"
 import GeoSearch from "../components/geosearch"
 
-
+import {
+    createBrowserRouter,
+    Outlet,
+    RouterProvider,
+    Route,
+    Link,
+  } from 'react-router-dom'
 
 export default function Root() {
     return(
         <>
         <Header/>
         <GeoSearch/>
-
-            {/* resultatdel */}
-            <Result title="Hej, detta är ditt resultat:"/>
-            <Ad/>
-            <Result title="Hej, detta är ditt resultat 2:"/>
-            <Ad/>
-
-            {/* receptsida */}
-
+        <Outlet/>
         <Footer/>
         </>
     )
