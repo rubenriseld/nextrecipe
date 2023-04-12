@@ -1,248 +1,42 @@
 
 function RecipeCard(){
     return(
-        <section class="recipe-selection-section">
-      {/*Recipe section, section for grouping*/}
-      <h1>Recept</h1>
-      
-      {/*Grid for holding multiple cards, use grid for adjusting responsivity*/}
-      <div class="card-container">
+      // <!-- RECIPE CARD COMPONENT -->
+      <article class="recipe-card">
+          {/* <!--single recipe card--> */}
+          <img src="../structure/img/chickckckcn.png" alt="Image" />
 
-        {/*placeholder for recipe-card*/}
-        <div class="card">
-          <img src="img/chickckckcn.png" alt="Image"/>
-          <div class="card-text">
-            <h3>hejhej</h3>
-            <div class="d-flex">
-              <div class="info mr-2 color-interact">
-                <p class="tag">20 min</p>
+          <div class="recipe-card-info">
+              <h3 class="recipe-card-title">hejhej</h3>
+              <div>
+                  {/* <!-- taggar --> */}
+                  <div class="flex">
+                      {/* <!--  ----   TAG COMPONENTS ---- -->
+                      <!-- vi kommer göra en komponent för en enskild tagg, så på receptkorts-komponenter
+                          kommer vi ha tre tagg-komponenter
+                       --> */}
+                      <p class="tag color-secondary">20 min</p> 
+                      <p class="tag color-secondary">asia</p>
+                      <p class="tag color-secondary">vegan</p>
+                      {/* <!-- END OF TAG COMPONENTS --> */}
+
+                  </div>
+                  {/* <!-- Stjärnor --> */}
+                  <div class="flex">
+                      {/* <!-- STAR/RATING COMPONENT -->
+                      <!-- kommer kanske ha som en enda komponent?? --> */}
+                      <p class="star text-color-secondary">&#9733;</p>
+                      <p class="star text-color-secondary">&#9733;</p>
+                      <p class="star text-color-secondary">&#9733;</p>
+                      <p class="star text-color-secondary">&#9733;</p>
+                      <p class="star text-color-secondary">&#9734;</p>
+                      {/* <!-- END OF STAR/RATING COMPONENT --> */}
+                  </div>
+                  <p class="card-text">Casasfasfs</p>
               </div>
-              <div class="info mr-2 color-interact">
-                <p class="tag">asia</p>
-              </div>
-              <div class="info color-interact">
-                <p class="tag">vegan</p>
-              </div>
-            </div>
-             {/*Stjärnor*/}
-            <div class="d-flex">
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9734;</h1>
-            </div>
-            <p>Casasfasfs</p>
           </div>
-        </div>
-
-       {/*placeholder for recipe-card*/}
-        <div class="card">
-          <img src="img/chickckckcn.png" alt="Image"/>
-          <div class="card-text">
-            <h3>smörtårta5</h3>
-            <div class="d-flex">
-              <div class="info mr-2 color-interact">
-                <p class="tag">20 min</p>
-              </div>
-              <div class="info mr-2 color-interact">
-                <p class="tag">asia</p>
-              </div>
-              <div class="info color-interact">
-                <p class="tag">vegan</p>
-              </div>
-            </div>
-           {/*Stjärnor*/}
-            <div class="d-flex">
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9734;</h1>
-            </div>
-            <p>3apor</p>
-          </div>
-        </div>
-
-       {/*placeholder for recipe-card*/}
-        <div class="card">
-          <img src="img/chickckckcn.png" alt="Image"/>
-          <div class="card-text">
-            <h3>Spaghetti sås</h3>
-            <div class="d-flex">
-              <div class="info mr-2 color-interact">
-                <p class="tag">20 min</p>
-              </div>
-              <div class="info mr-2 color-interact">
-                <p class="tag">asia</p>
-              </div>
-              <div class="info color-interact">
-                <p class="tag">vegan</p>
-              </div>
-            </div>
-            {/*Stjärnor*/}
-            <div class="d-flex">
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9734;</h1>
-            </div>
-            <p>God sås spaghet teehee</p>
-          </div>
-        </div>
-
-        {/*placeholder for recipe-card*/}
-        <div class="card">
-          <img src="img/chickckckcn.png" alt="Image"/>
-          <div class="card-text">
-            <h3>Spaghetti sås</h3>
-            <div class="d-flex">
-              <div class="info mr-2 color-interact">
-                <p class="tag">20 min</p>
-              </div>
-              <div class="info mr-2 color-interact">
-                <p class="tag">asia</p>
-              </div>
-              <div class="info color-interact">
-                <p class="tag">vegan</p>
-              </div>
-            </div>
-            {/*Stjärnor*/}
-            <div class="d-flex">
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9734;</h1>
-            </div>
-            <p>God sås spaghet teehee</p>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="banner-container1">
-        <div class="banner">AD-SPACE</div>
-      </div>
-
-    {/*placeholder for recipe-card*/}
-      <div class="card-container">
-        <div class="card">
-          <img src="img/chickckckcn.png" alt="Image"/>
-          <div class="card-text">
-            <h3>Spaghetti sås</h3>
-            <div class="d-flex">
-              <div class="info mr-2 color-interact">
-                <p class="tag">20 min</p>
-              </div>
-              <div class="info mr-2 color-interact">
-                <p class="tag">asia</p>
-              </div>
-              <div class="info color-interact">
-                <p class="tag">vegan</p>
-              </div>
-            </div>
-            {/*Stjärnor*/}
-            <div class="d-flex">
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9734;</h1>
-            </div>
-            <p>God sås spaghet teehee</p>
-          </div>
-        </div>
-
-        {/*placeholder for recipe-card*/}
-        <div class="card">
-          <img src="img/chickckckcn.png" alt="Image"/>
-          <div class="card-text">
-            <h3>Spaghetti sås</h3>
-            <div class="d-flex">
-              <div class="info mr-2 color-interact">
-                <p class="tag">20 min</p>
-              </div>
-              <div class="info mr-2 color-interact">
-                <p class="tag">asia</p>
-              </div>
-              <div class="info color-interact">
-                <p class="tag">vegan</p>
-              </div>
-            </div>
-            {/*Stjärnor*/}
-            <div class="d-flex">
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9734;</h1>
-            </div>
-            <p>God sås spaghet teehee</p>
-          </div>
-        </div>
-
-        {/*placeholder for recipe-card*/}
-        <div class="card">
-          <img src="img/chickckckcn.png" alt="Image"/>
-          <div class="card-text">
-            <h3>Spaghetti sås</h3>
-            <div class="d-flex">
-              <div class="info mr-2 color-interact">
-                <p class="tag">20 min</p>
-              </div>
-              <div class="info mr-2 color-interact">
-                <p class="tag">asia</p>
-              </div>
-              <div class="info color-interact">
-                <p class="tag">vegan</p>
-              </div>
-            </div>
-            {/*Stjärnor*/}
-            <div class="d-flex">
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9734;</h1>
-            </div>
-            <p>God sås spaghet teehee</p>
-          </div>
-        </div>
-
-        {/*placeholder for recipe-card*/}
-        <div class="card">
-          <img src="img/chickckckcn.png" alt="Image"/>
-          <div class="card-text">
-            <h3>Spaghetti sås</h3>
-            <div class="d-flex">
-              <div class="info mr-2 color-interact">
-                <p class="tag">20 min</p>
-              </div>
-              <div class="info mr-2 color-interact">
-                <p class="tag">asia</p>
-              </div>
-              <div class="info color-interact">
-                <p class="tag">vegan</p>
-              </div>
-            </div>
-            {/*Stjärnor*/}
-            <div class="d-flex">
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9733;</h1>
-              <h1 class="star text-color-interact">&#9734;</h1>
-            </div>
-            <p>God sås spaghet teehee</p>
-          </div>
-        </div>
-      </div>
-      <div class="banner-container1">
-        <div class="banner">AD-SPACE</div>
-      </div>
-    </section>
-    )
+      </article>
+      )
+      {/* <!-- END OF RECIPE CARD COMPONENT --> */}
 }
 export default RecipeCard;
