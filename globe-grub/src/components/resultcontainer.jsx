@@ -1,6 +1,6 @@
 import RecipeCard from "./recipecard"
 
-export default function Result({title}) {
+export default function ResultContainer({title}) {
         return (
             <section className="result-container max-width-container">
                 
