@@ -137,12 +137,14 @@ header {
 
 /*MENU*/
 .menu {
+    /*huvudmenyn i headern*/
     overflow: hidden;
     position: relative;
     width: 100%;
     margin: auto;
     padding: 0 1rem 0 1rem;
 }
+
 .menu-links {
     /*navlänkarna som ligger i hamburgermenyn på mobile*/
     display: none;
@@ -156,7 +158,7 @@ header {
     position: relative;
 }
 
-.menu a.icon {
+.menu .burger {
     /*hamburgermenyn*/
     display: block;
     position: absolute;
@@ -166,7 +168,6 @@ header {
 
 /*---GEOSEARCH---*/
 /*GEO*/
-    /*har lagt två divvar i denna section, en för geo knappen o en för searchbar o filterknappen*/
 .geosearch {
     /*gemensam section för geo + search*/
     display: flex;
@@ -176,20 +177,20 @@ header {
 }
 
 .geo-container {
-    /*div med geo-location-knapp (geo-btn) och "find recipes matching your region (geo-text"*/
+    /*div med geo-location-knapp (geo-btn) och "find recipes matching your region" (geo-text)*/
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
 }
 
 .geo-icon {
-    /*geo-ikonen*/
+    /*geo-ikonen (som ligger i geo-knappen)*/
     color: #ffffff;
     font-size: 40px;
 }
 
 .geo-btn {
-    /*geo-ikonens knapp*/
+    /*geo-knappen*/
     padding: 20px 25px 20px 25px;
     margin: 4px 0px 15px 0px;
     border-radius: 50%;
@@ -210,7 +211,7 @@ header {
 
 /*SEARCH*/
 .searchbar-container {
-    /*container för sökrutan samt filterknapp/kommande meny*/
+    /*container för sökrutan samt filterknapp/kommande filtermeny*/
     margin-top: 7%;
     border-radius: 2rem;
     display: flex;
@@ -252,6 +253,7 @@ header {
 /*FILTER*/
     /*css för filtermenyn, ej implementerad */
 
+
 /*---ADS---*/
 .ad {
     /*reklambanner*/
@@ -265,6 +267,9 @@ header {
 }
 
 /*---TAGS---*/
+.tag-container {
+    /*container för taggarna på receptkort och receptsida*/
+}
 .tag {
     /*kategoritaggar på receptkort och receptsida*/
     margin-right: 0.3rem;
@@ -296,15 +301,20 @@ footer {
     flex-direction: row;
 }
 
-/*INFO*/
+.footer-info-section{
+    /*info/submenyn i footern*/
+}
 
 /*****************************************
               MAIN COMPONENTS
 *****************************************/
 /*---INDEX---*/
-.result-container {}
+.result-container {
+    /*container för innehållet på resultatdelen (frontpage och sökresultat)*/
+}
 
 .recipe-card-container {
+    /*container för alla receptkort (sökresultat)*/
     flex-direction: column;
     display: flex;
     margin: 1rem 0 1rem 0;
@@ -328,17 +338,20 @@ footer {
     border-radius: 10px 10px 0 0;
 }
 
+.recipe-card-info {
+    /*all info på receptkorten (titel,bild,taggar, beskrivning, betyg)*/
+    padding: 1rem;
+}
+
 .recipe-card-title {
     /*namnet på receptet (på kortet)*/
     margin-bottom: 1rem;
 }
 
-.recipe-card-info {
-    padding: 1rem;
-}
-
 /*SHOW-MORE-BUTTON*/
-.show-more {}
+.show-more {
+    /*knapp för att ladda in fler resultat i resultatdelen*/
+}
 
 
 /*---RECIPE---*/
@@ -365,33 +378,42 @@ footer {
     width: 100%;
     border-radius: 20px;
 }
+
 .recipe-ingredients{
+    /*ingredienslistan på receptsidan*/
     margin-top: 1rem;
 }
 .ingredients-title {
+    /*ingredienslistans titel (typ blabla 4 portioner)*/
     margin-bottom: 1rem;
 }
 .ingredient{
+    /* enskild ingrediens i ingredienslistan*/
     margin-bottom: 1rem;
     margin-right: 1rem;
-}
-.checkbox-container{
-    margin: 1rem 1rem 1rem 0;
-}
-.instruction {
-    /* margin-top: 20px; */
-    margin-left: 0.5rem;
 }
 
 
 /*CHECKBOX INSTRUCTION*/
+.checkbox-container{
+    /*container för enskild checkbox-komponent*/
+    margin: 1rem 1rem 1rem 0;
+}
 .checkbox {
+    /*själva checkbox-elementet*/
     zoom: 3;
+}
+.instruction {
+    /*instruktionssteg*/
+    /* margin-top: 20px; */
+    margin-left: 0.5rem;
 }
 
 /*****************************************
             DESKTOP (RESPONSIVE)
 *****************************************/
+/*har lagt in samma kategorier här under, 
+ifall det behöver läggas in ytterligare justeringar för responsivitet senare*/
 @media screen and (min-width: 1000px) {
 
     /*****************************************
@@ -401,58 +423,69 @@ footer {
     /*---HEADER---*/
     /*LOGO*/
     /*MENU*/
-    .burger {
-        display: none !important;
-    }
-
+    
     .menu {
+        /*huvudmenyn i headern*/
         display: flex !important;
         justify-content: space-between;
     }
-
+    
     .menu-links {
+        /*navlänkarna som ligger i hamburgermenyn på mobile*/
         display: flex !important;
+    }
+    
+    .burger {
+        /*hamburgermenyn*/
+        display: none !important;
     }
 
     /*---GEOSEARCH---*/
     .geosearch {
+        /*gemensam section för geo + search*/
         flex-direction: row;
         justify-content: space-between;
     }
 
     /*GEO*/
+    .geo-container {
+        /*div med geo-location-knapp (geo-btn) och "find recipes matching your region" (geo-text)*/
+        flex-direction: row;
+        align-items: left;
+    }
+
     .geo-text {
+        /*"find recipes matching your region"*/
         font-size: 100%;
         margin: -5%;
         padding: 1% 1% 1% 4%;
     }
 
-    .geo-container {
-        flex-direction: row;
-        align-items: left;
-    }
-
     /*SEARCH*/
     .searchbar-container {
+        /*container för sökrutan samt filterknapp/kommande filtermeny*/
         margin-top: 0;
         width: 50%;
         border-radius: 3rem;
     }
 
+    .searchbar {
+        /*div för searchbar och filterknapp*/
+        padding: 3% 0% 3% 3%;
+        width: 110%;
+        font-size: 110%;
+    }
+
     .search-btn {
+        /*sökknappen (om inget står i sökrutan öppnar den filtermenyn)*/
         border-radius: 50%;
         border-style: none;
         /* padding: 3% 3.5% 3% 3.5%;  */
     }
 
     .slider-icon {
+        /*ikon för filtermenyn*/
         font-size: 140%;
-    }
-
-    .searchbar {
-        padding: 3% 0% 3% 3%;
-        width: 110%;
-        font-size: 110%;
     }
 
     /*FILTER*/
@@ -461,70 +494,62 @@ footer {
 
 
     /*---TAGS---*/
-    .tag-container {
-        margin-top: 0;
-    }
-
     .tag {
+        /*kategoritaggar på receptkort och receptsida*/
         font-size: 1rem;
         margin-bottom: 0;
     }
 
     /*---STARS---*/
     /*---FOOTER---*/
-    /*INFO*/
 
     /*****************************************
               MAIN COMPONENTS
     *****************************************/
     /*---INDEX---*/
-    /*RECIPE CARD*/
-    /*SHOW-MORE-BUTTON*/
-
-    /*---RECIPE---*/
-    /*CHECKBOX INSTRUCTION*/
-
-
-    /*geo section och sökbar*/
-    /*geo section o sökbar*/
-
-
-    /*recept*/
-    .recipe-container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .recipe-title{
-        font-size: 3rem;
-    }
-    .recipe-visual-container {
-        width: 50%;
-        order: 2;
-    }
-    .recipe-ingredients {
-        width: 50%;
-    }
-
-    .recipe-instructions {
-        order: 3;
-        align-self: flex-end;
-    }
-
-    /* .s {
-        margin-top: 70px;
-    } */
-    
-    /*card*/
-    .recipe-card {
-        width: 23%;
-    }
-
     .recipe-card-container {
+        /*container för alla receptkort (sökresultat)*/
         justify-content: center;
         flex-direction: row;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
     }
+    /*RECIPE CARD*/
+    .recipe-card {
+        /*de små korten för recepten på resultatdelen*/
+        width: 23%;
+    }
+
+    /*SHOW-MORE-BUTTON*/
+
+    /*---RECIPE---*/
+        /*sidan för enskilda recept med all info*/
+
+    .recipe-container {
+        /*container för receptets alla delar*/
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .recipe-title{
+        /*recepttiteln högst upp*/
+        font-size: 3rem;
+    }
+    .recipe-visual-container {
+        /*container för receptets bild, taggar och stjärnor*/
+        width: 50%;
+        order: 2;
+    }
+    .recipe-ingredients {
+        /*ingredienslistan på receptsidan*/
+        width: 50%;
+    }
+
+    /*CHECKBOX INSTRUCTION*/
+    .recipe-instructions {
+        /* container för receptsinstruktionerna (innehåller containrar för checkbox-komponent) */
+        order: 3;
+        align-self: flex-end;
+    }    
 }
