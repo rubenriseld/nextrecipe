@@ -8,7 +8,7 @@ function barFunc() {
   }
 }
 
-function Header() {
+export default function Header() {
     return (
       <header>
       <nav className="menu max-width-container">
@@ -35,4 +35,3 @@ function Header() {
 
     )
 }
-export default Header;

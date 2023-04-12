@@ -1,5 +1,5 @@
 
-export function StarRating(){
+export default function StarRating(){
     return(
         <div class="flex">
             

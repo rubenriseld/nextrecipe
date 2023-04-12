@@ -1,8 +1,10 @@
-export function GeoSearch(){
+import Geo from "./geo"
+import Search from "./search"
+export default function GeoSearch(){
     return(
         <section className="geosearch flex-center background-secondary max-width-container">
-            {/*room for GEO COMPONENT */}
-            {/*room for SEARCH COMPONENT */}
+            <Geo></Geo>
+            <Search></Search>
         </section>
     )
 }

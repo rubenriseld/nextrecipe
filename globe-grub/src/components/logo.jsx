@@ -1,5 +1,5 @@
 
-export function Logo(){
+export default function Logo(){
     return(
         <>
             <h2 class="company-name text-color-primary">GLOBE GRUB</h2>

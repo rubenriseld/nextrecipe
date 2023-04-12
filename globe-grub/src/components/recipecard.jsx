@@ -1,5 +1,5 @@
 
-function RecipeCard(){
+export default function RecipeCard(){
     return(
       // <!-- RECIPE CARD COMPONENT -->
       <article class="recipe-card">
@@ -39,4 +39,3 @@ function RecipeCard(){
       )
       {/* <!-- END OF RECIPE CARD COMPONENT --> */}
 }
-export default RecipeCard;

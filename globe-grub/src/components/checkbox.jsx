@@ -1,4 +1,4 @@
-export function Checkbox(){
+export default function Checkbox(){
     return(
         <div class="flex checkbox-container">
             <input type="checkbox" class="checkbox" />

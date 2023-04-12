@@ -1,5 +1,5 @@
 
-export function Geo(){
+export default function Geo(){
     return(
         <div className="geo-container">
             <button type="button" className="geo-btn color-accent">
