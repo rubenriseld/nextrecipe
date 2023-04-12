@@ -70,7 +70,7 @@ p {
     /*grub my globes*/
 }
 
-nav a {
+nav a, nav .burger {
     text-decoration: none;
         /*ta bort underline från menylänkar*/
     font-size: 1.5rem;
@@ -150,7 +150,7 @@ header {
     display: none;
 }
 
-.menu a {
+.menu a, .menu .burger {
     /*länkarna*/
     padding: 1rem;
     margin: 0.5rem;
@@ -160,6 +160,8 @@ header {
 
 .menu .burger {
     /*hamburgermenyn*/
+    border: none;
+    background-color: #ffffff00;
     display: block;
     position: absolute;
     right: 0;
@@ -430,7 +432,7 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
         justify-content: space-between;
     }
     
-    .menu-links {
+    .menu-links-desktop {
         /*navlänkarna som ligger i hamburgermenyn på mobile*/
         display: flex !important;
     }
