@@ -410,6 +410,10 @@ footer {
     /* margin-top: 20px; */
     margin-left: 0.5rem;
 }
+.linethrough {
+    text-Decoration: line-through;
+    color: grey;
+}
 
 /*****************************************
             DESKTOP (RESPONSIVE)
