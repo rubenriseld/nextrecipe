@@ -3,6 +3,8 @@ import { useState } from "react";
 export default function RecipeCard(props) {
 
 const cuisines = Array.from(props.cuisines);
+//skapa en array av vektor cuisines som skickades hit från resultcontainer för att 
+//kunna skriva ut varje cuisinetyp (asian, thai osv) map funkar bara me arrayer 
   return (
     // <!-- RECIPE CARD COMPONENT -->
     <article className="recipe-card">
@@ -20,11 +22,12 @@ const cuisines = Array.from(props.cuisines);
                        --> */}
             <p className="tag color-secondary">{props.time}min</p>
            
-             {cuisines.map((cuisineTag) =>{
+             {cuisines.map((cuisineTag) =>{ 
                if(props.cuisines.length !=0){
                 return   <p className="tag color-secondary">{cuisineTag}</p>
                } 
               })} 
+              {/*mappa cuisines, om arrayen inte är tom skriv ut en tagg för varje cuisinetype */}
              
         
             {/* <p className="tag color-secondary">{getTags}</p> */}
@@ -42,7 +45,7 @@ const cuisines = Array.from(props.cuisines);
             <p className="star text-color-secondary">&#9734;</p>
             {/* <!-- END OF STAR/RATING COMPONENT --> */}
           </div>
-          <p className="card-text">{props.summary}</p>
+          {/* <p className="card-text">{props.summary}</p> */}
         </div>
       </div>
     </article>
