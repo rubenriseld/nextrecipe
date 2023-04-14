@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import '../structure/css/react.css'
+import './react.css'
 import {
     createBrowserRouter,
     RouterProvider,
