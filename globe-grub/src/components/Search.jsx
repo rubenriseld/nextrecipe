@@ -1,3 +1,4 @@
+
 export default function Search(){
     return(
         <div className="searchbar-container color-secondary">

@@ -1,12 +1,12 @@
 import Checkbox from "./Checkbox"
 import StarRating from "./StarRating"
+
 export default function RecipePage({title}) {
     return (
-// <!-- RECIPE PAGE COMPONENT -->
+    // <!-- RECIPE PAGE COMPONENT -->
     <section className="max-width-container">
         {/* <!-- Receptnamn --> */}
         <h1 className="recipe-title">{title}</h1>
-
 
         <article className="recipe-container">
             <div className="recipe-visual-container">
@@ -72,9 +72,7 @@ export default function RecipePage({title}) {
                 <Checkbox/>
                 <Checkbox/>
             </div>
-
         </article>
-
     </section>
     )
 }

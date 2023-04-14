@@ -36,6 +36,6 @@ export default function RecipeCard(){
               </div>
           </div>
       </article>
-      )
-      {/* <!-- END OF RECIPE CARD COMPONENT --> */}
+    )
+    {/* <!-- END OF RECIPE CARD COMPONENT --> */}
 }
