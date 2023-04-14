@@ -1,15 +1,14 @@
-import RecipeCard from "./RecipeCard"
+import RecipeCard from "./RecipeCard";
 
-export default function ResultContainer({title}) {
-        return (
-            <section className="result-container max-width-container">
-                <h1>{title}</h1>
-                <div className="recipe-card-container">
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                </div>
-            </section>
-        )
+export default function ResultContainer(props) {
+  return (
+    <section className="result-container max-width-container">
+      <h1></h1>
+      <div className="recipe-card-container">
+        {props.data.map((recipe) => {
+          return <RecipeCard title={recipe.title} image={recipe.image} />;
+        })}
+      </div>
+    </section>
+  );
 }
