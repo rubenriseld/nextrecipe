@@ -6,6 +6,7 @@ import Ad from "./Ad"
 export default function IndexPage(){
     return(
         <>
+        
             <section className="geosearch flex-center background-secondary max-width-container">
                 <Geo></Geo>
                 <Search></Search>

@@ -1,5 +1,6 @@
 
 export default function Footer(){
+    
     return(
         <footer>
             <div className="max-width-container flex flex-separate">

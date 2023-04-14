@@ -7,5 +7,6 @@ export default function Geo(){
             </button>
             <p className="geo-text">Find Recipes matching your region!</p>
         </div>
+        
     )
 }
