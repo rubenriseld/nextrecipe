@@ -1,4 +1,4 @@
-import RecipeCard from "./recipecard"
+import RecipeCard from "./RecipeCard"
 
 export default function ResultContainer({title}) {
         return (

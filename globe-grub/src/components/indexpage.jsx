@@ -1,7 +1,7 @@
-import Geo from "./geo"
-import Search from "./search"
-import ResultContainer from "./resultcontainer"
-import Ad from "./ad"
+import Geo from "./Geo"
+import Search from "./Search"
+import ResultContainer from "./ResultContainer"
+import Ad from "./Ad"
 
 export default function IndexPage(){
     return(
