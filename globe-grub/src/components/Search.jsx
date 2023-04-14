@@ -11,7 +11,7 @@ export default function Search({ childToParent }) {
 
   const filterUrl = async () => {
     try {
-      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=7e4ba385c74c4c0595bbb872618f7fc2&query=${searchInput}&includeIngredients=${searchInput}`;
+      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${apiKey1}&query=${searchInput}&includeIngredients=${searchInput}`;
       const response = await fetch(url);
       const result = await response.json();
       setRecipeData(result.results);
