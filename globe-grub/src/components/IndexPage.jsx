@@ -6,10 +6,11 @@ import Ad from "./Ad";
 import React, { useState } from "react";
 
 export default function IndexPage() {
-  const [data, setData] = useState(["Mediterranean", "Scandinavian"]);
+  const [data, setData] = useState([]);
 
   const childToParent = (childData) => {
     setData(childData);
+    //result.results hamnar i data via useState (setData)
   };
 
   return (
@@ -19,7 +20,7 @@ export default function IndexPage() {
         <Search childToParent={childToParent}></Search>
       </section>
       <Ad />
-      <ResultContainer data={data} />;
+      <ResultContainer data={data} />; {/*data från Search.jsx(data från sökningen) hamnar i resultcontainer */}
       <Ad />
     </>
   );
