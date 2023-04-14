@@ -1,8 +1,8 @@
 export default function Checkbox(){
     return(
-        <div class="flex checkbox-container">
-            <input type="checkbox" class="checkbox" />
-                <p class="instruction">
+        <div className="flex checkbox-container">
+            <input type="checkbox" className="checkbox" />
+                <p className="instruction">
                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>

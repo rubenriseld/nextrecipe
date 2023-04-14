@@ -1,5 +1,5 @@
-import Checkbox from "./checkbox"
-import StarRating from "./star-rating"
+import Checkbox from "./Checkbox"
+import StarRating from "./StarRating"
 export default function RecipePage({title}) {
     return (
 // <!-- RECIPE PAGE COMPONENT -->
