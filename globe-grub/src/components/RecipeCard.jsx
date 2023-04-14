@@ -2,40 +2,40 @@
 export default function RecipeCard(){
     return(
       // <!-- RECIPE CARD COMPONENT -->
-      <article class="recipe-card">
+      <article className="recipe-card">
           {/* <!--single recipe card--> */}
           <img src="../structure/img/chickckckcn.png" alt="Image" />
 
-          <div class="recipe-card-info">
-              <h3 class="recipe-card-title">hejhej</h3>
+          <div className="recipe-card-info">
+              <h3 className="recipe-card-title">hejhej</h3>
               <div>
                   {/* <!-- taggar --> */}
-                  <div class="flex">
+                  <div className="flex">
                       {/* <!--  ----   TAG COMPONENTS ---- -->
                       <!-- vi kommer göra en komponent för en enskild tagg, så på receptkorts-komponenter
                           kommer vi ha tre tagg-komponenter
                        --> */}
-                      <p class="tag color-secondary">20 min</p> 
-                      <p class="tag color-secondary">asia</p>
-                      <p class="tag color-secondary">vegan</p>
+                      <p className="tag color-secondary">20 min</p> 
+                      <p className="tag color-secondary">asia</p>
+                      <p className="tag color-secondary">vegan</p>
                       {/* <!-- END OF TAG COMPONENTS --> */}
 
                   </div>
                   {/* <!-- Stjärnor --> */}
-                  <div class="flex">
+                  <div className="flex">
                       {/* <!-- STAR/RATING COMPONENT -->
                       <!-- kommer kanske ha som en enda komponent?? --> */}
-                      <p class="star text-color-secondary">&#9733;</p>
-                      <p class="star text-color-secondary">&#9733;</p>
-                      <p class="star text-color-secondary">&#9733;</p>
-                      <p class="star text-color-secondary">&#9733;</p>
-                      <p class="star text-color-secondary">&#9734;</p>
+                      <p className="star text-color-secondary">&#9733;</p>
+                      <p className="star text-color-secondary">&#9733;</p>
+                      <p className="star text-color-secondary">&#9733;</p>
+                      <p className="star text-color-secondary">&#9733;</p>
+                      <p className="star text-color-secondary">&#9734;</p>
                       {/* <!-- END OF STAR/RATING COMPONENT --> */}
                   </div>
-                  <p class="card-text">Casasfasfs</p>
+                  <p className="card-text">Casasfasfs</p>
               </div>
           </div>
       </article>
-      )
-      {/* <!-- END OF RECIPE CARD COMPONENT --> */}
+    )
+    {/* <!-- END OF RECIPE CARD COMPONENT --> */}
 }

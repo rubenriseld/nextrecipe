@@ -1,16 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import '../structure/css/react.css'
+import './react.css'
 import {
     createBrowserRouter,
     RouterProvider,
     Route,
     Link,
   } from 'react-router-dom'
-import Root from "./routes/root";
-import ErrorPage from "./error-page";
-import IndexPage from './components/indexpage';
-import RecipePage from './components/recipepage';
+import Root from "./routes/Root";
+import ErrorPage from "./ErrorPage";
+import IndexPage from './components/IndexPage';
+import RecipePage from './components/RecipePage';
 
 const router = createBrowserRouter([
   {

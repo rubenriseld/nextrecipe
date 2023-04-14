@@ -1,8 +1,5 @@
-import Header from "../components/header"
-import Footer from "../components/footer"
-import Ad from "../components/ad"
-import Result from "../components/resultcontainer"
-import GeoSearch from "../components/geosearch"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 import {
     createBrowserRouter,
@@ -16,7 +13,6 @@ export default function Root() {
     return(
         <>
         <Header/>
-        <GeoSearch/>
         <Outlet/>
         <Footer/>
         </>

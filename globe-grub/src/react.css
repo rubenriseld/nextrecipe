@@ -117,7 +117,7 @@ nav a, nav .burger {
     padding: 1rem;
 }
 
-body {
+body, #root {
     display: flex;
     justify-content: center;
     flex-direction: column;
