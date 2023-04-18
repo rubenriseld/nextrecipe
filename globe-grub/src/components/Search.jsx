@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useFilterStore } from "../hooks/FilterMenu";
-import { CuisineFilters } from "./FilterItems";
+import { CuisineFilters, DietFilters } from "./FilterItems";
 
 export default function Search({ childToParent }) {
   const [searchInput, setSearchInput] = useState("");
   const [recipeData, setRecipeData] = useState([]);
   const [state, getFilterState] = useState(""); //hämtar state från Hook
-  const [filter, setFilter] = useState(""); //värde på det som ska läggas till
+  const [cuisineFilter, setCuisineFilter] = useState(""); //värde på det som ska läggas till
+  const [dietFilter, setDietFilter] = useState(""); //värde på det som ska läggas till
+  const [countFilters, setCount] = useState(0);
   
 
   const key1= "13c6c14454a748769e3611a7cf719862";
@@ -17,8 +19,8 @@ export default function Search({ childToParent }) {
 
   const filterUrl = async () => {
     try {
-      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key5}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${filter}`;
-      console.log(filter);
+      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key5}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${cuisineFilter}${dietFilter}`;
+   
       console.log(url);
       const response = await fetch(url); 
       const result = await response.json();
@@ -31,11 +33,14 @@ export default function Search({ childToParent }) {
     }
   };
 
-    const Addfilter = (e) =>{
-       getFilterState(useFilterStore.getState((state) => state.cuisine)); //hämtar värdet på cuisine taggen från hook
-      setFilter(state.cuisine + e.target.value); //ange värde till filter från state.cuisine och vald cuisine
-       console.log(filter);
+    const AddCuisinefilter = (e) =>{
+        getFilterState(useFilterStore.getState((state) => state.cuisine)); //hämtar värdet på cuisine taggen från hook
+        setCuisineFilter(state.cuisine + e.target.value)
     }
+    const AddDietFilter = (e) =>{
+      getFilterState(useFilterStore.getState((state) => state.diet)); //hämtar värdet på cuisine taggen från hook
+      setDietFilter(state.diet + e.target.value)
+  }
     const handleChange = (e) => {
       setSearchInput(e.target.value);
     };
@@ -54,14 +59,21 @@ export default function Search({ childToParent }) {
         onChange={handleChange}
       />
       {/* tillfällig div med för filtreringen */}
-      <div onClick={Addfilter}>
+      <div onClick={AddCuisinefilter}>
       {CuisineFilters.map((x, index)=>{
         return(
-            <button key={index} value= {x.value}>{x.name}</button>
+            <button key={index} value={x.value}>{x.name}</button>
+        )
+      })} </div>
+      <div onClick={AddDietFilter}>
+
+      {DietFilters.map((x, index)=>{
+        return(
+            <button key={index} value={x.value}>{x.name}</button>
         )
       })}
-
       </div>
+     
         
       <button
         type="button"

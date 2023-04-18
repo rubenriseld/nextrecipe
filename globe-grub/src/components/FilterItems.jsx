@@ -32,7 +32,7 @@ export const CuisineFilters = [
     },
     {
         name: "Eastern European",
-        value: "eastern_european",
+        value: "eastern-european",
     },
     {
         name: "European",
@@ -76,7 +76,7 @@ export const CuisineFilters = [
     },
     {
         name: "Latin American",
-        value: "latin_american",
+        value: "latin-american",
     },
     {
         name: "Mediterranean",
@@ -88,7 +88,7 @@ export const CuisineFilters = [
     },
     {
         name: "Middle Eastern",
-        value: "middle_eastern",
+        value: "middle-eastern",
     },
     {
         name: "Nordic",
@@ -105,5 +105,16 @@ export const CuisineFilters = [
     {
         name: "Vietnamese",
         value: "vietnamese",
+    },
+]
+
+export const DietFilters = [
+    {
+        name: "Vegetarian",
+        value: "vegetarian",
+    },
+    {
+        name: "Gluten Free",
+        value: "gluten-free",
     },
 ]
