@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function RecipeCard(props) {
-
-const cuisines = Array.from(props.cuisines);
-//skapa en array av vektor cuisines som skickades hit från resultcontainer för att 
-//kunna skriva ut varje cuisinetyp (asian, thai osv) map funkar bara me arrayer 
+  const cuisines = Array.from(props.cuisines);
+  const diets = Array.from(props.diets);
+  //skapa en array av vektor cuisines som skickades hit från resultcontainer för att
+  //kunna skriva ut varje cuisinetyp (asian, thai osv) map funkar bara me arrayer
   return (
     // <!-- RECIPE CARD COMPONENT -->
     <article className="recipe-card">
@@ -12,7 +12,9 @@ const cuisines = Array.from(props.cuisines);
       <img src={props.image} alt="Image" />
 
       <div className="recipe-card-info">
-        <h3 className="recipe-card-title">{props.title}</h3>
+        <Link to={`/recipe/${props.id}`} state={props.id}>
+          <h3 className="recipe-card-title">{props.title}</h3>
+        </Link>
         <div>
           {/* <!-- taggar --> */}
           <div className="flex">
@@ -21,17 +23,20 @@ const cuisines = Array.from(props.cuisines);
                           kommer vi ha tre tagg-komponenter
                        --> */}
             <p className="tag color-secondary">{props.time}min</p>
-           
-             {cuisines.map((cuisineTag) =>{ 
-               if(props.cuisines.length !=0){
-                return   <p className="tag color-secondary">{cuisineTag}</p>
-               } 
-              })} 
-              {/*mappa cuisines, om arrayen inte är tom skriv ut en tagg för varje cuisinetype */}
-             
-        
+
+            {cuisines.map((cuisineTag) => {
+              if (props.cuisines.length != 0) {
+                return <p className="tag color-secondary">{cuisineTag}</p>;
+              }
+            })}
+            {/*mappa cuisines, om arrayen inte är tom skriv ut en tagg för varje cuisinetype */}
+
             {/* <p className="tag color-secondary">{getTags}</p> */}
-            <p className="tag color-secondary">vegan</p>
+            {diets.map((dietTag) => {
+              if (props.diets.length != 0) {
+                return <p className="tag color-secondary">{dietTag}</p>;
+              }
+            })}
             {/* <!-- END OF TAG COMPONENTS --> */}
           </div>
           {/* <!-- Stjärnor --> */}

@@ -4,29 +4,23 @@ export default function Search({ childToParent }) {
   const [searchInput, setSearchInput] = useState("");
   const [recipeData, setRecipeData] = useState([]);
 
-  const key1= "13c6c14454a748769e3611a7cf719862";
-  const key2= "74c179cdd6bf42fab75869c258580b05";
-  const key3= "c02162ede9394dd8bca983829213bd71";
-  const key4= "85ce5287879e42978484fcf300dace17";
+  const key1 = "13c6c14454a748769e3611a7cf719862";
+  const key2 = "74c179cdd6bf42fab75869c258580b05";
+  const key3 = "c02162ede9394dd8bca983829213bd71";
+  const key4 = "85ce5287879e42978484fcf300dace17";
 
   const filterUrl = async () => {
     try {
-  
-      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key3}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true`;
-      const response = await fetch(url); 
+      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key2}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true`;
+      const response = await fetch(url);
       const result = await response.json();
       setRecipeData(result.results);
-      console.log(result)
-
-      //result.results är en lista av alla recept, dessa skickas in i childtoparent
-      
     } catch (e) {
       console.log(e);
     }
   };
 
   const handleChange = (e) => {
-    e.preventDefault();
     setSearchInput(e.target.value);
   };
   const handleSubmit = (e) => {
