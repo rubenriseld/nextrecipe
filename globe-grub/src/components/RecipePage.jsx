@@ -1,7 +1,29 @@
 import Checkbox from "./Checkbox"
 import StarRating from "./StarRating"
 
-export default function RecipePage({title}) {
+export default function RecipePage() {
+    const [recipe, setRecipe] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+  
+  const location = useLocation();
+  const id = location.state;
+
+  const url =  `https://api.spoonacular.com/recipes/${id}/information?&apiKey=13c6c14454a748769e3611a7cf719862`
+
+  useEffect(()=> {
+    fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      setRecipe(data);
+      console.log(recipe);
+      setLoading(false);
+    });
+  }, []);
+
+  if(loading){
+    return <p>Loading.........</p>
+  }
     return (
     // <!-- RECIPE PAGE COMPONENT -->
     <section className="max-width-container">
