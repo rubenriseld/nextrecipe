@@ -117,4 +117,40 @@ export const DietFilters = [
         name: "Gluten Free",
         value: "gluten-free",
     },
+    {
+        name: "Ketogenic",
+        value: "ketogenic",
+    },
+    {
+        name: "Lacto-Vegetarian",
+        value: "lacto-vegetarian",
+    },
+    {
+        name: "Ovo-Vegetarian",
+        value: "ovo-vegetarian",
+    },
+    {
+        name: "Vegan",
+        value: "vegan",
+    },
+    {
+        name: "Pescetarian",
+        value: "pescetarian",
+    },
+    {
+        name: "Paleo",
+        value: "paleo",
+    },
+    {
+        name: "Primal",
+        value: "primal",
+    },
+    {
+        name: "Low FODMAP",
+        value: "low-foodmap",
+    },
+    {
+        name: "Whole30",
+        value: "whole30",
+    },
 ]
