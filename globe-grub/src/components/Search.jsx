@@ -51,6 +51,8 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
       setDietFilter(state.diet + e.target.value)
     }
 
+    const [showFilterMenu, setShowFilterMenu] = useState(false);
+
     const filterUrl = async () => {
     try {
       const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key3}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${cuisineFilter}${dietFilter}${mealtypeFilter}${TimeFilter}${IntoleranceFilter}`;  
@@ -88,7 +90,7 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
                 />
             <button
                 type="submit"
-                className="search-btn color-primary"
+                className="search-btn color-primary" onClick={() => setShowFilterMenu(!showFilterMenu)}
                 >
                 <i className="fa-solid fa-sliders slider-icon"></i>
                 {/*room for filtermenu component */}
@@ -96,39 +98,78 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
         </div>
     </form>
       {/* tillfällig div med för filtreringen */}
-
-      <div onClick={AddIntoleranceFilter}>
-      {IntoleranceFilters.map((x, index)=>{
-          return(
-              <button key={index} value={x.value}>{x.name}</button>
-              )
-            })} </div>
-      <div onClick={AddTimeFilter}>
-      {TimeFilters.map((x, index)=>{
-          return(
-              <button key={index} value={x.value}>{x.name}</button>
-              )
-      })} </div>
-
-      <div onClick={AddCuisinefilter}>
-      {CuisineFilters.map((x, index)=>{
-          return(
-              <button key={index} value={x.value}>{x.name}</button>
-              )
-            })} </div>
-      <div onClick={AddDietFilter}>
-      {DietFilters.map((x, index)=>{
-          return(
-              <button key={index} value={x.value}>{x.name}</button>
-              )
-            })}
-      </div>
-      <div onClick={AddMealTypeFilter}>
-      {MealTypeFilters.map((x, index)=>{
-          return(
-              <button key={index} value={x.value}>{x.name}</button>
-              )
-            })}
-      </div>    
+      <div className={`filtermenu" ${showFilterMenu? "menu-links": ""} `}>
+            <div className="menu-header">
+                <h2>Filter</h2>
+                <button className="close-filter">X</button>
+            </div>
+            <div className="menu-body">
+                <div className="cuisine">
+                    <p className="filter-title">Cuisine</p>
+                    <button className="collapse-btn">v</button>
+                    <div onClick={AddCuisinefilter}>
+                      {CuisineFilters.map((x, index)=>{
+                    return(
+                    <button key={index} value={x.value}>{x.name}
+                    </button>
+                    )
+                 })} </div>
+                </div>
+                <div className="diet">
+                    <p className="filter-title">Diet</p>
+                    <button className="collapse-btn">v</button>
+                    <div onClick={AddDietFilter}>
+                    {DietFilters.map((x, index)=>{
+                  return(
+                  <button key={index} value={x.value}>{x.name}
+                  </button>
+                    )
+                  })}
+                  </div>
+                </div>
+                <div className="intolerance">
+                    <p className="filter-title">Intolerance</p>
+                    <button className="collapse-btn">v</button>
+                      <div onClick={AddIntoleranceFilter}>
+                        {IntoleranceFilters.map((x, index)=>{
+                       return(
+                      <button key={index} value={x.value}>{x.name}
+                      </button>
+                       )
+                    })} 
+                  </div>
+                </div>
+                <div className="time">
+                    <p className="filter-title">Time</p>
+                    <button className="collapse-btn">v</button>
+                    <div onClick={AddTimeFilter}>
+                       {TimeFilters.map((x, index)=>{
+                      return(
+                      <button key={index} value={x.value}>{x.name}
+                      </button>
+                       )
+                     })} 
+                  </div>
+                </div>
+                <div className="meal">
+                    <p className="filter-title">Meal</p>
+                    <button className="collapse-btn">v</button>
+                    <div onClick={AddMealTypeFilter}>
+                      {MealTypeFilters.map((x, index)=>{
+                     return(
+                      <button key={index} value={x.value}>{x.name}
+                      </button>
+                       )
+                     })}
+                    </div>
+                </div>
+            </div>           
+            
+            <div className="menu-footer">
+                <button className="clear-filter">Clear Filter</button>
+                <button className="apply-filter">Apply filter</button>
+            </div>
+        </div>
+        
   </>
   )};
