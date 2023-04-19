@@ -3,8 +3,28 @@ import { useFilterStore } from "../hooks/FilterMenu";
 import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterItems";
 
 export default function Search({ childToParent }) {
+  // const filterUrl = async () => {
+  //   try {
+  //     const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key1}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${cuisineFilter}${dietFilter}${mealtypeFilter}${TimeFilter}${IntoleranceFilter}`;
+      
+  //     console.log(url);
+  //     const response = await fetch(url); 
+  //     const result = await response.json();
+
+  //     setRecipeData(result.results);
+  //     console.log(result)
+  //     //result.results är en lista av alla recept, dessa skickas in i childtoparent
+      
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
   const [searchInput, setSearchInput] = useState("");
-  const [recipeData, setRecipeData] = useState([]);
+  //const [recipeData, setRecipeData] = useState([]);
+  
+  const [count, setCount] = useState(0);
+
+
   const [state, getFilterState] = useState(""); //hämtar state från Hook
   const [cuisineFilter, setCuisineFilter] = useState(""); //värde på det som ska läggas till
   const [dietFilter, setDietFilter] = useState(""); //värde på det som ska läggas till
@@ -19,40 +39,28 @@ export default function Search({ childToParent }) {
   const key3= "c02162ede9394dd8bca983829213bd71";
   const key4= "85ce5287879e42978484fcf300dace17";
   const key5= "8fbd9413e79a49bfaa909d68f22e0476";
-
-  const filterUrl = async () => {
-    try {
-      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key1}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${cuisineFilter}${dietFilter}${mealtypeFilter}${TimeFilter}${IntoleranceFilter}`;
-      
-      console.log(url);
-      const response = await fetch(url); 
-      const result = await response.json();
-      setRecipeData(result.results);
-      console.log(result)
-      //result.results är en lista av alla recept, dessa skickas in i childtoparent
-      
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-
+  
   const AddIntoleranceFilter = (e) =>{
-    getFilterState(useFilterStore.getState((state) => state.intolerances)); //hämtar värdet på cuisine taggen från hook
-    setIntoleranceFilter(state.intolerances + e.target.value)
+    if(count <= 1){
+      getFilterState(useFilterStore.getState((state) => state.intolerances)); //hämtar värdet på cuisine taggen från hook
+      const IntoleranceFilter= (state.intolerances + e.target.value)
+      setCount(count+1);
+    }
+    else{
+   
+      setIntoleranceFilter(IntoleranceFilter + "," + e.target.value )
+      setCount(count+1);
+    }
+    console.log(count)
   }
-
   const AddTimeFilter = (e) =>{
     getFilterState(useFilterStore.getState((state) => state.maxReadyTime)); //hämtar värdet på cuisine taggen från hook
     setTimeFilter(state.maxReadyTime + e.target.value)
   }
-
-
   const AddMealTypeFilter = (e) =>{
     getFilterState(useFilterStore.getState((state) => state.type)); //hämtar värdet på cuisine taggen från hook
     setMealTypeFilter(state.type + e.target.value)
   }
-
     const AddCuisinefilter = (e) =>{
         getFilterState(useFilterStore.getState((state) => state.cuisine)); //hämtar värdet på cuisine taggen från hook
         setCuisineFilter(state.cuisine + e.target.value)
@@ -61,15 +69,29 @@ export default function Search({ childToParent }) {
       getFilterState(useFilterStore.getState((state) => state.diet)); //hämtar värdet på cuisine taggen från hook
       setDietFilter(state.diet + e.target.value)
     }
-
-
-
     const handleChange = (e) => {
       setSearchInput(e.target.value);
     };
     const handleSubmit = (e) => {
-    filterUrl();
-    childToParent(recipeData); //här skickas dessa till indexpage
+    
+    try {
+      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key2}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${cuisineFilter}${dietFilter}${mealtypeFilter}${TimeFilter}${IntoleranceFilter}`;
+      
+      console.log(url);
+      fetch(url)
+      .then((response) => response.json())
+      .then((result)=> {
+        const recipeData = result.results;
+        console.log(result)
+      childToParent(recipeData); 
+      })
+  
+      //result.results är en lista av alla recept, dessa skickas in i childtoparent
+    //här skickas dessa till indexpage
+      
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
