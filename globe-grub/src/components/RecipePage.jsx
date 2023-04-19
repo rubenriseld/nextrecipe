@@ -4,38 +4,19 @@ import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function RecipePage() {
-<<<<<<< HEAD
-    const [recipe, setRecipe] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-  
-  const location = useLocation();
-  const id = location.state;
-
-  const url =  `https://api.spoonacular.com/recipes/${id}/information?&apiKey=13c6c14454a748769e3611a7cf719862`
-
-  useEffect(()=> {
-    fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      setRecipe(data);
-      console.log(recipe);
-      setLoading(false);
-    });
-  }, []);
-
-  if(loading){
-    return <p>Loading.........</p>
-  }
-    return (
-=======
   const [recipe, setRecipe] = useState("");
   const [loading, setLoading] = useState(true);
 
   const location = useLocation();
   const id = location.state;
 
-  const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=74c179cdd6bf42fab75869c258580b05&includeNutrition=true`;
+  const key1= "13c6c14454a748769e3611a7cf719862";
+  const key2= "74c179cdd6bf42fab75869c258580b05";
+  const key3= "c02162ede9394dd8bca983829213bd71";
+  const key4= "85ce5287879e42978484fcf300dace17";
+  const key5= "8fbd9413e79a49bfaa909d68f22e0476";
+
+  const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key3}&includeNutrition=true`;
 
   useEffect(() => {
     fetch(url)
@@ -52,7 +33,6 @@ export default function RecipePage() {
   }
 
   return (
->>>>>>> 0a4f010de7c6f9f23c462d0660cf8e828266fc1f
     // <!-- RECIPE PAGE COMPONENT -->
     <section className="max-width-container">
       {/* <!-- Receptnamn --> */}
