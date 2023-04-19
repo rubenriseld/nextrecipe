@@ -8,7 +8,7 @@ export default function Checkbox(props){
       };
 
     return(
-        <div class="flex checkbox-container">
+        <div className="flex checkbox-container">
             <input 
             type="checkbox" 
             class="checkbox" 
