@@ -9,11 +9,11 @@ export const useFilterStore = create ((set, get)=> (
         diet: "&diet=", 
         maxReadyTime: "&maxReadyTime=", 
         type:"&type=", 
-        intolarences: "&intolerances=", 
+        intolerances: "&intolerances=", 
         
-        updateCuisine: (data) => {
-           const current = get().diet
-           set({cuisine: current + data}) 
-        }
+        // updateCuisine: (data) => {
+        //    const current = get().diet
+        //    set({cuisine: current + data}) 
+        // }
     }
 ))
