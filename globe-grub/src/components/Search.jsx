@@ -5,12 +5,14 @@ import { useSearchResult } from "../hooks/useSearchResult";
 import {shallow } from "zustand/shallow";
 
 export default function Search() {
-    // { childToParent }
+    // search string
   const [searchInput, setSearchInput] = useState("");
   
+  //search store for sending to indexpage
 const [searchResult, setSearchResult] = useSearchResult((state) => 
 [state.searchResult, state.setSearchResult], shallow);
-  //const [recipeData, setRecipeData] = useState([]);
+
+//store for filter terms
   const state = useFilterStore.getState((state) => state);
  
   const [cuisineFilter, setCuisineFilter] = useState("");
@@ -51,7 +53,7 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
 
     const filterUrl = async () => {
     try {
-      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key1}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${cuisineFilter}${dietFilter}${mealtypeFilter}${TimeFilter}${IntoleranceFilter}`;  
+      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key3}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${cuisineFilter}${dietFilter}${mealtypeFilter}${TimeFilter}${IntoleranceFilter}`;  
       
       console.log(url);
       const response = await fetch(url); 
