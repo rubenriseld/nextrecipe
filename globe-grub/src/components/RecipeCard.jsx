@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import {useLocation} from "react-router-dom";
 
+import { Link } from "react-router-dom";
+
 export default function RecipeCard(props) {
    const cuisines = Array.from(props.cuisines);
+   const diets = Array.from(props.diets);
 //skapa en array av vektor cuisines som skickades hit från resultcontainer för att 
 //kunna skriva ut varje cuisinetyp (asian, thai osv) map funkar bara me arrayer 
   return (
