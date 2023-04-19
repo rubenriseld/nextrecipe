@@ -12,17 +12,6 @@ export const useSearchResult = create((set)=> ({
         set({searchResult: []}),
 }));
 
-
-export const useFilterStore = create((set)=> ({
-    filter: "",
-
-    setFilter: (newFilter) => 
-        set(() => ({filter: filter+newFilter})),
-
-    removeFilter: () => 
-        set({filter: ""}),
-}));
-
 // export const useSearchResult = create(persist(
 //     (set, get) => ({
 //         result: [],
