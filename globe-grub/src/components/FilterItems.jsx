@@ -1,5 +1,5 @@
 
-//array med cuisines som ska finnas med i filtermeny, ska göra en för varje kategori här
+//array med cuisines som ska finnas med i filtermeny
 
 export const CuisineFilters = [
     {
@@ -107,7 +107,7 @@ export const CuisineFilters = [
         value: "vietnamese",
     },
 ]
-
+//array med diets som ska finnas med i filtermeny
 export const DietFilters = [
     {
         name: "Vegetarian",
@@ -152,5 +152,106 @@ export const DietFilters = [
     {
         name: "Whole30",
         value: "whole30",
+    },
+]
+//array med måltidstyper som ska finnas med i filtermeny
+export const MealTypeFilters = [
+    {
+        name: "Breakfast",
+        value: "breakfast",
+    },
+    {
+        name: "Lunch",
+        value: "appetizers",
+    },
+    {
+        name: "Dinner",
+        value: "main-course",
+    },
+    {
+        name: "Snack",
+        value: "snack",
+    },
+    {
+        name: "Dessert",
+        value: "dessert",
+    },
+    {
+        name: "Soup",
+        value: "soup",
+    },
+    {
+        name: "Salad",
+        value: "salad",
+    },
+    {
+        name: "Fingerfood",
+        value: "fingerfood",
+    },
+]
+//array med allergener som ska finnas med i filtermeny
+export const IntoleranceFilters = [
+    {
+        name: "Dairy",
+        value: "dairy",
+    },
+    {
+        name: "Egg",
+        value: "egg",
+    },
+    {
+        name: "Gluten",
+        value: "gluten",
+    },
+    {
+        name: "Grain",
+        value: "grain",
+    },
+    {
+        name: "Peanut",
+        value: "peanut",
+    },
+    {
+        name: "Seafood",
+        value: "seafood",
+    },
+    {
+        name: "Sesame",
+        value: "sesame",
+    },
+    {
+        name: "Shellfish",
+        value: "shellfish",
+    },
+    {
+        name: "Soy",
+        value: "soy",
+    },
+    {
+        name: "Sulfite",
+        value: "sulfite",
+    },
+    {
+        name: "Tree nut",
+        value: "tree-nut",
+    },
+    {
+        name: "Wheat",
+        value: "wheat",
+    },
+]
+//array med tid som ska finnas med i filtermeny
+export const TimeFilters = [
+    {
+        name: "15 min",
+        value: "15",
+    },
+    {
+        name: "20 min",
+        value: "20",
+    },
+    {
+        name: "30 min",
+        value: "30",
     },
 ]
