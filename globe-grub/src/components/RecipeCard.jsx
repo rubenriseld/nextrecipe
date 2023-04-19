@@ -12,7 +12,9 @@ export default function RecipeCard(props) {
       <img src={props.image} alt="Image" />
 
       <div className="recipe-card-info">
-        <h3 className="recipe-card-title">{props.title}</h3>
+        <Link to={`/recipe/${props.id}`} state={props.id}>
+          <h3 className="recipe-card-title">{props.title}</h3>
+        </Link>
         <div>
           {/* <!-- taggar --> */}
           <div className="flex">
@@ -31,7 +33,11 @@ export default function RecipeCard(props) {
              
         
             {/* <p className="tag color-secondary">{getTags}</p> */}
-            <p className="tag color-secondary">vegan</p>
+            {diets.map((dietTag) => {
+              if (props.diets.length != 0) {
+                return <p className="tag color-secondary">{dietTag}</p>;
+              }
+            })}
             {/* <!-- END OF TAG COMPONENTS --> */}
           </div>
           {/* <!-- Stjärnor --> */}

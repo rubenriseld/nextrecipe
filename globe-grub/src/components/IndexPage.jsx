@@ -4,20 +4,17 @@ import ResultContainer from "./ResultContainer";
 import Ad from "./Ad";
 
 import React, { useState } from "react";
+import { useSearchResult } from "../hooks/useSearchResult";
 
 export default function IndexPage() {
-  const [data, setData] = useState([]);
-
-  const childToParent = (childData) => {
-    setData(childData);
-    //result.results hamnar i data via useState (setData)
-  };
+    const data = useSearchResult((state) => state.searchResult);
+    //sökresultaten hämtas när searchResult-staten ändras i Search-komponenten
 
   return (
     <>
       <section className="geosearch flex-center background-secondary max-width-container">
         <Geo></Geo>
-        <Search childToParent={childToParent}></Search>
+        <Search></Search> 
       </section>
       <Ad />
       <ResultContainer data={data} />; {/*data från Search.jsx(data från sökningen) hamnar i resultcontainer */}

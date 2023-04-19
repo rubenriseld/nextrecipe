@@ -212,6 +212,10 @@ header {
 }
 
 /*SEARCH*/
+.search-form{
+    width: 50%;
+}
+
 .searchbar-container {
     /*container för sökrutan samt filterknapp/kommande filtermeny*/
     margin-top: 7%;
@@ -219,7 +223,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 70%;
+    width: 100%;
     max-height: 3rem;
 }
 
@@ -409,10 +413,6 @@ footer {
     /*instruktionssteg*/
     /* margin-top: 20px; */
     margin-left: 0.5rem;
-}
-.linethrough {
-    text-Decoration: line-through;
-    color: grey;
 }
 
 /*****************************************

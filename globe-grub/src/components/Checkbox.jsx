@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Checkbox(){
+export default function Checkbox(props){
     const [isChecked, setIsChecked] = useState(false);
     
     const handleOnChange = () => {
@@ -15,11 +15,9 @@ export default function Checkbox(){
             checked={isChecked} 
             onChange={handleOnChange} />
                 <p className={`instruction ${isChecked ? "linethrough": ""}`}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                {props.number}. {props.step}
             </p>
          </div>
-
-    )
+  );
 }
 

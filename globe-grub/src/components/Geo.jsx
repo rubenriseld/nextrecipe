@@ -43,6 +43,6 @@ export default function Geo(){
                 Lat: {lat}
             </p>
         </div>
+        
     )
 }
-
