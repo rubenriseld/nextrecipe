@@ -479,7 +479,17 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     /*navlänkarna som ligger i hamburgermenyn på mobile*/
     display: flex !important;
   }
+  .burger {
+    /*hamburgermenyn*/
+    display: none !important;
+  }
 
+  /*---GEOSEARCH---*/
+  .geosearch {
+    /*gemensam section för geo + search*/
+    flex-direction: row;
+    justify-content: space-between;
+  }
     .geo-text {
         /*"find recipes matching your region"*/
         /* margin: -5%; */
@@ -490,7 +500,7 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     .searchbar-container {
         /*container för sökrutan samt filterknapp/kommande filtermeny*/
         margin-top: 0;
-        width: 100%;
+        /* width: 100%; */
         border-radius: 3rem;
     }
 
