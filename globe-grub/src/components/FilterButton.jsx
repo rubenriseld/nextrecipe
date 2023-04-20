@@ -14,6 +14,7 @@ export function FilterButton(props){
             className={`test-btn ${isActive?"active-btn": ""}`}
             // key={key} 
             value={value}
+            data-type={type}
             onClick={()=> setIsActive(!isActive)}>
             {name}
         </button>

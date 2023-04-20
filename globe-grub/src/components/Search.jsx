@@ -22,7 +22,7 @@ export default function Search() {
     let searchString = "";
     // console.log
     buttons.forEach(btn => {
-        console.log(btn.getAttribute("data-value"));
+        console.log(btn.dataset.type);
         searchString+= btn.value;
     });
 
@@ -139,7 +139,7 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
                     <button className="collapse-btn">v</button>
                       {CuisineFilters.map((x, index)=>{
                     return(
-                        <FilterButton key={index} value={x.value} name={x.name} active={false}></FilterButton>
+                        <FilterButton key={index} value={x.value} type={x.name} name={x.name} active={false}></FilterButton>
                       )
                       })}
                 </div>
