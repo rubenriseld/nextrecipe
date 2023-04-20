@@ -32,16 +32,19 @@ export default function Geo(){
             <NavLink to="/" type="button" className="geo-btn color-accent" onClick={getLocation}>
                 <i className="fa-solid fa-location-dot geo-icon"></i>
             </NavLink>
-            <p className="geo-text">Find Recipes matching your region!</p>
+            <div className="geo-text-container">
+            
+            <p className="geo-text text-color-primary">Find Recipes matching your region!</p>
             
             {/* Only for testing */}
-            <p> 
+            <p className="text-color-primary"> 
                 {status}
                 <br/>
                 Long: {lng}
                 <br/>
                 Lat: {lat}
             </p>
+            </div>
         </div>
         
     )
