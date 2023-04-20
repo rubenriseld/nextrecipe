@@ -275,6 +275,12 @@ header {
 }
 
 /*FILTER*/
+.test-btn{
+    width: 3rem;
+}
+.active-btn{
+    background-color: #006a4a;
+}
 /*css för filtermenyn, ej implementerad */
 
 /*---ADS---*/
@@ -560,8 +566,8 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
   /*---TAGS---*/
   .tag {
     /*kategoritaggar på receptkort och receptsida*/
-    font-size: 1rem;
-    margin-bottom: 0;
+    /* font-size: 1rem;
+    margin-bottom: 0; */
   }
 
   /*---STARS---*/
