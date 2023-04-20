@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useSearchResult } from "../hooks/useSearchResult";
+import { shallow } from "zustand/shallow";
 
 // function toggleMenu() {
 //   let links = 
@@ -12,6 +14,9 @@ import { NavLink } from "react-router-dom";
 export default function Header() {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
     //för att toggla en klass på menylänkarna
+    const [SearchResult, setSearchResult] = useSearchResult((state) => 
+    [state.SearchResult, state.setSearchResult], shallow);
+
 
     return (
       <header>
@@ -21,7 +26,7 @@ export default function Header() {
             </NavLink>
 
             <div className={`menu-links-desktop ${showMobileMenu? "menu-links": ""} `} > 
-                <NavLink to="/" className="text-color-primary">Home</NavLink>
+                <NavLink to="/" className="text-color-primary" onClick={()=> setSearchResult([])} >Home</NavLink>
                 <NavLink to="/recipe" className="text-color-primary">Recipe</NavLink>
                 <NavLink to="/" className="text-color-primary">Around The World</NavLink>
                 <NavLink to="/" className="text-color-primary">About Us</NavLink>

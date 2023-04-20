@@ -13,8 +13,8 @@ export default function IndexPage() {
   return (
     <>
       <section className="geosearch flex-center background-secondary max-width-container">
-        <Geo></Geo>
-        <Search></Search> 
+        <Geo/>
+        <Search/> 
       </section>
       <Ad />
       <ResultContainer data={data} />; {/*data från Search.jsx(data från sökningen) hamnar i resultcontainer */}

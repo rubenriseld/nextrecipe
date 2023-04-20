@@ -1,11 +1,14 @@
 import Checkbox from "./Checkbox";
 import StarRating from "./StarRating";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useSearchResult } from "../hooks/useSearchResult";
 
 export default function RecipePage() {
   const [recipe, setRecipe] = useState("");
   const [loading, setLoading] = useState(true);
+
+  const data = useSearchResult((state) => state.searchResult);
 
   const location = useLocation();
   const id = location.state;
@@ -39,6 +42,9 @@ export default function RecipePage() {
       <h1 className="recipe-title">{recipe.title}</h1>
 
       <article className="recipe-container">
+        <div>
+        <Link to="/" className="text-color-primary">Back</Link>
+        </div>
         <div className="recipe-visual-container">
           {/* <!-- Bild på maten --> */}
           <div>
