@@ -27,15 +27,15 @@
 }
 
 .color-tag-one {
-    background-color: #006a4a7c;
+    background-color: #006a4a31;
 }
 
 .color-tag-two {
-    background-color: #006a617c;
+    background-color: #006a6131;
 }
 
 .color-tag-three {
-    background-color: #0098337c;
+    background-color: #0098331f;
 }
 
 .background-primary {
@@ -104,7 +104,6 @@ nav a, nav .burger {
 .align-items-center{
     align-items: center;
 }
-
 .flex-separate {
     justify-content: space-between;
 }
@@ -211,14 +210,16 @@ header {
     z-index: 1;
 }
 
+.geo-text-container{
+    margin-left:2rem;
+}
 .geo-text {
     /*"find recipes matching your region"*/
-    font-size: 15px;
-    background-color: gray;
-    color: white;
-    margin: 5%;
-    width: 135%;
-    padding: 1%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    /* margin: 5%; */
+    /* width: 135%; */
+    /* padding: 1%; */
     text-align: center;
 }
 
@@ -274,9 +275,9 @@ header {
 /*---ADS---*/
 .ad {
     /*reklambanner*/
-    background-color: #000000;
+    /* background-color: #000000; */
     height: 100%;
-    color: aliceblue;
+    /* color: aliceblue; */
     text-align: center;
     font-size: 300%;
     margin: 1rem -1rem 1rem -1rem;
@@ -285,14 +286,18 @@ header {
 
 /*---TAGS---*/
 .tag-container {
+    align-items: flex-start;
     /*container för taggarna på receptkort och receptsida*/
 }
 .tag {
     /*kategoritaggar på receptkort och receptsida*/
-    margin-right: 0.3rem;
+    /* margin-right: 0.3rem; */
     font-size: 1rem;
-    padding: 0 0.5rem 0 0.5rem;
-    color: #000000;
+    margin-bottom: 0.2rem;
+    margin-right:0.2rem;
+    /* padding: 0 0.5rem 0 0.5rem; */
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    /* color: #ffffff; */
     font-weight: bold;
     height: auto;
     width: auto;
@@ -305,6 +310,11 @@ header {
     font-size: 2.4rem;
     margin-top: -0.4rem;
     /*negativ margin så de hamnar i linje med taggar, kan behöva ändras om vi använder ikoner ist för "text*/
+}
+/* ---LIKES---*/
+.like-icon, .like-number{
+    font-weight: 600;
+    font-size: 2rem;
 }
 
 /*---FOOTER---*/
@@ -333,6 +343,7 @@ footer {
 .recipe-card-container {
     /*container för alla receptkort (sökresultat)*/
     flex-direction: column;
+    
     display: flex;
     margin: 1rem 0 1rem 0;
 }
@@ -346,6 +357,13 @@ footer {
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 1rem;
+
+    /* fast höjd så dom e lika höga oavsett taggar */
+    /* funkar ej>:(  */
+    /* height: 28rem; */
+}
+.recipe-card a {
+    text-decoration: none;
 }
 
 .recipe-card img {
@@ -362,7 +380,10 @@ footer {
 
 .recipe-card-title {
     /*namnet på receptet (på kortet)*/
+    font-size: 1.4rem;
     margin-bottom: 1rem;
+    height: 1.8rem;
+    overflow: hidden;
 }
 
 /*SHOW-MORE-BUTTON*/
@@ -420,6 +441,11 @@ footer {
     /*själva checkbox-elementet*/
     zoom: 3;
 }
+.linethrough{
+    text-decoration: line-through;
+    color:grey;
+}
+
 .instruction {
     /*instruktionssteg*/
     /* margin-top: 20px; */
@@ -473,16 +499,15 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
 
     .geo-text {
         /*"find recipes matching your region"*/
-        font-size: 100%;
-        margin: -5%;
-        padding: 1% 1% 1% 4%;
+        /* margin: -5%; */
+        /* padding: 1% 1% 1% 4%; */
     }
 
     /*SEARCH*/
     .searchbar-container {
         /*container för sökrutan samt filterknapp/kommande filtermeny*/
         margin-top: 0;
-        width: 50%;
+        width: 100%;
         border-radius: 3rem;
     }
 
@@ -513,8 +538,8 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     /*---TAGS---*/
     .tag {
         /*kategoritaggar på receptkort och receptsida*/
-        font-size: 1rem;
-        margin-bottom: 0;
+        /* font-size: 1rem;
+        margin-bottom: 0; */
     }
 
     /*---STARS---*/
@@ -530,12 +555,16 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
         flex-direction: row;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start;
+        align-content: stretch;
     }
     /*RECIPE CARD*/
     .recipe-card {
         /*de små korten för recepten på resultatdelen*/
-        width: 23%;
+        width: calc(25% - 1rem);
+        margin:0.5rem;
+        box-sizing: border-box;
+        /* height: 23rem; */
     }
 
     /*SHOW-MORE-BUTTON*/
