@@ -231,7 +231,7 @@ header {
 
 /*SEARCH*/
 .search-form {
-  width: 50%;
+  width: 100%;
 }
 
 .searchbar-container {
@@ -519,10 +519,13 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
   }
 
   /*SEARCH*/
+  .search-form{
+    width: 50%;
+  }
   .searchbar-container {
     /*container för sökrutan samt filterknapp/kommande filtermeny*/
     margin-top: 0;
-    width: 50%;
+    /* width: 100%; */
     border-radius: 3rem;
   }
 
