@@ -53,6 +53,20 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
 
     const [showFilterMenu, setShowFilterMenu] = useState(false);
 
+    const [cuisineCollapsed, setCuisineCollapsed] = useState(false);
+    const [dietCollapsed, setDietCollapsed] = useState(false);
+    const [intoleranceCollapsed, setIntoleranceCollapsed] = useState(false);
+    const [timeCollapsed, setTimeCollapsed] = useState(false);
+    const [mealCollapsed, setMealCollapsed] = useState(false);
+
+
+    const [showCuisineFilter, setShowCuisineFilter] = useState(false);
+    const [showDietFilter, setShowDietFilter] = useState(false);
+    const [showIntoleranceFilter, setShowIntoleranceFilter] = useState(false);
+    const [showTimeFilter, setShowTimeFilter] = useState(false);
+    const [showMealFilter, setShowMealFilter] = useState(false);
+
+
     const filterUrl = async () => {
     try {
       const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key3}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${cuisineFilter}${dietFilter}${mealtypeFilter}${TimeFilter}${IntoleranceFilter}`;  
@@ -89,7 +103,7 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
                 onChange={handleChange}
                 />
             <button
-                type="submit"
+                type="button"
                 className="search-btn color-primary" onClick={() => setShowFilterMenu(!showFilterMenu)}
                 >
                 <i className="fa-solid fa-sliders slider-icon"></i>
@@ -98,27 +112,35 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
         </div>
     </form>
       {/* tillfällig div med för filtreringen */}
-      <div className={`filtermenu" ${showFilterMenu? "menu-links": ""} `}>
-            <div className="menu-header">
+      <div className={`filtermenu background-primary ${showFilterMenu? "filter-show": ""} `}>
+            <div className="menu-header flex flex-separate">
                 <h2>Filter</h2>
-                <button className="close-filter">X</button>
+                <button className="close-filter background-primary">
+                <i class="fa-solid fa-xmark text-color-primary close-filter-icon"></i>
+                </button>
             </div>
             <div className="menu-body">
-                <div className="cuisine">
-                    <p className="filter-title">Cuisine</p>
-                    <button className="collapse-btn">v</button>
-                    <div onClick={AddCuisinefilter}>
+                <div className="filter-container">                    
+                    <button type="button" className="collapse-btn flex flex-separate background-primary" onClick={() => {setShowCuisineFilter(!showCuisineFilter); setCuisineCollapsed(!cuisineCollapsed)}}>
+                    <p className="filter-title text-color-primary">Cuisine</p>
+                      <i className={`fa-solid ${cuisineCollapsed? "fa-chevron-down": "fa-chevron-up"}`}></i>
+                      </button>                  
+                    
+                    <div className={`cuisine-filter ${showCuisineFilter? "filter-show": ""}`} onClick={AddCuisinefilter}>
                       {CuisineFilters.map((x, index)=>{
                     return(
                     <button key={index} value={x.value}>{x.name}
                     </button>
                     )
                  })} </div>
+                 
                 </div>
-                <div className="diet">
+                <div className="filter-container">
+                    <button className="collapse-btn flex flex-separate background-primary" onClick={() => {setShowDietFilter(!showDietFilter); setDietCollapsed(!dietCollapsed)}}>
                     <p className="filter-title">Diet</p>
-                    <button className="collapse-btn">v</button>
-                    <div onClick={AddDietFilter}>
+                    <i class={`fa-solid ${dietCollapsed? "fa-chevron-down": "fa-chevron-up"}`}></i>
+                    </button>
+                    <div className={`diet-filter ${showDietFilter? "filter-show": ""}`} onClick={AddDietFilter}>
                     {DietFilters.map((x, index)=>{
                   return(
                   <button key={index} value={x.value}>{x.name}
@@ -127,10 +149,12 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
                   })}
                   </div>
                 </div>
-                <div className="intolerance">
+                <div className="filter-container">
+                    <button className="collapse-btn flex flex-separate background-primary" onClick={() => {setShowIntoleranceFilter(!showIntoleranceFilter); setIntoleranceCollapsed(!intoleranceCollapsed)}}>
                     <p className="filter-title">Intolerance</p>
-                    <button className="collapse-btn">v</button>
-                      <div onClick={AddIntoleranceFilter}>
+                    <i className={`fa-solid ${intoleranceCollapsed? "fa-chevron-down": "fa-chevron-up"}`}></i>
+                    </button>
+                      <div className={`intolerance-filter ${showIntoleranceFilter? "filter-show": ""}`} onClick={AddIntoleranceFilter}>
                         {IntoleranceFilters.map((x, index)=>{
                        return(
                       <button key={index} value={x.value}>{x.name}
@@ -139,10 +163,12 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
                     })} 
                   </div>
                 </div>
-                <div className="time">
+                <div className="filter-container">                    
+                    <button className="collapse-btn flex flex-separate background-primary" onClick={() => {setShowTimeFilter(!showTimeFilter); setTimeCollapsed(!timeCollapsed)}}>
                     <p className="filter-title">Time</p>
-                    <button className="collapse-btn">v</button>
-                    <div onClick={AddTimeFilter}>
+                    <i className={`fa-solid ${timeCollapsed? "fa-chevron-down": "fa-chevron-up"}`}></i>
+                    </button>
+                    <div className={`time-filter ${showTimeFilter? "filter-show": ""}`} onClick={AddTimeFilter}>
                        {TimeFilters.map((x, index)=>{
                       return(
                       <button key={index} value={x.value}>{x.name}
@@ -151,10 +177,12 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
                      })} 
                   </div>
                 </div>
-                <div className="meal">
+                <div className="filter-container">
+                    <button className="collapse-btn flex flex-separate background-primary" onClick={() => {setShowMealFilter(!showMealFilter); setMealCollapsed(!mealCollapsed)}}>
                     <p className="filter-title">Meal</p>
-                    <button className="collapse-btn">v</button>
-                    <div onClick={AddMealTypeFilter}>
+                    <i className={`fa-solid ${mealCollapsed? "fa-chevron-down": "fa-chevron-up"}`}></i>
+                    </button>
+                    <div className={`meal-filter ${showMealFilter? "filter-show": ""}`} onClick={AddMealTypeFilter}>
                       {MealTypeFilters.map((x, index)=>{
                      return(
                       <button key={index} value={x.value}>{x.name}
@@ -163,11 +191,11 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
                      })}
                     </div>
                 </div>
-            </div>           
+            </div>   
             
             <div className="menu-footer">
-                <button className="clear-filter">Clear Filter</button>
-                <button className="apply-filter">Apply filter</button>
+                <button className="clear-filter-btn color-secondary">Clear Filter</button>
+                <button className="apply-filter-btn color-primary">Apply filter</button>
             </div>
         </div>
         
