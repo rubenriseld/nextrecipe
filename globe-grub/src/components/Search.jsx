@@ -55,7 +55,7 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
 
     const filterUrl = async () => {
     try {
-      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key3}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${cuisineFilter}${dietFilter}${mealtypeFilter}${TimeFilter}${IntoleranceFilter}`;  
+      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key2}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${cuisineFilter}${dietFilter}${mealtypeFilter}${TimeFilter}${IntoleranceFilter}`;  
       
       console.log(url);
       const response = await fetch(url); 
