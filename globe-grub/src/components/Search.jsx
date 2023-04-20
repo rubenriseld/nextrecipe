@@ -3,10 +3,31 @@ import { useFilterStore } from "../hooks/FilterMenu";
 import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterItems";
 import { useSearchResult } from "../hooks/useSearchResult";
 import {shallow } from "zustand/shallow";
+import { FilterButton } from "./FilterButton";
 
 export default function Search() {
     // search string
   const [searchInput, setSearchInput] = useState("");
+
+//   const [firstButton, setFirstButton] = useState(false);
+//   const [secondButton, setSecondButton] = useState(false);
+//   const [thirdButton, setThirdButton] = useState(false);
+//   const [fourthButton, setFourthButton] = useState(false);
+//   const [fifthButton, setFifthButton] = useState(false);
+
+  const getActiveButtons = () =>{
+    let buttons = document.querySelectorAll('.active-btn');
+    console.log(buttons)
+
+    let searchString = "";
+    // console.log
+    buttons.forEach(btn => {
+        console.log(btn.dataset.type);
+        searchString+= btn.value;
+    });
+
+    console.log(searchString);
+  }
   
   //search store for sending to indexpage
 const [searchResult, setSearchResult] = useSearchResult((state) => 
@@ -117,6 +138,15 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
         </div>
     </form>
       {/* tillfällig div med för filtreringen */}
+      {/* <div>
+        <button value="one" className={`test-btn ${firstButton ? "btn-active":""}`} onClick={()=> setFirstButton(!firstButton)}>one</button>
+        <button value="two" className={`test-btn ${secondButton ? "btn-active":""}`} onClick={()=> setSecondButton(!secondButton)}>two</button>
+        <button value="three" className={`test-btn ${thirdButton ? "btn-active":""}`} onClick={()=> setThirdButton(!thirdButton)}>three</button>
+        <button value="four" className={`test-btn ${fourthButton ? "btn-active":""}`} onClick={()=>  setFourthButton(!fourthButton)}>four</button>
+        <button value="five" className={`test-btn ${fifthButton ? "btn-active":""}`} onClick={()=> setFifthButton(!fifthButton)}>five</button>
+        <br />
+        <button onClick={()=> getActiveButtons()}>search</button>
+      </div> */}
       <div className={`filtermenu" ${showFilterMenu? "menu-links": ""} `}>
             <div className="menu-header">
                 <h2>Filter</h2>
@@ -126,67 +156,53 @@ const [searchResult, setSearchResult] = useSearchResult((state) =>
                 <div className="cuisine">
                     <p className="filter-title">Cuisine</p>
                     <button className="collapse-btn">v</button>
-                    <div onClick={(e) => handleFilter(e,'cuisine')} >
                       {CuisineFilters.map((x, index)=>{
                     return(
-                    <button key={index} value={x.value}>{x.name}
-                    </button>
-                    )
-                 })} </div>
+                        <FilterButton key={index} value={x.value} type={x.name} name={x.name} active={false}></FilterButton>
+                      )
+                      })}
                 </div>
                 <div className="diet">
                     <p className="filter-title">Diet</p>
                     <button className="collapse-btn">v</button>
-                    <div onClick={(e) => handleFilter(e,'diet')}>
                     {DietFilters.map((x, index)=>{
                   return(
-                  <button key={index} value={x.value}>{x.name}
-                  </button>
-                    )
+                    <FilterButton key={index} value={x.value} name={x.name} active={false}></FilterButton>
+                  )
                   })}
-                  </div>
                 </div>
                 <div className="intolerance">
                     <p className="filter-title">Intolerance</p>
                     <button className="collapse-btn">v</button>
-                      <div onClick={(e) => handleFilter(e,'intolerances')}>
                         {IntoleranceFilters.map((x, index)=>{
-                       return(
-                      <button key={index} value={x.value}>{x.name}
-                      </button>
-                       )
-                    })} 
-                  </div>
+                     return(
+                        <FilterButton key={index} value={x.value} name={x.name} active={false}></FilterButton>
+                      )
+                      })}
                 </div>
                 <div className="time">
                     <p className="filter-title">Time</p>
                     <button className="collapse-btn">v</button>
-                    <div onClick={(e) => handleFilter(e,'time')}>
                        {TimeFilters.map((x, index)=>{
                       return(
-                      <button key={index} value={x.value}>Under {x.name}
-                      </button>
-                       )
-                     })} 
-                  </div>
+                        <FilterButton key={index} value={x.value} name={x.name} active={false}></FilterButton>
+                      )
+                      })}
                 </div>
                 <div className="meal">
                     <p className="filter-title">Meal</p>
                     <button className="collapse-btn">v</button>
-                    <div onClick={(e) => handleFilter(e,'type')}>
                       {MealTypeFilters.map((x, index)=>{
                      return(
-                      <button key={index} value={x.value}>{x.name}
-                      </button>
-                       )
-                     })}
-                    </div>
+                        <FilterButton key={index} value={x.value} name={x.name} active={false}></FilterButton>
+                      )
+                      })}
                 </div>
             </div>           
             
             <div className="menu-footer">
                 <button className="clear-filter">Clear Filter</button>
-                <button className="apply-filter">Apply filter</button>
+                <button className="apply-filter" onClick={()=> getActiveButtons()}>Apply filter</button>
             </div>
         </div>
         

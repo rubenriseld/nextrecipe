@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useSearchResult } from "../hooks/useSearchResult";
+import { shallow } from "zustand/shallow";
+import Logo from "./Logo";
 
 // function toggleMenu() {
-//   let links = 
+//   let links =
 //   if (links.style.display === "block") {
 //       links.style.display = "none";
 //   } else {
@@ -10,27 +13,51 @@ import { NavLink } from "react-router-dom";
 //   }
 // }
 export default function Header() {
-    const [showMobileMenu, setShowMobileMenu] = useState(false);
-    //för att toggla en klass på menylänkarna
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  //för att toggla en klass på menylänkarna
+  const [SearchResult, setSearchResult] = useSearchResult(
+    (state) => [state.SearchResult, state.setSearchResult],
+    shallow
+  );
 
-    return (
-      <header>
-        <nav className="menu max-width-container">
-            <NavLink to="/" className="company-logo"> 
-                <i className="fa-solid fa-earth-americas text-color-primary"></i>
-            </NavLink>
+  return (
+    <header>
+      <nav className="menu max-width-container">
+        <NavLink to="/">
+          <Logo />
+        </NavLink>
 
-            <div className={`menu-links-desktop ${showMobileMenu? "menu-links": ""} `} > 
-                <NavLink to="/" className="text-color-primary">Home</NavLink>
-                <NavLink to="/recipe" className="text-color-primary">Recipe</NavLink>
-                <NavLink to="/" className="text-color-primary">Around The World</NavLink>
-                <NavLink to="/" className="text-color-primary">About Us</NavLink>
-            </div>
+        <div
+          className={`menu-links-desktop ${
+            showMobileMenu ? "menu-links" : ""
+          } `}
+        >
+          <NavLink
+            to="/"
+            className="text-color-primary"
+            onClick={() => setSearchResult([])}
+          >
+            Home
+          </NavLink>
+          <NavLink to="/recipe" className="text-color-primary">
+            Recipe
+          </NavLink>
+          <NavLink to="/" className="text-color-primary">
+            Around The World
+          </NavLink>
+          <NavLink to="/" className="text-color-primary">
+            About Us
+          </NavLink>
+        </div>
 
-            <button href="javascript:void(0);" className="burger" onClick={()=> setShowMobileMenu(!showMobileMenu)}>
-                <i className="fa fa-bars text-color-primary"></i>
-            </button>
-        </nav>
+        <button
+          href="javascript:void(0);"
+          className="burger"
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+        >
+          <i className="fa fa-bars text-color-primary"></i>
+        </button>
+      </nav>
     </header>
-    )
+  );
 }
