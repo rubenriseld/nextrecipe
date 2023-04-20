@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import {useLocation} from "react-router-dom";
+import {useLocation, Link} from "react-router-dom";
 
-import { Link } from "react-router-dom";
 
 export default function RecipeCard(props) {
    const cuisines = Array.from(props.cuisines);
