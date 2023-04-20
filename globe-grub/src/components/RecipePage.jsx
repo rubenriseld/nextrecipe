@@ -1,5 +1,5 @@
 import Checkbox from "./Checkbox";
-import StarRating from "./StarRating";
+import RecipeRating from "./RecipeRating";
 import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSearchResult } from "../hooks/useSearchResult";
@@ -19,7 +19,7 @@ export default function RecipePage() {
     const key4 = "85ce5287879e42978484fcf300dace17";
     const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
 
-    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key3}&includeNutrition=true`;
+    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key2}&includeNutrition=true`;
 
     useEffect(() => {
         fetch(url)
@@ -58,20 +58,33 @@ export default function RecipePage() {
                             {/* <!-- vi kommer göra en komponent för en enskild tagg, så på receptkorts-komponenter
                             kommer vi ha tre tagg-komponenter
                          --> */}
-                            <p className="tag color-secondary">{recipe.readyInMinutes}min</p>
+                            {/* <p className="tag color-secondary">{recipe.readyInMinutes}min</p>
                             {recipe.cuisines.map((cuisineTag) => {
                                 return <p className="tag color-secondary">{cuisineTag}</p>;
                             })}
                             {recipe.diets.map((dietTag) => {
                                 return <p className="tag color-secondary">{dietTag}</p>;
-                            })}
+                            })} */}
+                            {recipe.readyInMinutes == null ?
+                                    <></> :
+                                    <p className="tag color-tag-one text-color-primary">{recipe.readyInMinutes} min</p>
+                                }
+                                {recipe.cuisines === undefined || recipe.cuisines.length == 0 ?
+                                    <></> :
+                                    <p className="tag color-tag-two text-color-primary">{recipe.cuisines[0]}</p>
+                                }
+                                {recipe.diets === undefined || recipe.diets.length == 0 ?
+                                    <></> :
+                                    <p className="tag color-tag-three text-color-primary">{recipe.diets[0].substring(0, 13)}</p>
+                                }
+
                             {/* <!-- END OF TAG COMPONENTS --> */}
                         </div>
 
                         {/* <!-- Stjärnor --> */}
                         <div className="flex">
                             {/* <!-- STAR/RATING COMPONENT --> */}
-                            <StarRating />
+                            <RecipeRating likes={recipe.aggregateLikes}/>
                         </div>
                     </div>
                 </div>
