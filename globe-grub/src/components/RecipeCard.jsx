@@ -1,64 +1,81 @@
 import { useState, useEffect } from "react";
-import {useLocation, Link} from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import RecipeRating from "./RecipeRating";
 
 
 export default function RecipeCard(props) {
-   const cuisines = Array.from(props.cuisines);
-   const diets = Array.from(props.diets);
-//skapa en array av vektor cuisines som skickades hit från resultcontainer för att 
-//kunna skriva ut varje cuisinetyp (asian, thai osv) map funkar bara me arrayer 
-  return (
-    // <!-- RECIPE CARD COMPONENT -->
-    <article className="recipe-card">
-      {/* <!--single recipe card--> */}
-      <img src={props.image} alt="Image" />
+    const cuisines = Array.from(props.cuisines);
+    const diets = Array.from(props.diets);
+    //skapa en array av vektor cuisines som skickades hit från resultcontainer för att 
+    //kunna skriva ut varje cuisinetyp (asian, thai osv) map funkar bara me arrayer 
+    return (
+        // <!-- RECIPE CARD COMPONENT -->
+        <article className="recipe-card">
+            <Link to={`/recipe/${props.id}`} state={props.id}>
+                {/* <!--single recipe card--> */}
+                <img src={props.image} alt="Image" />
 
-      <div className="recipe-card-info">
-        <Link to={`/recipe/${props.id}`} state={props.id}>
-          <h3 className="recipe-card-title">{props.title}</h3>
-        </Link>
-        <div>
-          {/* <!-- taggar --> */}
-          <div className="flex">
-            {/* <!--  ----   TAG COMPONENTS ---- -->
+                <div className="recipe-card-info">
+                    <h3 className="recipe-card-title text-color-primary">{props.title}</h3>
+                    <div>
+                        {/* <!-- taggar --> */}
+                        <div className="flex flex-separate">
+                            {/* <!--  ----   TAG COMPONENTS ---- -->
                       <!-- vi kommer göra en komponent för en enskild tagg, så på receptkorts-komponenter
                           kommer vi ha tre tagg-komponenter
                        --> */}
-            <p className="tag color-secondary">{props.time}min</p>
-           
-             {cuisines.map((cuisineTag) =>{ 
-               if(cuisines.length > 0){
-                return   <p className="tag color-secondary">{cuisineTag}</p>
-               } 
-              })}  
-              {/*mappa cuisines, om arrayen inte är tom skriv ut en tagg för varje cuisinetype */}
-             
-        
-            {/* <p className="tag color-secondary">{getTags}</p> */}
-            {diets.map((dietTag) => {
-              if (props.diets.length != 0) {
-                return <p className="tag color-secondary">{dietTag}</p>;
-              }
-            })}
-            {/* <!-- END OF TAG COMPONENTS --> */}
-          </div>
-          {/* <!-- Stjärnor --> */}
-          <div className="flex">
-            {/* <!-- STAR/RATING COMPONENT -->
+                            <div className="flex flex-column tag-container">
+
+                                {props.time != null ?
+                                    <p className="tag color-tag-one text-color-primary">{props.time} min</p>
+                                    : <p></p>
+
+                                }
+                                {props.cuisines === undefined || props.cuisines.length == 0 ?
+                                    <></> :
+                                    <p className="tag color-tag-two text-color-primary">{props.cuisines[0]}</p>
+
+                                }
+                                {props.diets === undefined || props.diets.length == 0 ?
+                                    <></> :
+                                    <p className="tag color-tag-three text-color-primary">{props.diets[0].substring(0, 13)}</p>
+
+
+                                }
+                            </div>
+                            {/* {cuisines.map((cuisineTag) =>{ 
+                 if(cuisines.length > 0){
+                     return   <p className="tag color-secondary">{cuisineTag}</p>
+                    } 
+                })}   */}
+                            {/*mappa cuisines, om arrayen inte är tom skriv ut en tagg för varje cuisinetype */}
+
+
+                            {/* <p className="tag color-secondary">{getTags}</p> */}
+                            {/* {diets.map((dietTag) => {
+                if (props.diets.length != 0) {
+                    return <p className="tag color-secondary">{dietTag}</p>;
+                }
+            })} */}
+                            {/* <!-- END OF TAG COMPONENTS --> */}
+                            <div className="flex">
+                                <RecipeRating likes={props.aggregateLikes} />
+                                {/* <!-- STAR/RATING COMPONENT -->
                       <!-- kommer kanske ha som en enda komponent?? --> */}
+                                {/* <p className="star text-color-secondary">&#9733;</p>
             <p className="star text-color-secondary">&#9733;</p>
             <p className="star text-color-secondary">&#9733;</p>
             <p className="star text-color-secondary">&#9733;</p>
-            <p className="star text-color-secondary">&#9733;</p>
-            <p className="star text-color-secondary">&#9734;</p>
-            {/* <!-- END OF STAR/RATING COMPONENT --> */}
-          </div>
-          {/* <p className="card-text">{props.summary}</p> */}
-        </div>
-      </div>
-    </article>
-  );
-  {
-    /* <!-- END OF RECIPE CARD COMPONENT --> */
-  }
+            <p className="star text-color-secondary">&#9734;</p> */}
+                                {/* <!-- END OF STAR/RATING COMPONENT --> */}
+                            </div>
+                        </div>
+                        {/* <!-- Stjärnor --> */}
+                        {/* <p className="card-text">{props.summary}</p> */}
+                    </div>
+                </div>
+            </Link>
+        </article>
+
+    );
 }
