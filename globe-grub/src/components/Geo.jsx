@@ -2,9 +2,8 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function Geo(){
-    const [lat, setLat] = useState(null);
-    const [lng, setLng] = useState(null);
     const [status, setStatus] = useState(null);
+    const [country, setCountry] = useState(null);
    
     const getLocation = () => {
        if (!navigator.geolocation) {
@@ -17,8 +16,7 @@ export default function Geo(){
            navigator.geolocation.getCurrentPosition(
            (position) => {
            setStatus(null);
-           setLat(position.coords.latitude);
-           setLng(position.coords.longitude);
+           getCountry(position.coords.latitude, position.coords.longitude);
            },
            () => {
            setStatus("Unable to retrieve your location");
@@ -26,26 +24,31 @@ export default function Geo(){
            );  
        };
 
+       const getCountry = (x, y) => {
+        const url = `https://revgeocode.search.hereapi.com/v1/revgeocode?at=${x},${y}&lang=en-US&apiKey=xJgXFjeLZ4yfhudR_y61uPrN315wNvFoaWitAQHeKpc`
+        fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            data.items.map((x) =>{
+                setCountry(x.address.countryName)
+            })
+        })
+       }
+
 
     return(
         <div className="geo-container">
             <NavLink to="/" type="button" className="geo-btn color-accent" onClick={getLocation}>
                 <i className="fa-solid fa-location-dot geo-icon"></i>
             </NavLink>
-            <div className="geo-text-container">
-            
-            <p className="geo-text text-color-primary">Find Recipes matching your region!</p>
+            <p className="geo-text">Find Recipes matching your region!</p>
             
             {/* Only for testing */}
-            <p className="text-color-primary"> 
+            <p> 
                 {status}
                 <br/>
-                Long: {lng}
-                <br/>
-                Lat: {lat}
+                Country: {country}
             </p>
-            </div>
         </div>
-        
     )
 }
