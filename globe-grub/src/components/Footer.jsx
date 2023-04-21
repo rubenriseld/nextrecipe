@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+import Logo from "./Logo";
 
 export default function Footer(){
     
@@ -6,16 +8,19 @@ export default function Footer(){
             <div className="max-width-container flex flex-separate">
                 <section className="flex-left">
 
+                <NavLink className="logo-link" to="/">
+          <Logo />
+        </NavLink>
                     {/* <!-- LOGO COMPONENT --> */}
-                    <h2 className="company-name text-color-primary">GLOBE GRUB</h2>
-                    <p className="slogan text-color-primary">slogan</p>
+                    {/* <h2 className="company-name text-color-primary">GLOBE GRUB</h2>
+                    <p className="slogan text-color-primary">slogan</p> */}
                     {/* <!-- END OF LOGO COMPONENT --> */}
 
                 </section>
                 <section className="flex-right footer-info-section">
-                    <p>info</p>
-                    <p>info</p>
-                    <p>info</p>
+                    <p className="text-color-primary">info</p>
+                    <p className="text-color-primary">info</p>
+                    <p className="text-color-primary">info</p>
                 </section>
             </div>
         </footer>

@@ -9,7 +9,7 @@ import { FilterButton } from "./FilterButton";
 export default function Search() {
     // search string
     const [searchInput, setSearchInput] = useState("");
-
+    let searchString = "";
     //search store for sending to indexpage
     const [searchResult, setSearchResult] = useSearchResult((state) =>
         [state.searchResult, state.setSearchResult], shallow);
@@ -42,7 +42,7 @@ export default function Search() {
 
     const filterUrl = async (searchString) => {
         try {
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key1}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key2}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
             console.log(url);
             const response = await fetch(url);
             const result = await response.json();
@@ -114,7 +114,7 @@ export default function Search() {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await filterUrl();
+        await filterUrl("");
     };
     return (
         <>
@@ -137,18 +137,21 @@ export default function Search() {
                 </div>
             </form>
             {/* tillfällig div med för filtreringen */}
-            <div className={`filtermenu background-primary ${showFilterMenu ? "filter-show" : ""} `}>
-                <div className="menu-header flex flex-separate">
-                    <h2>Filter</h2>
+
+            <div className={`filter-menu background-primary ${showFilterMenu ? "" : "filter-show"} `}>
+                <div className="menu-header flex flex-separate text-color-primary">
+                    <h2 className="filter-menu-title">Filter</h2>
                     <button className="close-filter background-primary" onClick={() => setShowFilterMenu(!showFilterMenu)}>
                         <i className="fa-solid fa-xmark text-color-primary close-filter-icon"></i>
+
                     </button>
                 </div>
+                    <hr className="filter-line"></hr>
                 <div className="menu-body">
                     <div className="filter-container">
                         <button type="button" className="collapse-btn flex flex-separate background-primary" onClick={() => { setShowCuisineFilter(!showCuisineFilter); setCuisineCollapsed(!cuisineCollapsed) }}>
                             <p className="filter-title text-color-primary">Cuisine</p>
-                            <i className={`fa-solid ${cuisineCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
+                            <i className={`fa-solid collapse-icon text-color-primary ${cuisineCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
 
                         <div className={`cuisine-filter ${showCuisineFilter ? "filter-show" : ""}`}>
@@ -159,10 +162,12 @@ export default function Search() {
                             })}</div>
 
                     </div>
+                    <hr className="filter-line"></hr>
+
                     <div className="filter-container">
                         <button className="collapse-btn flex flex-separate background-primary" onClick={() => { setShowDietFilter(!showDietFilter); setDietCollapsed(!dietCollapsed) }}>
-                            <p className="filter-title">Diet</p>
-                            <i className={`fa-solid ${dietCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
+                            <p className="filter-title text-color-primary">Diet</p>
+                            <i className={`fa-solid collapse-icon text-color-primary ${dietCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
                         <div className={`diet-filter ${showDietFilter ? "filter-show" : ""}`}>
                             {DietFilters.map((x, index) => {
@@ -172,10 +177,12 @@ export default function Search() {
                             })}
                         </div>
                     </div>
+                    <hr className="filter-line"></hr>
+
                     <div className="filter-container">
                         <button className="collapse-btn flex flex-separate background-primary" onClick={() => { setShowIntoleranceFilter(!showIntoleranceFilter); setIntoleranceCollapsed(!intoleranceCollapsed) }}>
-                            <p className="filter-title">Intolerance</p>
-                            <i className={`fa-solid ${intoleranceCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
+                            <p className="filter-title text-color-primary">Intolerance</p>
+                            <i className={`fa-solid collapse-icon text-color-primary ${intoleranceCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
                         <div className={`intolerance-filter ${showIntoleranceFilter ? "filter-show" : ""}`}>
                             {IntoleranceFilters.map((x, index) => {
@@ -185,10 +192,12 @@ export default function Search() {
                             })}
                         </div>
                     </div>
+                    <hr className="filter-line"></hr>
+
                     <div className="filter-container">
                         <button className="collapse-btn flex flex-separate background-primary" onClick={() => { setShowTimeFilter(!showTimeFilter); setTimeCollapsed(!timeCollapsed) }}>
-                            <p className="filter-title">Time</p>
-                            <i className={`fa-solid ${timeCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
+                            <p className="filter-title text-color-primary">Time</p>
+                            <i className={`fa-solid collapse-icon text-color-primary ${timeCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
                         <div className={`time-filter ${showTimeFilter ? "filter-show" : ""}`}>
                             {TimeFilters.map((x, index) => {
@@ -198,10 +207,12 @@ export default function Search() {
                             })}
                         </div>
                     </div>
+                    <hr className="filter-line"></hr>
+
                     <div className="filter-container">
                         <button className="collapse-btn flex flex-separate background-primary" onClick={() => { setShowMealFilter(!showMealFilter); setMealCollapsed(!mealCollapsed) }}>
-                            <p className="filter-title">Meal</p>
-                            <i className={`fa-solid ${mealCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
+                            <p className="filter-title text-color-primary">Meal</p>
+                            <i className={`fa-solid collapse-icon text-color-primary ${mealCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
                         <div className={`meal-filter ${showMealFilter ? "filter-show" : ""}`} >
                             {MealTypeFilters.map((x, index) => {
@@ -213,8 +224,10 @@ export default function Search() {
                     </div>
                 </div>
 
-                <div className="menu-footer">
+
+                <div className="filter-footer">
                     <button className="clear-filter-btn color-secondary" onClick={() => inactivateButtons()}>Clear Filter</button>
+
                     <button className="apply-filter-btn color-primary" onClick={() => getActiveButtons()}>Apply filter</button>
                 </div>
             </div>

@@ -81,9 +81,10 @@ p {
 
 .slogan {
   font-style: italic;
+  margin-top: 0.2rem;
 }
 
-nav a,
+a,
 nav .burger {
   text-decoration: none;
   /*ta bort underline från menylänkar*/
@@ -144,10 +145,10 @@ header {
 /*LOGO*/
 .company-logo {
   width: auto;
-  max-width: 50px;
+  max-width: 2.5rem;
   position: relative;
-  margin-right: 5px;
-  margin-bottom: -5px;
+  margin-right: 0.5rem;
+  margin-bottom: -0.5rem;
 }
 
 /*MENU*/
@@ -157,24 +158,29 @@ header {
   position: relative;
   width: 100%;
   margin: auto;
-  padding: 0 1rem 0 1rem;
+  margin-top:0.2rem;
+  margin-bottom: -1rem;
+  padding: 0 0.5rem 0 0.5rem;
 }
 
+.logo-link {
+    margin: 0.3rem 0.3rem 0.3rem 0.5rem;
+}
 .menu-links {
   /*navlänkarna som ligger i hamburgermenyn på mobile*/
   display: none;
 }
 
-.menu a,
-.menu .burger {
+.menu-link,
+.burger {
   /*länkarna*/
   padding: 1rem;
-  margin: 0.5rem;
+  /* margin: 0.5rem; */
   display: block;
   position: relative;
 }
 
-.menu .burger {
+.burger {
   /*hamburgermenyn*/
   border: none;
   background-color: #ffffff00;
@@ -183,7 +189,9 @@ header {
   right: 0;
   top: 0;
 }
-
+.burger-icon {
+    font-size: 2rem;
+}
 /*---GEOSEARCH---*/
 /*GEO*/
 .geosearch {
@@ -197,7 +205,7 @@ header {
 .geo-container {
   /*div med geo-location-knapp (geo-btn) och "find recipes matching your region" (geo-text)*/
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -216,12 +224,10 @@ header {
   z-index: 1;
 }
 
-.geo-text-container{
-    margin-left:2rem;
-}
+
 .geo-text {
     /*"find recipes matching your region"*/
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
     /* margin: 5%; */
     /* width: 135%; */
@@ -275,8 +281,7 @@ header {
 }
 
 /*FILTER*/
-.test-btn{
-    width: 3rem;
+.filter-btn{
 }
 .active-btn{
     background-color: #006a4a;
@@ -288,15 +293,17 @@ header {
     display: none;
 }
 
-.filtermenu {
+.filter-menu {
     width: 100%;
     height: 100%;
     color: #006a4a3f;
-    position: absolute;
+    position: fixed;
+    overflow: scroll;
     z-index: 2;
     top: 0;
     right: 0;
     padding: 1rem;
+    background-color: shade(black);
 }
 
 .filter-head {
@@ -304,9 +311,26 @@ header {
 
 }
 
-.filter-body {
-    color: #006a4a3f
+.filter-line {
+    background: #006a4a;    
+    color: #006a4a3f;
+    border-Color: #006a4a3f;
+    height: 1px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top:1rem;
+}
 
+.filter-body {
+    color: #006a4a3f;
+
+}
+
+.filter-footer {
+    margin-top: 2rem;
+    /* position: absolute; */
+    /* bottom: 5%; */
 }
 
 .filter-container {
@@ -317,19 +341,21 @@ header {
     width: 100%;
 }
 
-.filter-title {
-    
-    
+.filter-menu-title, .close-filter-icon{
+    font-size: 3rem;
 }
-.clear-filter-btn, .apply-filter-btn {
+.filter-title, .collapse-icon{
+    font-size: 2rem;
+    margin: 0.5rem 0 0.5rem 0;
+}
+.clear-filter-btn, .apply-filter-btn, .filter-btn {
     border-radius: 20rem;
-    padding: 0.2rem;
-    font-size: 1.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-size: 1rem;
     margin: 2px;
 }
-
-.close-filter {
-    font-size: 2rem;
+.clear-filter-btn, .apply-filter-btn{
+    font-size: 1.5rem;
 }
 
 button{
@@ -533,6 +559,7 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     /*huvudmenyn i headern*/
     display: flex !important;
     justify-content: space-between;
+    margin-bottom:0.5rem;
   }
 
   .menu-links-desktop {
@@ -550,6 +577,9 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     flex-direction: row;
     justify-content: space-between;
   }
+    .geo-text-container{
+        margin-left:2rem;
+    }
     .geo-text {
         /*"find recipes matching your region"*/
         /* margin: -5%; */
@@ -571,12 +601,6 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     align-items: left;
   }
 
-  .geo-text {
-    /*"find recipes matching your region"*/
-    font-size: 100%;
-    margin: -5%;
-    padding: 1% 1% 1% 4%;
-  }
 
   /*SEARCH*/
   .search-form{
@@ -608,7 +632,7 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     font-size: 140%;
   }
 
-  .filtermenu{
+  .filter-menu{
     width: 30%;
   }
     /*---TAGS---*/
