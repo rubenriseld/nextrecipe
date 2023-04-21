@@ -9,7 +9,7 @@ import { FilterButton } from "./FilterButton";
 export default function Search() {
     // search string
     const [searchInput, setSearchInput] = useState("");
-
+    let searchString = "";
     //search store for sending to indexpage
     const [searchResult, setSearchResult] = useSearchResult((state) =>
         [state.searchResult, state.setSearchResult], shallow);
@@ -42,7 +42,7 @@ export default function Search() {
 
     const filterUrl = async (searchString) => {
         try {
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key1}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key2}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
             console.log(url);
             const response = await fetch(url);
             const result = await response.json();
@@ -114,7 +114,7 @@ export default function Search() {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await filterUrl();
+        await filterUrl("");
     };
     return (
         <>
@@ -137,7 +137,7 @@ export default function Search() {
                 </div>
             </form>
             {/* tillfällig div med för filtreringen */}
-            <div className={`filtermenu background-primary ${showFilterMenu ? "filter-show" : ""} `}>
+            <div className={`filtermenu background-primary ${showFilterMenu ? "" : "filter-show"} `}>
                 <div className="menu-header flex flex-separate">
                     <h2>Filter</h2>
                     <button className="close-filter background-primary" onClick={() => setShowFilterMenu(!showFilterMenu)}>
