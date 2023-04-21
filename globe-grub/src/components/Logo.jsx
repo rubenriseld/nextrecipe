@@ -2,7 +2,7 @@ export default function Logo() {
   return (
     <>
       <img
-        src="public/images/globegrub2.png"
+        src="/images/globegrub2.png"
         alt="helloes"
         className="company-logo"
       />
