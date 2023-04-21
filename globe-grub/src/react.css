@@ -81,9 +81,10 @@ p {
 
 .slogan {
   font-style: italic;
+  margin-top: 0.2rem;
 }
 
-nav a,
+a,
 nav .burger {
   text-decoration: none;
   /*ta bort underline från menylänkar*/
@@ -157,7 +158,9 @@ header {
   position: relative;
   width: 100%;
   margin: auto;
-  padding: 0 1rem 0 1rem;
+  margin-top:0.2rem;
+  margin-bottom: -1rem;
+  padding: 0 0.5rem 0 0.5rem;
 }
 
 .logo-link {
@@ -168,16 +171,16 @@ header {
   display: none;
 }
 
-.menu .menu-link,
-.menu .burger {
+.menu-link,
+.burger {
   /*länkarna*/
   padding: 1rem;
-  margin: 0.5rem;
+  /* margin: 0.5rem; */
   display: block;
   position: relative;
 }
 
-.menu .burger {
+.burger {
   /*hamburgermenyn*/
   border: none;
   background-color: #ffffff00;
@@ -186,7 +189,9 @@ header {
   right: 0;
   top: 0;
 }
-
+.burger-icon {
+    font-size: 2rem;
+}
 /*---GEOSEARCH---*/
 /*GEO*/
 .geosearch {
@@ -200,7 +205,7 @@ header {
 .geo-container {
   /*div med geo-location-knapp (geo-btn) och "find recipes matching your region" (geo-text)*/
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -219,12 +224,10 @@ header {
   z-index: 1;
 }
 
-.geo-text-container{
-    margin-left:2rem;
-}
+
 .geo-text {
     /*"find recipes matching your region"*/
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
     /* margin: 5%; */
     /* width: 135%; */
@@ -556,6 +559,7 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     /*huvudmenyn i headern*/
     display: flex !important;
     justify-content: space-between;
+    margin-bottom:0.5rem;
   }
 
   .menu-links-desktop {
@@ -573,6 +577,9 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     flex-direction: row;
     justify-content: space-between;
   }
+    .geo-text-container{
+        margin-left:2rem;
+    }
     .geo-text {
         /*"find recipes matching your region"*/
         /* margin: -5%; */
@@ -594,12 +601,6 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     align-items: left;
   }
 
-  .geo-text {
-    /*"find recipes matching your region"*/
-    font-size: 100%;
-    margin: -5%;
-    padding: 1% 1% 1% 4%;
-  }
 
   /*SEARCH*/
   .search-form{

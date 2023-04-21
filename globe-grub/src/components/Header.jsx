@@ -51,11 +51,11 @@ export default function Header() {
         </div>
 
         <button
-          href="javascript:void(0);"
+        //   href="javascript:void(0);"
           className="burger"
           onClick={() => setShowMobileMenu(!showMobileMenu)}
         >
-          <i className="fa fa-bars text-color-primary"></i>
+          <i className="fa fa-bars text-color-primary burger-icon"></i>
         </button>
       </nav>
     </header>
