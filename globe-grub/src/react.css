@@ -282,6 +282,60 @@ header {
     background-color: #006a4a;
 }
 /*css för filtermenyn, ej implementerad */
+    /*css för filtermenyn, ej implementerad */
+
+.filter-show {
+    display: none;
+}
+
+.filtermenu {
+    width: 100%;
+    height: 100%;
+    color: #006a4a3f;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+}
+
+.filter-head {
+    
+
+}
+
+.filter-body {
+    color: #006a4a3f
+
+}
+
+.filter-container {
+    margin: 0.5rem;
+}
+
+.collapse-btn {
+    width: 100%;
+}
+
+.filter-title {
+    
+    
+}
+.clear-filter-btn, .apply-filter-btn {
+    border-radius: 20rem;
+    padding: 0.2rem;
+    font-size: 1.5rem;
+    margin: 2px;
+}
+
+.close-filter {
+    font-size: 2rem;
+}
+
+button{
+    border-style: none;
+}
+
 
 /*---ADS---*/
 .ad {
@@ -554,6 +608,9 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     font-size: 140%;
   }
 
+  .filtermenu{
+    width: 30%;
+  }
     /*---TAGS---*/
     .tag {
         /*kategoritaggar på receptkort och receptsida*/
