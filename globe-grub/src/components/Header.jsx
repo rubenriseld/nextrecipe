@@ -23,7 +23,7 @@ export default function Header() {
   return (
     <header>
       <nav className="menu max-width-container">
-        <NavLink to="/">
+        <NavLink className="logo-link" to="/">
           <Logo />
         </NavLink>
 
@@ -34,18 +34,18 @@ export default function Header() {
         >
           <NavLink
             to="/"
-            className="text-color-primary"
+            className="menu-link text-color-primary"
             onClick={() => setSearchResult([])}
           >
             Home
           </NavLink>
-          <NavLink to="/recipe" className="text-color-primary">
+          {/* <NavLink to="/recipe" className="menu-link text-color-primary">
             Recipe
-          </NavLink>
-          <NavLink to="/" className="text-color-primary">
+          </NavLink> */}
+          <NavLink to="/" className="menu-link text-color-primary">
             Around The World
           </NavLink>
-          <NavLink to="/" className="text-color-primary">
+          <NavLink to="/" className="menu-link text-color-primary">
             About Us
           </NavLink>
         </div>

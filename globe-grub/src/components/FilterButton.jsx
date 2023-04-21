@@ -9,7 +9,7 @@ export function FilterButton(props){
 
     return(
         <button
-            className={`test-btn ${isActive?"active-btn": ""}`}
+            className={`filter-btn ${isActive?"active-btn": ""}`}
             value={value}
             data-type={type}
             onClick={()=> {setIsActive(!isActive);}}>

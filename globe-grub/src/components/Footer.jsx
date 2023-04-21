@@ -13,9 +13,9 @@ export default function Footer(){
 
                 </section>
                 <section className="flex-right footer-info-section">
-                    <p>info</p>
-                    <p>info</p>
-                    <p>info</p>
+                    <p className="text-color-primary">info</p>
+                    <p className="text-color-primary">info</p>
+                    <p className="text-color-primary">info</p>
                 </section>
             </div>
         </footer>
