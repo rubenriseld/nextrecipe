@@ -42,7 +42,7 @@ export default function Search() {
 
     const filterUrl = async (searchString) => {
         try {
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key2}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key5}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
             console.log(url);
             const response = await fetch(url);
             const result = await response.json();
