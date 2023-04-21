@@ -156,8 +156,11 @@ export default function Search() {
             </form>
             {/* tillfällig div med för filtreringen */}
             <div className={`filtermenu background-primary ${showFilterMenu ? "filter-show" : ""} `}>
-                <div className="menu-header flex flex-separate">
-                    <h2>Filter</h2>
+                <div className="menu-header flex flex-separate text-color-primary">
+                    <h2>Filter
+                    <hr className="filter-line"></hr>
+                    </h2>
+                    
                     <button className="close-filter background-primary" onClick={()=> setShowFilterMenu(!showFilterMenu)}>
                         <i class="fa-solid fa-xmark text-color-primary close-filter-icon"></i>
                     </button>
@@ -231,7 +234,7 @@ export default function Search() {
                     </div>
                 </div>
 
-                <div className="menu-footer">
+                <div className="filter-footer">
                 {/* <button className="clear-filter" onClick={() => inactivateButtons()}>Clear Filter</button>
                 <button className="apply-filter" onClick={() => getActiveButtons()}>Apply filter</button> */}
                     <button className="clear-filter-btn color-secondary"  onClick={() => inactivateButtons()}>Clear Filter</button>

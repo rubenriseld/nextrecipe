@@ -297,6 +297,7 @@ header {
     top: 0;
     right: 0;
     padding: 1rem;
+    background-color: shade(black);
 }
 
 .filter-head {
@@ -304,9 +305,24 @@ header {
 
 }
 
-.filter-body {
-    color: #006a4a3f
+.filter-line {
+    background: #006a4a;    
+    color: #006a4a3f;
+    border-Color: #006a4a3f;
+    height: 2px;
+    width: 405px;
+    display: flex;
+    flex-direction: row;
+}
 
+.filter-body {
+    color: #006a4a3f;
+
+}
+
+.filter-footer {
+    position: absolute;
+    bottom: 5%;
 }
 
 .filter-container {
