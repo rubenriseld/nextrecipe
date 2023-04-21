@@ -2,20 +2,20 @@ import { useState } from "react";
 import { useFilterStore } from "../hooks/FilterMenu";
 import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterItems";
 import { useSearchResult } from "../hooks/useSearchResult";
+
 import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
 
 export default function Search() {
     // search string
     const [searchInput, setSearchInput] = useState("");
-
+    let searchString = "";
     //search store for sending to indexpage
     const [searchResult, setSearchResult] = useSearchResult((state) =>
         [state.searchResult, state.setSearchResult], shallow);
 
     //store for filter terms
     const state = useFilterStore.getState((state) => state);
-    const [searchString, setSearchString] = useState("");
 
     const key1 = "13c6c14454a748769e3611a7cf719862";
     const key2 = "74c179cdd6bf42fab75869c258580b05";
@@ -23,27 +23,7 @@ export default function Search() {
     const key4 = "85ce5287879e42978484fcf300dace17";
     const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
 
-    // const [showFilterMenu, setShowFilterMenu] = useState(false);
-
-
-//   const AddIntoleranceFilter = (e) =>{
-//       setIntoleranceFilter( state.intolerances + e.target.value)
-//   }
-//   const AddTimeFilter = (e) =>{
-//     setTimeFilter(state.maxReadyTime + e.target.value)
-//   }
-//   const AddMealTypeFilter = (e) =>{
-
-//     setMealTypeFilter(state.type + e.target.value)
-//   }
-//     const AddCuisinefilter = (e) =>{
-
-//         setCuisineFilter(state.cuisine + e.target.value)
-//     }
-//     const AddDietFilter = (e) =>{
-//       setDietFilter(state.diet + e.target.value)
-//     }
-
+    // filter menu stuff
     const [showFilterMenu, setShowFilterMenu] = useState(false);
 
     const [cuisineCollapsed, setCuisineCollapsed] = useState(false);
@@ -60,9 +40,9 @@ export default function Search() {
     const [showMealFilter, setShowMealFilter] = useState(false);
 
 
-    const filterUrl = async () => {
+    const filterUrl = async (searchString) => {
         try {
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key1}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key2}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
             console.log(url);
             const response = await fetch(url);
             const result = await response.json();
@@ -79,12 +59,13 @@ export default function Search() {
         buttons.forEach(btn => {
             btn.click();
         })
-        setSearchString("");
     }
 
     const getActiveButtons = async () => {
-        setSearchString("");
+        let searchString = "";
+
         let buttons = document.querySelectorAll('.active-btn');
+        // let buttons = activeButtons;
         console.log(buttons)
         let cuisineString = "";
         let dietString = "";
@@ -121,10 +102,11 @@ export default function Search() {
             } else if (btn.dataset.type == "T" & timeString != "") {
                 timeString += "," + btn.value
             }
+
         });
-        await setSearchString(`${dietString}${cuisineString}${mealtypeString}${intoleranceString}${timeString}`);
+        searchString = `${dietString}${cuisineString}${mealtypeString}${intoleranceString}${timeString}`;
         console.log(searchString);
-        await filterUrl();
+        await filterUrl(searchString);
     }
 
     const handleChange = (e) => {
@@ -132,7 +114,7 @@ export default function Search() {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await filterUrl();
+        await filterUrl("");
     };
     return (
         <>
@@ -155,14 +137,14 @@ export default function Search() {
                 </div>
             </form>
             {/* tillfällig div med för filtreringen */}
-            <div className={`filtermenu background-primary ${showFilterMenu ? "filter-show" : ""} `}>
+
+            <div className={`filtermenu background-primary ${showFilterMenu ? "" : "filter-show"} `}>
                 <div className="menu-header flex flex-separate text-color-primary">
-                    <h2>Filter
+                    <h2>Filter</h2>
                     <hr className="filter-line"></hr>
-                    </h2>
-                    
-                    <button className="close-filter background-primary" onClick={()=> setShowFilterMenu(!showFilterMenu)}>
-                        <i class="fa-solid fa-xmark text-color-primary close-filter-icon"></i>
+                    <button className="close-filter background-primary" onClick={() => setShowFilterMenu(!showFilterMenu)}>
+                        <i className="fa-solid fa-xmark text-color-primary close-filter-icon"></i>
+
                     </button>
                 </div>
                 <div className="menu-body">
@@ -183,14 +165,14 @@ export default function Search() {
                     <div className="filter-container">
                         <button className="collapse-btn flex flex-separate background-primary" onClick={() => { setShowDietFilter(!showDietFilter); setDietCollapsed(!dietCollapsed) }}>
                             <p className="filter-title">Diet</p>
-                            <i class={`fa-solid ${dietCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
+                            <i className={`fa-solid ${dietCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
                         <div className={`diet-filter ${showDietFilter ? "filter-show" : ""}`}>
-                        {DietFilters.map((x, index) => {
-                        return (
-                            <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
-                        )
-                    })}
+                            {DietFilters.map((x, index) => {
+                                return (
+                                    <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
+                                )
+                            })}
                         </div>
                     </div>
                     <div className="filter-container">
@@ -199,11 +181,11 @@ export default function Search() {
                             <i className={`fa-solid ${intoleranceCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
                         <div className={`intolerance-filter ${showIntoleranceFilter ? "filter-show" : ""}`}>
-                        {IntoleranceFilters.map((x, index) => {
-                        return (
-                            <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
-                        )
-                    })}
+                            {IntoleranceFilters.map((x, index) => {
+                                return (
+                                    <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
+                                )
+                            })}
                         </div>
                     </div>
                     <div className="filter-container">
@@ -212,11 +194,11 @@ export default function Search() {
                             <i className={`fa-solid ${timeCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
                         <div className={`time-filter ${showTimeFilter ? "filter-show" : ""}`}>
-                        {TimeFilters.map((x, index) => {
-                        return (
-                            <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
-                        )
-                    })}
+                            {TimeFilters.map((x, index) => {
+                                return (
+                                    <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
+                                )
+                            })}
                         </div>
                     </div>
                     <div className="filter-container">
@@ -225,76 +207,22 @@ export default function Search() {
                             <i className={`fa-solid ${mealCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
                         <div className={`meal-filter ${showMealFilter ? "filter-show" : ""}`} >
-                        {MealTypeFilters.map((x, index) => {
-                        return (
-                            <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
-                        )
-                    })}
+                            {MealTypeFilters.map((x, index) => {
+                                return (
+                                    <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
 
+
                 <div className="filter-footer">
-                {/* <button className="clear-filter" onClick={() => inactivateButtons()}>Clear Filter</button>
-                <button className="apply-filter" onClick={() => getActiveButtons()}>Apply filter</button> */}
-                    <button className="clear-filter-btn color-secondary"  onClick={() => inactivateButtons()}>Clear Filter</button>
+                    <button className="clear-filter-btn color-secondary" onClick={() => inactivateButtons()}>Clear Filter</button>
+
                     <button className="apply-filter-btn color-primary" onClick={() => getActiveButtons()}>Apply filter</button>
                 </div>
             </div>
-            {/* <div className="menu-body">
-                <div className="cuisine">
-                    <p className="filter-title">Cuisine</p>
-                    <button className="collapse-btn">v</button>
-                    {CuisineFilters.map((x, index) => {
-                        return (
-                            <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
-                        )
-                    })}
-                </div>
-                <div className="diet">
-                    <p className="filter-title">Diet</p>
-                    <button className="collapse-btn">v</button>
-                    {DietFilters.map((x, index) => {
-                        return (
-                            <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
-                        )
-                    })}
-                </div>
-                <div className="intolerance">
-                    <p className="filter-title">Intolerance</p>
-                    <button className="collapse-btn">v</button>
-                    {IntoleranceFilters.map((x, index) => {
-                        return (
-                            <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
-                        )
-                    })}
-                </div>
-                <div className="time">
-                    <p className="filter-title">Time</p>
-                    <button className="collapse-btn">v</button>
-                    {TimeFilters.map((x, index) => {
-                        return (
-                            <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
-                        )
-                    })}
-                </div>
-                <div className="meal">
-                    <p className="filter-title">Meal</p>
-                    <button className="collapse-btn">v</button>
-                    {MealTypeFilters.map((x, index) => {
-                        return (
-                            <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
-                        )
-                    })}
-                </div>
-            </div>
-
-            <div className="menu-footer">
-                <button className="clear-filter" onClick={() => inactivateButtons()}>Clear Filter</button>
-                <button className="apply-filter" onClick={() => getActiveButtons()}>Apply filter</button>
-            </div> */}
-        {/* </div > */}
-
-    </>
-  )
+        </>
+    )
 };

@@ -29,7 +29,7 @@ export default function Header() {
 
         <div
           className={`menu-links-desktop ${
-            showMobileMenu ? "menu-links" : ""
+            showMobileMenu ? "" : "menu-links"
           } `}
         >
           <NavLink
