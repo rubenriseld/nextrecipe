@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useFilterStore } from "../hooks/FilterMenu";
+import { useState, useEffect } from "react";
+import { useFilterStore } from "../hooks/useFilterStore";
 import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterItems";
 import { useSearchResult } from "../hooks/useSearchResult";
+import { useTag } from "../hooks/useTag";
 
 import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
@@ -14,6 +15,22 @@ export default function Search() {
     const [searchResult, setSearchResult] = useSearchResult((state) =>
         [state.searchResult, state.setSearchResult], shallow);
 
+
+        //för att göra sökning när man klickat på en tagg
+        const [tag, setTag] = useTag(
+            (state) => [state.tag, state.setTag],
+            shallow
+        );
+        // setTag("hej");
+
+
+        useEffect(() => {
+        // searchString = ;
+        // if(tag == null ||){ 
+        // } 
+            console.log("search:"+tag);
+            // filterUrl(`&${tag}`);
+        }, []);
     //store for filter terms
     const state = useFilterStore.getState((state) => state);
 
@@ -22,6 +39,8 @@ export default function Search() {
     const key3 = "c02162ede9394dd8bca983829213bd71";
     const key4 = "85ce5287879e42978484fcf300dace17";
     const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
+    const key6 = "15c980413ad44f09ba2ac7e73f076610";
+
 
     // filter menu stuff
     const [showFilterMenu, setShowFilterMenu] = useState(false);
@@ -42,7 +61,7 @@ export default function Search() {
 
     const filterUrl = async (searchString) => {
         try {
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key5}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key6}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
             console.log(url);
             const response = await fetch(url);
             const result = await response.json();
