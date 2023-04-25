@@ -155,7 +155,7 @@ export const DietFilters = [
         name: "Lacto-Vegetarian",
         value: "lacto-vegetarian",
         type: "D",
-        tagValue: "lacto vegetarian",
+        tagValue: "lacto ovo vegetarian",
     },
     {
         name: "Ovo-Vegetarian",
