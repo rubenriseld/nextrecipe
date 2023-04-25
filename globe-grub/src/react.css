@@ -321,7 +321,8 @@ header {
     top: 0;
     right: 0;
     padding: 1rem;
-    background-color: shade(black);
+    /* background-color: shade(black); */
+    box-shadow: 0 -5px 7px rgba(0, 0, 0, 0.2);
 }
 
 .filter-head {
