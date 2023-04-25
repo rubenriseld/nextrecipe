@@ -131,7 +131,8 @@ nav .burger {
 }
 
 body,
-#root {
+#root,
+main {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -140,6 +141,22 @@ body,
 /*---HEADER---*/
 header {
   width: 100%;
+  transform: top 250ms ease-in-out;
+  position: sticky;
+  top:-177px;
+  /* height:7rem; */
+  transform: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+
+}
+.header-sticky{
+    transform: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+
+    /* position: sticky; */
+    top:0;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    
 }
 
 /*LOGO*/
@@ -192,6 +209,10 @@ header {
 .burger-icon {
     font-size: 2rem;
 }
+
+main{
+    /* margin-top: 7rem; */
+}
 /*---GEOSEARCH---*/
 /*GEO*/
 .geosearch {
@@ -221,7 +242,6 @@ header {
   margin: 4px 0px 15px 0px;
   border-radius: 50%;
   border-style: none;
-  z-index: 1;
 }
 
 

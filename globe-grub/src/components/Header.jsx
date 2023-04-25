@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
@@ -20,8 +20,40 @@ export default function Header() {
     shallow
   );
 
+
+  //sticky header stuff
+        const [sticky, setSticky] = useState(false);
+        let lastScroll = 0;
+        
+        const mrScroll = () => {
+            window.addEventListener('scroll', ()=>{
+                const currentScroll = window.pageYOffset;
+                if(currentScroll <=0){
+                    setSticky(false);
+                    return;
+                }
+            if(currentScroll > lastScroll && sticky == true){
+                setSticky(false);
+            }else if (currentScroll < lastScroll && sticky == false){
+                setSticky(true);
+            }
+            lastScroll = currentScroll;
+        })}
+        
+        useEffect(()=>{
+            const handleScrollEvent = () =>{
+                mrScroll();
+            }
+            window.addEventListener('scroll', handleScrollEvent);
+            return () => {
+                window.addEventListener('scroll', handleScrollEvent);
+            };
+        }, []);
+
+
   return (
-    <header>
+    <header className={`background-primary ${sticky ? "header-sticky":""}`}>
+      {/* <header className="background-primary"> */}
       <nav className="menu max-width-container">
         <NavLink className="logo-link" to="/">
           <Logo />
