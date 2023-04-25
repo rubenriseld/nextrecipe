@@ -17,7 +17,7 @@ export default function ResultContainer(props) {
               image={recipe.image}
               cuisines={recipe.cuisines}
               dishTypes={recipe.dishTypes}
-              time={recipe.readyInMinutes}
+              time={recipe.maxReadyTime}
               aggregateLikes={recipe.aggregateLikes}
             />
           );
