@@ -251,7 +251,7 @@ export default function Search() {
                 <div className="filter-footer">
                     <button className="clear-filter-btn color-secondary" onClick={() => inactivateButtons()}>Clear Filter</button>
 
-                    <button className="apply-filter-btn color-primary" onClick={() => getActiveButtons()}>Apply filter</button>
+                    <button className="apply-filter-btn color-primary" onClick={() => {getActiveButtons(); setShowFilterMenu()}}>Apply filter</button>
                 </div>
             </div>
         </>
