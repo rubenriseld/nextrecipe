@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
 import { useTag } from "../hooks/useTag";
+import { useFilterStore } from "../hooks/useFilterStore";
+
+import { CuisineFilters, MealTypeFilters, DietFilters, IntoleranceFilters, TimeFilters } from "./FilterItems";
 
 export default function Tags(props){
     // const clickable = props.clickable;
@@ -11,8 +14,20 @@ export default function Tags(props){
       );
     const [tag, setTag] = useTag(
         (state) => [state.tag, state.setTag],
-        shallow
-    );
+        shallow     
+        );
+        const filterString = useFilterStore.getState((state) => state);
+
+        let tagArray = CuisineFilters;
+        tagArray = tagArray.concat(MealTypeFilters);
+        tagArray = tagArray.concat(DietFilters);
+        tagArray = tagArray.concat(IntoleranceFilters);
+        tagArray = tagArray.concat(TimeFilters);
+        
+        // console.log(tagArray)
+        // tagArray.forEach(element => {
+        //     console.log(element.name);
+        // });
 
     const GenerateTags = () => {
         let time = props.time;
@@ -23,7 +38,7 @@ export default function Tags(props){
         let vegetarian = props.vegetarian;
 
         let tags = ["zero", "one", "two"];
-        let tagStrings = ["zero", "one", "two"];
+        // let tagStrings = ["zero", "one", "two"];
         
         //tag one
         if(time != null){ 
@@ -36,7 +51,7 @@ export default function Tags(props){
         //tag two
         if(cuisines.length != 0) {
             tags[1] = cuisines[0];
-            tagStrings[1] = "&cuisine="
+            // tagStrings[1] = "&cuisine="
         } else { //om region saknas på receptet
             if(vegan == true ){
                 tags[1] = "vegan"; //slänger in "vegan" om den e true
@@ -70,17 +85,57 @@ export default function Tags(props){
             } else {
                 tags[2] = "food"; //något defaultvärde ifall det inte finns ett skit
             }
-        }
+        }    
+        console.log(tags);  
         return tags;
     }
+
+    const GenerateTagValues = () => {
+        let tagValues = ["","",""];
+
+        tags.forEach(function(tag, index){
+            tagArray.forEach(filter => {
+               if(tag == filter.tagValue || tag == filter.value){
+                let newTag = "";
+                switch(filter.type){
+                        case "C":
+                            newTag = filterString.cuisine;
+                        break;
+
+                        case "I":
+                            newTag = filterString.Intolerances;
+                        break;
+
+                        case "D":
+                            newTag = filterString.diet;
+                        break;
+
+                        case "M":
+                            newTag = filterString.type;
+                        break;
+                        
+                        case "T":                     
+                        newTag = filterString.maxReadyTime;
+                        break;
+                    }
+                    newTag += filter.value;
+                    this[index] = newTag;
+               }
+           
+            })
+        }, tagValues);
+        // tags
+        return tagValues;
+    }
     let tags = GenerateTags();
+    let tagValues = GenerateTagValues();
     return(
         <>
             {props.clickable ? 
                 <>
-                    <Link to="/" className="tag color-tag-one text-color-primary" onClick={() => {setSearchResult([]); setTag(tags[0])}}>{tags[0]} min</Link>
-                    <Link to="/" className="tag color-tag-two text-color-primary"  onClick={() => {setSearchResult([]); setTag(tags[1])}}>{tags[1] == "lacto ovo vegetarian" ? "lacto ovo" : tags[1]}</Link>
-                    <Link to="/" className="tag color-tag-three text-color-primary"  onClick={() => {setSearchResult([]); setTag(tags[2])}}>{tags[2] == "lacto ovo vegetarian" ? "lacto ovo" : tags[2]}</Link>
+                    <Link to="/" className="tag color-tag-one text-color-primary" onClick={() => {setSearchResult([]); setTag(tagValues[0])}}>{tags[0]} min</Link>
+                    <Link to="/" className="tag color-tag-two text-color-primary"  onClick={() => {setSearchResult([]); setTag(tagValues[1])}}>{tags[1] == "lacto ovo vegetarian" ? "lacto ovo" : tags[1]}</Link>
+                    <Link to="/" className="tag color-tag-three text-color-primary"  onClick={() => {setSearchResult([]); setTag(tagValues[2])}}>{tags[2] == "lacto ovo vegetarian" ? "lacto ovo" : tags[2]}</Link>
                 </>
                 :<>
                     <p className="tag color-tag-one text-color-primary">{tags[0]} min</p>
