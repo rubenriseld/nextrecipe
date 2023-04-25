@@ -86,7 +86,7 @@ export default function Tags(props){
                 tags[2] = "food"; //något defaultvärde ifall det inte finns ett skit
             }
         }    
-        console.log(tags);  
+        // console.log(tags);  
         return tags;
     }
 
@@ -95,7 +95,7 @@ export default function Tags(props){
 
         tags.forEach(function(tag, index){
             tagArray.forEach(filter => {
-               if(tag == filter.tagValue || tag == filter.value){
+               if(tag == filter.tagValue || tag == filter.value || tag == filter.name){
                 let newTag = "";
                 switch(filter.type){
                         case "C":
@@ -103,7 +103,7 @@ export default function Tags(props){
                         break;
 
                         case "I":
-                            newTag = filterString.Intolerances;
+                            newTag = filterString.intolerances;
                         break;
 
                         case "D":
@@ -133,14 +133,14 @@ export default function Tags(props){
         <>
             {props.clickable ? 
                 <>
-                    <Link to="/" className="tag color-tag-one text-color-primary" onClick={() => {setSearchResult([]); setTag(tagValues[0])}}>{tags[0]} min</Link>
-                    <Link to="/" className="tag color-tag-two text-color-primary"  onClick={() => {setSearchResult([]); setTag(tagValues[1])}}>{tags[1] == "lacto ovo vegetarian" ? "lacto ovo" : tags[1]}</Link>
-                    <Link to="/" className="tag color-tag-three text-color-primary"  onClick={() => {setSearchResult([]); setTag(tagValues[2])}}>{tags[2] == "lacto ovo vegetarian" ? "lacto ovo" : tags[2]}</Link>
+                    <Link to="/" className="tag color-tag-one text-color-primary" onClick={() => {setSearchResult([]); setTag(tagValues[0])}}>{tags[0].toUpperCase()} MIN</Link>
+                    <Link to="/" className="tag color-tag-two text-color-primary"  onClick={() => {setSearchResult([]); setTag(tagValues[1])}}>{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</Link>
+                    <Link to="/" className="tag color-tag-three text-color-primary"  onClick={() => {setSearchResult([]); setTag(tagValues[2])}}>{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</Link>
                 </>
                 :<>
-                    <p className="tag color-tag-one text-color-primary">{tags[0]} min</p>
-                    <p className="tag color-tag-two text-color-primary">{tags[1] == "lacto ovo vegetarian" ? "lacto ovo" : tags[1]}</p>
-                    <p className="tag color-tag-three text-color-primary">{tags[2] == "lacto ovo vegetarian" ? "lacto ovo" : tags[2]}</p>
+                    <p className="tag color-tag-one text-color-primary">{tags[0].toUpperCase()} MIN</p>
+                    <p className="tag color-tag-two text-color-primary">{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</p>
+                    <p className="tag color-tag-three text-color-primary">{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</p>
                 </> 
                 }
                                

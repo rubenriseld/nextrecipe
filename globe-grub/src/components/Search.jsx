@@ -28,8 +28,8 @@ export default function Search() {
         // searchString = ;
         // if(tag == null ||){ 
         // } 
-            console.log("search:"+tag);
-            filterUrl(tag);
+        filterUrl(tag);
+        console.log(tag);
         }, []);
     //store for filter terms
     const state = useFilterStore.getState((state) => state);
@@ -62,12 +62,14 @@ export default function Search() {
     const filterUrl = async (searchString) => {
         try {
       
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key6}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key1}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
             console.log(url);
             const response = await fetch(url);
             const result = await response.json();
             setSearchResult(result.results);
             console.log(result)
+            // setTag("");
+
             //result.results är en lista av alla recept, dessa skickas in i childtoparent    
         } catch (e) {
             console.log(e);
