@@ -3,7 +3,7 @@ import {create} from "zustand"
 
 
 export const useTag = create((set)=> ({
-    tag: "default",
+    tag: "",
 
     setTag: (newTag) => 
         set(() => ({tag: newTag})),
