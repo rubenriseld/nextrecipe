@@ -29,7 +29,7 @@ export default function Search() {
         // if(tag == null ||){ 
         // } 
             console.log("search:"+tag);
-            // filterUrl(`&${tag}`);
+            filterUrl(tag);
         }, []);
     //store for filter terms
     const state = useFilterStore.getState((state) => state);
@@ -61,6 +61,7 @@ export default function Search() {
 
     const filterUrl = async (searchString) => {
         try {
+      
             const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key6}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
             console.log(url);
             const response = await fetch(url);
@@ -92,7 +93,7 @@ export default function Search() {
         let intoleranceString = "";
         let timeString = "";
         buttons.forEach(btn => {
-
+            
             if (btn.dataset.type == "C" & cuisineString == "") {
                 cuisineString += state.cuisine + btn.value
             } else if (btn.dataset.type == "C" & cuisineString != "") {
