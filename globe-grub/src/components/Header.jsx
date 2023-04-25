@@ -23,7 +23,7 @@ export default function Header() {
   return (
     <header>
       <nav className="menu max-width-container">
-        <NavLink className="logo-link" to="/">
+        <NavLink className="logo-link" to="/" onClick={() => setSearchResult([])}>
           <Logo />
         </NavLink>
 
