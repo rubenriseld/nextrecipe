@@ -6,13 +6,17 @@ import Ad from "./Ad";
 import React, { useState } from "react";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { useRecommendation } from "../hooks/UseRecommendations";
+import Recommendations from "./Recommendations";
 
 export default function IndexPage() {
 
   
-  const data = useSearchResult((state) => state.searchResult);
-  // if(data == null){
-  //   data = useRecommendation((state) => state.recoResults)
+  let data = useRecommendation((state) => state.recoResults);
+  // if(data == []){
+  //   data = ;
+  // }
+  // else{
+  //   data = useSearchResult((state) => state.searchResult);
   // }
   console.log(data)
   
@@ -36,6 +40,7 @@ export default function IndexPage() {
       <section className="geosearch flex-center background-secondary max-width-container">
         <Geo/>
         <Search/> 
+        <Recommendations></Recommendations>
       </section>
       <Ad /> 
       <ResultContainer data={data} />; {/*data från Search.jsx(data från sökningen) hamnar i resultcontainer */}

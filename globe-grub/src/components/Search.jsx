@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useFilterStore } from "../hooks/FilterMenu";
-import { useRecommendation } from "../hooks/UseRecommendations";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterItems";
 import { shallow } from "zustand/shallow";
@@ -14,8 +13,7 @@ export default function Search() {
     const [searchResult, setSearchResult] = useSearchResult((state) =>
         [state.searchResult, state.setSearchResult], shallow);
     
-    const [recoResults, setRecoResults] = useRecommendation((state)=>
-        [state.recoResults, state.setRecoResults], shallow);
+
 
         const key1 = "13c6c14454a748769e3611a7cf719862";
         const key2 = "74c179cdd6bf42fab75869c258580b05";
@@ -23,20 +21,7 @@ export default function Search() {
         const key4 = "85ce5287879e42978484fcf300dace17";
         const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
 
-    const getRandomCuisine = () => {
-        const currentCuisine = CuisineFilters[Math.floor(Math.random()*CuisineFilters.length)];
-        return(
-            currentCuisine.value
-        )
-    }
-     let cuisine = getRandomCuisine()
-     fetch(`https://api.spoonacular.com/recipes/random?number=4&tags=${cuisine}&apiKey=${key4}`)
-     .then((response) => response.json())
-     .then((result) => {
-         setRecoResults(cuisine);
-         console.log(result)
-         console.log(cuisine)
-     } ,[4]);
+
     
         //store for filter terms
     const state = useFilterStore.getState((state) => state);
