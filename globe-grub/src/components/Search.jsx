@@ -42,7 +42,7 @@ export default function Search() {
 
     const filterUrl = async (searchString) => {
         try {
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key5}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key2}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
             console.log(url);
             const response = await fetch(url);
             const result = await response.json();
@@ -109,12 +109,18 @@ export default function Search() {
         await filterUrl(searchString);
     }
 
+    const clearSearchBar = () => {
+        document.querySelector(".searchbar").value = "";
+        setSearchInput("")
+    }
     const handleChange = (e) => {
         setSearchInput(e.target.value);
+       
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
         await filterUrl("");
+        clearSearchBar();
     };
     return (
         <>
@@ -127,6 +133,13 @@ export default function Search() {
                         placeholder="search.."
                         onChange={handleChange}
                     />
+                    {searchInput!= "" ?
+                    
+                    <button  type="button" className="clear-search-btn" onClick={()=> clearSearchBar()}>
+
+                        <i class="fa-solid fa-xmark clear-search-icon"></i>
+                    </button>
+                    :
                     <button
                         type="button"
                         className="search-btn color-primary" onClick={() => setShowFilterMenu(!showFilterMenu)}
@@ -134,8 +147,18 @@ export default function Search() {
                         <i className="fa-solid fa-sliders slider-icon"></i>
                         {/*room for filtermenu component */}
                     </button>
+                    }
                 </div>
+                {searchInput!= "" ?
+            
+                <button type="submit" className="search-field background-primary">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    {searchInput}
+                </button>:
+                <></>
+        }
             </form>
+            
             {/* tillfällig div med för filtreringen */}
 
             <div className={`filter-menu background-primary ${showFilterMenu ? "" : "filter-show"} `}>

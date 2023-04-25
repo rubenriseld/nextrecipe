@@ -239,7 +239,23 @@ header {
 .search-form {
   width: 100%;
 }
-
+.search-field{
+    position: absolute;
+    border:rgba(0, 0, 0, 0.5) 3px solid;
+    border-radius: 25px;
+    margin-top: 0.5rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    font-size: 1.3rem;
+}
+.search-icon, .clear-search-icon{
+    padding-right: 0.8rem;
+    background: none;
+    
+}
+.clear-search-icon{
+    color:white;
+    font-size: 150%;
+}
 .searchbar-container {
   /*container för sökrutan samt filterknapp/kommande filtermeny*/
   margin-top: 7%;
@@ -268,7 +284,9 @@ header {
   width: 3rem;
   /* padding: 9px 10px 9px 10px;  */
 }
-
+.clear-search-btn{
+    background: none;
+}
 .search-icon {
   /*kommande sök-ikon som byter ut slider-ikonen när något skrivs i sökrutan*/
 }
