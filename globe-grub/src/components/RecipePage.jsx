@@ -1,5 +1,7 @@
 import Checkbox from "./Checkbox";
 import RecipeRating from "./RecipeRating";
+import  Tags from "./Tags";
+
 import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSearchResult } from "../hooks/useSearchResult";
@@ -19,7 +21,7 @@ export default function RecipePage() {
     const key4 = "85ce5287879e42978484fcf300dace17";
     const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
 
-    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key5}&includeNutrition=true`;
+    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key3}&includeNutrition=true`;
 
     useEffect(() => {
         fetch(url)
@@ -54,6 +56,15 @@ export default function RecipePage() {
                     <div className="flex flex-separate align-items-center">
                         {/* <!-- Taggar --> */}
                         <div className="flex tag-container">
+                            <Tags 
+                                    time={recipe.time} 
+                                    cuisines={recipe.cuisines} 
+                                    diets={recipe.diets} 
+                                    dishTypes={recipe.dishTypes} 
+                                    vegan={recipe.vegan} 
+                                    vegetarian={recipe.vegetarian}
+                                    clickable={true}/>
+
                             {/* <!--  ----   TAG COMPONENTS ---- --> */}
                             {/* <!-- vi kommer göra en komponent för en enskild tagg, så på receptkorts-komponenter
                             kommer vi ha tre tagg-komponenter
@@ -65,7 +76,7 @@ export default function RecipePage() {
                             {recipe.diets.map((dietTag) => {
                                 return <p className="tag color-secondary">{dietTag}</p>;
                             })} */}
-                            {recipe.readyInMinutes == null ?
+                            {/* {recipe.readyInMinutes == null ?
                                     <></> :
                                     <p className="tag color-tag-one text-color-primary">{recipe.readyInMinutes} min</p>
                                 }
@@ -76,7 +87,7 @@ export default function RecipePage() {
                                 {recipe.diets === undefined || recipe.diets.length == 0 ?
                                     <></> :
                                     <p className="tag color-tag-three text-color-primary">{recipe.diets[0].substring(0, 13)}</p>
-                                }
+                                } */}
 
                             {/* <!-- END OF TAG COMPONENTS --> */}
                         </div>
