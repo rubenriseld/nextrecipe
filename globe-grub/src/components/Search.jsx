@@ -160,7 +160,7 @@ export default function Search() {
     return (
         <>
             <form className="search-form" onSubmit={handleSubmit}>
-                <div className="searchbar-container color-secondary">
+                <div className="searchbar-container color-secondary flex-separate">
                     {/* {searchInputArray.map(x => {
                         return(
                             <button type="button" onClick={()=>removeSearchTag(x)}>{x}</button>
@@ -173,7 +173,7 @@ export default function Search() {
                         placeholder="search.."
                         onChange={handleChange}
                     />
-                    <div>
+                    <div className="flex">
 
                         {searchInput != "" ?
 
