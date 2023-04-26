@@ -32,9 +32,9 @@ export default function Header() {
                     setSticky(false);
                     return;
                 }
-            if(currentScroll > lastScroll && sticky == true){
+            if(currentScroll > lastScroll ){
                 setSticky(false);
-            }else if (currentScroll < lastScroll && sticky == false){
+            }else if (currentScroll < lastScroll){
                 setSticky(true);
             }
             lastScroll = currentScroll;
