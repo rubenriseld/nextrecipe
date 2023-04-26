@@ -9,6 +9,7 @@ import { FilterButton } from "./FilterButton";
 export default function Search() {
     // search string
     const [searchInput, setSearchInput] = useState("");
+    // const [searchInputArray, setSearchInputArray] = useState([]);
     let searchString = "";
     //search store for sending to indexpage
     const [searchResult, setSearchResult] = useSearchResult((state) =>
@@ -22,6 +23,7 @@ export default function Search() {
     const key3 = "c02162ede9394dd8bca983829213bd71";
     const key4 = "85ce5287879e42978484fcf300dace17";
     const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
+    const key6 = "15c980413ad44f09ba2ac7e73f076610";
 
     // filter menu stuff
     const [showFilterMenu, setShowFilterMenu] = useState(false);
@@ -39,23 +41,24 @@ export default function Search() {
     const [showTimeFilter, setShowTimeFilter] = useState(false);
     const [showMealFilter, setShowMealFilter] = useState(false);
 
+    //close filter menu when clicking outsie
     const ref = useRef(null);
-    useEffect(()=> {
+    useEffect(() => {
         document.addEventListener("mousedown", Clickout);
         return () => {
             document.removeEventListener("mousedown", Clickout);
         };
     }, []);
-    
+
     const Clickout = (e) => {
-        if(showFilterMenu && !ref.current.contains(e.target)){
+        if (showFilterMenu && !ref.current.contains(e.target)) {
             setShowFilterMenu(false);
         }
     };
 
     const filterUrl = async (searchString) => {
         try {
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key2}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key6}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
             console.log(url);
             const response = await fetch(url);
             const result = await response.json();
@@ -75,7 +78,7 @@ export default function Search() {
     }
 
     const getActiveButtons = async () => {
-        let searchString = "";
+        // let searchString = "";
 
         let buttons = document.querySelectorAll('.active-btn');
         // let buttons = activeButtons;
@@ -124,21 +127,45 @@ export default function Search() {
 
     const clearSearchBar = () => {
         document.querySelector(".searchbar").value = "";
-        setSearchInput("")
+        setSearchInput("");
     }
     const handleChange = (e) => {
+        //måste kirra så searchinput lagras medan man skriver nå nytt
         setSearchInput(e.target.value);
-       
-    };
+
+        // document.querySelector(".searchbar").value = e.target.value;
+
+
+    }
+    // const saveSearch = () => {
+    //     //pusha sökordet till arrayen
+    //     setSearchInputArray(searchInputArray => [...searchInputArray, searchInput]);
+    //     searchInputArray.forEach(searchTag => {
+    //         searchString += searchTag+",";//wtf
+
+    //     });
+    //     console.log("save search: "+searchString);
+    //     // handleSubmit();
+    // }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await filterUrl("");
-        clearSearchBar();
+        if (searchString != "") {
+            console.log(searchString);
+            await filterUrl(searchString);
+
+        } else {
+            await filterUrl("");
+        }
     };
     return (
         <>
             <form className="search-form" onSubmit={handleSubmit}>
                 <div className="searchbar-container color-secondary">
+                    {/* {searchInputArray.map(x => {
+                        return(
+                            <button type="button" onClick={()=>removeSearchTag(x)}>{x}</button>
+                        );
+                    })} */}
                     <input
                         className="searchbar"
                         type="text"
@@ -146,32 +173,44 @@ export default function Search() {
                         placeholder="search.."
                         onChange={handleChange}
                     />
-                    {searchInput!= "" ?
-                    
-                    <button  type="button" className="clear-search-btn" onClick={()=> clearSearchBar()}>
+                    <div>
 
-                        <i class="fa-solid fa-xmark clear-search-icon"></i>
-                    </button>
-                    :
-                    <button
-                        type="button"
-                        className="search-btn color-primary" onClick={() => setShowFilterMenu(!showFilterMenu)}
-                    >
-                        <i className="fa-solid fa-sliders slider-icon"></i>
-                        {/*room for filtermenu component */}
-                    </button>
-                    }
+                        {searchInput != "" ?
+
+                            //knapp med "X" för att rensa sökrutan
+                            <button type="button" className="clear-search-btn" onClick={() => clearSearchBar()}>
+
+                                <i class="fa-solid fa-xmark clear-search-icon"></i>
+                            </button>
+                            :
+                            <></>}
+
+                        <button
+                            type="submit"
+                            className="search-btn color-primary"
+                        >
+                            <i className="fa-solid fa-magnifying-glass search-icon"></i>
+                        </button>
+                        <button
+                            type="button"
+                            className="slider-btn color-primary" 
+                            onClick={() => setShowFilterMenu(!showFilterMenu)}
+                        >
+                            <i className="fa-solid fa-sliders slider-icon"></i>
+                        </button>
+                    </div>
+
                 </div>
-                {searchInput!= "" ?
-            
-                <button type="submit" className="search-field background-primary">
+                {/* {searchInput!= "" ?
+                //knapp för att söka med sökrutans sökord i sig
+                <button type="submit" className="search-field background-primary" onClick={()=> saveSearch()}>
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    {searchInput}
+                    {document.querySelector(".searchbar").value}
                 </button>:
-                <></>
-        }
+                <></> */}
+
             </form>
-            
+
             {/* tillfällig div med för filtreringen */}
 
             <div className={`filter-menu background-primary ${showFilterMenu ? "" : "filter-show"} `} ref={ref}>
@@ -182,7 +221,7 @@ export default function Search() {
 
                     </button>
                 </div>
-                    <hr className="filter-line"></hr>
+                <hr className="filter-line"></hr>
                 <div className="menu-body">
                     <div className="filter-container">
                         <button type="button" className="collapse-btn flex flex-separate background-primary" onClick={() => { setShowCuisineFilter(!showCuisineFilter); setCuisineCollapsed(!cuisineCollapsed) }}>
@@ -262,9 +301,9 @@ export default function Search() {
 
 
                 <div className="filter-footer">
-                    <button className="clear-filter-btn color-secondary" onClick={() => inactivateButtons()}>Clear Filter</button>
+                    <button className="clear-filter-btn text-color-primary" onClick={() => inactivateButtons()}>Clear Filters</button>
 
-                    <button className="apply-filter-btn color-primary" onClick={() => {getActiveButtons(); setShowFilterMenu()}}>Apply filter</button>
+                    <button className="apply-filter-btn color-primary text-color-light" onClick={() => { getActiveButtons(); setShowFilterMenu() }}>Apply Filters</button>
                 </div>
             </div>
         </>
