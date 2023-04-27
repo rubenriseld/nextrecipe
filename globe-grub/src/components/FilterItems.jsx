@@ -6,6 +6,7 @@ export const CuisineFilters = [
         name: "Thai",
         value: "thai",
         type: "C",
+        
     },
     {
         name: "African",
