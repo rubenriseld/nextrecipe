@@ -49,7 +49,6 @@ export default function Search() {
         //store for filter terms
     const state = useFilterStore.getState((state) => state);
 
-
     // filter menu stuff
     const [showFilterMenu, setShowFilterMenu] = useState(false);
 
