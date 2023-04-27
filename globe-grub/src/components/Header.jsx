@@ -52,16 +52,16 @@ export default function Header() {
 
 
   return (
-    <header className={`background-primary ${sticky ? "header-sticky":""}`}>
+    <header className={`background-primary ${sticky ? "header-sticky":""} ${showMobileMenu?"header-fixed": ""}`}>
       {/* <header className="background-primary"> */}
-      <nav className="menu max-width-container">
+      <nav className="menu max-width-container background-primary">
         <NavLink className="logo-link" to="/">
           <Logo />
         </NavLink>
 
         <div
-          className={`menu-links-desktop ${
-            showMobileMenu ? "" : "menu-links"
+          className={`menu-links-desktop background-primary ${
+            showMobileMenu ? "menu-links" : "menu-links-hidden"
           } `}
         >
           <NavLink
@@ -84,10 +84,10 @@ export default function Header() {
 
         <button
         //   href="javascript:void(0);"
-          className="burger"
+          className={`burger `}
           onClick={() => setShowMobileMenu(!showMobileMenu)}
         >
-          <i className="fa fa-bars text-color-primary burger-icon"></i>
+          <i className={`fa text-color-primary burger-icon ${showMobileMenu? "fa-close": "fa-bars"}`}></i>
         </button>
       </nav>
     </header>
