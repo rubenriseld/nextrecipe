@@ -109,7 +109,7 @@ export const CuisineFilters = [
         type: "C",
     },
     {
-        name: "Middle Eastern",
+        name: "Middleastern",
         value: "middle-eastern",
         type: "C",
     },

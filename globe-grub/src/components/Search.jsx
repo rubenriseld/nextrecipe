@@ -14,13 +14,13 @@ export default function Search() {
         [state.searchResult, state.setSearchResult], shallow);
     
 
-        const key6 = "e50fb6304553492781cba43da8b4bc7f";
         const key1 = "13c6c14454a748769e3611a7cf719862";
         const key2 = "74c179cdd6bf42fab75869c258580b05";
         const key3 = "c02162ede9394dd8bca983829213bd71";
         const key4 = "85ce5287879e42978484fcf300dace17";
         const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
- const key7 = "15c980413ad44f09ba2ac7e73f076610";
+        const key6 = "e50fb6304553492781cba43da8b4bc7f";
+        const key7 = "15c980413ad44f09ba2ac7e73f076610";
 
     
         //store for filter terms
@@ -47,7 +47,7 @@ export default function Search() {
 
     const filterUrl = async (searchString) => {
         try {
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key6}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key5}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
             console.log(url);
             const response = await fetch(url);
             const result = await response.json();
