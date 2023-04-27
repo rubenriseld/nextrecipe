@@ -42,8 +42,9 @@ export default function Search() {
         const key3 = "c02162ede9394dd8bca983829213bd71";
         const key4 = "85ce5287879e42978484fcf300dace17";
         const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
-        const key6 = "e50fb6304553492781cba43da8b4bc7f";
+        const key6 = "ce46b5aef3da4d67b273b1b7dec8567f";
         const key7 = "15c980413ad44f09ba2ac7e73f076610";
+        const key8 = "e50fb6304553492781cba43da8b4bc7f"; 
 
     
         //store for filter terms
