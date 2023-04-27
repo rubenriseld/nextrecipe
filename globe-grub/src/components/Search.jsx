@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFilterStore } from "../hooks/FilterMenu";
-import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterItems";
 import { useSearchResult } from "../hooks/useSearchResult";
-
+import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterItems";
 import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
 
@@ -13,15 +12,20 @@ export default function Search() {
     //search store for sending to indexpage
     const [searchResult, setSearchResult] = useSearchResult((state) =>
         [state.searchResult, state.setSearchResult], shallow);
+    
 
-    //store for filter terms
+        const key1 = "13c6c14454a748769e3611a7cf719862";
+        const key2 = "74c179cdd6bf42fab75869c258580b05";
+        const key3 = "c02162ede9394dd8bca983829213bd71";
+        const key4 = "85ce5287879e42978484fcf300dace17";
+        const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
+        const key6 = "e50fb6304553492781cba43da8b4bc7f";
+        const key7 = "15c980413ad44f09ba2ac7e73f076610";
+
+    
+        //store for filter terms
     const state = useFilterStore.getState((state) => state);
 
-    const key1 = "13c6c14454a748769e3611a7cf719862";
-    const key2 = "74c179cdd6bf42fab75869c258580b05";
-    const key3 = "c02162ede9394dd8bca983829213bd71";
-    const key4 = "85ce5287879e42978484fcf300dace17";
-    const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
 
     // filter menu stuff
     const [showFilterMenu, setShowFilterMenu] = useState(false);
@@ -39,6 +43,7 @@ export default function Search() {
     const [showTimeFilter, setShowTimeFilter] = useState(false);
     const [showMealFilter, setShowMealFilter] = useState(false);
 
+    
 
     const filterUrl = async (searchString) => {
         try {
@@ -233,4 +238,5 @@ export default function Search() {
             </div>
         </>
     )
+    
 };
