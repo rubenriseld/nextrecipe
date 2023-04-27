@@ -1,5 +1,7 @@
 import Checkbox from "./Checkbox";
 import RecipeRating from "./RecipeRating";
+import  Tags from "./Tags";
+
 import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSearchResult } from "../hooks/useSearchResult";
@@ -13,13 +15,15 @@ export default function RecipePage() {
     const location = useLocation();
     const id = location.state;
 
+    const key6 = "e50fb6304553492781cba43da8b4bc7f";
     const key1 = "13c6c14454a748769e3611a7cf719862";
     const key2 = "74c179cdd6bf42fab75869c258580b05";
     const key3 = "c02162ede9394dd8bca983829213bd71";
     const key4 = "85ce5287879e42978484fcf300dace17";
     const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
+    const key7 = "15c980413ad44f09ba2ac7e73f076610";
 
-    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key5}&includeNutrition=true`;
+    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key6}&includeNutrition=true`;
 
     useEffect(() => {
         fetch(url)
@@ -54,6 +58,15 @@ export default function RecipePage() {
                     <div className="flex flex-separate align-items-center">
                         {/* <!-- Taggar --> */}
                         <div className="flex tag-container">
+                            <Tags 
+                                    time={recipe.time} 
+                                    cuisines={recipe.cuisines} 
+                                    diets={recipe.diets} 
+                                    dishTypes={recipe.dishTypes} 
+                                    vegan={recipe.vegan} 
+                                    vegetarian={recipe.vegetarian}
+                                    clickable={true}/>
+
                             {/* <!--  ----   TAG COMPONENTS ---- --> */}
                             {/* <!-- vi kommer göra en komponent för en enskild tagg, så på receptkorts-komponenter
                             kommer vi ha tre tagg-komponenter
@@ -65,7 +78,7 @@ export default function RecipePage() {
                             {recipe.diets.map((dietTag) => {
                                 return <p className="tag color-secondary">{dietTag}</p>;
                             })} */}
-                            {recipe.readyInMinutes == null ?
+                            {/* {recipe.readyInMinutes == null ?
                                     <></> :
                                     <p className="tag color-tag-one text-color-primary">{recipe.readyInMinutes} min</p>
                                 }
@@ -76,7 +89,7 @@ export default function RecipePage() {
                                 {recipe.diets === undefined || recipe.diets.length == 0 ?
                                     <></> :
                                     <p className="tag color-tag-three text-color-primary">{recipe.diets[0].substring(0, 13)}</p>
-                                }
+                                } */}
 
                             {/* <!-- END OF TAG COMPONENTS --> */}
                         </div>

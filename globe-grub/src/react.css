@@ -43,7 +43,6 @@
 }
 .text-color-light {
     color: #fafafa;
-
   }
 .background-secondary {
   background-color: #f0efee;
@@ -312,7 +311,7 @@ header {
   border-style: none;
   height: 3rem;
   width: 3rem;
-
+  
   /* padding: 9px 10px 9px 10px;  */
 }
 .slider-btn {
@@ -526,6 +525,8 @@ footer {
     margin-bottom: 1rem;
     height: 1.8rem;
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 /*SHOW-MORE-BUTTON*/
