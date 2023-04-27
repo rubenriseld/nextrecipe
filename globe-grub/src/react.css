@@ -474,7 +474,10 @@ footer {
     font-size: 1.4rem;
     margin-bottom: 1rem;
     height: 1.8rem;
+    /* overflow: hidden; */
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /*SHOW-MORE-BUTTON*/
