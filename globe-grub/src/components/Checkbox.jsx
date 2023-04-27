@@ -11,7 +11,7 @@ export default function Checkbox(props){
         <div className="flex checkbox-container">
             <input 
             type="checkbox" 
-            class="checkbox" 
+            className="checkbox" 
             checked={isChecked} 
             onChange={handleOnChange} />
                 <p className={`instruction ${isChecked ? "linethrough": ""}`}>

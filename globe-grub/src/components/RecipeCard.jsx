@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import RecipeRating from "./RecipeRating";
+import  Tags from "./Tags";
 
 
 export default function RecipeCard(props) {
     const cuisines = Array.from(props.cuisines);
-    const diets = Array.from(props.diets);
-    
+    const diets = Array.from(props.diets);          //ska dessa tas bort kanske??
+    const dishTypes = Array.from(props.dishTypes);
     //skapa en array av vektor cuisines som skickades hit från resultcontainer för att 
     //kunna skriva ut varje cuisinetyp (asian, thai osv) map funkar bara me arrayer 
+
+
     return (
         // <!-- RECIPE CARD COMPONENT -->
         <article className="recipe-card">
@@ -26,8 +29,15 @@ export default function RecipeCard(props) {
                           kommer vi ha tre tagg-komponenter
                        --> */}
                             <div className="flex flex-column tag-container">
-
-                                {props.time != null ?
+                                <Tags 
+                                    time={props.time} 
+                                    cuisines={props.cuisines} 
+                                    diets={props.diets} 
+                                    dishTypes={props.dishTypes} 
+                                    vegan={props.vegan} 
+                                    vegetarian={props.vegetarian}
+                                    clickable={false}/>
+                                {/* {props.time != null ?
                                     <p className="tag color-tag-one text-color-primary">{props.time} min</p>
                                     : <p></p>
 
@@ -42,7 +52,7 @@ export default function RecipeCard(props) {
                                     <p className="tag color-tag-three text-color-primary">{props.diets[0].substring(0, 13)}</p>
 
 
-                                }
+                                } */}
                             </div>
                             {/* {cuisines.map((cuisineTag) =>{ 
                  if(cuisines.length > 0){

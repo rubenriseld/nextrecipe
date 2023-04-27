@@ -145,6 +145,7 @@ export const DietFilters = [
         name: "Gluten Free",
         value: "gluten-free",
         type: "D",
+        tagValue: "gluten free",
     },
     {
         name: "Ketogenic",
@@ -155,6 +156,7 @@ export const DietFilters = [
         name: "Lacto-Vegetarian",
         value: "lacto-vegetarian",
         type: "D",
+        tagValue: "lacto ovo vegetarian",
     },
     {
         name: "Ovo-Vegetarian",
@@ -203,11 +205,13 @@ export const MealTypeFilters = [
         name: "Lunch",
         value: "appetizers",
         type: "M",
+        tagValue: "lunch",
     },
     {
         name: "Dinner",
         value: "main-course",
         type: "M",
+        tagValue: "dinner",
     },
     {
         name: "Snack",
@@ -241,6 +245,8 @@ export const IntoleranceFilters = [
         name: "Dairy",
         value: "dairy",
         type: "I",
+        tagValue: "dairy free",
+        
     },
     {
         name: "Egg",
@@ -304,15 +310,24 @@ export const TimeFilters = [
         name: "15 min",
         value: "15",
         type: "T",
-    },
-    {
-        name: "20 min",
-        value: "20",
-        type: "T",
+        tagValue: 15,
     },
     {
         name: "30 min",
         value: "30",
         type: "T",
+        tagValue: 30,
+    },
+    {
+        name: "45 min",
+        value: "45",
+        type: "T",
+        tagValue: 45,
+    },
+    {
+        name: "60 min",
+        value: "60",
+        type: "T",
+        tagValue: 60,
     },
 ]

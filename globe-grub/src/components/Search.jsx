@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
-import { useFilterStore } from "../hooks/FilterMenu";
+
+import { useFilterStore } from "../hooks/useFilterStore";
 import { useSearchResult } from "../hooks/useSearchResult";
+import { useTag } from "../hooks/useTag";
+
 import { useRef } from 'react';
 import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterItems";
 import { shallow } from "zustand/shallow";
@@ -15,6 +18,24 @@ export default function Search() {
     const [searchResult, setSearchResult] = useSearchResult((state) =>
         [state.searchResult, state.setSearchResult], shallow);
     
+
+
+        //för att göra sökning när man klickat på en tagg
+        const [tag, setTag] = useTag(
+            (state) => [state.tag, state.setTag],
+            shallow
+        );
+        // setTag("hej");
+
+
+        useEffect(() => {
+        // searchString = ;
+        // if(tag == null ||){ 
+        // } 
+        filterUrl(tag);
+        console.log(tag);
+        }, []);
+ 
 
         const key1 = "13c6c14454a748769e3611a7cf719862";
         const key2 = "74c179cdd6bf42fab75869c258580b05";
@@ -68,6 +89,8 @@ export default function Search() {
             const result = await response.json();
             setSearchResult(result.results);
             console.log(result)
+            // setTag("");
+
             //result.results är en lista av alla recept, dessa skickas in i childtoparent    
         } catch (e) {
             console.log(e);
@@ -93,7 +116,7 @@ export default function Search() {
         let intoleranceString = "";
         let timeString = "";
         buttons.forEach(btn => {
-
+            
             if (btn.dataset.type == "C" & cuisineString == "") {
                 cuisineString += state.cuisine + btn.value
             } else if (btn.dataset.type == "C" & cuisineString != "") {
