@@ -41,7 +41,10 @@
 .background-primary {
   background-color: #fafafa;
 }
-
+.text-color-light {
+    color: #fafafa;
+  
+  }
 .background-secondary {
   background-color: #f0efee;
 }
@@ -239,7 +242,18 @@ header {
 .search-form {
   width: 100%;
 }
-
+.search-field{
+    position: absolute;
+    border:rgba(0, 0, 0, 0.5) 3px solid;
+    border-radius: 25px;
+    margin-top: 0.5rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    font-size: 1.3rem;
+}
+.clear-search-icon{
+    color:white;
+    font-size: 150%;
+}
 .searchbar-container {
   /*container för sökrutan samt filterknapp/kommande filtermeny*/
   margin-top: 7%;
@@ -256,24 +270,30 @@ header {
   background-color: transparent;
   border-style: none;
   color: white;
-  padding: 4% 0% 4% 5%;
-  width: 1100%;
+  padding-left:1rem;
+  font-size: 1.2rem;
+  /* padding: 4% 0% 4% 5%; */
+  /* width: 1100%; */
 }
 
-.search-btn {
+.search-btn, .slider-btn {
   /*sökknappen (om inget står i sökrutan öppnar den filtermenyn)*/
   border-radius: 50%;
   border-style: none;
   height: 3rem;
   width: 3rem;
+  
   /* padding: 9px 10px 9px 10px;  */
 }
-
-.search-icon {
-  /*kommande sök-ikon som byter ut slider-ikonen när något skrivs i sökrutan*/
+.slider-btn {
+    margin-left:0.2rem;
+}
+.clear-search-btn{
+    padding-right:1rem;
+    background: none;
 }
 
-.slider-icon {
+.slider-icon, .search-icon {
   /*ikon för filtermenyn*/
   color: rgba(255, 255, 255, 0.864);
   font-size: 150%;
@@ -303,7 +323,8 @@ header {
     top: 0;
     right: 0;
     padding: 1rem;
-    background-color: shade(black);
+    /* background-color: shade(black); */
+    box-shadow: 0 -5px 7px rgba(0, 0, 0, 0.2);
 }
 
 .filter-head {
@@ -622,17 +643,16 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     font-size: 110%;
   }
 
-  .search-btn {
+  .slider-btn, .search-btn {
     /*sökknappen (om inget står i sökrutan öppnar den filtermenyn)*/
     border-radius: 50%;
     border-style: none;
+    height: 3rem;
+  width: 3rem;
     /* padding: 3% 3.5% 3% 3.5%;  */
   }
 
-  .slider-icon {
-    /*ikon för filtermenyn*/
-    font-size: 140%;
-  }
+
 
   .filter-menu{
     width: 30%;
