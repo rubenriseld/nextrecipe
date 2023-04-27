@@ -16,7 +16,7 @@ export default function IndexPage() {
         <Search/> 
       </section>
       <Ad /> 
-      {data.length == ""
+      {data == null
       ?
       <>
         <Recommendations></Recommendations>

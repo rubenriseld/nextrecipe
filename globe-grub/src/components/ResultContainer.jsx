@@ -10,13 +10,14 @@ export default function ResultContainer(props) {
  
   return (
     <section className="result-container max-width-container">
-      {props.title != ""
+      {props.title != null
       ?
       <h1>Discover {props.title} Recipes</h1>
       : null
     }
       <div className="recipe-card-container">
-        {props.data.map((recipe) => {
+        {props.data != null
+        ? props.data.map((recipe) => {
           return (
             <RecipeCard
               id={recipe.id}
@@ -27,12 +28,12 @@ export default function ResultContainer(props) {
               time={recipe.readyInMinutes}
               aggregateLikes={recipe.aggregateLikes}
             />
-          );
-          {
-            /*props (property) .data (det som skickats från indexpage) mappas, 
+        )})
+        : <p>Key is used</p>}
+       
+      {/* /*props (property) .data (det som skickats från indexpage) mappas, 
        relevant data skickas till recipecard som hämtas ur varje enskild recept i result.results  */
-          }
-        })}
+    }
       </div>
     </section>
   );
