@@ -1,5 +1,4 @@
-import { shallow } from "zustand/shallow";
-import { useRecommendation } from "../hooks/UseRecommendations";
+
 import { useEffect, useState } from "react";
 import { CuisineFilters} from "./FilterItems";
 import ResultContainer from "./ResultContainer";
@@ -14,29 +13,28 @@ export default function Recommendations(){
     const key7 = "15c980413ad44f09ba2ac7e73f076610";
  
     
-    const [recoResults, setRecoResults] = useRecommendation((state) =>
-    [state.recoResults, state.setRecoResults], shallow);
+
     const [poo, setResult] = useState([]);
+    const [test, setCuisine] = useState("");
     
     const getRandomCuisine = () => {
         const currentCuisine = CuisineFilters[Math.floor(Math.random()*CuisineFilters.length)];
-      
-        return(
-            currentCuisine.value
-        )
+        return currentCuisine
     }  
     useEffect(()=>{
-      let cuisine = getRandomCuisine()   
+      let cuisine = getRandomCuisine()
       const fetchData = async () =>{
-        const response= await  fetch(`https://api.spoonacular.com/recipes/random?number=4&tags=${cuisine}&apiKey=${key7}`);
+        const response= await  fetch(`https://api.spoonacular.com/recipes/random?number=4&tags=${cuisine.value}&apiKey=${key1}`);
         const result = await response.json();
+        console.log(cuisine.value)
         setResult(result.recipes);
+        setCuisine(cuisine.name);
       }
       fetchData();
     },[])   
       return(
         <>
-       <ResultContainer data={poo} ></ResultContainer>
+       <ResultContainer data={poo} title={test} ></ResultContainer>
         </>
       )
           

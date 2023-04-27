@@ -1,19 +1,18 @@
 import { useState } from "react";
 import RecipeCard from "./RecipeCard";
-import { useRecommendation } from "../hooks/UseRecommendations";
-import Recommendations from "./Recommendations";
+
 
 export default function ResultContainer(props) {
 
 
- const cuisinename = useRecommendation.getState((state) => state.recoResults);
-
   //props är datat som skickas från search => indexpage => resultcontainer (fetchen med sökresultat result.results)
- 
+ const Capitalize = (str) => {
+return str.charAt(0).toUpperCase() + str.slice(1);
+ }
  
   return (
     <section className="result-container max-width-container">
-        <h1></h1>
+        <h1>Discover  {Capitalize(props.title)} Recipes</h1>
       <div className="recipe-card-container">
         {props.data.map((recipe) => {
           return (
