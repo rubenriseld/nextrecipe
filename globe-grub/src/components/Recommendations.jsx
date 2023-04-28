@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { CuisineFilters} from "./FilterItems";
 import ResultContainer from "./ResultContainer";
+
 export default function Recommendations(){
 
   const key6 = "e50fb6304553492781cba43da8b4bc7f";
@@ -24,7 +25,7 @@ export default function Recommendations(){
     useEffect(()=>{
       let cuisine = getRandomCuisine()
       const fetchData = async () =>{
-        const response= await  fetch(`https://api.spoonacular.com/recipes/random?number=4&tags=${cuisine.value}&apiKey=${key5}`);
+        const response= await  fetch(`https://api.spoonacular.com/recipes/random?number=4&tags=${cuisine.value}&apiKey=${key7}`);
         const result = await response.json();
         console.log(cuisine.value)
         setResult(result.recipes);
@@ -34,7 +35,7 @@ export default function Recommendations(){
     },[])   
       return(
         <>
-       <ResultContainer data={poo} title={test} ></ResultContainer>
+       <ResultContainer data={poo} cuisineTitle={test} ></ResultContainer>
         </>
       )
           

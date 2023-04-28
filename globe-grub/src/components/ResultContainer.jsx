@@ -10,10 +10,10 @@ export default function ResultContainer(props) {
  
   return (
     <section className="result-container max-width-container">
-      {props.title != null
+      {props.title == null
       ?
-      <h1>Discover {props.title} Recipes</h1>
-      : null
+      <h1>Discover {props.cuisineTitle} Recipes</h1>
+      :   <h1>Found {props.data.length} recipes matching: {props.title}</h1>
     }
       <div className="recipe-card-container">
         {props.data != null

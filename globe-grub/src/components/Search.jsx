@@ -17,6 +17,10 @@ export default function Search() {
     //search store for sending to indexpage
     const [searchResult, setSearchResult] = useSearchResult((state) =>
         [state.searchResult, state.setSearchResult], shallow);
+
+
+    const [title, setTitle]= useSearchResult((state)=>
+      [state.title, state.setTitle],shallow);
     
 
 
@@ -28,13 +32,13 @@ export default function Search() {
         // setTag("hej");
 
 
-        useEffect(() => {
-        // searchString = ;
-        // if(tag == null ||){ 
-        // } 
-        filterUrl(tag);
-        console.log(tag);
-        }, []);
+        // useEffect(() => {
+        // // searchString = ;
+        // // if(tag == null ||){ 
+        // // } 
+        // filterUrl(tag);
+        // console.log(tag);
+        // }, []);
  
 
         const key1 = "13c6c14454a748769e3611a7cf719862";
@@ -81,12 +85,18 @@ export default function Search() {
     };
 
     const filterUrl = async (searchString) => {
-        try {
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key6}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
-            console.log(url);
+        try {   
+            let srchInput= searchInput.replaceAll(' ', '+');
+            console.log(srchInput)
+            const url2 = `https://api.spoonacular.com/recipes/query/analyze?q=${srchInput}&apiKey=${key2}&includeIngredients=${srchInput}&addRecipeInformation=true${searchString}`;
+            //url2 gör flerordssökning som är vettig (rice chicken visar ris och kycklingrätter)
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key2}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            console.log(url2);
+            console.log(searchString);
             const response = await fetch(url);
             const result = await response.json();
             setSearchResult(result.results);
+            setTitle(searchInput);
             console.log(result)
             // setTag("");
 
@@ -158,10 +168,7 @@ export default function Search() {
     const handleChange = (e) => {
         //måste kirra så searchinput lagras medan man skriver nå nytt
         setSearchInput(e.target.value);
-
         // document.querySelector(".searchbar").value = e.target.value;
-
-
     }
     // const saveSearch = () => {
     //     //pusha sökordet till arrayen
