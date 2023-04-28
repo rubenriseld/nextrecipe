@@ -8,10 +8,13 @@ import { useRef } from 'react';
 import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterItems";
 import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
+import { useKey } from "../hooks/useKey";
 
 export default function Search() {
     // search string
     const [searchInput, setSearchInput] = useState("");
+   const key = useKey((state) => state.key);
+
     // const [searchInputArray, setSearchInputArray] = useState([]);
     let searchString = "";
     //search store for sending to indexpage
@@ -83,7 +86,7 @@ export default function Search() {
 
     const filterUrl = async (searchString) => {
         try {
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key6}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
             console.log(url);
             const response = await fetch(url);
             const result = await response.json();
