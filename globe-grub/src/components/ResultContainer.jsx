@@ -20,12 +20,14 @@ export default function ResultContainer(props) {
         ? props.data.map((recipe) => {
           return (
             <RecipeCard
+                key={recipe.id}
               id={recipe.id}
               title={recipe.title}
               diets={recipe.diets}
               image={recipe.image}
               cuisines={recipe.cuisines}
-              time={recipe.readyInMinutes}
+              dishTypes={recipe.dishTypes}
+              time={recipe.maxReadyTime}
               aggregateLikes={recipe.aggregateLikes}
             />
         )})
