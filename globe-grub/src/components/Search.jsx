@@ -72,7 +72,7 @@ export default function Search() {
         return () => {
             document.removeEventListener("mousedown", Clickout);
         };
-    }, []);
+    }, [ref]);
 
     const Clickout = (e) => {
         if (showFilterMenu && !ref.current.contains(e.target)) {
@@ -82,7 +82,7 @@ export default function Search() {
 
     const filterUrl = async (searchString) => {
         try {
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key6}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key4}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
             console.log(url);
             const response = await fetch(url);
             const result = await response.json();
