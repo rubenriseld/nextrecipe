@@ -13,8 +13,14 @@ export default function ResultContainer(props) {
       {props.title == null
       ?
       <h1>Discover {props.cuisineTitle} Recipes</h1>
-      :   <h1>Found {props.data.length} recipes matching: {props.title}</h1>
+      : props.data == null
+        ?<>
+        <h1>No recipes found matching: {props.title} </h1>
+        <p>Try searching for something else!</p>
+        </> 
+      :<h1>Found {props.data.length} recipes matching: {props.title}</h1>
     }
+
       <div className="recipe-card-container">
         {props.data != null
         ? props.data.map((recipe) => {
@@ -31,7 +37,7 @@ export default function ResultContainer(props) {
               aggregateLikes={recipe.aggregateLikes}
             />
         )})
-        : <p>Key is used</p>}
+        : null}
        
       {/* /*props (property) .data (det som skickats från indexpage) mappas, 
        relevant data skickas till recipecard som hämtas ur varje enskild recept i result.results  */
