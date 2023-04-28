@@ -30,15 +30,17 @@ export default function Search() {
             shallow
         );
         // setTag("hej");
+        console.log(tag)
+        if(tag != ""){
 
-
-        // useEffect(() => {
-        // // searchString = ;
-        // // if(tag == null ||){ 
-        // // } 
-        // filterUrl(tag);
-        // console.log(tag);
-        // }, []);
+            useEffect(() => {
+            // searchString = ;
+            // if(tag == null ||){ 
+            // } 
+            filterUrl(tag);
+            console.log(tag);
+            }, []);
+        }
  
 
         const key1 = "13c6c14454a748769e3611a7cf719862";

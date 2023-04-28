@@ -25,7 +25,7 @@ export default function Recommendations(){
     useEffect(()=>{
       let cuisine = getRandomCuisine()
       const fetchData = async () =>{
-        const response= await  fetch(`https://api.spoonacular.com/recipes/random?number=4&tags=${cuisine.value}&apiKey=${key7}`);
+        const response= await  fetch(`https://api.spoonacular.com/recipes/random?number=4&tags=${cuisine.value}&apiKey=${key5}`);
         const result = await response.json();
         console.log(cuisine.value)
         setResult(result.recipes);
