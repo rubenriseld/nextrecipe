@@ -10,6 +10,16 @@ import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
 
 export default function Search() {
+   
+   
+    const nelkey1 = "13c6c14454a748769e3611a7cf719862";
+    const key2 = "74c179cdd6bf42fab75869c258580b05";
+    const key3 = "c02162ede9394dd8bca983829213bd71";
+    const nelkey4 = "85ce5287879e42978484fcf300dace17";
+    const nelkey5 = "8fbd9413e79a49bfaa909d68f22e0476";
+    const nelkey6 = "e50fb6304553492781cba43da8b4bc7f";
+    const key7 = "15c980413ad44f09ba2ac7e73f076610";
+    const key8 = "ce46b5aef3da4d67b273b1b7dec8567f";
     // search string
     const [searchInput, setSearchInput] = useState("");
     // const [searchInputArray, setSearchInputArray] = useState([]);
@@ -21,8 +31,9 @@ export default function Search() {
 
     const [title, setTitle]= useSearchResult((state)=>
       [state.title, state.setTitle],shallow);
-    
-
+    const  srchInput= searchInput.replaceAll(' ', '+');
+      const url2 = `https://api.spoonacular.com/recipes/query/analyze?q=${srchInput}&apiKey=${key8}&includeIngredients=${srchInput}&addRecipeInformation=true${searchString}`;
+      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key8}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
 
         //för att göra sökning när man klickat på en tagg
         const [tag, setTag] = useTag(
@@ -31,25 +42,20 @@ export default function Search() {
         );
         // setTag("hej");
         console.log(tag)
-        if(tag != ""){
+        const tagg = useTag.getState((state)=> state.tag);
+        if(tagg != ""){
 
             useEffect(() => {
             // searchString = ;
             // if(tag == null ||){ 
             // } 
-            filterUrl(tag);
-            console.log(tag);
+            filterUrl(tagg.tag, url);
+            console.log(tagg.tag);
             }, []);
         }
  
 
-        const key1 = "13c6c14454a748769e3611a7cf719862";
-        const key2 = "74c179cdd6bf42fab75869c258580b05";
-        const key3 = "c02162ede9394dd8bca983829213bd71";
-        const key4 = "85ce5287879e42978484fcf300dace17";
-        const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
-        const key6 = "e50fb6304553492781cba43da8b4bc7f";
-        const key7 = "15c980413ad44f09ba2ac7e73f076610";
+     
 
     
         //store for filter terms
@@ -71,6 +77,7 @@ export default function Search() {
     const [showTimeFilter, setShowTimeFilter] = useState(false);
     const [showMealFilter, setShowMealFilter] = useState(false);
 
+   
     //close filter menu when clicking outsie
     const ref = useRef(null);
     useEffect(() => {
@@ -78,6 +85,7 @@ export default function Search() {
         return () => {
             document.removeEventListener("mousedown", Clickout);
         };
+        
     }, []);
 
     const Clickout = (e) => {
@@ -86,14 +94,13 @@ export default function Search() {
         }
     };
 
-    const filterUrl = async (searchString) => {
+    const filterUrl = async (searchString, url) => {
         try {   
             let srchInput= searchInput.replaceAll(' ', '+');
             console.log(srchInput)
-            const url2 = `https://api.spoonacular.com/recipes/query/analyze?q=${srchInput}&apiKey=${key2}&includeIngredients=${srchInput}&addRecipeInformation=true${searchString}`;
             //url2 gör flerordssökning som är vettig (rice chicken visar ris och kycklingrätter)
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key2}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
-            console.log(url2);
+            
+            console.log(url);
             console.log(searchString);
             const response = await fetch(url);
             const result = await response.json();
@@ -160,7 +167,7 @@ export default function Search() {
         });
         searchString = `${dietString}${cuisineString}${mealtypeString}${intoleranceString}${timeString}`;
         console.log(searchString);
-        await filterUrl(searchString);
+        await filterUrl(searchString, url2);
     }
 
     const clearSearchBar = () => {

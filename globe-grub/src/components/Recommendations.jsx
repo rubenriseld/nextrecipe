@@ -12,7 +12,7 @@ export default function Recommendations(){
   const key4 = "85ce5287879e42978484fcf300dace17";
   const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
   const key7 = "15c980413ad44f09ba2ac7e73f076610";
- 
+  const key8="ce46b5aef3da4d67b273b1b7dec8567f";
     
 
     const [poo, setResult] = useState([]);
@@ -25,7 +25,7 @@ export default function Recommendations(){
     useEffect(()=>{
       let cuisine = getRandomCuisine()
       const fetchData = async () =>{
-        const response= await  fetch(`https://api.spoonacular.com/recipes/random?number=4&tags=${cuisine.value}&apiKey=${key5}`);
+        const response= await  fetch(`https://api.spoonacular.com/recipes/random?number=4&tags=${cuisine.value}&apiKey=${key8}`);
         const result = await response.json();
         console.log(cuisine.value)
         setResult(result.recipes);
