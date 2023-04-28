@@ -12,14 +12,18 @@ import { FilterButton } from "./FilterButton";
 export default function Search() {
    
    
-    const nelkey1 = "13c6c14454a748769e3611a7cf719862";
+    const key1 = "13c6c14454a748769e3611a7cf719862"; //nel
     const key2 = "74c179cdd6bf42fab75869c258580b05";
     const key3 = "c02162ede9394dd8bca983829213bd71";
-    const nelkey4 = "85ce5287879e42978484fcf300dace17";
-    const nelkey5 = "8fbd9413e79a49bfaa909d68f22e0476";
-    const nelkey6 = "e50fb6304553492781cba43da8b4bc7f";
+    const key4 = "85ce5287879e42978484fcf300dace17";//nel
+    const key5 = "8fbd9413e79a49bfaa909d68f22e0476";//nel
+    const key6 = "ce46b5aef3da4d67b273b1b7dec8567f";
     const key7 = "15c980413ad44f09ba2ac7e73f076610";
-    const key8 = "ce46b5aef3da4d67b273b1b7dec8567f";
+    const key8 = "e50fb6304553492781cba43da8b4bc7f";//nel
+    const key9 = "32603e2291624b4689643c2428fbe5f1";
+    const key10 = "7e4ba385c74c4c0595bbb872618f7fc2";
+    const key11 = "9c18433a167642f1a942f5b66f28a73e";
+    const key12="7d22a6b4acf44702bdd65c55ce0b9290";
     // search string
     const [searchInput, setSearchInput] = useState("");
     // const [searchInputArray, setSearchInputArray] = useState([]);
@@ -31,9 +35,29 @@ export default function Search() {
 
     const [title, setTitle]= useSearchResult((state)=>
       [state.title, state.setTitle],shallow);
-    const  srchInput= searchInput.replaceAll(' ', '+');
-      const url2 = `https://api.spoonacular.com/recipes/query/analyze?q=${srchInput}&apiKey=${key8}&includeIngredients=${srchInput}&addRecipeInformation=true${searchString}`;
-      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key8}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+
+    {/* Tanken med hur vi kan fixa urlerna är att vi gör två const variabler
+        const urlMultiSearch= https://api.spoonacular.com/recipes/query/analyze?q=
+        const urlTagSearch= https://api.spoonacular.com/recipes/complexSearch?
+
+        I filerUrl ska url finnas, men lägg till parameter för urlVersion som vi anger när vi anropar apiet från 
+            submit(filterUrl(urlMultiSearch)), 
+
+            getactivebutton(filterUrl(searchString,urlMultiSearch)),
+            
+            useEffect(taggarna) (filterUrl(filterUrl(urlTagSearch)))
+
+            I filterurl(searchString, urlVersion)
+            let srchInput= searchInput.replaceAll(' ', '+'); 
+            const url= `${urlVersion}${key12}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`
+            fetch(url)
+            osvosv
+    */}
+
+
+    let srchInput= searchInput.replaceAll(' ', '+');
+      const url2 = `https://api.spoonacular.com/recipes/query/analyze?q=${srchInput}&apiKey=${key12}&includeIngredients=${srchInput}&addRecipeInformation=true${searchString}`;
+      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key12}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
 
         //för att göra sökning när man klickat på en tagg
         const [tag, setTag] = useTag(
@@ -43,13 +67,14 @@ export default function Search() {
         // setTag("hej");
         console.log(tag)
         const tagg = useTag.getState((state)=> state.tag);
-        if(tagg != ""){
+        if(tagg.tag != ""){
 
             useEffect(() => {
             // searchString = ;
             // if(tag == null ||){ 
             // } 
-            filterUrl(tagg.tag, url);
+            setSearchInput(tagg.tag)
+            filterUrl( url);
             console.log(tagg.tag);
             }, []);
         }
@@ -96,13 +121,8 @@ export default function Search() {
 
     const filterUrl = async (searchString, url) => {
         try {   
-            let srchInput= searchInput.replaceAll(' ', '+');
-            console.log(srchInput)
-            //url2 gör flerordssökning som är vettig (rice chicken visar ris och kycklingrätter)
-            
-            console.log(url);
-            console.log(searchString);
             const response = await fetch(url);
+            console.log(url);
             const result = await response.json();
             setSearchResult(result.results);
             setTitle(searchInput);
@@ -196,7 +216,7 @@ export default function Search() {
             await filterUrl(searchString);
 
         } else {
-            await filterUrl("");
+            await filterUrl("", url);
         }
     };
     return (
