@@ -151,7 +151,6 @@ header {
   /* height:7rem; */
   transform: all 0.5s ease;
   -moz-transition: all 0.5s ease;
-
 }
 .header-sticky{
     transform: all 0.5s ease;
@@ -159,7 +158,7 @@ header {
 
     /* position: sticky; */
     top:0;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 .header-fixed {
     position: fixed;
@@ -185,7 +184,7 @@ header {
   width: 100%;
   margin: auto;
   margin-top:0.2rem;
-  margin-bottom: -1rem;
+  /* margin-bottom: -1rem; */
   padding: 0 0.5rem 0 0.5rem;
   z-index:2;
 }
@@ -199,6 +198,7 @@ header {
   /* position: fixed; */
   width: 100%;
   height: 100%;
+  
 }
 .menu-links-hidden{
     display: none;
@@ -599,8 +599,30 @@ footer {
 *****************************************/
 /*har lagt in samma kategorier här under,
 ifall det behöver läggas in ytterligare justeringar för responsivitet senare*/
-@media screen and (min-width: 1000px) {
-  /*****************************************
+
+@media screen and (min-width: 600px) {
+
+    .recipe-card-container {
+        /*container för alla receptkort (sökresultat)*/
+        justify-content: center;
+        flex-direction: row;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: stretch;
+    }
+    /*RECIPE CARD*/
+    .recipe-card {
+        /*de små korten för recepten på resultatdelen*/
+        width: calc(50% - 1rem);
+        margin:0.5rem;
+        box-sizing: border-box;
+        /* height: 23rem; */
+    }
+}
+
+@media screen and (min-width: 900px) {
+     /*****************************************
             COMMON COMPONENTS
     *****************************************/
   /*---GENERAL STRUCTURE & LAYOUT---*/
@@ -625,6 +647,7 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
   }
 
   /*---GEOSEARCH---*/
+
   .geosearch {
     /*gemensam section för geo + search*/
     flex-direction: row;
@@ -652,6 +675,7 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     /*div med geo-location-knapp (geo-btn) och "find recipes matching your region" (geo-text)*/
     flex-direction: row;
     align-items: left;
+    width: 50%;
   }
 
 
@@ -710,19 +734,11 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
               MAIN COMPONENTS
     *****************************************/
     /*---INDEX---*/
-    .recipe-card-container {
-        /*container för alla receptkort (sökresultat)*/
-        justify-content: center;
-        flex-direction: row;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-content: stretch;
-    }
+   
     /*RECIPE CARD*/
     .recipe-card {
         /*de små korten för recepten på resultatdelen*/
-        width: calc(25% - 1rem);
+        width: calc(33% - 1rem);
         margin:0.5rem;
         box-sizing: border-box;
         /* height: 23rem; */
@@ -759,4 +775,14 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     order: 3;
     align-self: flex-end;
   }
+}
+
+@media screen and (min-width: 1200px){
+    .recipe-card {
+        /*de små korten för recepten på resultatdelen*/
+        width: calc(25% - 1rem);
+        margin:0.5rem;
+        box-sizing: border-box;
+        /* height: 23rem; */
+    }
 }
