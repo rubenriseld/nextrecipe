@@ -17,13 +17,15 @@
 .text-color-primary {
   color: #006a4a !important;
 }
-
+.border-color-primary{
+    border: #006a4a;
+}
 .color-secondary {
   background-color: #006a4a51;
 }
 
 .text-color-secondary {
-  color: #006a4a3f !important;
+  color: #A4C5B9 !important;
 }
 
 .color-tag-one {
@@ -281,8 +283,7 @@ header {
     font-size: 1.3rem;
 }
 .clear-search-icon{
-    color:white;
-    font-size: 150%;
+    font-size: 2rem;
 }
 .searchbar-container {
   /*container för sökrutan samt filterknapp/kommande filtermeny*/
@@ -292,7 +293,8 @@ header {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-height: 3rem;
+  height: 3.7rem;
+  border-style: solid;
 }
 
 .searchbar {
@@ -301,7 +303,8 @@ header {
   border-style: none;
   color: white;
   padding-left:1rem;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  width: 70%;
   /* padding: 4% 0% 4% 5%; */
   /* width: 1100%; */
 }
@@ -322,6 +325,9 @@ input:-webkit-autofill:active {
     -webkit-text-fill-color: #fff !important;
 }
 
+.button-container{
+    margin-right: 0.2rem;
+}
 .search-btn, .slider-btn {
   /*sökknappen (om inget står i sökrutan öppnar den filtermenyn)*/
   border-radius: 50%;
@@ -710,7 +716,6 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     /*div för searchbar och filterknapp*/
     padding: 3% 0% 3% 3%;
     width: 110%;
-    font-size: 110%;
   }
 
   .slider-btn, .search-btn {

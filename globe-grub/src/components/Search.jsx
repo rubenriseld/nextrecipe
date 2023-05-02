@@ -186,27 +186,27 @@ export default function Search() {
     return (
         <>
             <form className="search-form" onSubmit={handleSubmit}>
-                <div className="searchbar-container color-secondary flex-separate">
+                <div className="searchbar-container background-primary border-color-primary flex-separate">
                     {/* {searchInputArray.map(x => {
                         return(
                             <button type="button" onClick={()=>removeSearchTag(x)}>{x}</button>
                         );
                     })} */}
                     <input
-                        className="searchbar"
+                        className="searchbar text-color-primary"
                         type="text"
                         name="queryvalue"
                         placeholder="search.."
                         onChange={handleChange}
                     />
-                    <div className="flex">
+                    <div className="flex button-container">
 
                         {searchInput != "" ?
 
                             //knapp med "X" för att rensa sökrutan
                             <button type="button" className="clear-search-btn" onClick={() => clearSearchBar()}>
 
-                                <i class="fa-solid fa-xmark clear-search-icon"></i>
+                                <i class="fa-solid fa-xmark clear-search-icon text-color-primary"></i>
                             </button>
                             :
                             <></>}
