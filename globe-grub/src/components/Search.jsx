@@ -11,7 +11,6 @@ import { FilterButton } from "./FilterButton";
 
 export default function Search() {
    
-   
     const key1 = "13c6c14454a748769e3611a7cf719862"; //nel
     const key2 = "74c179cdd6bf42fab75869c258580b05";
     const key3 = "c02162ede9394dd8bca983829213bd71";
@@ -23,7 +22,10 @@ export default function Search() {
     const key9 = "32603e2291624b4689643c2428fbe5f1";
     const key10 = "7e4ba385c74c4c0595bbb872618f7fc2";
     const key11 = "9c18433a167642f1a942f5b66f28a73e";
-    const key12="7d22a6b4acf44702bdd65c55ce0b9290";
+    const key12 = "7d22a6b4acf44702bdd65c55ce0b9290";
+    const keyJoakim = "44494a778e8c447a857f4b735fbc22cd";
+
+
     // search string
     const [searchInput, setSearchInput] = useState("");
     // const [searchInputArray, setSearchInputArray] = useState([]);
@@ -53,12 +55,6 @@ export default function Search() {
             fetch(url)
             osvosv
     */}
-
-
-    let srchInput= searchInput.replaceAll(' ', '+');
-      const url2 = `https://api.spoonacular.com/recipes/query/analyze?q=${srchInput}&apiKey=${key12}&includeIngredients=${srchInput}&addRecipeInformation=true${searchString}`;
-      const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key12}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
-
         //för att göra sökning när man klickat på en tagg
         const [tag, setTag] = useTag(
             (state) => [state.tag, state.setTag],
@@ -74,7 +70,7 @@ export default function Search() {
             // if(tag == null ||){ 
             // } 
             setSearchInput(tagg.tag)
-            filterUrl( url);
+            filterUrl();
             console.log(tagg.tag);
             }, []);
         }
@@ -119,8 +115,10 @@ export default function Search() {
         }
     };
 
-    const filterUrl = async (searchString, url) => {
-        try {   
+    const filterUrl = async (searchString) => {
+        try { 
+             // let srchInput= searchInput.replaceAll(' ', '+');
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key1}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}&number=7`;
             const response = await fetch(url);
             console.log(url);
             const result = await response.json();
@@ -187,7 +185,7 @@ export default function Search() {
         });
         searchString = `${dietString}${cuisineString}${mealtypeString}${intoleranceString}${timeString}`;
         console.log(searchString);
-        await filterUrl(searchString, url2);
+        await filterUrl(searchString);
     }
 
     const clearSearchBar = () => {
@@ -216,7 +214,7 @@ export default function Search() {
             await filterUrl(searchString);
 
         } else {
-            await filterUrl("", url);
+            await filterUrl("");
         }
     };
     return (

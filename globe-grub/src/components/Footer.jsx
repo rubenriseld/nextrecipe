@@ -18,9 +18,9 @@ export default function Footer(){
 
                 </section>
                 <section className="flex-right footer-info-section">
-                    <p className="text-color-primary">info</p>
-                    <p className="text-color-primary">info</p>
-                    <p className="text-color-primary">info</p>
+                    <p className="text-color-primary">About:</p>
+                    <a href="mailto:globegrub@info.com" className="text-color-pri1mary">globegrub@info.com</a>
+                    <p className="text-color-primary">Trekantsvägen 1, 117 43 Stockholm, Sweden</p>
                 </section>
             </div>
         </footer>

@@ -24,8 +24,9 @@ export default function RecipePage() {
     const key7 = "15c980413ad44f09ba2ac7e73f076610";
     const key8="ce46b5aef3da4d67b273b1b7dec8567f";
     const key12="7d22a6b4acf44702bdd65c55ce0b9290";
+    const keyJoakim = "44494a778e8c447a857f4b735fbc22cd";
 
-    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key12}&includeNutrition=true`;
+    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${keyJoakim}&includeNutrition=true`;
 
     useEffect(() => {
         fetch(url)

@@ -465,12 +465,15 @@ footer {
   padding: 0.2rem;
   margin-top: 2rem;
   display: flex !important;
-  justify-content: center;
+  /* align-items: baseline; */
+  justify-content: baseline;
   flex-direction: row;
 }
 
-.footer-info-section {
+.footer-info-section> p,
+.footer-info-section> a {
   /*info/submenyn i footern*/
+  font-size: 0.6rem;
 }
 
 /*****************************************
