@@ -61,7 +61,7 @@ export default function Search() {
     //söktermen från searchInput, hamnar i indexpage
     const [title, setTitle]= useSearchResult((state)=>
         [state.title, state.setTitle],shallow);
-
+    let searchString = "";
 //_____________________________________________________________________________//
 
     
@@ -127,8 +127,7 @@ export default function Search() {
         let mealtypeString = "";
         let intoleranceString = "";
         let timeString = "";
-        buttons.forEach(btn => {
-            
+        buttons.forEach(btn => {   
             if (btn.dataset.type == "C" & cuisineString == "") {
                 cuisineString += state.cuisine + btn.value
             } else if (btn.dataset.type == "C" & cuisineString != "") {
