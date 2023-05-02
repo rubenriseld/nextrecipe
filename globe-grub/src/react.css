@@ -592,6 +592,50 @@ footer {
   /* margin-top: 20px; */
   margin-left: 0.5rem;
 }
+  /*KARTAAAAAAAAAAAA*/
+  .svg-map {
+    width: 100%;
+    height: auto;
+    stroke: #666;
+    max-width: 1600px;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round; 
+  }
+  .svg-map__location {
+    fill: #a1d99b;
+    cursor:pointer; 
+  }
+  .svg-map__location:focus, .svg-map__location:hover {
+    fill: #b8e2b3;
+    outline: 0; 
+  }
+  .svg-map__location[aria-checked=true] {
+    fill: #f4bc44;
+  }
+  /* XDDDDD */
+  #infobox {
+    display: none;
+    position: absolute;
+    top:50px;
+    left: 100px;
+    z-index: 5;
+    user-select: none;
+    margin-top:2rem;
+    padding: 0.5rem;
+    transform: translate(-50%, 0);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+    /* top: 0px;
+    left: 0px;
+    z-index: 1;
+    background-color: #ffffff;
+    border: 2px solid #BF0A30;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: arial; */
+  }
 
 /*****************************************
             DESKTOP (RESPONSIVE)
@@ -758,4 +802,9 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     order: 3;
     align-self: flex-end;
   }
+
+
 }
+
+
+
