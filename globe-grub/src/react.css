@@ -19,7 +19,7 @@
 }
 
 .color-secondary {
-  background-color: #006a4a7c;
+  background-color: #006a4a51;
 }
 
 .text-color-secondary {
@@ -297,13 +297,29 @@ header {
 
 .searchbar {
   /*div för searchbar och filterknapp*/
-  background-color: transparent;
+  background-color: transparent!important;
   border-style: none;
   color: white;
   padding-left:1rem;
   font-size: 1.2rem;
   /* padding: 4% 0% 4% 5%; */
   /* width: 1100%; */
+}
+.searchbar::placeholder{
+    color:rgba(255, 255, 255, 0.9);
+}
+.searchbar:focus{
+    outline:none;
+    background-color:transparent;
+}
+
+/*tar bort chromes default-bakgrund när man söker från autofill*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .search-btn, .slider-btn {
