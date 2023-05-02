@@ -9,9 +9,15 @@ import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeF
 import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
 
+import { useKey } from "../hooks/useKey";
+
 export default function Search() {
     // search string
     const [searchInput, setSearchInput] = useState("");
+    
+    //ändra key i useKey-hooken
+   const key = useKey((state) => state.key);
+
     // const [searchInputArray, setSearchInputArray] = useState([]);
     let searchString = "";
     //search store for sending to indexpage
@@ -36,15 +42,6 @@ export default function Search() {
         console.log(tag);
         }, []);
  
-
-        const key1 = "13c6c14454a748769e3611a7cf719862";
-        const key2 = "74c179cdd6bf42fab75869c258580b05";
-        const key3 = "c02162ede9394dd8bca983829213bd71";
-        const key4 = "85ce5287879e42978484fcf300dace17";
-        const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
-        const key6 = "ce46b5aef3da4d67b273b1b7dec8567f";
-        const key7 = "15c980413ad44f09ba2ac7e73f076610";
-        const key8 = "e50fb6304553492781cba43da8b4bc7f"; 
 
     
         //store for filter terms
@@ -83,7 +80,9 @@ export default function Search() {
 
     const filterUrl = async (searchString) => {
         try {
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key4}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+
             console.log(url);
             const response = await fetch(url);
             const result = await response.json();
