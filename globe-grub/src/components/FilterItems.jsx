@@ -40,7 +40,7 @@ export const CuisineFilters = [
     },
     {
         name: "Eastern European",
-        value: "eastern-european",
+        value: "eastern european",
         type: "C",
     },
     {
@@ -95,7 +95,7 @@ export const CuisineFilters = [
     },
     {
         name: "Latin American",
-        value: "latin-american",
+        value: "latin american",
         type: "C",
     },
     {
@@ -110,7 +110,7 @@ export const CuisineFilters = [
     },
     {
         name: "Middle Eastern",
-        value: "middle-eastern",
+        value: "middle eastern",
         type: "C",
     },
     {
@@ -160,7 +160,7 @@ export const DietFilters = [
     },
     {
         name: "Ovo-Vegetarian",
-        value: "ovo-vegetarian",
+        value: "ovo vegetarian",
         type: "D",
     },
     {
@@ -185,7 +185,7 @@ export const DietFilters = [
     },
     {
         name: "Low FODMAP",
-        value: "low-foodmap",
+        value: "low foodmap",
         type: "D",
     },
     {
@@ -209,7 +209,7 @@ export const MealTypeFilters = [
     },
     {
         name: "Dinner",
-        value: "main-course",
+        value: "main course",
         type: "M",
         tagValue: "dinner",
     },

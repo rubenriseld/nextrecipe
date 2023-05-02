@@ -14,18 +14,20 @@ export default function RecipePage() {
 
     const location = useLocation();
     const id = location.state;
-
-    const key1 = "13c6c14454a748769e3611a7cf719862";
+    const key1 = "13c6c14454a748769e3611a7cf719862"; //nel 
     const key2 = "74c179cdd6bf42fab75869c258580b05";
     const key3 = "c02162ede9394dd8bca983829213bd71";
-    const key4 = "85ce5287879e42978484fcf300dace17";
-    const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
-    const key6 = "e50fb6304553492781cba43da8b4bc7f";
+    const key4 = "85ce5287879e42978484fcf300dace17";//nel
+    const key5 = "8fbd9413e79a49bfaa909d68f22e0476";//nel
+    const key6 = "ce46b5aef3da4d67b273b1b7dec8567f";
     const key7 = "15c980413ad44f09ba2ac7e73f076610";
-    const key8="ce46b5aef3da4d67b273b1b7dec8567f";
-    const key12="7d22a6b4acf44702bdd65c55ce0b9290";
+    const key8 = "e50fb6304553492781cba43da8b4bc7f";//nel
+    const key9 = "32603e2291624b4689643c2428fbe5f1";
+    const key10 = "7e4ba385c74c4c0595bbb872618f7fc2";
+    const key11 = "9c18433a167642f1a942f5b66f28a73e";
+    const key12="7d22a6b4acf44702bdd65c55ce0b9290";//anv 05-02 09.30
 
-    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key12}&includeNutrition=true`;
+    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key8}&includeNutrition=true`;
 
     useEffect(() => {
         fetch(url)
