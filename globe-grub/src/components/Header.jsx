@@ -55,7 +55,7 @@ export default function Header() {
     <header className={`background-primary ${sticky ? "header-sticky":""} ${showMobileMenu?"header-fixed": ""}`}>
       {/* <header className="background-primary"> */}
       <nav className="menu max-width-container background-primary">
-        <NavLink className="logo-link" to="/" onClick={() => setSearchResult([])}>
+        <NavLink className="logo-link" to="/" onClick={() => {setSearchResult([]); setShowMobileMenu(false)}}>
           <Logo />
         </NavLink>
 
@@ -67,17 +67,17 @@ export default function Header() {
           <NavLink
             to="/"
             className="menu-link text-color-primary"
-            onClick={() => setSearchResult([])}
+            onClick={() => {setSearchResult([]); setShowMobileMenu(false)}}
           >
             Home
           </NavLink>
           {/* <NavLink to="/recipe" className="menu-link text-color-primary">
             Recipe
           </NavLink> */}
-          <NavLink to="/" className="menu-link text-color-primary">
+          <NavLink to="/" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
             Around The World
           </NavLink>
-          <NavLink to="/" className="menu-link text-color-primary">
+          <NavLink to="/" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
             About Us
           </NavLink>
         </div>
