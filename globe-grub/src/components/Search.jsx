@@ -8,10 +8,15 @@ import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
 
 import { useKey } from "../hooks/useKey";
+import { useResultsToShow } from "../hooks/useResultsToShow";
 
 export default function Search() {
 //ändra key i useKey-hooken
 const key = useKey((state) => state.key);
+
+//show-more-grej
+const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
+        [state.resultsToShow, state.setResultsToShow], shallow);
     
 //______________________________FilterMeny_____________________________//
     const state = useFilterStore.getState((state) => state);
@@ -64,6 +69,7 @@ const key = useKey((state) => state.key);
     if(tagg.tag != ""){
         useEffect(() => {       
         filterUrl(tagg.tag);
+        console.log("tagg: "+ tagg.tag);
         }, []);
     }
 //_____________________________________________________________________________//
@@ -71,7 +77,7 @@ const key = useKey((state) => state.key);
     const filterUrl = async (searchString) => {
         try {
             setTitle("")
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}&number=4`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}&number=8`;
             const response = await fetch(url);
             console.log(url);
             const result = await response.json();
@@ -90,7 +96,7 @@ const key = useKey((state) => state.key);
             console.log(title)
             console.log(searchResult.length)
             // setTag("");
-
+            
             //result.results är en lista av alla recept, dessa skickas in i childtoparent    
         } catch (e) {
             console.log(e);
@@ -168,6 +174,7 @@ const key = useKey((state) => state.key);
     //Submit
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setResultsToShow(4);
         if (searchString != "") {
             console.log(searchString);
             await filterUrl(searchString);

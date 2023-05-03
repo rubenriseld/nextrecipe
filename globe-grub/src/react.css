@@ -421,13 +421,13 @@ input:-webkit-autofill:active {
     font-size: 2rem;
     margin: 0.5rem 0 0.5rem 0;
 }
-.clear-filter-btn, .apply-filter-btn, .filter-btn {
+.clear-filter-btn, .apply-filter-btn, .filter-btn, .show-more-btn {
     border-radius: 20rem;
     padding: 0.5rem 1rem 0.5rem 1rem;
     font-size: 1rem;
     margin: 2px;
 }
-.clear-filter-btn, .apply-filter-btn{
+.clear-filter-btn, .apply-filter-btn, .show-more-btn{
     font-size: 1.5rem;
 }
 
@@ -556,7 +556,9 @@ footer {
 }
 
 /*SHOW-MORE-BUTTON*/
-.show-more {
+.show-more-btn {
+    margin: auto;
+    max-width: 25%;
   /*knapp för att ladda in fler resultat i resultatdelen*/
 }
 

@@ -27,7 +27,7 @@ export default function IndexPage() {
       </>
       
     : <>
-      <ResultContainer data={data} title={title}/> {/*data från Search.jsx(data från sökningen) hamnar i resultcontainer */}
+      <ResultContainer data={data} title={title} isReco={false}/> {/*data från Search.jsx(data från sökningen) hamnar i resultcontainer */}
     </>
     }
       <Ad />
