@@ -30,7 +30,7 @@ export default function Recommendations(){
     },[])   
       return(
         <>
-       <ResultContainer data={recoData} cuisineTitle={cuisineTitle} ></ResultContainer>
+       <ResultContainer data={recoData} cuisineTitle={cuisineTitle} isReco={true}></ResultContainer>
         </>
       )
           

@@ -71,7 +71,7 @@ const key = useKey((state) => state.key);
     const filterUrl = async (searchString) => {
         try {
             setTitle("")
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}&number=4`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}&number=8`;
             const response = await fetch(url);
             console.log(url);
             const result = await response.json();

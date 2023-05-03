@@ -1,25 +1,29 @@
 import { useState, useEffect } from "react";
 import RecipeCard from "./RecipeCard";
-import {concat, slice} from 'lodash';
+// import {concat, slice} from 'lodash';
+
 
 
 export default function ResultContainer(props) {
 
 
-  //props är datat som skickas från search => indexpage => resultcontainer (fetchen med sökresultat result.results)
-  //-------------------------------
+    //props är datat som skickas från search => indexpage => resultcontainer (fetchen med sökresultat result.results)
+    //-------------------------------
+    const length = 4;
+    const [resultsToShow, setResultsToShow] = useState(length);
+    
+    //Om showMore är true visas "Show More" -knappen
+    const [showMore, setShowMore] = useState(true);
 
-const length = 4;
-const [resultsToShow, setResultsToShow] = useState(length);
-  //Om showMore är true visas "Show More" -knappen
-const [showMore, setShowMore] = useState(true);
-
-const loadMore = () => {
-    const newShowMore = resultsToShow < (length - 1);
-    setShowMore(newShowMore);
-    setResultsToShow(resultsToShow+length);
-    console.log(resultsToShow);
-}
+    const loadMore = () => {
+        const newShowMore = resultsToShow < (length - 1);
+        // if(resultsToShow >= 8) setResultsToShow(length);
+        setShowMore(newShowMore);
+        // setShowMore(false);
+        setResultsToShow(resultsToShow+length);
+        // resultsToShow = resultsToShow + 4;
+        console.log(resultsToShow);
+    }
 
   //---------------------------------
 
@@ -61,7 +65,10 @@ const loadMore = () => {
       {/* /*props (property) .data (det som skickats från indexpage) mappas, 
        relevant data skickas till recipecard som hämtas ur varje enskild recept i result.results  */}
       </div>
-      {showMore && <button onClick={loadMore}> Show More </button>}
+      {props.isReco ===false && showMore?
+      <button onClick={loadMore}> Show More </button>
+      : <></>
+    }
     </section>
   )
 }
