@@ -105,19 +105,19 @@ export default function Search() {
    
     //close filter menu when clicking outsie
     const ref = useRef(null);
+    
     useEffect(() => {
+        const Clickout = (e) => {
+            if (!ref.current.contains(e.target)) {
+                setShowFilterMenu(false);
+            }
+        };
         document.addEventListener("mousedown", Clickout);
         return () => {
             document.removeEventListener("mousedown", Clickout);
-        };
-        
-    }, []);
+        };        
+    });
 
-    const Clickout = (e) => {
-        if (showFilterMenu && !ref.current.contains(e.target)) {
-            setShowFilterMenu(false);
-        }
-    };
 
     const filterUrl = async (searchString, url) => {
         try {   
