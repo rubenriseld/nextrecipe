@@ -15,7 +15,7 @@ const key12 = "7d22a6b4acf44702bdd65c55ce0b9290";
 const key13 = "44494a778e8c447a857f4b735fbc22cd";
 
 export const useKey = create((set)=> ({
-    key: key13,
+    key: key12,
 
     setKey: (newKey) => 
         set(() => ({key: newKey})),

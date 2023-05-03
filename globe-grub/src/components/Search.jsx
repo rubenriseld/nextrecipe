@@ -66,12 +66,15 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         (state) => [state.tag, state.setTag],shallow);
     //Hämtar vald tagg, om värde finns kör useEffect som anropar filterUrl
     const tagg = useTag.getState((state)=> state.tag);
-    if(tagg.tag != ""){
-        useEffect(() => {       
-        filterUrl(tagg.tag);
+    
+    useEffect(() => {  
+        if(tagg.tag != ""){
+            filterUrl(tagg.tag);
+        }
         console.log("tagg: "+ tagg.tag);
-        }, []);
-    }
+    }, []);
+        // setTag("");
+   
 //_____________________________________________________________________________//
 
     const filterUrl = async (searchString) => {
@@ -101,6 +104,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         } catch (e) {
             console.log(e);
         }
+        setTag("");
     };
 
 //______________________________Event-handlers_____________________________//
