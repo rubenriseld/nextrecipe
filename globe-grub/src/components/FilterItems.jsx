@@ -307,27 +307,23 @@ export const IntoleranceFilters = [
 //array med tid som ska finnas med i filtermeny
 export const TimeFilters = [
     {
-        name: "15 min",
+        name: "Under 15 min",
         value: "15",
         type: "T",
-        tagValue: 15,
     },
     {
-        name: "30 min",
+        name: "Under 30 min",
         value: "30",
         type: "T",
-        tagValue: 30,
     },
     {
-        name: "45 min",
+        name: "Under 45 min",
         value: "45",
         type: "T",
-        tagValue: 45,
     },
     {
-        name: "60 min",
+        name: "Under 60 min",
         value: "60",
         type: "T",
-        tagValue: 60,
     },
 ]

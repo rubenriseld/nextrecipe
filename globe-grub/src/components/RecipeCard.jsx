@@ -12,6 +12,8 @@ export default function RecipeCard(props) {
     //kunna skriva ut varje cuisinetyp (asian, thai osv) map funkar bara me arrayer 
 
 
+    const key8="ce46b5aef3da4d67b273b1b7dec8567f";
+
     return (
         // <!-- RECIPE CARD COMPONENT -->
         <article className="recipe-card">

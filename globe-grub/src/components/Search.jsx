@@ -12,6 +12,8 @@ import { FilterButton } from "./FilterButton";
 import { useKey } from "../hooks/useKey";
 
 export default function Search() {
+   
+
     // search string
     const [searchInput, setSearchInput] = useState("");
     
@@ -23,24 +25,47 @@ export default function Search() {
     //search store for sending to indexpage
     const [searchResult, setSearchResult] = useSearchResult((state) =>
         [state.searchResult, state.setSearchResult], shallow);
-    
 
 
+    const [title, setTitle]= useSearchResult((state)=>
+      [state.title, state.setTitle],shallow);
+
+    {/* Tanken med hur vi kan fixa urlerna är att vi gör två const variabler
+        const urlMultiSearch= https://api.spoonacular.com/recipes/query/analyze?q=
+        const urlTagSearch= https://api.spoonacular.com/recipes/complexSearch?
+
+        I filerUrl ska url finnas, men lägg till parameter för urlVersion som vi anger när vi anropar apiet från 
+            submit(filterUrl(urlMultiSearch)), 
+
+            getactivebutton(filterUrl(searchString,urlMultiSearch)),
+            
+            useEffect(taggarna) (filterUrl(filterUrl(urlTagSearch)))
+
+            I filterurl(searchString, urlVersion)
+            let srchInput= searchInput.replaceAll(' ', '+'); 
+            const url= `${urlVersion}${key12}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`
+            fetch(url)
+            osvosv
+    */}
         //för att göra sökning när man klickat på en tagg
         const [tag, setTag] = useTag(
             (state) => [state.tag, state.setTag],
             shallow
         );
         // setTag("hej");
+        console.log(tag)
+        const tagg = useTag.getState((state)=> state.tag);
+        if(tagg.tag != ""){
 
-
-        useEffect(() => {
-        // searchString = ;
-        // if(tag == null ||){ 
-        // } 
-        filterUrl(tag);
-        console.log(tag);
-        }, []);
+            useEffect(() => {
+            // searchString = ;
+            // if(tag == null ||){ 
+            // } 
+            setSearchInput(tagg.tag)
+            filterUrl();
+            console.log(tagg.tag);
+            }, []);
+        }
  
 
     
@@ -63,6 +88,7 @@ export default function Search() {
     const [showTimeFilter, setShowTimeFilter] = useState(false);
     const [showMealFilter, setShowMealFilter] = useState(false);
 
+   
     //close filter menu when clicking outsie
     const ref = useRef(null);
     useEffect(() => {
@@ -81,12 +107,14 @@ export default function Search() {
     const filterUrl = async (searchString) => {
         try {
 
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}&number=8`;
 
             console.log(url);
             const response = await fetch(url);
+            console.log(url);
             const result = await response.json();
             setSearchResult(result.results);
+            setTitle(searchInput);
             console.log(result)
             // setTag("");
 
@@ -158,10 +186,7 @@ export default function Search() {
     const handleChange = (e) => {
         //måste kirra så searchinput lagras medan man skriver nå nytt
         setSearchInput(e.target.value);
-
         // document.querySelector(".searchbar").value = e.target.value;
-
-
     }
     // const saveSearch = () => {
     //     //pusha sökordet till arrayen
