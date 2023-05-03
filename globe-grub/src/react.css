@@ -157,13 +157,13 @@ header {
   z-index:2;
 
   /* height:7rem; */
-  transform: all 0.5s ease;
+  /* transform: all 0.5s ease; */
   transition: all 0.5s ease;
 
   -moz-transition: all 0.5s ease;
 }
 .header-sticky{
-    transform: all 0.5s ease;
+    /* transform: all 0.5s ease; */
     transition: all 0.5s ease;
 
     -moz-transition: all 0.5s ease;
@@ -252,8 +252,14 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
 }
-
+.geo-arrow-icon{
+    font-size: 2rem;
+}
+.fa-arrow-left{
+    display: none;
+}
 .geo-icon {
   /*geo-ikonen (som ligger i geo-knappen)*/
   color: #ffffff;
@@ -773,6 +779,9 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     flex-direction: row;
     justify-content: space-between;
   }
+  .geo-container{
+    margin-bottom: 0;
+  }
     .geo-text-container{
         margin-left:2rem;
     }
@@ -781,7 +790,13 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
         /* margin: -5%; */
         /* padding: 1% 1% 1% 4%; */
     }
-
+    .fa-arrow-left{
+        display: inline;
+        padding-left: 0.5rem;
+    }
+    .fa-arrow-up{
+        display:none;
+    }
     /*SEARCH*/
     .searchbar-container {
         /*container för sökrutan samt filterknapp/kommande filtermeny*/
