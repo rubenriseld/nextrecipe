@@ -8,12 +8,12 @@ export default function Logo({sloganVisible}) {
         className="company-logo"
       />
       <h2 className="company-name fa-solid text-color-primary">GLOBE GRUB</h2>
-      {/* {sloganVisible ? */}
+      {sloganVisible ?
         <p className="slogan text-color-primary">
             when you want your globe to be grubbed
         </p>
-    {/* : <></>
-      } */}
+    : <></>
+      }
     </>
   );
 }
