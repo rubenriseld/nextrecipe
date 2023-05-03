@@ -2,19 +2,13 @@
 import { useEffect, useState } from "react";
 import { CuisineFilters} from "./FilterItems";
 import ResultContainer from "./ResultContainer";
+import { useKey } from "../hooks/useKey";
 
 export default function Recommendations(){
+   
+    //ändra key i useKey-hooken
+   const key = useKey((state) => state.key);
 
-  const key6 = "e50fb6304553492781cba43da8b4bc7f";
-  const key1 = "13c6c14454a748769e3611a7cf719862";
-  const key2 = "74c179cdd6bf42fab75869c258580b05";
-  const key3 = "c02162ede9394dd8bca983829213bd71";
-  const key4 = "85ce5287879e42978484fcf300dace17";
-  const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
-  const key7 = "15c980413ad44f09ba2ac7e73f076610";
-  const key8="ce46b5aef3da4d67b273b1b7dec8567f";
-  const key12="7d22a6b4acf44702bdd65c55ce0b9290";
-  const keyJoakim = "44494a778e8c447a857f4b735fbc22cd";
 
     const [poo, setResult] = useState([]);
     const [test, setCuisine] = useState("");
@@ -26,7 +20,7 @@ export default function Recommendations(){
     useEffect(()=>{
       let cuisine = getRandomCuisine()
       const fetchData = async () =>{
-        const response= await  fetch(`https://api.spoonacular.com/recipes/random?number=4&tags=${cuisine.value}&apiKey=${keyJoakim}`);
+        const response= await  fetch(`https://api.spoonacular.com/recipes/random?number=4&tags=${cuisine.value}&apiKey=${key}`);
         const result = await response.json();
         console.log(cuisine.value)
         setResult(result.recipes);
