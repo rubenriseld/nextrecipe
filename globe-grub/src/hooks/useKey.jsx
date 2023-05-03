@@ -13,8 +13,11 @@ const key10 = "7e4ba385c74c4c0595bbb872618f7fc2";
 const key11 = "9c18433a167642f1a942f5b66f28a73e";
 const key12 = "7d22a6b4acf44702bdd65c55ce0b9290";
 const key13 = "44494a778e8c447a857f4b735fbc22cd";
+const key14 = "86a723f2dd0a43d2b53affefcab429de";
+
 
 export const useKey = create((set)=> ({
+    //byt key här för att byta på alla ställen
     key: key12,
 
     setKey: (newKey) => 
