@@ -198,6 +198,13 @@ export const DietFilters = [
         value: "whole30",
         type: "D",
     },
+    {
+        name: "Dairy",
+        value: "dairy",
+        type: "I",
+        tagValue: "dairy free",
+    },
+
 ]
 //array med måltidstyper som ska finnas med i filtermeny
 export const MealTypeFilters = [
