@@ -72,7 +72,6 @@ export default function Geo(){
         }else{
           fetchCuisine(cuisine);
         }
-      fetchCuisine(cuisine);
       
       let title ="";
       if (Array.isArray(cuisine) == true){
