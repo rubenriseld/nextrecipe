@@ -19,7 +19,7 @@ const key16 ="8a2f10c7e7d54edcb8d62c477eefe3e4";
 
 export const useKey = create((set)=> ({
     //byt key här för att byta på alla ställen
-    key: key15,
+    key: key16,
 
     setKey: (newKey) => 
         set(() => ({key: newKey})),

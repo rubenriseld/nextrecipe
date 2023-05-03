@@ -81,7 +81,7 @@ export default function Map() {
      try {
       if (Array.isArray(x) == true){
         for (const y of x){
-          url = `https://api.spoonacular.com/recipes/random?number=15&tags=${y}&apiKey=${key}`; 
+          url = `https://api.spoonacular.com/recipes/random?number=10&tags=${y}&apiKey=${key}`; 
        await fetch(url)
        .then((response) => response.json())
        .then((data) => {
@@ -91,7 +91,7 @@ export default function Map() {
        })
         }
       }else{
-        url = `https://api.spoonacular.com/recipes/random?number=15&tags=${x}&apiKey=${key}`;  
+        url = `https://api.spoonacular.com/recipes/random?number=10&tags=${x}&apiKey=${key}`;  
        await fetch(url)
        .then((response) => response.json())
        .then((data) => {
