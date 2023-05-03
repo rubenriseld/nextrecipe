@@ -2,16 +2,14 @@ import {create} from "zustand"
 // import {persist} from "zustand/middleware"
 
 
-export const useSearchResult = create((set)=> ({
-    searchResult: [],
-    title: "",
+export const useTag = create((set)=> ({
+    tag: "",
 
-    setSearchResult: (newSearchResult) => 
-        set(() => ({searchResult: newSearchResult})),
-    setTitle: (newTitle)=>
-    set(()=> ({title: newTitle})),
-    removeSearchResult: () => 
-        set({searchResult: []}),
+    setTag: (newTag) => 
+        set(() => ({tag: newTag})),
+
+    removeTag: () => 
+        set({tag: ""}),
 }));
 
 // export const useSearchResult = create(persist(

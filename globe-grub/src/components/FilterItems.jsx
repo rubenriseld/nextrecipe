@@ -6,6 +6,7 @@ export const CuisineFilters = [
         name: "Thai",
         value: "thai",
         type: "C",
+        
     },
     {
         name: "African",
@@ -39,7 +40,7 @@ export const CuisineFilters = [
     },
     {
         name: "Eastern European",
-        value: "eastern-european",
+        value: "eastern european",
         type: "C",
     },
     {
@@ -94,7 +95,7 @@ export const CuisineFilters = [
     },
     {
         name: "Latin American",
-        value: "latin-american",
+        value: "latin american",
         type: "C",
     },
     {
@@ -109,7 +110,7 @@ export const CuisineFilters = [
     },
     {
         name: "Middle Eastern",
-        value: "middle-eastern",
+        value: "middle eastern",
         type: "C",
     },
     {
@@ -144,6 +145,7 @@ export const DietFilters = [
         name: "Gluten Free",
         value: "gluten-free",
         type: "D",
+        tagValue: "gluten free",
     },
     {
         name: "Ketogenic",
@@ -154,10 +156,11 @@ export const DietFilters = [
         name: "Lacto-Vegetarian",
         value: "lacto-vegetarian",
         type: "D",
+        tagValue: "lacto ovo vegetarian",
     },
     {
         name: "Ovo-Vegetarian",
-        value: "ovo-vegetarian",
+        value: "ovo vegetarian",
         type: "D",
     },
     {
@@ -182,7 +185,7 @@ export const DietFilters = [
     },
     {
         name: "Low FODMAP",
-        value: "low-foodmap",
+        value: "low foodmap",
         type: "D",
     },
     {
@@ -202,11 +205,13 @@ export const MealTypeFilters = [
         name: "Lunch",
         value: "appetizers",
         type: "M",
+        tagValue: "lunch",
     },
     {
         name: "Dinner",
-        value: "main-course",
+        value: "main course",
         type: "M",
+        tagValue: "dinner",
     },
     {
         name: "Snack",
@@ -233,6 +238,11 @@ export const MealTypeFilters = [
         value: "fingerfood",
         type: "M",
     },
+    // {
+    //     name: "Side dish",
+    //     value: "side dish",
+    //     type: "M",
+    // }
 ]
 //array med allergener som ska finnas med i filtermeny
 export const IntoleranceFilters = [
@@ -240,6 +250,8 @@ export const IntoleranceFilters = [
         name: "Dairy",
         value: "dairy",
         type: "I",
+        tagValue: "dairy free",
+        
     },
     {
         name: "Egg",
@@ -300,18 +312,23 @@ export const IntoleranceFilters = [
 //array med tid som ska finnas med i filtermeny
 export const TimeFilters = [
     {
-        name: "15 min",
+        name: "Under 15 min",
         value: "15",
         type: "T",
     },
     {
-        name: "20 min",
-        value: "20",
+        name: "Under 30 min",
+        value: "30",
         type: "T",
     },
     {
-        name: "30 min",
-        value: "30",
+        name: "Under 45 min",
+        value: "45",
+        type: "T",
+    },
+    {
+        name: "Under 60 min",
+        value: "60",
         type: "T",
     },
 ]

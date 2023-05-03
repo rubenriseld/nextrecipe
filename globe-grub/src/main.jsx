@@ -11,6 +11,7 @@ import Root from "./routes/Root";
 import ErrorPage from "./ErrorPage";
 import IndexPage from "./components/IndexPage";
 import RecipePage from "./components/RecipePage";
+import Map from "./components/Map";
 
 const router = createBrowserRouter([
   {
@@ -26,12 +27,16 @@ const router = createBrowserRouter([
         path: "/recipe/:recipeId", //routing för enskild receptsida
         element: <RecipePage />,
       },
+      {
+        path: "/map",
+        element: <Map />,
+      }
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+ 
     <RouterProvider router={router} />
-  </React.StrictMode>
+
 );

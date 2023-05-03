@@ -1,7 +1,7 @@
 
 export default function RecipeRating({likes}){
     return(
-        <p className="text-color-primary like-number"><i class="fa-regular fa-heart like-icon text-color-accent"></i> {likes}</p>
+        <p className="text-color-primary like-number"><i className="fa-regular fa-heart like-icon text-color-accent"></i> {likes}</p>
 
         // <div className="flex">
             
