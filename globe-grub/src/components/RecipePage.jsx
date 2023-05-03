@@ -8,11 +8,14 @@ import { useSearchResult } from "../hooks/useSearchResult";
 import { useKey } from "../hooks/useKey";
 
 
+
 export default function RecipePage() {
     const [recipe, setRecipe] = useState("");
     const [loading, setLoading] = useState(true);
 
     const data = useSearchResult((state) => state.searchResult);
+    // const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
+    //     [state.resultsToShow, state.setResultsToShow], shallow);
 
     //ändra key i useKey-hooken
    const key = useKey((state) => state.key);
@@ -43,7 +46,7 @@ export default function RecipePage() {
         <section className="max-width-container">
             {/* <!-- Receptnamn --> */}
             <div>
-                <Link to="/" className="text-color-primary">Back</Link>
+                <Link to="/" className="text-color-primary">Go back to search results</Link>
             </div>
             <h1 className="recipe-title">{recipe.title}</h1>
 
