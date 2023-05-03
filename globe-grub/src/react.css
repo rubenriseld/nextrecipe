@@ -95,6 +95,11 @@ nav .burger {
   font-size: 1.5rem;
 }
 
+.go-back-text{
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
 /*****************************************
             COMMON COMPONENTS
 *****************************************/
@@ -444,10 +449,13 @@ button{
     /* color: aliceblue; */
     text-align: center;
     font-size: 300%;
-    margin: 1rem -1rem 1rem -1rem;
+    margin: 0 -1rem 0 -1rem;
     height: 10rem;
 }
-
+.tag-container-recipe-page{
+    padding-top: 0.5rem;
+    flex-direction: column;
+}
 /*---TAGS---*/
 .tag-container {
     align-items: flex-start;
@@ -573,6 +581,7 @@ footer {
 
 .recipe-title {
   /*recepttiteln högst upp*/
+  margin-top:1.5rem;
   min-height: 2%;
   height: auto;
   color: black;
@@ -710,6 +719,10 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
         box-sizing: border-box;
         /* height: 23rem; */
     }
+    .tag-container-recipe-page{
+        padding-top: 0.5rem;
+        flex-direction: row;
+    }
 }
 
 @media screen and (min-width: 900px) {
@@ -801,21 +814,12 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
   .filter-menu{
     width: 30%;
   }
-    /*---TAGS---*/
-    .tag {
-        /*kategoritaggar på receptkort och receptsida*/
-        /* font-size: 1rem;
-        margin-bottom: 0; */
-    }
+
 
   /*---ADS---*/
 
   /*---TAGS---*/
-  .tag {
-    /*kategoritaggar på receptkort och receptsida*/
-    /* font-size: 1rem;
-    margin-bottom: 0; */
-  }
+  
 
   /*---STARS---*/
   /*---FOOTER---*/
