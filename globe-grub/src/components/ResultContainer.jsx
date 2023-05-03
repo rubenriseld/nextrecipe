@@ -69,7 +69,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
               />
               ): 
               <></>})
-              : null}
+              : <>key is used</>}
       {/* /*props (property) .data (det som skickats från indexpage) mappas, 
        relevant data skickas till recipecard som hämtas ur varje enskild recept i result.results  */}
       </div>

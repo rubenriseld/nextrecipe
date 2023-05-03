@@ -97,7 +97,13 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                 setSearchResult(result.results)
                 let titties= searchString.split('='); 
                 let tit= titties[1].charAt(0).toUpperCase() + titties[1].slice(1).toLowerCase();
-                setTitle(tit)
+                if(tit.charAt(1) == 0 ||tit.charAt(1) == 5){
+                     setTitle(`Under ${tit} minutes`);
+                }
+                else{
+                    setTitle(tit);
+
+                }
             }
             console.log(title)
             console.log(searchResult.length)
