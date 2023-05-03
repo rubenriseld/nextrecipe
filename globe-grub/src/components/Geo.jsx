@@ -98,8 +98,9 @@ export default function Geo(){
       fetchCuisine(cuisine);
       let title ="";
       if (Array.isArray(cuisine) == true){
-        for(const x of cuisine){      
-          title += x + ' & ';
+        for(const x of cuisine){   
+         
+          title +=  x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() + ' & ';
         }
         setTitle(title.slice(0, -2));
       }else{
