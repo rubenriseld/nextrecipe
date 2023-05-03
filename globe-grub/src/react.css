@@ -133,6 +133,7 @@ nav .burger {
 }
 
 body,
+main,
 #root {
   display: flex;
   justify-content: center;
@@ -595,6 +596,7 @@ footer {
   /*KARTAAAAAAAAAAAA*/
   .svg-map {
     width: 100%;
+    margin:auto;
     height: auto;
     stroke: #666;
     max-width: 1600px;
