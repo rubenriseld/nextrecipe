@@ -14,6 +14,7 @@ export default function Geo(){
   );
   const [title, setTitle]= useSearchResult((state)=>
       [state.title, state.setTitle],shallow);
+      
   let cuisine = [];
   let results = [];
 
@@ -95,25 +96,23 @@ export default function Geo(){
           }
         }
       fetchCuisine(cuisine);
-
+      let title ="";
       if (Array.isArray(cuisine) == true){
-        for(const x of cuisine){
-          console.log(x)
+        for(const x of cuisine){      
+          title += x + ' & ';
         }
+        setTitle(title.slice(0, -2));
+      }else{
+        setTitle(cuisine);
       }
-
-      setTitle(cuisine);
-      
-      console.log(cuisine);
-      
-      };
+      }; 
 
       const fetchCuisine = async (x) => {
         var url = "";
          try {
           if (Array.isArray(x) == true){
             for (const y of x){
-              url = `https://api.spoonacular.com/recipes/random?number=15&tags=${y}&apiKey=${key}`;  
+              url = `https://api.spoonacular.com/recipes/random?number=15&tags=${y}&apiKey=${key}`; 
            await fetch(url)
            .then((response) => response.json())
            .then((data) => {
