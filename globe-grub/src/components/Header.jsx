@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
 import Logo from "./Logo";
+import Map from "./Map";
 
 // function toggleMenu() {
 //   let links =
@@ -55,7 +56,7 @@ export default function Header() {
     <header className={`background-primary ${sticky ? "header-sticky":""} ${showMobileMenu?"header-fixed": ""}`}>
       {/* <header className="background-primary"> */}
       <nav className="menu max-width-container background-primary">
-        <NavLink className="logo-link" to="/" onClick={() => {setSearchResult([]); setShowMobileMenu(false)}}>
+        <NavLink className="logo-link" to="/" onClick={() => {setSearchResult([]); setShowMobileMenu(false); window.location.reload(false);}}>
           <Logo />
         </NavLink>
 
@@ -74,7 +75,7 @@ export default function Header() {
           {/* <NavLink to="/recipe" className="menu-link text-color-primary">
             Recipe
           </NavLink> */}
-          <NavLink to="/" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
+          <NavLink to="/map" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
             Around The World
           </NavLink>
           <NavLink to="/" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>

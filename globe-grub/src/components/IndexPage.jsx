@@ -1,4 +1,5 @@
 import Geo from "./Geo";
+import Map from "./Map";
 import Search from "./Search";
 import ResultContainer from "./ResultContainer";
 import Ad from "./Ad";
