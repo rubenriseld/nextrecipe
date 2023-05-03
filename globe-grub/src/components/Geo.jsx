@@ -104,7 +104,7 @@ export default function Geo(){
         }
         setTitle(title.slice(0, -2));
       }else{
-        setTitle(cuisine);
+        setTitle(cuisine.charAt(0).toUpperCase() + cuisine.slice(1).toLowerCase());
       }
       }; 
 
