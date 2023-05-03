@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
 import Logo from "./Logo";
+import Map from "./Map";
 
 // function toggleMenu() {
 //   let links =
@@ -74,7 +75,7 @@ export default function Header() {
           {/* <NavLink to="/recipe" className="menu-link text-color-primary">
             Recipe
           </NavLink> */}
-          <NavLink to="/" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
+          <NavLink to="/map" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
             Around The World
           </NavLink>
           <NavLink to="/" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
