@@ -19,7 +19,7 @@ export default function ResultContainer(props) {
         {props.data.map((recipe) => {
           return (
             <RecipeCard
-                key={recipe.id}
+              key={recipe.id}
               id={recipe.id}
               title={recipe.title}
               diets={recipe.diets}

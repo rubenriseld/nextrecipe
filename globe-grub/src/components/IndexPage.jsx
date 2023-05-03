@@ -9,6 +9,8 @@ import Recommendations from "./Recommendations";
 export default function IndexPage() {
 
    const data = useSearchResult((state) => state.searchResult);
+   const title = useSearchResult((state) => state.title);
+
   return (
     <>
       <section className="geosearch flex-center background-secondary max-width-container">
@@ -16,7 +18,7 @@ export default function IndexPage() {
         <Search/> 
       </section>
       <Ad /> 
-      {data.length == ""
+      {data == ""
       ?
       <>
         <Recommendations></Recommendations>
@@ -26,7 +28,7 @@ export default function IndexPage() {
       </>
       
     : <>
-      <ResultContainer data={data} />; {/*data från Search.jsx(data från sökningen) hamnar i resultcontainer */}
+      <ResultContainer data={data} title={title}/>; {/*data från Search.jsx(data från sökningen) hamnar i resultcontainer */}
     </>
     }
       <Ad />

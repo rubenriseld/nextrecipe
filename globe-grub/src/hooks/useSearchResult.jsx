@@ -4,10 +4,12 @@ import {create} from "zustand"
 
 export const useSearchResult = create((set)=> ({
     searchResult: [],
+    title: "",
 
     setSearchResult: (newSearchResult) => 
         set(() => ({searchResult: newSearchResult})),
-
+    setTitle: (newTitle)=>
+    set(()=> ({title: newTitle})),
     removeSearchResult: () => 
         set({searchResult: []}),
 }));
