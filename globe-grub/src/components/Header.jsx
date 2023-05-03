@@ -56,7 +56,7 @@ export default function Header() {
       {/* <header className="background-primary"> */}
       <nav className="menu max-width-container background-primary">
         <NavLink className="logo-link" to="/" onClick={() => {setSearchResult([]); setShowMobileMenu(false)}}>
-          <Logo />
+          <Logo sloganVisible={false} />
         </NavLink>
 
         <div

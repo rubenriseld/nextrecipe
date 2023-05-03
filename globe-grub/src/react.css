@@ -158,10 +158,14 @@ header {
 
   /* height:7rem; */
   transform: all 0.5s ease;
+  transition: all 0.5s ease;
+
   -moz-transition: all 0.5s ease;
 }
 .header-sticky{
     transform: all 0.5s ease;
+    transition: all 0.5s ease;
+
     -moz-transition: all 0.5s ease;
 
     /* position: sticky; */
@@ -193,7 +197,7 @@ header {
   margin: auto;
   margin-top:0.2rem;
   /* margin-bottom: -1rem; */
-  padding: 0 0.5rem 0 0.5rem;
+  padding: 0 0.5rem 0.7rem 0.5rem;
   z-index:2;
 }
 
