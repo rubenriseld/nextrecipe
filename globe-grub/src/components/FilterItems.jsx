@@ -238,6 +238,11 @@ export const MealTypeFilters = [
         value: "fingerfood",
         type: "M",
     },
+    // {
+    //     name: "Side dish",
+    //     value: "side dish",
+    //     type: "M",
+    // }
 ]
 //array med allergener som ska finnas med i filtermeny
 export const IntoleranceFilters = [
