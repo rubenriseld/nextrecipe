@@ -28,7 +28,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     const loadMore = () => {
         // const newShowMore = resultsToShow < (length - 1);
         // setShowMore(newShowMore);
-        setResultsToShow(8);
+        setResultsToShow(resultsToShow+4);
         console.log(resultsToShow);
     }
 
@@ -75,7 +75,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
       </div>
       
     </section>
-    {props.isReco ===false && resultsToShow < 8?
+    {props.isReco ===false && resultsToShow < props.data.length?
         <button onClick={loadMore} className="show-more-btn color-primary text-color-light">Show More</button>
         : <></>
     }
