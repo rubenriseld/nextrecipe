@@ -332,7 +332,10 @@ header {
     outline:none;
     background-color:transparent;
 }
+input::-webkit-input-placeholder{
+  color: #006a4a !important;
 
+}
 /*tar bort chromes default-bakgrund när man söker från autofill*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
