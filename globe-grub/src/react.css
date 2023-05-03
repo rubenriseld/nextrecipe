@@ -141,6 +141,7 @@ nav .burger {
 
 body,
 main,
+footer,
 #root {
   display: flex;
   justify-content: center;
@@ -501,11 +502,15 @@ footer {
   justify-content: baseline;
   flex-direction: row;
 }
+.footer-container{
+    flex-direction: column;
+}
 
 .footer-info-section> p,
 .footer-info-section> a {
   /*info/submenyn i footern*/
-  font-size: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 /*****************************************
@@ -567,7 +572,9 @@ footer {
 /*SHOW-MORE-BUTTON*/
 .show-more-btn {
     margin: auto;
-    max-width: 25%;
+    margin-bottom: 2rem;
+
+    width: 80%;
   /*knapp för att ladda in fler resultat i resultatdelen*/
 }
 
@@ -824,7 +831,9 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
 
   /*---STARS---*/
   /*---FOOTER---*/
-
+  .footer-container{
+    flex-direction: row;
+}
   /*****************************************
               MAIN COMPONENTS
     *****************************************/
@@ -839,8 +848,11 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
         /* height: 23rem; */
     }
 
-  /*SHOW-MORE-BUTTON*/
-
+/*SHOW-MORE-BUTTON*/
+.show-more-btn {
+    width: 25%;
+  /*knapp för att ladda in fler resultat i resultatdelen*/
+}
   /*---RECIPE---*/
   /*sidan för enskilda recept med all info*/
 
