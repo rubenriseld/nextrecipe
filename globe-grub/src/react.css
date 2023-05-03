@@ -11,7 +11,7 @@
                 COLORS
 *****************************************/
 .color-primary {
-  background-color: #006a4a;
+  background-color: #006a4a!important;
 }
 
 .text-color-primary {
@@ -665,6 +665,70 @@ footer {
     padding: 5px;
     font-family: arial; */
   }
+
+.hide-go-to-top {
+    bottom: -100px!important;
+  /* display: none; */
+  /* animation: movebtn 0.5s ease-in-out reverse; */
+  transition: all .5s ease-in-out;
+}
+
+.go-to-top-btn{
+  position: fixed;
+  bottom: 40px;
+  right: 25px;
+  z-index: 20;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  transition: all .5s ease-in-out;
+  border: 2px solid #fff;
+
+}
+.go-to-top-icon{
+    font-size: 1.5rem;
+}
+.icon-position{
+  position: fixed;
+  bottom: 40px;
+  right: 25px;
+  z-index: 20;
+}
+.icon-style{
+  background-color: #006a4a;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  color: #fff;
+  cursor: pointer;
+  animation: movebtn 0.5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+.icon-style:hover{
+  animation: none;
+  background: #fff;
+  color: #006a4a;
+  border: 2px solid #006a4a;
+}
+@keyframes movebtn {
+  0%{
+    transform: translateY(200px);
+  }
+  /* 25%{
+    transform: translateY(20px);
+  }
+  50%{
+    transform: translateY(0px);
+  }
+  75%{
+    transform: translateY(-20px);
+  } */
+  100%{
+    transform: translateY(0px);
+  }
+}
+
 
 /*****************************************
             DESKTOP (RESPONSIVE)
