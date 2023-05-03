@@ -28,10 +28,12 @@ export default function Map() {
   return (
     <>
      <SVGMap onLocationClick={(e)=>{
-      console.log(e.target.id,   e.target.getAttribute('name'),    e.target.ariaLabel);
-      // setName(e.target.getAttribute('name'));
-    console.log(name + "useState");
-     }} onLocationMouseOver={(e)=>{
+      console.log(e.target.id,   e.target.getAttribute('name'));
+
+
+     }} 
+     
+    onLocationMouseOver={(e)=>{
       console.log(e.target.getAttribute('name'));
       setName(e.target.getAttribute('name'));
       
