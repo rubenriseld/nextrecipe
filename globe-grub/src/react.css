@@ -453,7 +453,9 @@ input:-webkit-autofill:active {
 .clear-filter-btn, .apply-filter-btn, .show-more-btn{
     font-size: 1.5rem;
 }
-
+.clear-filter-btn{
+    border: #006a4a 3px solid;
+}
 button{
     border-style: none;
 }
