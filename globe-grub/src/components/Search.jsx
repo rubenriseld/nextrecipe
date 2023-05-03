@@ -105,6 +105,9 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
             console.log(e);
         }
         setTag("");
+        
+        setResultsToShow(4);
+
     };
 
 //______________________________Event-handlers_____________________________//
@@ -178,7 +181,10 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     //Submit
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setResultsToShow(4);
+
+
+
+
         if (searchString != "") {
             console.log(searchString);
             await filterUrl(searchString);
