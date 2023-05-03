@@ -29,6 +29,11 @@ export const CuisineFilters = [
         type: "C",
     },
     {
+        name: "Creole",
+        value: "creole",
+        type:"C",
+    },
+    {
         name: "Caribbean",
         value: "caribbean",
         type: "C",

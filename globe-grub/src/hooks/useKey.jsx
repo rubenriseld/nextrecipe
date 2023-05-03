@@ -18,7 +18,7 @@ const key14 = "86a723f2dd0a43d2b53affefcab429de";
 
 export const useKey = create((set)=> ({
     //byt key här för att byta på alla ställen
-    key: key1,
+    key: key2,
 
     setKey: (newKey) => 
         set(() => ({key: newKey})),

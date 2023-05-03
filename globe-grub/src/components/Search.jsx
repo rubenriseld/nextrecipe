@@ -73,7 +73,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         }
         console.log("tagg: "+ tagg.tag);
     }, []);
-    
+        // setTag("");
    
 //_____________________________________________________________________________//
 
@@ -93,8 +93,11 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                 setTitle(searchInput)
             }
             if(searchInput =="" && searchString != ""){
+                //x.charAt(0).toUpperCase() + x.slice(1).toLowerCase()
                 setSearchResult(result.results)
-                setTitle(searchString)
+                let titties= searchString.split('='); 
+                let tit= titties[1].charAt(0).toUpperCase() + titties[1].slice(1).toLowerCase();
+                setTitle(tit)
             }
             console.log(title)
             console.log(searchResult.length)
