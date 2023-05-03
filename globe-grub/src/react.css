@@ -517,6 +517,10 @@ footer {
               MAIN COMPONENTS
 *****************************************/
 /*---INDEX---*/
+.result-title{
+    max-width: 100%;
+    overflow-wrap:break-word;
+}
 .result-container {
   /*container för innehållet på resultatdelen (frontpage och sökresultat)*/
 }
