@@ -10,7 +10,8 @@ import { FilterButton } from "./FilterButton";
 import { useKey } from "../hooks/useKey";
 
 export default function Search() {
-
+//ändra key i useKey-hooken
+const key = useKey((state) => state.key);
     
 //______________________________FilterMeny_____________________________//
     const state = useFilterStore.getState((state) => state);
@@ -70,7 +71,7 @@ export default function Search() {
     const filterUrl = async (searchString) => {
         try {
             setTitle("")
-            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key8}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}&number=4`;
+            const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}&number=4`;
             const response = await fetch(url);
             console.log(url);
             const result = await response.json();
