@@ -56,8 +56,9 @@ export default function Header() {
     <header className={`background-primary ${sticky ? "header-sticky":""} ${showMobileMenu?"header-fixed": ""}`}>
       {/* <header className="background-primary"> */}
       <nav className="menu max-width-container background-primary">
+    
         <NavLink className="logo-link" to="/" onClick={() => {setSearchResult([]); setShowMobileMenu(false); window.location.reload(false);}}>
-          <Logo />
+          <Logo sloganVisible={false}/>
         </NavLink>
 
         <div

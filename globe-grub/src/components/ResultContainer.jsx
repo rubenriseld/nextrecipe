@@ -41,13 +41,13 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
 
       {props.title == null
       ?
-      <h1>Discover {props.cuisineTitle} Recipes</h1>
+      <h1 className="result-title">Discover {props.cuisineTitle} Recipes</h1>
       : props.data == null || props.data =="empty"
       ?<>
-        <h1>Search for: "{props.title}" gave no results. </h1>
+        <h1 className="result-title">Search for: "{props.title}" gave no results. </h1>
         <p>Search for something else or go back to the homepage for to get recommendations.</p>
         </> 
-      :<h1>Found {props.data.length} recipes matching: {props.title}</h1>
+      :<h1 className="result-title">Found {props.data.length} recipes matching: {props.title}</h1>
     }
 {/* props.data.split(index,--------list*/}
       <div className="recipe-card-container">

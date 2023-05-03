@@ -1,6 +1,7 @@
 import Checkbox from "./Checkbox";
 import RecipeRating from "./RecipeRating";
 import  Tags from "./Tags";
+import Ad from "./Ad";
 
 import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -42,11 +43,13 @@ export default function RecipePage() {
     }
 
     return (
-        // <!-- RECIPE PAGE COMPONENT -->
+        <>
+        <Ad/>
+
         <section className="max-width-container">
             {/* <!-- Receptnamn --> */}
             <div>
-                <Link to="/" className="text-color-primary">Go back to search results</Link>
+                <Link to="/" className="go-back-text text-color-primary"><i className="fa-solid fa-chevron-left"></i> Go back to search results</Link>
             </div>
             <h1 className="recipe-title">{recipe.title}</h1>
 
@@ -57,9 +60,9 @@ export default function RecipePage() {
                         <img className="recipe-image mr-4 ml-4" src={recipe.image} />
                     </div>
                     {/* <!-- Taggar och stjärnor --> */}
-                    <div className="flex flex-separate align-items-center">
+                    <div className="flex flex-separate">
                         {/* <!-- Taggar --> */}
-                        <div className="flex tag-container">
+                        <div className="flex tag-container-recipe-page">
                             <Tags 
                                     time={recipe.time} 
                                     cuisines={recipe.cuisines} 
@@ -72,7 +75,7 @@ export default function RecipePage() {
                             {/* <!--  ----   TAG COMPONENTS ---- --> */}
                             {/* <!-- vi kommer göra en komponent för en enskild tagg, så på receptkorts-komponenter
                             kommer vi ha tre tagg-komponenter
-                         --> */}
+                        --> */}
                             {/* <p className="tag color-secondary">{recipe.readyInMinutes}min</p>
                             {recipe.cuisines.map((cuisineTag) => {
                                 return <p className="tag color-secondary">{cuisineTag}</p>;
@@ -143,5 +146,7 @@ export default function RecipePage() {
                 </div>
             </article>
         </section>
+        <Ad/>
+        </>
     );
 }

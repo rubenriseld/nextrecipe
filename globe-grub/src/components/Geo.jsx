@@ -119,15 +119,12 @@ export default function Geo() {
 
   return (
     <div className="geo-container">
-      <NavLink
-        to="/"
-        type="button"
-        className="geo-btn color-accent"
-        onClick={getLocation}
-      >
+    <NavLink to="/" type="button" className="geo-btn color-accent" onClick={getLocation}>
         <i className="fa-solid fa-location-dot geo-icon"></i>
-      </NavLink>
-      <p className="geo-text">Find Recipes matching your region!</p>
-    </div>
+    </NavLink>
+    <i className="fa-solid fa-arrow-up geo-arrow-icon text-color-primary"></i>
+    <i className="fa-solid fa-arrow-left geo-arrow-icon text-color-primary"></i>
+    <p className="geo-text text-color-primary">Find Recipes matching your region!</p>
+</div>
   );
 }

@@ -95,6 +95,11 @@ nav .burger {
   font-size: 1.5rem;
 }
 
+.go-back-text{
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
 /*****************************************
             COMMON COMPONENTS
 *****************************************/
@@ -136,6 +141,7 @@ nav .burger {
 
 body,
 main,
+footer,
 #root {
   display: flex;
   justify-content: center;
@@ -151,11 +157,15 @@ header {
   z-index:2;
 
   /* height:7rem; */
-  transform: all 0.5s ease;
+  /* transform: all 0.5s ease; */
+  transition: all 0.5s ease;
+
   -moz-transition: all 0.5s ease;
 }
 .header-sticky{
-    transform: all 0.5s ease;
+    /* transform: all 0.5s ease; */
+    transition: all 0.5s ease;
+
     -moz-transition: all 0.5s ease;
 
     /* position: sticky; */
@@ -187,7 +197,7 @@ header {
   margin: auto;
   margin-top:0.2rem;
   /* margin-bottom: -1rem; */
-  padding: 0 0.5rem 0 0.5rem;
+  padding: 0 0.5rem 0.7rem 0.5rem;
   z-index:2;
 }
 
@@ -242,8 +252,14 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
 }
-
+.geo-arrow-icon{
+    font-size: 2rem;
+}
+.fa-arrow-left{
+    display: none;
+}
 .geo-icon {
   /*geo-ikonen (som ligger i geo-knappen)*/
   color: #ffffff;
@@ -262,7 +278,8 @@ header {
 
 .geo-text {
     /*"find recipes matching your region"*/
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    padding-left:0.5rem;
     font-weight: 700;
     /* margin: 5%; */
     /* width: 135%; */
@@ -315,7 +332,10 @@ header {
     outline:none;
     background-color:transparent;
 }
+input::-webkit-input-placeholder{
+  color: #006a4aae !important;
 
+}
 /*tar bort chromes default-bakgrund när man söker från autofill*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -354,6 +374,9 @@ input:-webkit-autofill:active {
 
 /*FILTER*/
 .filter-btn{
+    border: #006a4a 3px solid;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 .active-btn{
     background-color: #006a4a;
@@ -430,7 +453,9 @@ input:-webkit-autofill:active {
 .clear-filter-btn, .apply-filter-btn, .show-more-btn{
     font-size: 1.5rem;
 }
-
+.clear-filter-btn{
+    border: #006a4a 3px solid;
+}
 button{
     border-style: none;
 }
@@ -444,10 +469,13 @@ button{
     /* color: aliceblue; */
     text-align: center;
     font-size: 300%;
-    margin: 1rem -1rem 1rem -1rem;
+    margin: 0 -1rem 0 -1rem;
     height: 10rem;
 }
-
+.tag-container-recipe-page{
+    padding-top: 0.5rem;
+    flex-direction: column;
+}
 /*---TAGS---*/
 .tag-container {
     align-items: flex-start;
@@ -492,17 +520,25 @@ footer {
   justify-content: baseline;
   flex-direction: row;
 }
+.footer-container{
+    flex-direction: column;
+}
 
 .footer-info-section> p,
 .footer-info-section> a {
   /*info/submenyn i footern*/
-  font-size: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 /*****************************************
               MAIN COMPONENTS
 *****************************************/
 /*---INDEX---*/
+.result-title{
+    max-width: 100%;
+    overflow-wrap:break-word;
+}
 .result-container {
   /*container för innehållet på resultatdelen (frontpage och sökresultat)*/
 }
@@ -558,7 +594,9 @@ footer {
 /*SHOW-MORE-BUTTON*/
 .show-more-btn {
     margin: auto;
-    max-width: 25%;
+    margin-bottom: 2rem;
+
+    width: 80%;
   /*knapp för att ladda in fler resultat i resultatdelen*/
 }
 
@@ -573,6 +611,7 @@ footer {
 
 .recipe-title {
   /*recepttiteln högst upp*/
+  margin-top:1.5rem;
   min-height: 2%;
   height: auto;
   color: black;
@@ -755,6 +794,10 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
         box-sizing: border-box;
         /* height: 23rem; */
     }
+    .tag-container-recipe-page{
+        padding-top: 0.5rem;
+        flex-direction: row;
+    }
 }
 
 @media screen and (min-width: 900px) {
@@ -789,6 +832,9 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     flex-direction: row;
     justify-content: space-between;
   }
+  .geo-container{
+    margin-bottom: 0;
+  }
     .geo-text-container{
         margin-left:2rem;
     }
@@ -797,7 +843,13 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
         /* margin: -5%; */
         /* padding: 1% 1% 1% 4%; */
     }
-
+    .fa-arrow-left{
+        display: inline;
+        padding-left: 0.5rem;
+    }
+    .fa-arrow-up{
+        display:none;
+    }
     /*SEARCH*/
     .searchbar-container {
         /*container för sökrutan samt filterknapp/kommande filtermeny*/
@@ -846,25 +898,18 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
   .filter-menu{
     width: 30%;
   }
-    /*---TAGS---*/
-    .tag {
-        /*kategoritaggar på receptkort och receptsida*/
-        /* font-size: 1rem;
-        margin-bottom: 0; */
-    }
+
 
   /*---ADS---*/
 
   /*---TAGS---*/
-  .tag {
-    /*kategoritaggar på receptkort och receptsida*/
-    /* font-size: 1rem;
-    margin-bottom: 0; */
-  }
+  
 
   /*---STARS---*/
   /*---FOOTER---*/
-
+  .footer-container{
+    flex-direction: row;
+}
   /*****************************************
               MAIN COMPONENTS
     *****************************************/
@@ -879,8 +924,11 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
         /* height: 23rem; */
     }
 
-  /*SHOW-MORE-BUTTON*/
-
+/*SHOW-MORE-BUTTON*/
+.show-more-btn {
+    width: 25%;
+  /*knapp för att ladda in fler resultat i resultatdelen*/
+}
   /*---RECIPE---*/
   /*sidan för enskilda recept med all info*/
 
