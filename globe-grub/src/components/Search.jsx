@@ -105,7 +105,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
             console.log(e);
         }
         setTag("");
-        
+
         setResultsToShow(4);
 
     };
@@ -208,7 +208,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                         className="searchbar text-color-primary"
                         type="text"
                         name="queryvalue"
-                        placeholder="search.."
+                        placeholder="Search..."
                         onChange={handleChange}
                     />
                     <div className="flex button-container">
