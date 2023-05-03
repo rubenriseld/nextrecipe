@@ -25,19 +25,21 @@ const loadMore = () => {
 
   return (
     <section className="result-container max-width-container">
+      
+
       {props.title == null
       ?
       <h1>Discover {props.cuisineTitle} Recipes</h1>
-      : props.data == null
+      : props.data == null || props.data =="empty"
         ?<>
-        <h1>No recipes found matching: {props.title} </h1>
-        <p>Try searching for something else!</p>
+        <h1>Search for: "{props.title}" gave no results. </h1>
+        <p>Search for something else or go back to the homepage for to get recommendations.</p>
         </> 
       :<h1>Found {props.data.length} recipes matching: {props.title}</h1>
     }
 {/* props.data.split(index,--------list*/}
       <div className="recipe-card-container">
-       {props.data != null
+       {props.data != null && props.data != "empty"
         ?
          props.data.map((recipe, index) => {
           //skriver bara ut så många recept som det finns i "resultsToShow"

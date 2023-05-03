@@ -10,8 +10,8 @@ export default function Recommendations(){
    const key = useKey((state) => state.key);
 
 
-    const [poo, setResult] = useState([]);
-    const [test, setCuisine] = useState("");
+    const [recoData, setResult] = useState([]);
+    const [cuisineTitle, setCuisine] = useState("");
     
     const getRandomCuisine = () => {
         const currentCuisine = CuisineFilters[Math.floor(Math.random()*CuisineFilters.length)];
@@ -30,7 +30,7 @@ export default function Recommendations(){
     },[])   
       return(
         <>
-       <ResultContainer data={poo} cuisineTitle={test} ></ResultContainer>
+       <ResultContainer data={recoData} cuisineTitle={cuisineTitle} ></ResultContainer>
         </>
       )
           

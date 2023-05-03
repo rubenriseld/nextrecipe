@@ -18,8 +18,8 @@ export default function IndexPage() {
       </section>
       <Ad /> 
       {data == ""
-      ?
-      <>
+      ?<>
+ 
         <Recommendations></Recommendations>
         <Recommendations></Recommendations>
         <Recommendations></Recommendations>
