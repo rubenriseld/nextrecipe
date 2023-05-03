@@ -267,7 +267,8 @@ header {
 
 .geo-text {
     /*"find recipes matching your region"*/
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    padding-left:0.5rem;
     font-weight: 700;
     /* margin: 5%; */
     /* width: 135%; */
