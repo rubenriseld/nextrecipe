@@ -5,11 +5,11 @@ export default function Footer(){
     
     return(
         <footer>
-            <div className="max-width-container flex flex-separate">
-                <section className="flex-left">
+            <div className="max-width-container flex flex-separate footer-container">
+                <section className="">
 
                 <NavLink className="logo-link" to="/">
-          <Logo />
+          <Logo sloganVisible={true}/>
         </NavLink>
                     {/* <!-- LOGO COMPONENT --> */}
                     {/* <h2 className="company-name text-color-primary">GLOBE GRUB</h2>
@@ -17,9 +17,9 @@ export default function Footer(){
                     {/* <!-- END OF LOGO COMPONENT --> */}
 
                 </section>
-                <section className="flex-right footer-info-section">
-                    <p className="text-color-primary">About:</p>
-                    <a href="mailto:globegrub@info.com" className="text-color-pri1mary">globegrub@info.com</a>
+                <section className="footer-info-section">
+                    <a href="mailto:info@globegrub.com" className="text-color-primary">globegrub@info.com</a>
+                    <p className="text-color-primary">123 456 789</p>
                     <p className="text-color-primary">Trekantsvägen 1, 117 43 Stockholm, Sweden</p>
                 </section>
             </div>

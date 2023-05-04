@@ -34,19 +34,19 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     const [showMealFilter, setShowMealFilter] = useState(false);
     //close filter menu when clicking outsie
     const ref = useRef(null);
+    
     useEffect(() => {
+        const Clickout = (e) => {
+            if (!ref.current.contains(e.target)) {
+                setShowFilterMenu(false);
+            }
+        };
         document.addEventListener("mousedown", Clickout);
         return () => {
             document.removeEventListener("mousedown", Clickout);
-        };
-    }, [ref]);
+        };        
+    });
 
-    const Clickout = (e) => {
-        if (showFilterMenu && !ref.current.contains(e.target)) {
-            setShowFilterMenu(false);
-        }
-    };
-//_____________________________________________________________________________//
 
 //______________________________Sökning, searchbar_____________________________//
     //Input från searchbar
@@ -160,6 +160,9 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
             console.log(e);
         }
         setTag("");
+
+        setResultsToShow(4);
+
     };
 
 //______________________________Event-handlers_____________________________//
@@ -234,7 +237,10 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     //Submit
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setResultsToShow(4);
+
+
+
+
         if (searchString != "") {
             console.log(searchString);
             await filterUrl(searchString);
@@ -258,7 +264,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                         className="searchbar text-color-primary"
                         type="text"
                         name="queryvalue"
-                        placeholder="search.."
+                        placeholder="Search..."
                         onChange={handleChange}
                     />
                     <div className="flex button-container">

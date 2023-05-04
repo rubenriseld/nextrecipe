@@ -28,7 +28,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     const loadMore = () => {
         // const newShowMore = resultsToShow < (length - 1);
         // setShowMore(newShowMore);
-        setResultsToShow(8);
+        setResultsToShow(resultsToShow+4);
         console.log(resultsToShow);
     }
 
@@ -41,13 +41,13 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
 
       {props.title == null
       ?
-      <h1>Discover {props.cuisineTitle} Recipes</h1>
+      <h1 className="result-title">Discover {props.cuisineTitle} Recipes</h1>
       : props.data == null || props.data =="empty"
       ?<>
-        <h1>Search for: "{props.title}" gave no results. </h1>
+        <h1 className="result-title">Search for: "{props.title}" gave no results. </h1>
         <p>Search for something else or go back to the homepage for to get recommendations.</p>
         </> 
-      :<h1>Found {props.data.length} recipes matching: {props.title}</h1>
+      :<h1 className="result-title">Found {props.data.length} recipes matching: {props.title}</h1>
     }
 {/* props.data.split(index,--------list*/}
       <div className="recipe-card-container">
@@ -75,7 +75,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
       </div>
       
     </section>
-    {props.isReco ===false && resultsToShow < 8?
+    {props.isReco ===false && resultsToShow < props.data.length?
         <button onClick={loadMore} className="show-more-btn color-primary text-color-light">Show More</button>
         : <></>
     }
