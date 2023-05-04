@@ -38,8 +38,10 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     <>
     <section className="result-container max-width-container">
       
-
-      {props.title == null
+    {props.data == "maperror" ?
+    <h1 className="result-title">Country doesn't exist in API</h1>
+    :
+      props.title == null
       ?
       <h1 className="result-title">Discover {props.cuisineTitle} Recipes</h1>
       : props.data == null || props.data =="empty"
@@ -51,7 +53,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     }
 {/* props.data.split(index,--------list*/}
       <div className="recipe-card-container">
-       {props.data != null && props.data != "empty"
+       {props.data != null && props.data != "empty" && props.data !="maperror"
         ?
         props.data.map((recipe, index) => {
             //skriver bara ut så många recept som det finns i "resultsToShow"
@@ -69,7 +71,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
               />
               ): 
               <></>})
-              : <>key is used</>}
+              : <></>}
       {/* /*props (property) .data (det som skickats från indexpage) mappas, 
        relevant data skickas till recipecard som hämtas ur varje enskild recept i result.results  */}
       </div>
