@@ -12,7 +12,7 @@ export default function RecipeCard(props) {
     //kunna skriva ut varje cuisinetyp (asian, thai osv) map funkar bara me arrayer 
 
 
-    
+    console.log(props.readyInMinutes)
 
     return (
         // <!-- RECIPE CARD COMPONENT -->

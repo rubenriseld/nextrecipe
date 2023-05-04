@@ -34,19 +34,19 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     const [showMealFilter, setShowMealFilter] = useState(false);
     //close filter menu when clicking outsie
     const ref = useRef(null);
+    
     useEffect(() => {
+        const Clickout = (e) => {
+            if (!ref.current.contains(e.target)) {
+                setShowFilterMenu(false);
+            }
+        };
         document.addEventListener("mousedown", Clickout);
         return () => {
             document.removeEventListener("mousedown", Clickout);
-        };
-    }, [ref]);
+        };        
+    });
 
-    const Clickout = (e) => {
-        if (showFilterMenu && !ref.current.contains(e.target)) {
-            setShowFilterMenu(false);
-        }
-    };
-//_____________________________________________________________________________//
 
 //______________________________Sökning, searchbar_____________________________//
     //Input från searchbar
@@ -77,6 +77,58 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
    
 //_____________________________________________________________________________//
 
+    const manipulateTitle =(searchStrings)=>{
+
+        console.log(searchStrings);
+        let splitParam =searchStrings.split('&');
+        let filterGroups = [];
+        splitParam.forEach(filter=>{
+           let temp= filter.split('=')
+           filterGroups.push(temp[1]);
+        })
+
+        let filterValues = []
+        filterGroups.forEach(filter =>{
+            try{
+                filterValues.push(filter.split(','));
+            }
+            catch{
+                filterValues.push(filter);
+            }
+        })
+        console.log(filterValues);
+        
+        let tagTitle = "";
+        if(searchInput != ""){
+            tagTitle += searchInput;
+        }
+
+
+        filterValues.forEach(filter =>{
+            if(Array.isArray(filter)){
+               filter.forEach(x=>{  
+                if(tagTitle == ""){
+                    if(x.charAt(1) == 0 || x.charAt(1) == 5){
+                         tagTitle += "Under "+x+" min"
+                        }
+                        else{
+                        tagTitle += x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() 
+                    }
+                }
+                else if(tagTitle != "" ){
+                    if(x.charAt(1) == 0 || x.charAt(1) == 5){
+                        tagTitle += ", Under "+x+" min"
+                    }
+                    else{
+                        tagTitle += ", "+ x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() 
+                    }
+                }
+               })        
+            } 
+        })
+        return tagTitle;
+    }
+
     const filterUrl = async (searchString) => {
         try {
             setTitle("")
@@ -84,23 +136,26 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
             const response = await fetch(url);
             console.log(url);
             const result = await response.json();
-            if(searchInput != "" & result.results.length != 0){
-                setSearchResult(result.results)
-                setTitle(searchInput)
+            if(searchInput != ""  & result.results.length != 0){
+                if(searchString != "" ){
+                     setTitle(manipulateTitle(searchString));
+                    }
+                    else{
+                        setTitle(searchInput);
+                        }
+                    setSearchResult(result.results)
+                
             }
             if(searchInput == "" || result.results.length == 0){
                 setSearchResult("empty");
                 setTitle(searchInput)
             }
             if(searchInput =="" && searchString != ""){
+                setTitle(manipulateTitle(searchString));
                 setSearchResult(result.results)
-                setTitle(searchString)
             }
             console.log(title)
-            console.log(searchResult.length)
-            // setTag("");
-            
-            //result.results är en lista av alla recept, dessa skickas in i childtoparent    
+            console.log(searchResult.length) 
         } catch (e) {
             console.log(e);
         }
@@ -122,6 +177,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
 
     //Apply Filters
     const getActiveButtons = async () => {
+        
         let searchString = "";
         let buttons = document.querySelectorAll('.active-btn');
         // let buttons = activeButtons;
