@@ -133,6 +133,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         try {
             setTitle("")
             const url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${searchInput}&includeIngredients=${searchInput}&addRecipeInformation=true${searchString}&number=8`;
+            console.log(key);
             const response = await fetch(url);
             console.log(url);
             const result = await response.json();
