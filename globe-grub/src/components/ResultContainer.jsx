@@ -38,6 +38,11 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     <>
     <section className="result-container max-width-container">
       
+      {/* om search-sökning är tom, visa recommendations title
+          om data är null eller "empty", visa meddelande
+          annars, visa hur många recept som hittats på det som sökts*/}
+
+    
     {props.data == "maperror" ?
     <h1 className="result-title">Country doesn't exist in API</h1>
     :
