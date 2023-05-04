@@ -1,5 +1,5 @@
 import Header from "../components/Header"
-import ScrollTopBtn from "./ScrollButton";
+import ScrollTopBtn from "../components/ScrollButton";
 import Footer from "../components/Footer"
 
 
