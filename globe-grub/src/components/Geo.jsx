@@ -70,6 +70,7 @@ export default function Geo() {
     }
     if (cuisine.length == 0) {
       console.log("Country doesn't exist in API");
+      setSearchResult("maperror");
     } else {
       fetchCuisine(cuisine);
     }
