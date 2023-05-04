@@ -11,6 +11,7 @@ import Root from "./routes/Root";
 import ErrorPage from "./ErrorPage";
 import IndexPage from "./components/IndexPage";
 import RecipePage from "./components/RecipePage";
+import Map from "./components/Map";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         path: "/recipe/:recipeId", //routing för enskild receptsida
         element: <RecipePage />,
       },
+      {
+        path: "/map",
+        element: <Map />,
+      }
     ],
   },
 ]);

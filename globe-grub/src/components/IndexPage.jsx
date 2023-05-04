@@ -1,4 +1,5 @@
 import Geo from "./Geo";
+import Map from "./Map";
 import Search from "./Search";
 import ResultContainer from "./ResultContainer";
 import Ad from "./Ad";
@@ -18,8 +19,8 @@ export default function IndexPage() {
       </section>
       <Ad /> 
       {data == ""
-      ?
-      <>
+      ?<>
+ 
         <Recommendations></Recommendations>
         <Recommendations></Recommendations>
         <Recommendations></Recommendations>
@@ -27,10 +28,10 @@ export default function IndexPage() {
       </>
       
     : <>
-      <ResultContainer data={data} title={title}/>; {/*data från Search.jsx(data från sökningen) hamnar i resultcontainer */}
+      <ResultContainer data={data} title={title} isReco={false}/> {/*data från Search.jsx(data från sökningen) hamnar i resultcontainer */}
     </>
     }
       <Ad />
     </>
-  );
+  )
 }

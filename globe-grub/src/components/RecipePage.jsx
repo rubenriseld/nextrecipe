@@ -1,31 +1,32 @@
 import Checkbox from "./Checkbox";
 import RecipeRating from "./RecipeRating";
 import  Tags from "./Tags";
+import Ad from "./Ad";
 
 import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSearchResult } from "../hooks/useSearchResult";
+import { useKey } from "../hooks/useKey";
+
+
 
 export default function RecipePage() {
     const [recipe, setRecipe] = useState("");
     const [loading, setLoading] = useState(true);
 
     const data = useSearchResult((state) => state.searchResult);
+    // const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
+    //     [state.resultsToShow, state.setResultsToShow], shallow);
+
+    //ändra key i useKey-hooken
+   const key = useKey((state) => state.key);
+
 
     const location = useLocation();
     const id = location.state;
 
-    const key1 = "13c6c14454a748769e3611a7cf719862";
-    const key2 = "74c179cdd6bf42fab75869c258580b05";
-    const key3 = "c02162ede9394dd8bca983829213bd71";
-    const key4 = "85ce5287879e42978484fcf300dace17";
-    const key5 = "8fbd9413e79a49bfaa909d68f22e0476";
-    const key6 = "e50fb6304553492781cba43da8b4bc7f";
-    const key7 = "15c980413ad44f09ba2ac7e73f076610";
-    const key8="ce46b5aef3da4d67b273b1b7dec8567f";
-    const key12="7d22a6b4acf44702bdd65c55ce0b9290";
 
-    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key12}&includeNutrition=true`;
+    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key}&includeNutrition=true`;
 
     useEffect(() => {
         fetch(url)
@@ -42,11 +43,13 @@ export default function RecipePage() {
     }
 
     return (
-        // <!-- RECIPE PAGE COMPONENT -->
+        <>
+        <Ad/>
+
         <section className="max-width-container">
             {/* <!-- Receptnamn --> */}
             <div>
-                <Link to="/" className="text-color-primary">Back</Link>
+                <Link to="/" className="go-back-text text-color-primary"><i className="fa-solid fa-chevron-left"></i> Go back to search results</Link>
             </div>
             <h1 className="recipe-title">{recipe.title}</h1>
 
@@ -57,9 +60,9 @@ export default function RecipePage() {
                         <img className="recipe-image mr-4 ml-4" src={recipe.image} />
                     </div>
                     {/* <!-- Taggar och stjärnor --> */}
-                    <div className="flex flex-separate align-items-center">
+                    <div className="flex flex-separate">
                         {/* <!-- Taggar --> */}
-                        <div className="flex tag-container">
+                        <div className="flex tag-container-recipe-page">
                             <Tags 
                                     time={recipe.time} 
                                     cuisines={recipe.cuisines} 
@@ -72,7 +75,7 @@ export default function RecipePage() {
                             {/* <!--  ----   TAG COMPONENTS ---- --> */}
                             {/* <!-- vi kommer göra en komponent för en enskild tagg, så på receptkorts-komponenter
                             kommer vi ha tre tagg-komponenter
-                         --> */}
+                        --> */}
                             {/* <p className="tag color-secondary">{recipe.readyInMinutes}min</p>
                             {recipe.cuisines.map((cuisineTag) => {
                                 return <p className="tag color-secondary">{cuisineTag}</p>;
@@ -143,5 +146,7 @@ export default function RecipePage() {
                 </div>
             </article>
         </section>
+        <Ad/>
+        </>
     );
 }

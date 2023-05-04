@@ -9,11 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@svg-maps/world": "^1.0.1",
     "localforage": "^1.10.0",
+    "lodash": "^4.17.21",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
     "react-router-dom": "^6.10.0",
+    "react-svg-map": "^2.2.0",
     "sort-by": "^0.0.2",
     "zustand": "^4.3.7"
   },
@@ -21,6 +25,6 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
-    "vite": "^4.3.1"
+    "vite": "^4.3.4"
   }
 }
