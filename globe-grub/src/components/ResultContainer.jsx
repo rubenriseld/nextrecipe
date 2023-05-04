@@ -38,6 +38,9 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     <>
     <section className="result-container max-width-container">
       
+      {/* om search-sökning är tom, visa recommendations title
+          om data är null eller "empty", visa meddelande
+          annars, visa hur många recept som hittats på det som sökts*/}
 
       {props.title == null
       ?
@@ -45,7 +48,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
       : props.data == null || props.data =="empty"
       ?<>
         <h1 className="result-title">Search for: "{props.title}" gave no results. </h1>
-        <p>Search for something else or go back to the homepage for to get recommendations.</p>
+        <p>Search for something else or go back to the homepage to get recommendations.</p>
         </> 
       :<h1 className="result-title">Found {props.data.length} recipes matching: {props.title}</h1>
     }
