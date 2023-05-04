@@ -28,6 +28,8 @@ const getRandomKey = () => {
 
 
 
+
+
 export const useKey = create((set)=> ({
     //byt key här för att byta på alla ställen
     key: getRandomKey(),
