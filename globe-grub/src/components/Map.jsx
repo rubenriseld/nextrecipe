@@ -7,6 +7,8 @@ import { shallow } from "zustand/shallow";
 import { useKey } from "../hooks/useKey";
 import { useNavigate } from "react-router-dom";
 import { CountryArray  } from "./CountryArray";
+import { useResultsToShow } from "../hooks/useResultsToShow";
+
 
 
 export default function Map() {
@@ -19,6 +21,11 @@ export default function Map() {
   );
   const [title, setTitle]= useSearchResult((state)=>
       [state.title, state.setTitle],shallow);
+
+const [resultsToShow, setResultsToShow] = useResultsToShow(
+(state) => [state.resultsToShow, state.setResultsToShow],
+shallow
+);
 
   const key = useKey((state) => state.key);
 
@@ -102,6 +109,7 @@ export default function Map() {
       console.log(e);
     }
     setSearchResult(results);
+    setResultsToShow(4);
     console.log(results);
   }
   return (
