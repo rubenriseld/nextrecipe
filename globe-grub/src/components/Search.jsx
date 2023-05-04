@@ -77,6 +77,58 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
    
 //_____________________________________________________________________________//
 
+    const manipulateTitle =(searchStrings)=>{
+
+        console.log(searchStrings);
+        let splitParam =searchStrings.split('&');
+        let filterGroups = [];
+        splitParam.forEach(filter=>{
+           let temp= filter.split('=')
+           filterGroups.push(temp[1]);
+        })
+
+        let filterValues = []
+        filterGroups.forEach(filter =>{
+            try{
+                filterValues.push(filter.split(','));
+            }
+            catch{
+                filterValues.push(filter);
+            }
+        })
+        console.log(filterValues);
+        
+        let tagTitle = "";
+        if(searchInput != ""){
+            tagTitle += searchInput;
+        }
+
+
+        filterValues.forEach(filter =>{
+            if(Array.isArray(filter)){
+               filter.forEach(x=>{  
+                if(tagTitle == ""){
+                    if(x.charAt(1) == 0 || x.charAt(1) == 5){
+                         tagTitle += "Under "+x+" min"
+                        }
+                        else{
+                        tagTitle += x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() 
+                    }
+                }
+                else if(tagTitle != "" ){
+                    if(x.charAt(1) == 0 || x.charAt(1) == 5){
+                        tagTitle += ", Under "+x+" min"
+                    }
+                    else{
+                        tagTitle += ", "+ x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() 
+                    }
+                }
+               })        
+            } 
+        })
+        return tagTitle;
+    }
+
     const filterUrl = async (searchString) => {
         try {
             setTitle("")
@@ -84,32 +136,26 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
             const response = await fetch(url);
             console.log(url);
             const result = await response.json();
-            if(searchInput != "" & result.results.length != 0){
-                setSearchResult(result.results)
-                setTitle(searchInput)
+            if(searchInput != ""  & result.results.length != 0){
+                if(searchString != "" ){
+                     setTitle(manipulateTitle(searchString));
+                    }
+                    else{
+                        setTitle(searchInput);
+                        }
+                    setSearchResult(result.results)
+                
             }
             if(searchInput == "" || result.results.length == 0){
                 setSearchResult("empty");
                 setTitle(searchInput)
             }
             if(searchInput =="" && searchString != ""){
-                //x.charAt(0).toUpperCase() + x.slice(1).toLowerCase()
+                setTitle(manipulateTitle(searchString));
                 setSearchResult(result.results)
-                let titties= searchString.split('='); 
-                let tit= titties[1].charAt(0).toUpperCase() + titties[1].slice(1).toLowerCase();
-                if(tit.charAt(1) == 0 ||tit.charAt(1) == 5){
-                     setTitle(`Under ${tit} minutes`);
-                }
-                else{
-                    setTitle(tit);
-
-                }
             }
             console.log(title)
-            console.log(searchResult.length)
-            // setTag("");
-            
-            //result.results är en lista av alla recept, dessa skickas in i childtoparent    
+            console.log(searchResult.length) 
         } catch (e) {
             console.log(e);
         }
@@ -128,6 +174,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
 
     //Apply Filters
     const getActiveButtons = async () => {
+        
         let searchString = "";
         let buttons = document.querySelectorAll('.active-btn');
         // let buttons = activeButtons;
