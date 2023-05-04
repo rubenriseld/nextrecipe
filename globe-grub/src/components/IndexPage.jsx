@@ -6,7 +6,6 @@ import Ad from "./Ad";
 import React, { useState } from "react";
 import { useSearchResult } from "../hooks/useSearchResult";
 import Recommendations from "./Recommendations";
-import ScrollTopBtn from "./ScrollButton";
 
 export default function IndexPage() {
 
@@ -33,7 +32,6 @@ export default function IndexPage() {
     </>
     }
       <Ad />
-      <ScrollTopBtn/>
     </>
   )
 }

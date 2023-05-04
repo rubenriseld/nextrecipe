@@ -1,5 +1,7 @@
 import Header from "../components/Header"
+import ScrollTopBtn from "./ScrollButton";
 import Footer from "../components/Footer"
+
 
 import {
     createBrowserRouter,
@@ -17,7 +19,9 @@ export default function Root() {
         <main>
             <Outlet/>
         </main>
+        <ScrollTopBtn/>
         <Footer/>
+
         </>
     )
 }
