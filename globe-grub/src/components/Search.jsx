@@ -113,15 +113,32 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         if(searchInput != ""){
             tagTitle += searchInput;
         }
+        const fixMealType = (str)=>{
+            if(str == "appetizers"){
+                return ("lunch")
+            }
+            if(str == "main course"){
+                return ("dinner")
+            }
+        }
         filterValues.forEach(filter =>{
+            
             if(Array.isArray(filter)){
                filter.forEach(x=>{  
                 if(tagTitle == ""){
+                   
                     if(x.charAt(1) == 0 || x.charAt(1) == 5){
                          tagTitle += "Under "+x+" min"
                         }
                         else{
-                        tagTitle += x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() 
+                            if(x == "appetizers" || x == "main course"){
+                                let fixedTag = fixMealType(x);
+                                tagTitle += fixedTag.charAt(0).toUpperCase() + fixedTag.slice(1).toLowerCase() 
+                            }
+                            else{
+                                tagTitle += x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() 
+                            }
+                        
                     }
                 }
                 else if(tagTitle != "" ){
@@ -129,7 +146,13 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                         tagTitle += ", Under "+x+" min"
                     }
                     else{
-                        tagTitle += ", "+ x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() 
+                        if(x == "appetizer" || x == "main course"){
+                            let fixedTag = fixMealType(x);
+                            tagTitle += ", "+ fixedTag.charAt(0).toUpperCase() + fixedTag.slice(1).toLowerCase() 
+                        }else{
+
+                            tagTitle += ", "+ x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() 
+                        }
                     }
                 }
                })        
