@@ -19,7 +19,7 @@ export default function RecipeCard(props) {
         <article className="recipe-card">
             <Link to={`/recipe/${props.id}`} state={props.id}>
                 {/* <!--single recipe card--> */}
-                <img src={props.image} alt="Image" />
+                <img src={props.image} alt="Image of recipe" />
 
                 <div className="recipe-card-info">
                     <h3 className="recipe-card-title text-color-primary">{props.title}</h3>

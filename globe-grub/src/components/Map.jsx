@@ -67,6 +67,8 @@ shallow
     }
     if (cuisine.length == 0){
       console.log("Country doesn't exist in API")
+      setSearchResult("maperror");
+    //   setTitle("Country doesn't exist in API");
     }else{
       fetchCuisine(cuisine);
     }
