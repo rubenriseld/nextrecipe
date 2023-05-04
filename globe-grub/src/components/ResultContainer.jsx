@@ -64,12 +64,12 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                 image={recipe.image}
                 cuisines={recipe.cuisines}
                 dishTypes={recipe.dishTypes}
-                time={recipe.maxReadyTime}
+                time={recipe.readyInMinutes}
                 aggregateLikes={recipe.aggregateLikes}
               />
               ): 
               <></>})
-              : null}
+              : <>key is used</>}
       {/* /*props (property) .data (det som skickats från indexpage) mappas, 
        relevant data skickas till recipecard som hämtas ur varje enskild recept i result.results  */}
       </div>

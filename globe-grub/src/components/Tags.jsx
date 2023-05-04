@@ -31,8 +31,11 @@ export default function Tags(props){
 
     const GenerateTags = () => {
         let time = props.time;
+        console.log(time)
         let cuisines = props.cuisines;
+        console.log(cuisines)
         let diets = props.diets;
+        console.log(diets)
         let dishTypes = props.dishTypes;
         let vegan = props.vegan;
         let vegetarian = props.vegetarian;
@@ -42,7 +45,7 @@ export default function Tags(props){
         
         //tag one
         if(time != null){ 
-            tags[0] = time; 
+            tags[0] =  time; 
         } else { 
             tags[0] = "45"; //default om det inte finns tid på receptet, skulle kunna bytas ut till 
                             //annat värde om det saknas på många
@@ -138,7 +141,7 @@ export default function Tags(props){
                     <Link to="/" className="tag color-tag-three text-color-primary"  onClick={() => {setSearchResult([]); setTag(tagValues[2])}}>{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</Link>
                 </>
                 :<>
-                    <p className="tag color-tag-one text-color-primary">{tags[0].toUpperCase()} MIN</p>
+                    <p className="tag color-tag-one text-color-primary">{tags[0]} MIN</p>
                     <p className="tag color-tag-two text-color-primary">{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</p>
                     <p className="tag color-tag-three text-color-primary">{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</p>
                 </> 
