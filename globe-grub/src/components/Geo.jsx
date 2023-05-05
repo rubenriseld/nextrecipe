@@ -93,7 +93,7 @@ export default function Geo() {
     try {
       if (Array.isArray(x) == true) {
         for (const y of x) {
-          url = `https://api.spoonacular.com/recipes/random?number=10&tags=${y}&apiKey=${key}`;
+          url = `https://api.spoonacular.com/recipes/random?number=32&tags=${y}&apiKey=${key}`;
           await fetch(url)
             .then((response) => response.json())
             .then((data) => {
@@ -103,7 +103,7 @@ export default function Geo() {
             });
         }
       } else {
-        url = `https://api.spoonacular.com/recipes/random?number=10&tags=${x}&apiKey=${key}`;
+        url = `https://api.spoonacular.com/recipes/random?number=32&tags=${x}&apiKey=${key}`;
         await fetch(url)
           .then((response) => response.json())
           .then((data) => {
