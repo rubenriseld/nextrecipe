@@ -80,7 +80,7 @@ export default function Header() {
           <NavLink to="/map" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
             Around The World
           </NavLink>
-          <NavLink to="/" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
+          <NavLink to="/aboutus" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
             About Us
           </NavLink>
         </div>
