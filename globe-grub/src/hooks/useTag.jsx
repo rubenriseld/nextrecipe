@@ -1,26 +1,9 @@
 import {create} from "zustand"
-// import {persist} from "zustand/middleware"
 
-
+// state för att kunna göra sökning när man klickar på taggar i recipepage
 export const useTag = create((set)=> ({
     tag: "",
 
     setTag: (newTag) => 
         set(() => ({tag: newTag})),
-
-    removeTag: () => 
-        set({tag: ""}),
 }));
-
-// export const useSearchResult = create(persist(
-//     (set, get) => ({
-//         result: [],
-//         addResult: (result) => set((prevState)=>(
-//             {result: [...prevState.result, result]}
-//         ))
-//     }),
-//     {
-//         name: "search-result",
-//         getResult: () => sessionStorage,
-//     }
-// ))

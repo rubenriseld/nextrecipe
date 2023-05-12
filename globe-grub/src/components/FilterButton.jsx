@@ -1,8 +1,12 @@
 import { useState } from "react";
 
+// komponent för filterknapparna i filtermenyn
 export function FilterButton(props){
+    
+    // om en filterknapp togglas så ändras färgen så det är tydligt
+    // att den är aktiv
     const [isActive, setIsActive] = useState(props.active);
-
+    
     const name = props.name;
     const value = props.value;
     const type = props.type;

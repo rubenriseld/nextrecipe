@@ -1,5 +1,4 @@
 import {create} from "zustand"
-// import {persist} from "zustand/middleware"
 
 const keyArray = [
     "13c6c14454a748769e3611a7cf719862",
@@ -20,16 +19,11 @@ const keyArray = [
     "8a2f10c7e7d54edcb8d62c477eefe3e4"
 ];
 
+// slumpa fram nyckel 
 const getRandomKey = () => {
     const currentKey = keyArray[Math.floor(Math.random()*keyArray.length)];
     return currentKey
 }  
-
-
-
-
-
-
 export const useKey = create((set)=> ({
     //byt key här för att byta på alla ställen
     key: getRandomKey(),
@@ -41,16 +35,3 @@ export const useKey = create((set)=> ({
 
     
 }));
-
-// export const useSearchResult = create(persist(
-//     (set, get) => ({
-//         result: [],
-//         addResult: (result) => set((prevState)=>(
-//             {result: [...prevState.result, result]}
-//         ))
-//     }),
-//     {
-//         name: "search-result",
-//         getResult: () => sessionStorage,
-//     }
-// ))
