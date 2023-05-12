@@ -114,7 +114,7 @@ export default function Geo() {
       console.log(e);
     }
     setSearchResult(results);
-    setResultsToShow(4);
+    setResultsToShow(8);
     console.log(results);
   };
 

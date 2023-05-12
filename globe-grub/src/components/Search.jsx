@@ -11,10 +11,12 @@ import { FilterButton } from "./FilterButton"; //komponent filterbutton (tags i 
 import { useKey } from "../hooks/useKey"; //API keys, global state
 import { useResultsToShow } from "../hooks/useResultsToShow"; //antal recept som ska visas innan "show more" knappen klickas
 
+
+// komponent för sökning, hantering av taggar samt filtermeny och filtrering
 export default function Search() {
 
-//Hämta api key 
-const key = useKey((state) => state.key); 
+    //Hämta api key 
+    const key = useKey((state) => state.key);
 
 
 const chosenFilters = useChosenFilterAmount(state => state.chosenFilters);
@@ -24,8 +26,8 @@ console.log(chosenFilters)
 //show-more-grej
 const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         [state.resultsToShow, state.setResultsToShow], shallow);
-    
-//______________________________FilterMeny_____________________________//
+
+    //______________________________FilterMeny_____________________________//
     //filter-param "&cuisines"...etc hämtas
     const state = useFilterStore.getState((state) => state);
     //visar/döljer filtermeny
@@ -36,16 +38,10 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     const [intoleranceCollapsed, setIntoleranceCollapsed] = useState(true);
     const [timeCollapsed, setTimeCollapsed] = useState(true);
     const [mealCollapsed, setMealCollapsed] = useState(true);
-    const [showCuisineFilter, setShowCuisineFilter] = useState(false);
-    const [showDietFilter, setShowDietFilter] = useState(false);
-    const [showIntoleranceFilter, setShowIntoleranceFilter] = useState(false);
-    const [showTimeFilter, setShowTimeFilter] = useState(false);
-    const [showMealFilter, setShowMealFilter] = useState(false);
 
-
-    //close filter menu when clicking outsie
+    //close filter menu when clicking outside
     const ref = useRef(null);
-    
+
     //
     useEffect(() => {
         const Clickout = (e) => {
@@ -56,115 +52,115 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         document.addEventListener("mousedown", Clickout);
         return () => {
             document.removeEventListener("mousedown", Clickout);
-        };        
+        };
     });
 
 
-//______________________________Sökning, searchbar_____________________________//
+    //______________________________Sökning, searchbar_____________________________//
     //Input från searchbar
     const [searchInput, setSearchInput] = useState("");
     //Resultat från sökning hamnar i indexpage
     const [searchResult, setSearchResult] = useSearchResult((state) =>
         [state.searchResult, state.setSearchResult], shallow);
     //söktermen från searchInput, hamnar i indexpage
-    const [title, setTitle]= useSearchResult((state)=>
-        [state.title, state.setTitle],shallow);
+    const [title, setTitle] = useSearchResult((state) =>
+        [state.title, state.setTitle], shallow);
     let searchString = "";
-//_____________________________________________________________________________//
+    //_____________________________________________________________________________//
 
-    
-//_________________________________Taggsökning_________________________________//
+
+    //_________________________________Taggsökning_________________________________//
     const [tag, setTag] = useTag(
-        (state) => [state.tag, state.setTag],shallow);
+        (state) => [state.tag, state.setTag], shallow);
     //Hämtar vald tagg, om värde finns kör useEffect som anropar filterUrl
-    const tagg = useTag.getState((state)=> state.tag);
+    const tagg = useTag.getState((state) => state.tag);
     //gör en sökning på taggklick från recipepage om det klickats
-    useEffect(() => {  
-        if(tagg.tag != ""){
+    useEffect(() => {
+        if (tagg.tag != "") {
             filterUrl(tagg.tag);
         }
-        console.log("tagg: "+ tagg.tag);
+        console.log("tagg: " + tagg.tag);
     }, []);
 
-   
-//_____________________________________________________________________________//
-//_________________________________API Anrop__________________________________//
 
-//funktion för att manipulera strängen med filter parametrar som kommer genom taggsökning/filtermenyn som visas som titel
-//tar bort "&[filterparam]=" så att endast termerna är kvar i strängen
-//tar sedan bort ',' ifall det är flera av samma filterkategori (&cuisines=nordic--->,<--african)
-//kollar om termen slutar på "0" eller "5" för att se om termen är för tid, och lägger till "Under [term] minutes" om 
-//om sökterm från sökbar finns, läggs det till först i strängen först, sedan läggs resterande termer till med stor bokstav i början på varje term
-//färdig sträng skickas tillbaka till setTitle() i filterUrl funktionen
-    const manipulateTitle =(searchStrings)=>{
+    //_____________________________________________________________________________//
+    //_________________________________API Anrop__________________________________//
+
+    //funktion för att manipulera strängen med filter parametrar som kommer genom taggsökning/filtermenyn som visas som titel
+    //tar bort "&[filterparam]=" så att endast termerna är kvar i strängen
+    //tar sedan bort ',' ifall det är flera av samma filterkategori (&cuisines=nordic--->,<--african)
+    //kollar om termen slutar på "0" eller "5" för att se om termen är för tid, och lägger till "Under [term] minutes" om 
+    //om sökterm från sökbar finns, läggs det till först i strängen först, sedan läggs resterande termer till med stor bokstav i början på varje term
+    //färdig sträng skickas tillbaka till setTitle() i filterUrl funktionen
+    const manipulateTitle = (searchStrings) => {
 
         console.log(searchStrings);
-        let splitParam =searchStrings.split('&');
+        let splitParam = searchStrings.split('&');
         let filterGroups = [];
-        splitParam.forEach(filter=>{
-           let temp= filter.split('=')
-           filterGroups.push(temp[1]);
+        splitParam.forEach(filter => {
+            let temp = filter.split('=')
+            filterGroups.push(temp[1]);
         })
 
         let filterValues = []
-        filterGroups.forEach(filter =>{
-            try{
+        filterGroups.forEach(filter => {
+            try {
                 filterValues.push(filter.split(','));
             }
-            catch{
+            catch {
                 filterValues.push(filter);
             }
         })
         console.log(filterValues);
-        
+
         let tagTitle = "";
-        if(searchInput != ""){
+        if (searchInput != "") {
             tagTitle += searchInput;
         }
-        const fixMealType = (str)=>{
-            if(str == "appetizers"){
+        const fixMealType = (str) => {
+            if (str == "appetizers") {
                 return ("lunch")
             }
-            if(str == "main course"){
+            if (str == "main course") {
                 return ("dinner")
             }
         }
-        filterValues.forEach(filter =>{
-            
-            if(Array.isArray(filter)){
-               filter.forEach(x=>{  
-                if(tagTitle == ""){
-                   
-                    if(x.charAt(1) == 0 || x.charAt(1) == 5){
-                         tagTitle += "Under "+x+" min"
-                        }
-                        else{
-                            if(x == "appetizers" || x == "main course"){
-                                let fixedTag = fixMealType(x);
-                                tagTitle += fixedTag.charAt(0).toUpperCase() + fixedTag.slice(1).toLowerCase() 
-                            }
-                            else{
-                                tagTitle += x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() 
-                            }
-                        
-                    }
-                }
-                else if(tagTitle != "" ){
-                    if(x.charAt(1) == 0 || x.charAt(1) == 5){
-                        tagTitle += ", Under "+x+" min"
-                    }
-                    else{
-                        if(x == "appetizer" || x == "main course"){
-                            let fixedTag = fixMealType(x);
-                            tagTitle += ", "+ fixedTag.charAt(0).toUpperCase() + fixedTag.slice(1).toLowerCase() 
-                        }else{
+        filterValues.forEach(filter => {
 
-                            tagTitle += ", "+ x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() 
+            if (Array.isArray(filter)) {
+                filter.forEach(x => {
+                    if (tagTitle == "") {
+
+                        if (x.charAt(1) == 0 || x.charAt(1) == 5) {
+                            tagTitle += "Under " + x + " min"
+                        }
+                        else {
+                            if (x == "appetizers" || x == "main course") {
+                                let fixedTag = fixMealType(x);
+                                tagTitle += fixedTag.charAt(0).toUpperCase() + fixedTag.slice(1).toLowerCase()
+                            }
+                            else {
+                                tagTitle += x.charAt(0).toUpperCase() + x.slice(1).toLowerCase()
+                            }
+
                         }
                     }
-                }
-               })        
-            } 
+                    else if (tagTitle != "") {
+                        if (x.charAt(1) == 0 || x.charAt(1) == 5) {
+                            tagTitle += ", Under " + x + " min"
+                        }
+                        else {
+                            if (x == "appetizer" || x == "main course") {
+                                let fixedTag = fixMealType(x);
+                                tagTitle += ", " + fixedTag.charAt(0).toUpperCase() + fixedTag.slice(1).toLowerCase()
+                            } else {
+
+                                tagTitle += ", " + x.charAt(0).toUpperCase() + x.slice(1).toLowerCase()
+                            }
+                        }
+                    }
+                })
+            }
         })
         return tagTitle;
     }
@@ -180,25 +176,25 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
             console.log(url);
             const result = await response.json();
             //om sökbar inte är tom och det finns resultat
-                //om filter är angivet, manipulera filter & sökbar inputs
-                //annars skicka endast med searchbar input 
-            if(searchInput != ""  & result.results.length != 0){
-                if(searchString != "" ){
-                     setTitle(manipulateTitle(searchString));
-                    }
-                    else{
-                        setTitle(searchInput);
-                        }
-                    setSearchResult(result.results)
-                
+            //om filter är angivet, manipulera filter & sökbar inputs
+            //annars skicka endast med searchbar input 
+            if (searchInput != "" & result.results.length != 0) {
+                if (searchString != "") {
+                    setTitle(manipulateTitle(searchString));
+                }
+                else {
+                    setTitle(searchInput);
+                }
+                setSearchResult(result.results)
+
             }
             //om searchbar är tom och results är tom, ge searchresult värdet av "empty" som används för att visa felmeddelanden i resultcontainer
-            if(searchInput == "" || result.results.length == 0){
+            if (searchInput == "" || result.results.length == 0) {
                 setSearchResult("empty");
                 setTitle(searchInput)
             }
             //om endast filter är angivna, manipulera termer och setta result
-            if(searchInput =="" && searchString != ""){
+            if (searchInput == "" && searchString != "") {
                 setTitle(manipulateTitle(searchString));
                 setSearchResult(result.results)
             }
@@ -208,12 +204,12 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         //töm tagg
         setTag("");
         //"nollställ" hur många recept som ska visas (ökar för varje klickning på "show more")
-        setResultsToShow(4);
+        setResultsToShow(8);
 
     };
 
-//______________________________Event-handlers_____________________________//
-    
+    //______________________________Event-handlers_____________________________//
+
     //Clear Filters
     const inactivateButtons = () => {
         let buttons = document.querySelectorAll('.active-btn');
@@ -234,7 +230,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         let mealtypeString = "";
         let intoleranceString = "";
         let timeString = "";
-        buttons.forEach(btn => {   
+        buttons.forEach(btn => {
             if (btn.dataset.type == "C" & cuisineString == "") {
                 cuisineString += state.cuisine + btn.value
             } else if (btn.dataset.type == "C" & cuisineString != "") {
@@ -277,7 +273,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     }
 
     //Set searchinput
-    const handleChange = (e) => {     
+    const handleChange = (e) => {
         setSearchInput(e.target.value);
     }
 
@@ -295,11 +291,6 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         <>
             <form className="search-form" onSubmit={handleSubmit}>
                 <div className="searchbar-container background-primary border-color-primary flex-separate">
-                    {/* {searchInputArray.map(x => {
-                        return(
-                            <button type="button" onClick={()=>removeSearchTag(x)}>{x}</button>
-                        );
-                    })} */}
                     <input
                         className="searchbar text-color-primary"
                         type="text"
@@ -324,9 +315,9 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                         </button>
                         <button
                             type="button"
-                            className="slider-btn color-primary" 
-                            onClick={() => setShowFilterMenu(!showFilterMenu)}>
-                            <i className="fa-solid fa-sliders slider-icon"></i>
+                            className="slider-btn color-primary"
+                              onClick={() => setShowFilterMenu(!showFilterMenu)}>
+                         <i className="fa-solid fa-sliders slider-icon"></i>
                         </button>
                     </div>
 
@@ -342,11 +333,11 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                 <hr className="filter-line"></hr>
                 <div className="menu-body">
                     <div className="filter-container">
-                        <button type="button" className="collapse-btn flex flex-separate background-primary" onClick={() => { setShowCuisineFilter(!showCuisineFilter); setCuisineCollapsed(!cuisineCollapsed) }}>
+                        <button type="button" className="collapse-btn flex flex-separate background-primary" onClick={() => setCuisineCollapsed(!cuisineCollapsed) }>
                             <p className="filter-title text-color-primary">Cuisine</p>
                             <i className={`fa-solid collapse-icon text-color-primary ${cuisineCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
-                        <div className={`cuisine-filter ${showCuisineFilter ? "" : "filter-show"}`}>
+                        <div className={`cuisine-filter ${cuisineCollapsed ? "filter-show" : ""}`}>
                             {CuisineFilters.map((x, index) => {
                                 return (
                                     <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
@@ -356,11 +347,11 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                     </div>
                     <hr className="filter-line"></hr>
                     <div className="filter-container">
-                        <button className="collapse-btn flex flex-separate background-primary" onClick={() => { setShowDietFilter(!showDietFilter); setDietCollapsed(!dietCollapsed) }}>
+                        <button className="collapse-btn flex flex-separate background-primary" onClick={() => setDietCollapsed(!dietCollapsed) }>
                             <p className="filter-title text-color-primary">Diet</p>
                             <i className={`fa-solid collapse-icon text-color-primary ${dietCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
-                        <div className={`diet-filter ${showDietFilter ? "" : "filter-show"}`}>
+                        <div className={`diet-filter ${dietCollapsed ? "filter-show" : ""}`}>
                             {DietFilters.map((x, index) => {
                                 return (
                                     <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
@@ -370,11 +361,11 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                     </div>
                     <hr className="filter-line"></hr>
                     <div className="filter-container">
-                        <button className="collapse-btn flex flex-separate background-primary" onClick={() => { setShowIntoleranceFilter(!showIntoleranceFilter); setIntoleranceCollapsed(!intoleranceCollapsed) }}>
+                        <button className="collapse-btn flex flex-separate background-primary" onClick={() => setIntoleranceCollapsed(!intoleranceCollapsed) }>
                             <p className="filter-title text-color-primary">Intolerance</p>
                             <i className={`fa-solid collapse-icon text-color-primary ${intoleranceCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
-                        <div className={`intolerance-filter ${showIntoleranceFilter ? "" : "filter-show"}`}>
+                        <div className={`intolerance-filter ${intoleranceCollapsed ? "filter-show" : ""}`}>
                             {IntoleranceFilters.map((x, index) => {
                                 return (
                                     <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
@@ -384,11 +375,11 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                     </div>
                     <hr className="filter-line"></hr>
                     <div className="filter-container">
-                        <button className="collapse-btn flex flex-separate background-primary" onClick={() => { setShowTimeFilter(!showTimeFilter); setTimeCollapsed(!timeCollapsed) }}>
+                        <button className="collapse-btn flex flex-separate background-primary" onClick={() => setTimeCollapsed(!timeCollapsed)}>
                             <p className="filter-title text-color-primary">Time</p>
                             <i className={`fa-solid collapse-icon text-color-primary ${timeCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
-                        <div className={`time-filter ${showTimeFilter ? "" : "filter-show"}`}>
+                        <div className={`time-filter ${timeCollapsed ? "filter-show" : ""}`}>
                             {TimeFilters.map((x, index) => {
                                 return (
                                     <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
@@ -398,11 +389,11 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                     </div>
                     <hr className="filter-line"></hr>
                     <div className="filter-container">
-                        <button className="collapse-btn flex flex-separate background-primary" onClick={() => { setShowMealFilter(!showMealFilter); setMealCollapsed(!mealCollapsed) }}>
+                        <button className="collapse-btn flex flex-separate background-primary" onClick={() => setMealCollapsed(!mealCollapsed)}>
                             <p className="filter-title text-color-primary">Meal</p>
                             <i className={`fa-solid collapse-icon text-color-primary ${mealCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
-                        <div className={`meal-filter ${showMealFilter ? "" : "filter-show"}`} >
+                        <div className={`meal-filter ${mealCollapsed ? "filter-show" : ""}`} >
                             {MealTypeFilters.map((x, index) => {
                                 return (
                                     <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
@@ -419,5 +410,4 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
             </div>
         </>
     )
-    
-};
+}

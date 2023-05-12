@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { useChosenFilterAmount } from "../hooks/useChosenFilterAmount";
 
+// komponent för filterknapparna i filtermenyn
 export function FilterButton(props){
+    
+    // om en filterknapp togglas så ändras färgen så det är tydligt
+    // att den är aktiv
     const [isActive, setIsActive] = useState(props.active);
     const plusOneChosenFilter = useChosenFilterAmount(state => state.plusOneChosenFilter);
     const chosenFilters = useChosenFilterAmount(state => state.chosenFilters);

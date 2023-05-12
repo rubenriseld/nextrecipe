@@ -1,11 +1,11 @@
 
 import { useEffect, useState } from "react";
-import { CuisineFilters} from "./FilterItems"; //cuisine array från filteritems som innehåller alla cuisines som finns i apiet
-import ResultContainer from "./ResultContainer";//skicka resultcontainer härifårn med recommendations data
+import { CuisineFilters} from "./FilterItems";
+import ResultContainer from "./ResultContainer";
 import { useKey } from "../hooks/useKey";
 
+// komponent för slumpmässigt genererade recept som dyker upp på startsidan
 export default function Recommendations(){
-   
     //ändra key i useKey-hooken
    const key = useKey((state) => state.key);
 

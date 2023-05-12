@@ -33,7 +33,11 @@ export default function RecipePage() {
     }, []);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return (
+            <div className="max-width-container loading-screen">
+                <p>Loading...</p>
+            </div>
+        ) 
     }
 
     return (

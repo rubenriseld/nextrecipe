@@ -1,21 +1,15 @@
 import { NavLink } from "react-router-dom";
 import Logo from "./Logo";
 
-export default function Footer(){
-    
-    return(
+// komponent för footern
+export default function Footer() {
+    return (
         <footer>
             <div className="max-width-container flex flex-separate footer-container">
                 <section className="">
-
-                <NavLink className="logo-link" to="/">
-          <Logo sloganVisible={true}/>
-        </NavLink>
-                    {/* <!-- LOGO COMPONENT --> */}
-                    {/* <h2 className="company-name text-color-primary">GLOBE GRUB</h2>
-                    <p className="slogan text-color-primary">slogan</p> */}
-                    {/* <!-- END OF LOGO COMPONENT --> */}
-
+                    <NavLink className="logo-link" to="/">
+                        <Logo sloganVisible={true} />
+                    </NavLink>
                 </section>
                 <section className="footer-info-section">
                     <a href="mailto:info@globegrub.com" className="text-color-primary">globegrub@info.com</a>
