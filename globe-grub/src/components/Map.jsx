@@ -7,6 +7,8 @@ import { shallow } from "zustand/shallow";
 import { useKey } from "../hooks/useKey";
 import { useNavigate } from "react-router-dom";
 import { CountryArray  } from "./CountryArray";
+import { useResultsToShow } from "../hooks/useResultsToShow";
+
 
 
 export default function Map() {
@@ -19,6 +21,11 @@ export default function Map() {
   );
   const [title, setTitle]= useSearchResult((state)=>
       [state.title, state.setTitle],shallow);
+
+const [resultsToShow, setResultsToShow] = useResultsToShow(
+(state) => [state.resultsToShow, state.setResultsToShow],
+shallow
+);
 
   const key = useKey((state) => state.key);
 
@@ -60,6 +67,8 @@ export default function Map() {
     }
     if (cuisine.length == 0){
       console.log("Country doesn't exist in API")
+      setSearchResult("maperror");
+    //   setTitle("Country doesn't exist in API");
     }else{
       fetchCuisine(cuisine);
     }
@@ -81,7 +90,7 @@ export default function Map() {
      try {
       if (Array.isArray(x) == true){
         for (const y of x){
-          url = `https://api.spoonacular.com/recipes/random?number=10&tags=${y}&apiKey=${key}`; 
+          url = `https://api.spoonacular.com/recipes/random?number=32&tags=${y}&apiKey=${key}`; 
        await fetch(url)
        .then((response) => response.json())
        .then((data) => {
@@ -91,7 +100,7 @@ export default function Map() {
        })
         }
       }else{
-        url = `https://api.spoonacular.com/recipes/random?number=10&tags=${x}&apiKey=${key}`;  
+        url = `https://api.spoonacular.com/recipes/random?number=32&tags=${x}&apiKey=${key}`;  
        await fetch(url)
        .then((response) => response.json())
        .then((data) => {
@@ -102,6 +111,7 @@ export default function Map() {
       console.log(e);
     }
     setSearchResult(results);
+    setResultsToShow(4);
     console.log(results);
   }
   return (

@@ -57,7 +57,8 @@ export default function Header() {
       {/* <header className="background-primary"> */}
       <nav className="menu max-width-container background-primary">
     
-        <NavLink className="logo-link" to="/" onClick={() => {setSearchResult([]); setShowMobileMenu(false); window.location.reload(false);}}>
+        <NavLink className="logo-link" to="/" onClick={() => {setSearchResult([]); setShowMobileMenu(false); }}>
+        {/* window.location.reload(false); */}
           <Logo sloganVisible={false}/>
         </NavLink>
 
@@ -79,7 +80,7 @@ export default function Header() {
           <NavLink to="/map" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
             Around The World
           </NavLink>
-          <NavLink to="/" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
+          <NavLink to="/aboutus" className="menu-link text-color-primary" onClick={() => setShowMobileMenu(false)}>
             About Us
           </NavLink>
         </div>
