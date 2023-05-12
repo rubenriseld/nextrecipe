@@ -188,9 +188,6 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         
         let searchString = "";
         let buttons = document.querySelectorAll('.active-btn');
-        setchosenFilterAmount(buttons.length);
-        // let buttons = activeButtons;
-        console.log(buttons)
         let cuisineString = "";
         let dietString = "";
         let mealtypeString = "";
@@ -246,10 +243,6 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     //Submit
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-
-
-
         if (searchString != "") {
             console.log(searchString);
             await filterUrl(searchString);
@@ -258,8 +251,6 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
             await filterUrl("");
         }
     };
-
-
     return (
         <>
             <form className="search-form" onSubmit={handleSubmit}>
@@ -382,6 +373,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                 </div>
                 <div className="filter-footer">
                     <button className="clear-filter-btn text-color-primary" onClick={() => inactivateButtons()}>Clear Filters{chosenFilters == 0 ? "" : ` (${chosenFilters})`}</button>
+
                     <button className="apply-filter-btn color-primary text-color-light" onClick={() => { getActiveButtons(); setShowFilterMenu() }}>Apply Filters</button>
                 </div>
             </div>
