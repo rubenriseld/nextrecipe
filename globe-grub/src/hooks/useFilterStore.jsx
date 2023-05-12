@@ -1,6 +1,6 @@
 import {create} from 'zustand';
-
-export const useFilterStore = create ((set, get)=> (
+//hook för att hämta api-parametrar för filters
+export const useFilterStore = create (()=> (
     {
         cuisine: "&cuisine=", 
         diet: "&diet=", 

@@ -57,7 +57,7 @@ export default function RecipePage() {
                 <div className="recipe-visual-container">
                     {/* <!-- Bild på maten --> */}
                     <div>
-                        <img className="recipe-image mr-4 ml-4" src={recipe.image} />
+                        <img className="recipe-image mr-4 ml-4" src={recipe.image} alt="Image of recipe"/>
                     </div>
                     {/* <!-- Taggar och stjärnor --> */}
                     <div className="flex flex-separate">
