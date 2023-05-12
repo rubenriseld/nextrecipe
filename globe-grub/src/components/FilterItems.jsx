@@ -1,5 +1,6 @@
 
-//array med cuisines som ska finnas med i filtermeny
+//array med cuisines som finns i API
+//används i Search.jsx, Recommendations.jsx, Tags.jsx
 
 export const CuisineFilters = [
     {
@@ -197,12 +198,6 @@ export const DietFilters = [
         name: "Whole30",
         value: "whole30",
         type: "D",
-    },
-    {
-        name: "Dairy",
-        value: "dairy",
-        type: "I",
-        tagValue: "dairy free",
     },
 
 ]

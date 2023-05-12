@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useFilterStore } from "../hooks/useFilterStore";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { useTag } from "../hooks/useTag";
+import { useChosenFilterAmount } from "../hooks/useChosenFilterAmount";
 import { useRef } from 'react';
 import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterItems";
 import { shallow } from "zustand/shallow";
@@ -13,6 +14,11 @@ import { useResultsToShow } from "../hooks/useResultsToShow";
 export default function Search() {
 //ändra key i useKey-hooken
 const key = useKey((state) => state.key);
+
+
+const chosenFilters = useChosenFilterAmount(state => state.chosenFilters);
+console.log(chosenFilters)
+
 
 //show-more-grej
 const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
@@ -32,6 +38,8 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     const [showIntoleranceFilter, setShowIntoleranceFilter] = useState(false);
     const [showTimeFilter, setShowTimeFilter] = useState(false);
     const [showMealFilter, setShowMealFilter] = useState(false);
+
+
     //close filter menu when clicking outsie
     const ref = useRef(null);
     
@@ -180,6 +188,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         
         let searchString = "";
         let buttons = document.querySelectorAll('.active-btn');
+        setchosenFilterAmount(buttons.length);
         // let buttons = activeButtons;
         console.log(buttons)
         let cuisineString = "";
@@ -372,8 +381,7 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
                     </div>
                 </div>
                 <div className="filter-footer">
-                    <button className="clear-filter-btn text-color-primary" onClick={() => inactivateButtons()}>Clear Filters</button>
-
+                    <button className="clear-filter-btn text-color-primary" onClick={() => inactivateButtons()}>Clear Filters{chosenFilters == 0 ? "" : ` (${chosenFilters})`}</button>
                     <button className="apply-filter-btn color-primary text-color-light" onClick={() => { getActiveButtons(); setShowFilterMenu() }}>Apply Filters</button>
                 </div>
             </div>
