@@ -12,6 +12,7 @@ import ErrorPage from "./ErrorPage";
 import IndexPage from "./components/IndexPage";
 import RecipePage from "./components/RecipePage";
 import Map from "./components/Map";
+import AboutUs from "./components/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/map",
         element: <Map />,
+      },
+      {
+        path: "/aboutus",
+        element: <AboutUs />
       }
     ],
   },

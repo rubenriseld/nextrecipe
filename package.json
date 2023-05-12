@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@svg-maps/world": "^1.0.1",
-    "react-svg-map": "^2.2.0"
-  }
-}
