@@ -45,25 +45,33 @@ export default function ApiSearchFunction(){
             url =`https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${parameters.inputParameter}&includeIngredients=${parameters.inputParameter}&addRecipeInformation=true${parameters.filterParameter}&number=8`;
         } 
         console.log(url);
-        console.log(parameters.inputParameter);
+        console.log(parameters.filterParameter);
         fetch(url)
         .then((response) => response.json())
         .then((result)=> {
-            if(inputParameter != ""  & result.results.length != 0){
-                // if(filterParameters != "" ){
-                //      setTitle(manipulateTitle(filterParameters));
-                //     }else{
-                //         setTitle(inputParameter);
-                //     }
+            if(parameters.inputParameter != ""  & result.results.length != 0){
+                if(parameters.filterParameter != "" ){
+                     setTitle(manipulateTitle(filterParameters));
+                    }else{
+                        setTitle(parameters.inputParameter);
+                    }
                 setSearchResult(result.results)
             }
-            if(inputParameter == "" || result.results.length == 0){
-                setSearchResult("empty");
-                setTitle(inputParameter)
+            if(parameters.inputParameter == "" && parameters.filterParameter != ""){
+                if(result.results.length == 0){
+                    setSearchResult("empty");
+                }else{
+                    setSearchResult(result.results)
+                }
+                setTitle(manipulateTitle(parameters.filterParameter));
             }
-            if(inputParameter =="" && filterParameters != ""){
-                setTitle(manipulateTitle(filterParameters));
-                setSearchResult(result.results)
+            if(parameters.inputParameter != "" && parameters.filterParameter != ""){
+                if(result.results.length == 0){
+                    setSearchResult("empty");
+                }else{
+                    setSearchResult(result.results)
+                }
+                setTitle(manipulateTitle(parameters.filterParameter));
             }
         })         
     } catch (e) {
@@ -74,8 +82,8 @@ export default function ApiSearchFunction(){
     }
     //manipulera titelsträn BEHÖVER UPPDATERAS_______________________
     const manipulateTitle=()=>{
-        console.log(filterParameters);
-        let splitFilterParam =filterParameters.split('&');
+        console.log(parameters.filterParameter);
+        let splitFilterParam =parameters.filterParameter.split('&');
         let filterGroups = [];
         splitFilterParam.forEach(filter=>{
            let temp= filter.split('=')
@@ -93,8 +101,8 @@ export default function ApiSearchFunction(){
         console.log(filterValues);
         
         let tagTitle = "";
-        if(searchInput != ""){
-            tagTitle += searchInput;
+        if(parameters.inputParameter != ""){
+            tagTitle += parameters.inputParameter;
         }
         filterValues.forEach(filter =>{
             if(Array.isArray(filter)){
@@ -118,6 +126,7 @@ export default function ApiSearchFunction(){
                })        
             } 
         })
+        console.log(tagTitle);
         return tagTitle;
     }
     //ANROPA FILTERURL _______________________

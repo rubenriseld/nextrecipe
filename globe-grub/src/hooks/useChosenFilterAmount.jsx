@@ -7,5 +7,6 @@ export const useChosenFilterAmount = create((set)=> ({
     set(() => ({chosenFilters: newChosenFilters})),
 
     
-    minusOneChosenFilter: () => set(state => ({chosenFilters: state.chosenFilters - 1}))
+    minusOneChosenFilter: () => set(state => ({chosenFilters: state.chosenFilters - 1})),
+    clearChosenFilter: () => set(state =>({chosenFilters: state.chosenFilters = 0}) ),
 }));

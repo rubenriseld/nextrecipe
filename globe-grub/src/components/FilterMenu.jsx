@@ -7,10 +7,13 @@ import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
 import ApiSearchFunction from "./ApiSearchFunction";
 import { useSearchParameters } from "../hooks/useSearchParameters";
+
 export default function FilterMenu({childToParent, visible, refValue}){
 
     // antal valda filter som visas i Clear Filters-knappen
     const chosenFilters = useChosenFilterAmount(state => state.chosenFilters);
+
+    const clearChosenFilter = useChosenFilterAmount(state => state.clearChosenFilter);
     console.log(chosenFilters)
     const [filterParameter, setFilterParameter]= useSearchParameters((state)=>
         [state.filterParameter, state.setFilterParameter],shallow);
@@ -27,6 +30,9 @@ export default function FilterMenu({childToParent, visible, refValue}){
     const [showIntoleranceFilter, setShowIntoleranceFilter] = useState(false);
     const [showTimeFilter, setShowTimeFilter] = useState(false);
     const [showMealFilter, setShowMealFilter] = useState(false);
+    
+    
+    const redirectToApiSearchFunction = ApiSearchFunction();
     //close filter menu when clicking outsie
     // const ref = useRef(null);
     
@@ -48,10 +54,11 @@ export default function FilterMenu({childToParent, visible, refValue}){
         buttons.forEach(btn => {
             btn.click();
         })
+        setFilterParameter("");
+        clearChosenFilter();
     }
     //Apply Filters
     const getActiveButtons = async () => {
-        
         let searchString = "";
         let buttons = document.querySelectorAll('.active-btn');
         let cuisineString = "";
@@ -86,9 +93,10 @@ export default function FilterMenu({childToParent, visible, refValue}){
                 timeString += "," + btn.value
             }
         });
-        setFilterParameter(`${dietString}${cuisineString}${mealtypeString}${intoleranceString}${timeString}`);
+        searchString += `${dietString}${cuisineString}${mealtypeString}${intoleranceString}${timeString}`;
+        setFilterParameter(searchString);
         console.log(searchString);
-        ApiSearchFunction();
+        redirectToApiSearchFunction();
     }
     // meny
 
