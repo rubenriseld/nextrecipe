@@ -4,7 +4,7 @@ import { shallow } from "zustand/shallow";
 import { useTag } from "../hooks/useTag";
 import { useFilterStore } from "../hooks/useFilterStore";
 
-import { CuisineFilters, MealTypeFilters, DietFilters, IntoleranceFilters, TimeFilters } from "./FilterItems";
+import { CuisineFilters, MealTypeFilters, DietFilters, IntoleranceFilters, TimeFilters } from "./FilterArrays";
 
 // komponent för taggarna som finns på RecipeCard och RecipePage
 export default function Tags(props) {

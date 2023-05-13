@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { CuisineFilters} from "./FilterItems";
+import { CuisineFilters} from "./FilterArrays";
 import ResultContainer from "./ResultContainer";
 import { useKey } from "../hooks/useKey";
 
