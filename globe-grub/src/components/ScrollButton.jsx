@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import { FaAngleUp } from 'react-icons/fa';
 
 export default function ScrollTopBtn() {
     const [visible, setVisible] = useState(false)
@@ -22,11 +21,8 @@ export default function ScrollTopBtn() {
     };
 
     return(
-        // <div>
         <button className={`go-to-top-btn color-primary ${visible ? "" : 'hide-go-to-top'}`} onClick={scrollToTop}>
             <i className="fa-solid fa-chevron-up go-to-top-icon text-color-light"></i>
-            {/* <i className="icon-position icon-style" >go to top </i>         */}
         </button>
-        // </div>
     )
 }

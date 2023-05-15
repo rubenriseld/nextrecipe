@@ -4,15 +4,16 @@ import { CuisineFilters} from "./FilterItems";
 import ResultContainer from "./ResultContainer";
 import { useKey } from "../hooks/useKey";
 
+// komponent för slumpmässigt genererade recept som dyker upp på startsidan
 export default function Recommendations(){
-   
     //ändra key i useKey-hooken
    const key = useKey((state) => state.key);
 
-
+    //data som skickas in till resultcontainer
     const [recoData, setResult] = useState([]);
     const [cuisineTitle, setCuisine] = useState("");
     
+    //random funktion som slumpar fram 1 cuisine med 4 resultat i resultcontainer
     const getRandomCuisine = () => {
         const currentCuisine = CuisineFilters[Math.floor(Math.random()*CuisineFilters.length)];
         return currentCuisine

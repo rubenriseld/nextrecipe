@@ -70,6 +70,7 @@ export default function Geo() {
     }
     if (cuisine.length == 0) {
       console.log("Country doesn't exist in API");
+      setSearchResult("maperror");
     } else {
       fetchCuisine(cuisine);
     }
@@ -92,7 +93,7 @@ export default function Geo() {
     try {
       if (Array.isArray(x) == true) {
         for (const y of x) {
-          url = `https://api.spoonacular.com/recipes/random?number=10&tags=${y}&apiKey=${key}`;
+          url = `https://api.spoonacular.com/recipes/random?number=32&tags=${y}&apiKey=${key}`;
           await fetch(url)
             .then((response) => response.json())
             .then((data) => {
@@ -102,7 +103,7 @@ export default function Geo() {
             });
         }
       } else {
-        url = `https://api.spoonacular.com/recipes/random?number=10&tags=${x}&apiKey=${key}`;
+        url = `https://api.spoonacular.com/recipes/random?number=32&tags=${x}&apiKey=${key}`;
         await fetch(url)
           .then((response) => response.json())
           .then((data) => {
@@ -113,7 +114,7 @@ export default function Geo() {
       console.log(e);
     }
     setSearchResult(results);
-    setResultsToShow(4);
+    setResultsToShow(8);
     console.log(results);
   };
 

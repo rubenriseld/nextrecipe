@@ -1,10 +1,9 @@
-
-export default function Ad(){
-    return(
+//komponent för att visa annons
+export default function Ad() {
+    return (
         <>
             <section className="ad max-width-container background-secondary">
-                {/*Ad between recipe cards*/}
-                <h1 className="text-color-primary">Annons</h1>
+                <h3 className="text-color-primary">Ad space</h3>
             </section>
         </>
     )
