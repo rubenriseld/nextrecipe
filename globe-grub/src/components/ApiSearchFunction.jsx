@@ -12,11 +12,7 @@ export default function ApiSearchFunction(){
     const key = useKey((state) => state.key); 
     //söksträng
 
-    const parameters = useSearchParameters.getState(state => state);
-
-    const inputParameter = useSearchParameters.getState(state => state.inputParameter);
-    //filterval
-    const filterParameters = useSearchParameters.getState(state => state.filterParameter); 
+    const parameters = useSearchParameters.getState(state => state,shallow);
     //setta sökresultat
     const [searchResult, setSearchResult] = useSearchResult((state) =>
         [state.searchResult, state.setSearchResult], shallow);
@@ -41,7 +37,7 @@ export default function ApiSearchFunction(){
 //_____________________________________________________________________________//
 
 
-console.log(tagg.tag);
+
     //apianrop_______________
     const filterUrl = async () => {
     try {       
