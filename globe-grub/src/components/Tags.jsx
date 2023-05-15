@@ -3,7 +3,7 @@ import { useSearchResult } from "../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
 import { useTag } from "../hooks/useTag";
 import { useFilterStore } from "../hooks/useFilterStore";
-
+import ApiSearchFunction from "./ApiSearchFunction";
 import { CuisineFilters, MealTypeFilters, DietFilters, IntoleranceFilters, TimeFilters } from "./FilterArrays";
 
 // komponent för taggarna som finns på RecipeCard och RecipePage
@@ -17,6 +17,7 @@ export default function Tags(props) {
         shallow
     );
     const filterString = useFilterStore.getState((state) => state);
+    const redirectToApiSearchFunction = ApiSearchFunction();
 
     let tagArray = CuisineFilters;
     tagArray = tagArray.concat(MealTypeFilters);
@@ -135,6 +136,7 @@ export default function Tags(props) {
         <>
             {props.clickable ?
                 <>
+                {/*få in apisearchfunction här !! */}
                     <Link to="/" className="tag color-tag-one text-color-primary" onClick={() => { setSearchResult([]); setTag(tagValues[0]) }}>{tags[0].toUpperCase()} MIN</Link>
                     <Link to="/" className="tag color-tag-two text-color-primary" onClick={() => { setSearchResult([]); setTag(tagValues[1]) }}>{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</Link>
                     <Link to="/" className="tag color-tag-three text-color-primary" onClick={() => { setSearchResult([]); setTag(tagValues[2]) }}>{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</Link>

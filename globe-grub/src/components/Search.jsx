@@ -14,7 +14,6 @@ export default function Search() {
     const childToParent = (childData) =>{
         setShowFilterMenu(childData);
     }
-        
     const ref = useRef(null);
     
     useEffect(() => {

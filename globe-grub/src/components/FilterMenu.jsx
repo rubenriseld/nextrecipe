@@ -55,7 +55,7 @@ export default function FilterMenu({childToParent, visible, refValue}){
             btn.click();
         })
         setFilterParameter("");
-        clearChosenFilter();
+        clearChosenFilter
     }
     //Apply Filters
     const getActiveButtons = async () => {
@@ -98,10 +98,6 @@ export default function FilterMenu({childToParent, visible, refValue}){
         console.log(searchString);
         redirectToApiSearchFunction();
     }
-    // meny
-
-
-
 
 return (
     <>

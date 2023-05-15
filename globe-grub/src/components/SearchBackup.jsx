@@ -4,7 +4,7 @@ import { useSearchResult } from "../hooks/useSearchResult";
 import { useTag } from "../hooks/useTag";
 import { useChosenFilterAmount } from "../hooks/useChosenFilterAmount";
 import { useRef } from 'react';
-import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterItems"; //Arrayer med filter-parameter
+import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterArrays"; //Arrayer med filter-parameter
 import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton"; //komponent filterbutton (tags i recipepage)
 
@@ -27,7 +27,7 @@ console.log(chosenFilters)
 const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
         [state.resultsToShow, state.setResultsToShow], shallow);
 
-    //______________________________FilterMeny_____________________________//
+    //______________________________FilterMeny__ÖVERFÖRD TILL FILTERMENU___________________________//
     //filter-param "&cuisines"...etc hämtas
     const state = useFilterStore.getState((state) => state);
     //visar/döljer filtermeny
@@ -92,78 +92,80 @@ const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
     //kollar om termen slutar på "0" eller "5" för att se om termen är för tid, och lägger till "Under [term] minutes" om 
     //om sökterm från sökbar finns, läggs det till först i strängen först, sedan läggs resterande termer till med stor bokstav i början på varje term
     //färdig sträng skickas tillbaka till setTitle() i filterUrl funktionen
-    const manipulateTitle = (searchStrings) => {
+    
+    //*******************ÖVERFÖRD TILL APISEARCHFUNCTION************** */
+    // const manipulateTitle = (searchStrings) => {
 
-        console.log(searchStrings);
-        let splitParam = searchStrings.split('&');
-        let filterGroups = [];
-        splitParam.forEach(filter => {
-            let temp = filter.split('=')
-            filterGroups.push(temp[1]);
-        })
+    //     console.log(searchStrings);
+    //     let splitParam = searchStrings.split('&');
+    //     let filterGroups = [];
+    //     splitParam.forEach(filter => {
+    //         let temp = filter.split('=')
+    //         filterGroups.push(temp[1]);
+    //     })
 
-        let filterValues = []
-        filterGroups.forEach(filter => {
-            try {
-                filterValues.push(filter.split(','));
-            }
-            catch {
-                filterValues.push(filter);
-            }
-        })
-        console.log(filterValues);
+    //     let filterValues = []
+    //     filterGroups.forEach(filter => {
+    //         try {
+    //             filterValues.push(filter.split(','));
+    //         }
+    //         catch {
+    //             filterValues.push(filter);
+    //         }
+    //     })
+    //     console.log(filterValues);
 
-        let tagTitle = "";
-        if (searchInput != "") {
-            tagTitle += searchInput;
-        }
-        const fixMealType = (str) => {
-            if (str == "appetizers") {
-                return ("lunch")
-            }
-            if (str == "main course") {
-                return ("dinner")
-            }
-        }
-        filterValues.forEach(filter => {
+    //     let tagTitle = "";
+    //     if (searchInput != "") {
+    //         tagTitle += searchInput;
+    //     }
+    //     const fixMealType = (str) => {
+    //         if (str == "appetizers") {
+    //             return ("lunch")
+    //         }
+    //         if (str == "main course") {
+    //             return ("dinner")
+    //         }
+    //     }
+    //     filterValues.forEach(filter => {
 
-            if (Array.isArray(filter)) {
-                filter.forEach(x => {
-                    if (tagTitle == "") {
+    //         if (Array.isArray(filter)) {
+    //             filter.forEach(x => {
+    //                 if (tagTitle == "") {
 
-                        if (x.charAt(1) == 0 || x.charAt(1) == 5) {
-                            tagTitle += "Under " + x + " min"
-                        }
-                        else {
-                            if (x == "appetizers" || x == "main course") {
-                                let fixedTag = fixMealType(x);
-                                tagTitle += fixedTag.charAt(0).toUpperCase() + fixedTag.slice(1).toLowerCase()
-                            }
-                            else {
-                                tagTitle += x.charAt(0).toUpperCase() + x.slice(1).toLowerCase()
-                            }
+    //                     if (x.charAt(1) == 0 || x.charAt(1) == 5) {
+    //                         tagTitle += "Under " + x + " min"
+    //                     }
+    //                     else {
+    //                         if (x == "appetizers" || x == "main course") {
+    //                             let fixedTag = fixMealType(x);
+    //                             tagTitle += fixedTag.charAt(0).toUpperCase() + fixedTag.slice(1).toLowerCase()
+    //                         }
+    //                         else {
+    //                             tagTitle += x.charAt(0).toUpperCase() + x.slice(1).toLowerCase()
+    //                         }
 
-                        }
-                    }
-                    else if (tagTitle != "") {
-                        if (x.charAt(1) == 0 || x.charAt(1) == 5) {
-                            tagTitle += ", Under " + x + " min"
-                        }
-                        else {
-                            if (x == "appetizer" || x == "main course") {
-                                let fixedTag = fixMealType(x);
-                                tagTitle += ", " + fixedTag.charAt(0).toUpperCase() + fixedTag.slice(1).toLowerCase()
-                            } else {
+    //                     }
+    //                 }
+    //                 else if (tagTitle != "") {
+    //                     if (x.charAt(1) == 0 || x.charAt(1) == 5) {
+    //                         tagTitle += ", Under " + x + " min"
+    //                     }
+    //                     else {
+    //                         if (x == "appetizer" || x == "main course") {
+    //                             let fixedTag = fixMealType(x);
+    //                             tagTitle += ", " + fixedTag.charAt(0).toUpperCase() + fixedTag.slice(1).toLowerCase()
+    //                         } else {
 
-                                tagTitle += ", " + x.charAt(0).toUpperCase() + x.slice(1).toLowerCase()
-                            }
-                        }
-                    }
-                })
-            }
-        })
-        return tagTitle;
-    }
+    //                             tagTitle += ", " + x.charAt(0).toUpperCase() + x.slice(1).toLowerCase()
+    //                         }
+    //                     }
+    //                 }
+    //             })
+    //         }
+    //     })
+    //     return tagTitle;
+    // }
 
     //funktion som anropar API med sökord från sökbar och eller filter
 
