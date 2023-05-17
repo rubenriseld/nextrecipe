@@ -1,23 +1,25 @@
 import { Link } from "react-router-dom";
-import { useSearchResult } from "../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
-import { useTag } from "../hooks/useTag";
-import { useFilterStore } from "../hooks/useFilterStore";
-import ApiSearchFunction from "./ApiSearchFunction";
-import { CuisineFilters, MealTypeFilters, DietFilters, IntoleranceFilters, TimeFilters } from "./FilterArrays";
+import { UrlParameters, CuisineFilters, MealTypeFilters, DietFilters, IntoleranceFilters, TimeFilters } from "./FilterArrays";
+import * as apiSearchFunctions from "./ApiSearchFunction";
+import { useKey } from "../hooks/useKey";
+import { useSearchResult } from "../hooks/useSearchResult";
+import { useResultsToShow } from "../hooks/useResultsToShow";
 
 // komponent för taggarna som finns på RecipeCard och RecipePage
 export default function Tags(props) {
-    const [SearchResult, setSearchResult] = useSearchResult(
-        (state) => [state.SearchResult, state.setSearchResult],
-        shallow
-    );
-    const [tag, setTag] = useTag(
-        (state) => [state.tag, state.setTag],
-        shallow
-    );
-    const filterString = useFilterStore.getState((state) => state);
-    const redirectToApiSearchFunction = ApiSearchFunction();
+
+     //key som hamnar i url
+     const key = useKey((state) => state.key); 
+     //setta sökresultat
+     const [searchResult, setSearchResult] = useSearchResult((state) =>
+         [state.searchResult, state.setSearchResult], shallow);
+     //Setta sök/filter titel
+     const [title, setTitle] = useSearchResult((state) =>
+         [state.title, state.setTitle],shallow);
+     //ange mängd som ska visas "showmore"
+     const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
+         [state.resultsToShow, state.setResultsToShow], shallow); 
 
     let tagArray = CuisineFilters;
     tagArray = tagArray.concat(MealTypeFilters);
@@ -27,11 +29,8 @@ export default function Tags(props) {
 
     const GenerateTags = () => {
         let time = props.time;
-        console.log(time)
         let cuisines = props.cuisines;
-        console.log(cuisines)
         let diets = props.diets;
-        console.log(diets)
         let dishTypes = props.dishTypes;
         let vegan = props.vegan;
         let vegetarian = props.vegetarian;
@@ -103,24 +102,25 @@ export default function Tags(props) {
                     let newTag = "";
                     switch (filter.type) {
                         case "C":
-                            newTag = filterString.cuisine;
+                            newTag = UrlParameters[0];
                             break;
-
-                        case "I":
-                            newTag = filterString.intolerances;
-                            break;
-
+                       
                         case "D":
-                            newTag = filterString.diet;
-                            break;
-
-                        case "M":
-                            newTag = filterString.type;
+                            newTag = UrlParameters[1];
                             break;
 
                         case "T":
-                            newTag = filterString.maxReadyTime;
+                            newTag = UrlParameters[2];
                             break;
+
+                        case "M":
+                            newTag = UrlParameters[3];
+                            break;
+    
+                        case "I":
+                            newTag = UrlParameters[4];
+                            break;
+    
                     }
                     newTag += filter.value;
                     this[index] = newTag;
@@ -132,15 +132,29 @@ export default function Tags(props) {
     }
     let tags = GenerateTags();
     let tagValues = GenerateTagValues();
+
+    const searchByTagValue = async (tag) =>{
+        console.log("tag clicked: "+ tag);
+        let fetchedData = await apiSearchFunctions.fetchRecipes(key, tag);
+        console.log("tag:");
+        console.log(fetchedData[0]);
+        setResultsToShow(8);
+        setSearchResult(fetchedData[0]);
+        // setTag(tagToSet);
+        // setTitle(tag);
+        setTitle(apiSearchFunctions.manipulateTitle("", tag));
+    }
+
     return (
         <>
             {props.clickable ?
+                // taggar på receptsidan
                 <>
-                {/*få in apisearchfunction här !! */}
-                    <Link to="/" className="tag color-tag-one text-color-primary" onClick={() => { setSearchResult([]); setTag(tagValues[0]) }}>{tags[0].toUpperCase()} MIN</Link>
-                    <Link to="/" className="tag color-tag-two text-color-primary" onClick={() => { setSearchResult([]); setTag(tagValues[1]) }}>{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</Link>
-                    <Link to="/" className="tag color-tag-three text-color-primary" onClick={() => { setSearchResult([]); setTag(tagValues[2]) }}>{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</Link>
+                    <Link to="/" className="tag color-tag-one text-color-primary" onClick={() =>  searchByTagValue(tagValues[0]) }>{tags[0].toUpperCase()} MIN</Link>
+                    <Link to="/" className="tag color-tag-two text-color-primary" onClick={() =>  searchByTagValue(tagValues[1]) }>{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</Link>
+                    <Link to="/" className="tag color-tag-three text-color-primary" onClick={() =>  searchByTagValue(tagValues[2]) }>{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</Link>
                 </>
+                // taggar på receptkorten
                 : <>
                     <p className="tag color-tag-one text-color-primary">{tags[0]} MIN</p>
                     <p className="tag color-tag-two text-color-primary">{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</p>

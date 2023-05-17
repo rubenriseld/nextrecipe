@@ -1,19 +1,42 @@
 
 import { useState, useEffect } from "react";
-import { useSearchParameters } from "../hooks/useSearchParameters";
+// import { useSearchParameters } from "../hooks/useSearchParameters";
 import { useRef } from 'react';
 import { shallow } from "zustand/shallow";
+import { useKey } from "../hooks/useKey";
+import { useSearchResult } from "../hooks/useSearchResult";
+import { useResultsToShow } from "../hooks/useResultsToShow";
 import FilterMenu  from "./FilterMenu";
-import ApiSearchFunction from "./ApiSearchFunction";
+import * as apiSearchFunctions from "./ApiSearchFunction";
+
 export default function Search() {
-    const [showFilterMenu, setShowFilterMenu] = useState(false);
-    const [inputParameter, setInputParameter]= useSearchParameters((state) =>
-     [state.inputParameter, state.setInputParameter], shallow);
     
-    const redirectToApiSearchFunction = ApiSearchFunction();
+    //importerade funktioner
+    
+    // const manipulateTitle = apiSearchFunctions.manipulateTitle();
+
+    //key som hamnar i url
+    const key = useKey((state) => state.key); 
+    //setta sökresultat
+    const [searchResult, setSearchResult] = useSearchResult((state) =>
+        [state.searchResult, state.setSearchResult], shallow);
+    //Setta sök/filter titel
+    const [title, setTitle] = useSearchResult((state) =>
+        [state.title, state.setTitle],shallow);
+    //ange mängd som ska visas "showmore"
+    const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
+        [state.resultsToShow, state.setResultsToShow], shallow); 
+    
+
+    const [searchInput, setSearchInput] = useState("");
+
+//______________________________Filtermeny_____________________________//
+    const [showFilterMenu, setShowFilterMenu] = useState(false);
+
     const childToParent = (childData) =>{
         setShowFilterMenu(childData);
     }
+
     const ref = useRef(null);
     
     useEffect(() => {
@@ -28,55 +51,36 @@ export default function Search() {
         };        
     });
     
-//_________________________________Taggsökning_________________________________//
-    // const [tag, setTag] = useTag(
-    //     (state) => [state.tag, state.setTag],shallow);
-    //Hämtar vald tagg, om värde finns kör useEffect som anropar filterUrl
-    // const tagg = useTag.getState((state)=> state.tag);
-    
-    // useEffect(() => {  
-    //     if(tagg.tag != ""){
-    //         filterUrl(tagg.tag);
-    //     }
-    //     console.log("tagg: "+ tagg.tag);
-    // }, []);
-        // setTag("");
-   
-//_____________________________________________________________________________//
-    
 //______________________________Event-handlers_____________________________//
     
     //ClearSearchbar
     const clearSearchBar = () => {
         document.querySelector(".searchbar").value = "";
-        setInputParameter("");
+        // setInputParameter("");
     }
     //Set searchinput
     const handleChange = (e) => {     
-        setInputParameter(e.target.value);
-        console.log(inputParameter)
+        e.preventDefault();
+        
+        setSearchInput(e.target.value);
+        // console.log(inputParameter)
     }
     //Submit
     const handleSubmit = async (e) => {
         e.preventDefault();
-        redirectToApiSearchFunction();
-        console.log("Hi")
-        // if (searchString != "") {
-        //     console.log(searchString);
-        //     await filterUrl(searchString);
-        // } else {
-        //     await filterUrl("");
-        // }
+        setTitle("");
+        let fetchedData = await apiSearchFunctions.fetchRecipes(key, null);
+        console.log("search:");
+        console.log(fetchedData[0]);
+        setResultsToShow(8);
+        setSearchResult(fetchedData[0]);
+        setTitle(apiSearchFunctions.manipulateTitle(fetchedData[1], fetchedData[2]));
     };
+
     return (
         <>
             <form className="search-form" onSubmit={handleSubmit}>
                 <div className="searchbar-container background-primary border-color-primary flex-separate">
-                    {/* {searchInputArray.map(x => {
-                        return(
-                            <button type="button" onClick={()=>removeSearchTag(x)}>{x}</button>
-                        );
-                    })} */}
                     <input
                         className="searchbar text-color-primary"
                         type="text"
@@ -85,18 +89,20 @@ export default function Search() {
                         onChange={handleChange}
                     />
                     <div className="flex button-container">
-                        {inputParameter != "" ?
+                        {searchInput != "" ?
                             //knapp med "X" för att rensa sökrutan
                             <button type="button" className="clear-search-btn" onClick={() => clearSearchBar()}>
-                                <i class="fa-solid fa-xmark clear-search-icon text-color-primary"></i>
+                                <i className="fa-solid fa-xmark clear-search-icon text-color-primary"></i>
                             </button>
                             :
                             <></>}
+                            {/* sökknapp */}
                         <button
                             type="submit"
                             className="search-btn color-primary">
                             <i className="fa-solid fa-magnifying-glass search-icon"></i>
                         </button>
+                            {/* knapp för att öppna filtermeny */}
                         <button
                             type="button"
                             className="slider-btn color-primary" 
@@ -106,8 +112,8 @@ export default function Search() {
                     </div>
                 </div>
             </form>
+            
             <FilterMenu childToParent={childToParent} visible={showFilterMenu} refValue={ref}/> 
         </>
     )
-    
 }

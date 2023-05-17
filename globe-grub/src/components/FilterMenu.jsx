@@ -1,24 +1,37 @@
 
 import { useState} from "react";
-import { useFilterStore } from "../hooks/useFilterStore";
+// import { useFilterStore } from "../hooks/useFilterStore";
 import { useChosenFilterAmount } from "../hooks/useChosenFilterAmount";
 import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterArrays";
 import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
-import ApiSearchFunction from "./ApiSearchFunction";
 import { useSearchParameters } from "../hooks/useSearchParameters";
+import * as apiSearchFunctions from "./ApiSearchFunction";
+import { useKey } from "../hooks/useKey";
+import { useSearchResult } from "../hooks/useSearchResult";
+import { useResultsToShow } from "../hooks/useResultsToShow";
+
 
 export default function FilterMenu({childToParent, visible, refValue}){
+    
+    //key som hamnar i url
+    const key = useKey((state) => state.key); 
+    //setta sökresultat
+    const [searchResult, setSearchResult] = useSearchResult((state) =>
+        [state.searchResult, state.setSearchResult], shallow);
+    //Setta sök/filter titel
+    const [title, setTitle] = useSearchResult((state) =>
+        [state.title, state.setTitle],shallow);
+    //ange mängd som ska visas "showmore"
+    const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
+        [state.resultsToShow, state.setResultsToShow], shallow); 
 
     // antal valda filter som visas i Clear Filters-knappen
     const chosenFilters = useChosenFilterAmount(state => state.chosenFilters);
+    const clearChosenFilters = useChosenFilterAmount(state => state.clearChosenFilter);
 
-    const clearChosenFilter = useChosenFilterAmount(state => state.clearChosenFilter);
-    console.log(chosenFilters)
-    const [filterParameter, setFilterParameter]= useSearchParameters((state)=>
-        [state.filterParameter, state.setFilterParameter],shallow);
     //______________________________FilterMeny_____________________________//
-    const state = useFilterStore.getState((state) => state);
+    // const state = useFilterStore.getState((state) => state);
     
     const [cuisineCollapsed, setCuisineCollapsed] = useState(true);
     const [dietCollapsed, setDietCollapsed] = useState(true);
@@ -32,71 +45,21 @@ export default function FilterMenu({childToParent, visible, refValue}){
     const [showMealFilter, setShowMealFilter] = useState(false);
     
     
-    const redirectToApiSearchFunction = ApiSearchFunction();
-    //close filter menu when clicking outsie
-    // const ref = useRef(null);
-    
-    // useEffect(() => {
-    //     const Clickout = (e) => {
-    //         if (!ref.current.contains(e.target)) {
-    //             visible = false;
-    //         }
-    //     };
-    //     document.addEventListener("mousedown", Clickout);
-    //     return () => {
-    //         document.removeEventListener("mousedown", Clickout);
-    //     };        
-    // });
-    
-    //Clear Filters
-    const inactivateButtons = () => {
+
+    const clearFilters = () => {
         let buttons = document.querySelectorAll('.active-btn');
         buttons.forEach(btn => {
             btn.click();
         })
-        setFilterParameter("");
-        clearChosenFilter
+        clearChosenFilters();
     }
-    //Apply Filters
-    const getActiveButtons = async () => {
-        let searchString = "";
-        let buttons = document.querySelectorAll('.active-btn');
-        let cuisineString = "";
-        let dietString = "";
-        let mealtypeString = "";
-        let intoleranceString = "";
-        let timeString = "";
-        buttons.forEach(btn => {   
-            if (btn.dataset.type == "C" & cuisineString == "") {
-                cuisineString += state.cuisine + btn.value
-            } else if (btn.dataset.type == "C" & cuisineString != "") {
-                cuisineString += "," + btn.value
-            }
-            else if (btn.dataset.type == "D" & dietString == "") {
-                dietString += state.diet + btn.value
-            } else if (btn.dataset.type == "D" & dietString != "") {
-                dietString += "," + btn.value
-            }
-            else if (btn.dataset.type == "M" & mealtypeString == "") {
-                mealtypeString += state.type + btn.value
-            } else if (btn.dataset.type == "M" & mealtypeString != "") {
-                mealtypeString += "," + btn.value
-            }
-            else if (btn.dataset.type == "I" & intoleranceString == "") {
-                intoleranceString += state.intolerances + btn.value
-            } else if (btn.dataset.type == "I" & intoleranceString != "") {
-                intoleranceString += "," + btn.value
-            }
-            else if (btn.dataset.type == "T" & timeString == "") {
-                timeString += state.maxReadyTime + btn.value
-            } else if (btn.dataset.type == "T" & timeString != "") {
-                timeString += "," + btn.value
-            }
-        });
-        searchString += `${dietString}${cuisineString}${mealtypeString}${intoleranceString}${timeString}`;
-        setFilterParameter(searchString);
-        console.log(searchString);
-        redirectToApiSearchFunction();
+    const applyFilters = async () => {
+        let fetchedData = await apiSearchFunctions.fetchRecipes(key, null);
+        console.log("filtermenu:");
+        console.log(fetchedData);
+        setResultsToShow(8);
+        setSearchResult(fetchedData[0]);
+        setTitle(apiSearchFunctions.manipulateTitle(fetchedData[1], fetchedData[2]));
     }
 
 return (
@@ -180,8 +143,8 @@ return (
             </div>
         </div>
         <div className="filter-footer">
-            <button className="clear-filter-btn text-color-primary" onClick={() => inactivateButtons()}>Clear Filters{chosenFilters == 0 ? "" : ` (${chosenFilters})`}</button>
-            <button className="apply-filter-btn color-primary text-color-light" onClick={() => { getActiveButtons(); childToParent(false) }}>Apply Filters</button>
+            <button className="clear-filter-btn text-color-primary" onClick={() => clearFilters()}>Clear Filters{chosenFilters == 0 ? "" : ` (${chosenFilters})`}</button>
+            <button className="apply-filter-btn color-primary text-color-light" onClick={() => { applyFilters(); childToParent(false) }}>Apply Filters</button>
         </div>
     </div>
     </>
