@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
 import Logo from "./Logo";
@@ -19,6 +19,8 @@ export default function Header() {
     const [sticky, setSticky] = useState(false);
     // senaste scrollposition
     let lastScroll = 0;
+
+    const location = useLocation();
 
     // funktion för att göra headern sticky beroende på scrollposition
     const toggleStickyHeader = () => {
@@ -49,17 +51,24 @@ export default function Header() {
         };
     }, []);
 
+    //Funktion som uppdaterar sidan om man är på homepage och trycker på loggan
+    const updateWindow = () => {
+        if (location.pathname == '/'){
+            window-location.reload(true);
+        }
+    }
+
     return (
         <header className={`background-primary ${sticky ? "header-sticky" : ""} ${showMobileMenu ? "header-fixed" : ""}`}>
             <nav className="menu max-width-container background-primary">
-                <NavLink className="logo-link" to="/" onClick={() => { setSearchResult([]); setShowMobileMenu(false); }}>
+                <NavLink className="logo-link" to="/" onClick={() => { setSearchResult([]); setShowMobileMenu(false); updateWindow(); }}>
                     <Logo sloganVisible={false} />
                 </NavLink>
                 <div
                     className={`menu-links-desktop background-primary ${showMobileMenu ? "menu-links" : "menu-links-hidden"} `}>
                     <NavLink to="/"
                         className="menu-link text-color-primary"
-                        onClick={() => { setSearchResult([]); setShowMobileMenu(false) }}>Home
+                        onClick={() => { setSearchResult([]); setShowMobileMenu(false); updateWindow(); }}>Home
                     </NavLink>
                     <NavLink to="/map" 
                         className="menu-link text-color-primary" 
