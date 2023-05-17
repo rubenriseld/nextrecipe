@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
 import { useKey } from "../hooks/useKey";
-import { CountryArray } from "./CountryArray"; //Komponent som innehåller en array med cuisines respektive länder
+//fil som innehåller en array med cuisines respektive länder
+import { countryArray } from "../internal_data/countryArray";
 import { useResultsToShow } from "../hooks/useResultsToShow";
 
 export default function Geo() {
@@ -64,8 +65,7 @@ export default function Geo() {
 
   //Funktion där landet användaren befinner sig i jämförs med arrayen med länder och cuisines
   const getCuisine = (currentCountry) => {
-    //Om landet är lika med landet i arrayen så pushas ID:t som är en cuisine till let cuisine
-    for (const x of CountryArray) {
+    for (const x of countryArray) {
       if (currentCountry == x.value) {
         cuisine.push(x.id);
       }

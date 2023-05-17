@@ -6,7 +6,8 @@ import { useSearchResult } from "../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
 import { useKey } from "../hooks/useKey";
 import { useNavigate } from "react-router-dom";
-import { CountryArray } from "./CountryArray"; //Komponent som innehåller en array med cuisines respektive länder
+//fil som innehåller en array med cuisines respektive länder
+import { countryArray  } from "../internal_data/countryArray";
 import { useResultsToShow } from "../hooks/useResultsToShow";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"; //npm paket som innehåller enkla funktioner för att zooma/pana/pincha
 
@@ -56,7 +57,7 @@ export default function Map() {
   //Funktion där landet användaren befinner sig i jämförs med arrayen med länder och cuisines
   const getCuisine = (currentCountry) => {
     //Om landet är lika med landet i arrayen så pushas ID:t som är en cuisine till let cuisine
-    for (const x of CountryArray) {
+    for (const x of countryArray) {
       if (currentCountry == x.value) {
         cuisine.push(x.id);
       }

@@ -1,36 +1,38 @@
 import { Link } from "react-router-dom";
-import { useSearchResult } from "../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
-import { useTag } from "../hooks/useTag";
-import { useFilterStore } from "../hooks/useFilterStore";
-
-import { CuisineFilters, MealTypeFilters, DietFilters, IntoleranceFilters, TimeFilters } from "./FilterItems";
+import { urlParameters, cuisineFilters, mealTypeFilters, dietFilters, intoleranceFilters, maxReadyTimeFilters } from "../internal_data/filterArrays";
+import * as apiSearchFunctions from "../modules/apiSearchFunctions";
+import { useKey } from "../hooks/useKey";
+import { useSearchResult } from "../hooks/useSearchResult";
+import { useResultsToShow } from "../hooks/useResultsToShow";
 
 // komponent för taggarna som finns på RecipeCard och RecipePage
 export default function Tags(props) {
-    const [SearchResult, setSearchResult] = useSearchResult(
-        (state) => [state.SearchResult, state.setSearchResult],
-        shallow
-    );
-    const [tag, setTag] = useTag(
-        (state) => [state.tag, state.setTag],
-        shallow
-    );
-    const filterString = useFilterStore.getState((state) => state);
 
-    let tagArray = CuisineFilters;
-    tagArray = tagArray.concat(MealTypeFilters);
-    tagArray = tagArray.concat(DietFilters);
-    tagArray = tagArray.concat(IntoleranceFilters);
-    tagArray = tagArray.concat(TimeFilters);
+     //key som hamnar i url
+     const key = useKey((state) => state.key); 
+     //setta sökresultat
+     const [searchResult, setSearchResult] = useSearchResult((state) =>
+         [state.searchResult, state.setSearchResult], shallow);
+     //Setta sök/filter titel
+     const [title, setTitle] = useSearchResult((state) =>
+         [state.title, state.setTitle],shallow);
+     //ange mängd som ska visas "showmore"
+     const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
+         [state.resultsToShow, state.setResultsToShow], shallow); 
+
+    let tagArray = cuisineFilters;
+    tagArray = tagArray.concat(mealTypeFilters);
+    tagArray = tagArray.concat(dietFilters);
+    tagArray = tagArray.concat(intoleranceFilters);
+    tagArray = tagArray.concat(maxReadyTimeFilters);
+    let hej = props.fromSearchProps;
+    // console.log(hej);
 
     const GenerateTags = () => {
         let time = props.time;
-        console.log(time)
         let cuisines = props.cuisines;
-        console.log(cuisines)
         let diets = props.diets;
-        console.log(diets)
         let dishTypes = props.dishTypes;
         let vegan = props.vegan;
         let vegetarian = props.vegetarian;
@@ -102,24 +104,25 @@ export default function Tags(props) {
                     let newTag = "";
                     switch (filter.type) {
                         case "C":
-                            newTag = filterString.cuisine;
+                            newTag = urlParameters[0];
                             break;
-
-                        case "I":
-                            newTag = filterString.intolerances;
-                            break;
-
+                       
                         case "D":
-                            newTag = filterString.diet;
-                            break;
-
-                        case "M":
-                            newTag = filterString.type;
+                            newTag = urlParameters[1];
                             break;
 
                         case "T":
-                            newTag = filterString.maxReadyTime;
+                            newTag = urlParameters[2];
                             break;
+
+                        case "M":
+                            newTag = urlParameters[3];
+                            break;
+    
+                        case "I":
+                            newTag = urlParameters[4];
+                            break;
+    
                     }
                     newTag += filter.value;
                     this[index] = newTag;
@@ -131,14 +134,29 @@ export default function Tags(props) {
     }
     let tags = GenerateTags();
     let tagValues = GenerateTagValues();
+
+    const searchByTagValue = async (tag) =>{
+        console.log("tag clicked: "+ tag);
+        let fetchedData = await apiSearchFunctions.fetchRecipes(key, tag);
+        console.log("tag:");
+        console.log(fetchedData[0]);
+        setResultsToShow(8);
+        setSearchResult(fetchedData[0]);
+        // setTag(tagToSet);
+        // setTitle(tag);
+        setTitle(apiSearchFunctions.manipulateTitle("", tag));
+    }
+
     return (
         <>
             {props.clickable ?
+                // taggar på receptsidan
                 <>
-                    <Link to="/" className="tag color-tag-one text-color-primary" onClick={() => { setSearchResult([]); setTag(tagValues[0]) }}>{tags[0].toUpperCase()} MIN</Link>
-                    <Link to="/" className="tag color-tag-two text-color-primary" onClick={() => { setSearchResult([]); setTag(tagValues[1]) }}>{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</Link>
-                    <Link to="/" className="tag color-tag-three text-color-primary" onClick={() => { setSearchResult([]); setTag(tagValues[2]) }}>{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</Link>
+                    <Link to="/" className="tag color-tag-one text-color-primary" onClick={() =>  searchByTagValue(tagValues[0]) }>{tags[0].toUpperCase()} MIN</Link>
+                    <Link to="/" className="tag color-tag-two text-color-primary" onClick={() =>  searchByTagValue(tagValues[1]) }>{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</Link>
+                    <Link to="/" className="tag color-tag-three text-color-primary" onClick={() =>  searchByTagValue(tagValues[2]) }>{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</Link>
                 </>
+                // taggar på receptkorten
                 : <>
                     <p className="tag color-tag-one text-color-primary">{tags[0]} MIN</p>
                     <p className="tag color-tag-two text-color-primary">{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</p>

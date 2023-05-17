@@ -1,4 +1,4 @@
-export const CountryArray = [
+export const countryArray = [
     {id: 'thai', value: 'Thailand'},
     {id: 'british', value: 'United Kingdom'},
     {id: 'cajun', value: 'United States'},

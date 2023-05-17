@@ -4,11 +4,21 @@ import ResultContainer from "./ResultContainer";
 import Ad from "./Ad";
 import Recommendations from "./Recommendations";
 import { useSearchResult } from "../hooks/useSearchResult";
+import { useEffect } from "react";
+import { useChosenFilterAmount } from "../hooks/useChosenFilterAmount";
 
 // start- och söksidan
 export default function IndexPage() {
     const data = useSearchResult((state) => state.searchResult);
     const title = useSearchResult((state) => state.title);
+    const clearChosenFilters = useChosenFilterAmount(state => state.clearChosenFilter);
+
+    //rensa chosen filters om användaren lämnar indexpage
+    useEffect(() =>{
+        return() => {
+            clearChosenFilters();
+        };
+    }, []);
 
     return (
         <>
