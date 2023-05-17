@@ -1,4 +1,4 @@
-import { UrlParameters } from "../components/FilterArrays";
+import { urlParameters } from "../internal_data/filterArrays";
 
     //api-anrop_______________
     export const fetchRecipes = async (key, tag) => {
@@ -25,13 +25,15 @@ import { UrlParameters } from "../components/FilterArrays";
                 .then((response) => response.json())
                 .then((data)=> {
                     console.log(data);
-
+                    //if only filterParameters, return [data, "", searchparameter]
                     if(tag != null){
                         return([data.results, tag]);
                     }
                     //om det saknas både sök- och filterparametrar returneras en tom sökning
                     //för att visa ett felmeddelande
+                    
                     else if(!searchParameter && !filterParameters){
+                        
                         console.log("empty search");
                         return(["empty", searchParameter, filterParameters]);   
                     }
@@ -113,7 +115,9 @@ import { UrlParameters } from "../components/FilterArrays";
                     } 
                 });
             }
-            return resultTitle; 
+            console.log("filter values array:");
+            console.log(filterValues);
+            return [resultTitle, filterValues]; 
         } catch(e) {
             console.log(e);
         }
@@ -133,35 +137,35 @@ import { UrlParameters } from "../components/FilterArrays";
             switch(btn.dataset.type){
                 case "C":
                     if(cuisineParameter == ""){
-                        cuisineParameter += UrlParameters[0] + btn.value;
+                        cuisineParameter += urlParameters[0] + btn.value;
                     }else{
                         cuisineParameter += "," + btn.value; //&intolerances= grain, egg, 
                     }
                     break;
                 case "D":
                     if(dietParameter == ""){
-                        dietParameter += UrlParameters[1] + btn.value;
+                        dietParameter += urlParameters[1] + btn.value;
                     }else{
                         dietParameter += "," + btn.value;
                     }
                     break;
                 case "T":
                     if(maxTimeParameter == ""){
-                        maxTimeParameter += UrlParameters[2] + btn.value;
+                        maxTimeParameter += urlParameters[2] + btn.value;
                     }else{
                         maxTimeParameter += "," + btn.value;
                     }
                     break;
                 case "M":
                     if( mealTypeParameter == ""){
-                        mealTypeParameter += UrlParameters[3] + btn.value;
+                        mealTypeParameter += urlParameters[3] + btn.value;
                     }else{
                         mealTypeParameter += "," + btn.value;
                     }
                     break;
                 case "I":
                     if(intoleranceParameter == ""){
-                        intoleranceParameter += UrlParameters[4] + btn.value;
+                        intoleranceParameter += urlParameters[4] + btn.value;
                     }else{
                         intoleranceParameter += "," + btn.value;
                     }

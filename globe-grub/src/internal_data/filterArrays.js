@@ -2,7 +2,7 @@
 //array med cuisines som finns i API
 //används i Search.jsx, Recommendations.jsx, Tags.jsx
 
-export const UrlParameters = [
+export const urlParameters = [
     "&cuisine=",
     "&diet=",
     "&maxReadyTime=",
@@ -10,7 +10,7 @@ export const UrlParameters = [
     "&intolerances="
 ]
 
-export const CuisineFilters = [
+export const cuisineFilters = [
     {
         name: "Thai",
         value: "thai",
@@ -149,7 +149,7 @@ export const CuisineFilters = [
     },
 ]
 //array med diets som ska finnas med i filtermeny
-export const DietFilters = [
+export const dietFilters = [
     {
         name: "Vegetarian",
         value: "vegetarian",
@@ -210,7 +210,7 @@ export const DietFilters = [
 
 ]
 //array med måltidstyper som ska finnas med i filtermeny
-export const MealTypeFilters = [
+export const mealTypeFilters = [
     {
         name: "Breakfast",
         value: "breakfast",
@@ -260,7 +260,7 @@ export const MealTypeFilters = [
     // }
 ]
 //array med allergener som ska finnas med i filtermeny
-export const IntoleranceFilters = [
+export const intoleranceFilters = [
     {
         name: "Dairy",
         value: "dairy",
@@ -325,7 +325,7 @@ export const IntoleranceFilters = [
     },
 ]
 //array med tid som ska finnas med i filtermeny
-export const TimeFilters = [
+export const maxReadyTimeFilters = [
     {
         name: "Under 15 min",
         value: "15",

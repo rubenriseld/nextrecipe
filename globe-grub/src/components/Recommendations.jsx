@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
-import { CuisineFilters} from "./FilterArrays";
-import ResultContainer from "./ResultContainer";
+import { cuisineFilters} from "../internal_data/filterArrays";
+import ResultContainer from "./resultcontainer";
 import { useKey } from "../hooks/useKey";
 
 // komponent för slumpmässigt genererade recept som dyker upp på startsidan
@@ -15,7 +15,7 @@ export default function Recommendations(){
     
     //random funktion som slumpar fram 1 cuisine med 4 resultat i resultcontainer
     const getRandomCuisine = () => {
-        const currentCuisine = CuisineFilters[Math.floor(Math.random()*CuisineFilters.length)];
+        const currentCuisine = cuisineFilters[Math.floor(Math.random()*cuisineFilters.length)];
         return currentCuisine
     }  
     useEffect(()=>{

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
 import { useKey } from "../hooks/useKey";
-import { CountryArray } from "./CountryArray";
+import { countryArray } from "../internal_data/countryArray";
 import { useResultsToShow } from "../hooks/useResultsToShow";
 
 export default function Geo() {
@@ -55,7 +55,7 @@ export default function Geo() {
   };
 
   const getCuisine = (currentCountry) => {
-    for (const x of CountryArray) {
+    for (const x of countryArray) {
       if (currentCountry == x.value) {
         cuisine.push(x.id);
       } else {

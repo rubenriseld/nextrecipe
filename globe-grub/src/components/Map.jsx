@@ -6,7 +6,7 @@ import { useSearchResult } from "../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
 import { useKey } from "../hooks/useKey";
 import { useNavigate } from "react-router-dom";
-import { CountryArray  } from "./CountryArray";
+import { countryArray  } from "../internal_data/countryArray";
 import { useResultsToShow } from "../hooks/useResultsToShow";
 
 
