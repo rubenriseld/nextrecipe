@@ -5,7 +5,6 @@ import { useChosenFilterAmount } from "../hooks/useChosenFilterAmount";
 import { cuisineFilters, dietFilters, intoleranceFilters, maxReadyTimeFilters, mealTypeFilters } from "../internal_data/filterArrays";
 import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
-import { useSearchParameters } from "../hooks/useSearchParameters";
 import * as apiSearchFunctions from "../modules/apiSearchFunctions";
 import { useKey } from "../hooks/useKey";
 import { useSearchResult } from "../hooks/useSearchResult";

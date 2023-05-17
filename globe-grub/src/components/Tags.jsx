@@ -26,7 +26,6 @@ export default function Tags(props) {
     tagArray = tagArray.concat(dietFilters);
     tagArray = tagArray.concat(intoleranceFilters);
     tagArray = tagArray.concat(maxReadyTimeFilters);
-    let hej = props.fromSearchProps;
     // console.log(hej);
 
     const GenerateTags = () => {
