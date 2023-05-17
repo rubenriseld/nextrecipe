@@ -26,11 +26,11 @@ export default function IndexPage() {
                 <Geo />
                 <Search />
             </section>
-            <Ad />
             {data == "" ?
                 <>
                     <Recommendations></Recommendations>
                     <Recommendations></Recommendations>
+                    <Ad />
                     <Recommendations></Recommendations>
                     <Recommendations></Recommendations>
                 </>
