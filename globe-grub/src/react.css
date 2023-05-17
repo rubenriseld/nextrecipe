@@ -177,8 +177,11 @@ header {
     height: 100%;
     top:0;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    transition: none;
 
+    -moz-transition: none;
 }
+
 
 /*LOGO*/
 .company-logo {
@@ -843,7 +846,7 @@ footer {
 
 .staff-box{
   padding: 1rem;
-
+    width: 100%;
 }
 
 .profile-pic{
@@ -881,6 +884,11 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
         padding-top: 0.5rem;
         flex-direction: row;
     }
+    .staff-box{
+        padding: 1rem;
+          width: 50%;
+      }
+    
 }
 
 @media screen and (min-width: 900px) {
@@ -1041,7 +1049,10 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     order: 3;
     align-self: flex-end;
   }
-
+  .staff-box{
+    padding: 1rem;
+      width: 33%;
+  }
 
 }
 
@@ -1056,4 +1067,8 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
         box-sizing: border-box;
         /* height: 23rem; */
     }
+    .staff-box{
+        padding: 1rem;
+          width: 25%;
+      }
 }
