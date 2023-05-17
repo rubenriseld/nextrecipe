@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { shallow } from "zustand/shallow";
-import { UrlParameters, CuisineFilters, MealTypeFilters, DietFilters, IntoleranceFilters, TimeFilters } from "./FilterArrays";
+import { urlParameters, cuisineFilters, mealTypeFilters, dietFilters, intoleranceFilters, maxReadyTimeFilters } from "../internal_data/filterArrays";
 import * as apiSearchFunctions from "../modules/apiSearchFunctions";
 import { useKey } from "../hooks/useKey";
 import { useSearchResult } from "../hooks/useSearchResult";
@@ -21,11 +21,13 @@ export default function Tags(props) {
      const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
          [state.resultsToShow, state.setResultsToShow], shallow); 
 
-    let tagArray = CuisineFilters;
-    tagArray = tagArray.concat(MealTypeFilters);
-    tagArray = tagArray.concat(DietFilters);
-    tagArray = tagArray.concat(IntoleranceFilters);
-    tagArray = tagArray.concat(TimeFilters);
+    let tagArray = cuisineFilters;
+    tagArray = tagArray.concat(mealTypeFilters);
+    tagArray = tagArray.concat(dietFilters);
+    tagArray = tagArray.concat(intoleranceFilters);
+    tagArray = tagArray.concat(maxReadyTimeFilters);
+    let hej = props.fromSearchProps;
+    // console.log(hej);
 
     const GenerateTags = () => {
         let time = props.time;
@@ -102,23 +104,23 @@ export default function Tags(props) {
                     let newTag = "";
                     switch (filter.type) {
                         case "C":
-                            newTag = UrlParameters[0];
+                            newTag = urlParameters[0];
                             break;
                        
                         case "D":
-                            newTag = UrlParameters[1];
+                            newTag = urlParameters[1];
                             break;
 
                         case "T":
-                            newTag = UrlParameters[2];
+                            newTag = urlParameters[2];
                             break;
 
                         case "M":
-                            newTag = UrlParameters[3];
+                            newTag = urlParameters[3];
                             break;
     
                         case "I":
-                            newTag = UrlParameters[4];
+                            newTag = urlParameters[4];
                             break;
     
                     }

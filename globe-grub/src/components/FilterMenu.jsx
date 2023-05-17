@@ -2,7 +2,7 @@
 import { useState} from "react";
 // import { useFilterStore } from "../hooks/useFilterStore";
 import { useChosenFilterAmount } from "../hooks/useChosenFilterAmount";
-import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeFilters } from "./FilterArrays";
+import { cuisineFilters, dietFilters, intoleranceFilters, maxReadyTimeFilters, mealTypeFilters } from "../internal_data/filterArrays";
 import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
 import { useSearchParameters } from "../hooks/useSearchParameters";
@@ -79,7 +79,7 @@ return (
                     <i className={`fa-solid collapse-icon text-color-primary ${cuisineCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                 </button>
                 <div className={`cuisine-filter ${showCuisineFilter ? "" : "filter-show"}`}>
-                    {CuisineFilters.map((x, index) => {
+                    {cuisineFilters.map((x, index) => {
                         return (
                             <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
                             )
@@ -92,7 +92,7 @@ return (
                     <i className={`fa-solid collapse-icon text-color-primary ${dietCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                 </button>
                 <div className={`diet-filter ${showDietFilter ? "" : "filter-show"}`}>
-                    {DietFilters.map((x, index) => {
+                    {dietFilters.map((x, index) => {
                         return (
                             <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
                             )
@@ -106,7 +106,7 @@ return (
                     <i className={`fa-solid collapse-icon text-color-primary ${intoleranceCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                 </button>
                 <div className={`intolerance-filter ${showIntoleranceFilter ? "" : "filter-show"}`}>
-                    {IntoleranceFilters.map((x, index) => {
+                    {intoleranceFilters.map((x, index) => {
                         return (
                             <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
                             )
@@ -120,7 +120,7 @@ return (
                     <i className={`fa-solid collapse-icon text-color-primary ${timeCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                 </button>
                 <div className={`time-filter ${showTimeFilter ? "" : "filter-show"}`}>
-                    {TimeFilters.map((x, index) => {
+                    {maxReadyTimeFilters.map((x, index) => {
                         return (
                             <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
                             )
@@ -134,7 +134,7 @@ return (
                     <i className={`fa-solid collapse-icon text-color-primary ${mealCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                 </button>
                 <div className={`meal-filter ${showMealFilter ? "" : "filter-show"}`} >
-                    {MealTypeFilters.map((x, index) => {
+                    {mealTypeFilters.map((x, index) => {
                         return (
                             <FilterButton key={index} value={x.value} type={x.type} name={x.name} active={false}></FilterButton>
                             )
