@@ -7,21 +7,19 @@ import { useState, useEffect } from "react";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { useKey } from "../hooks/useKey";
 
-// komponent för receptsidan (enskilda recept när man klickar på ett receptkort)
+//Komponent för receptsidan (enskilda recept när man klickar på ett receptkort)
 export default function RecipePage() {
     const [recipe, setRecipe] = useState("");
     const [loading, setLoading] = useState(true);
-
     const data = useSearchResult((state) => state.searchResult);
-
     const key = useKey((state) => state.key);
-
 
     const location = useLocation();
     const id = location.state;
 
-
+    //Url till API:et där enskilt recepts id skickas in
     const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key}&includeNutrition=true`;
+    //Funktion för att hämta receptet
     useEffect(() => {
         fetch(url)
             .then((response) => response.json())
@@ -32,6 +30,7 @@ export default function RecipePage() {
             });
     }, []);
 
+    //En loading-text så att datan hinner hämtas
     if (loading) {
         return (
             <div className="max-width-container loading-screen">

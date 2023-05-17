@@ -659,7 +659,7 @@ footer {
   /* margin-top: 20px; */
   margin-left: 0.5rem;
 }
-  /*KARTAAAAAAAAAAAA*/
+  /*KARTA*/
   .svg-map {
     width: 100%;
     margin:auto;
@@ -672,7 +672,8 @@ footer {
   }
   .svg-map__location {
     fill: #a1d99b;
-    cursor:pointer; 
+    cursor:pointer;
+    touch-action: none; 
   }
   .svg-map__location:focus, .svg-map__location:hover {
     fill: #b8e2b3;
@@ -680,6 +681,31 @@ footer {
   }
   .svg-map__location[aria-checked=true] {
     fill: #f4bc44;
+  }
+  .map-container{
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin:auto ;
+    
+  }
+  .transform-component-module_content__FBWxo {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin:auto !important;
+    
+  }
+  .transform-component-module_wrapper__SPB86{
+    width: 90% !important;
+    height: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin:auto !important;
+
   }
   /* XDDDDD */
   #infobox {
@@ -705,6 +731,7 @@ footer {
     font-family: arial; */
   }
 
+  /*GO-TO-TOP BUTTON*/
 .hide-go-to-top {
     bottom: -100px!important;
   /* display: none; */
@@ -768,6 +795,62 @@ footer {
   }
 }
 
+/* ABOUT US PAGE*/
+.headline{
+  padding-left: 10px;
+  padding-bottom: 1rem;
+  margin: 5px
+}
+
+.company-text{
+  padding-left: 10px;
+  padding-bottom: 30px;
+  margin: 10px
+}
+
+.vision-container{
+  
+}
+
+.headline-team{
+  
+}
+
+.text-block{
+  margin-bottom: 1.5rem;
+  align-content: center;
+}
+
+.meet-team-container{
+    
+}
+
+.boss-container{
+  margin: 2rem;
+  padding: 1px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.staff-container{
+  margin: 2rem;
+  padding: 1px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;  
+}
+
+.staff-box{
+  padding: 1rem;
+
+}
+
+.profile-pic{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  
+}
 
 /*****************************************
             DESKTOP (RESPONSIVE)
