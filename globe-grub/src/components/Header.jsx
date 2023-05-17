@@ -74,7 +74,7 @@ export default function Header() {
                         className="menu-link text-color-primary" 
                         onClick={() => setShowMobileMenu(false)}>Around The World
                     </NavLink>
-                    <NavLink to="/" 
+                    <NavLink to="/aboutus" 
                         className="menu-link text-color-primary" 
                         onClick={() => setShowMobileMenu(false)}>About Us
                     </NavLink>
