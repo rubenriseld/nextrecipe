@@ -115,9 +115,7 @@ import { urlParameters } from "../internal_data/filterArrays";
                     } 
                 });
             }
-            console.log("filter values array:");
-            console.log(filterValues);
-            return [resultTitle, filterValues]; 
+            return resultTitle; 
         } catch(e) {
             console.log(e);
         }
