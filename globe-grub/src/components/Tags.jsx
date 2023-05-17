@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { shallow } from "zustand/shallow";
 import { UrlParameters, CuisineFilters, MealTypeFilters, DietFilters, IntoleranceFilters, TimeFilters } from "./FilterArrays";
-import * as apiSearchFunctions from "./ApiSearchFunction";
+import * as apiSearchFunctions from "../modules/apiSearchFunctions";
 import { useKey } from "../hooks/useKey";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { useResultsToShow } from "../hooks/useResultsToShow";

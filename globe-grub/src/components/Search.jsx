@@ -7,7 +7,7 @@ import { useKey } from "../hooks/useKey";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { useResultsToShow } from "../hooks/useResultsToShow";
 import FilterMenu  from "./FilterMenu";
-import * as apiSearchFunctions from "./ApiSearchFunction";
+import * as apiSearchFunctions from "../modules/apiSearchFunctions";
 
 export default function Search() {
     

@@ -1,4 +1,4 @@
-import { UrlParameters } from "./FilterArrays";
+import { UrlParameters } from "../components/FilterArrays";
 
     //api-anrop_______________
     export const fetchRecipes = async (key, tag) => {

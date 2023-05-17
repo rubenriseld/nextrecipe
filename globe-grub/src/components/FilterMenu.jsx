@@ -6,7 +6,7 @@ import { CuisineFilters, DietFilters, IntoleranceFilters, TimeFilters, MealTypeF
 import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
 import { useSearchParameters } from "../hooks/useSearchParameters";
-import * as apiSearchFunctions from "./ApiSearchFunction";
+import * as apiSearchFunctions from "../modules/apiSearchFunctions";
 import { useKey } from "../hooks/useKey";
 import { useSearchResult } from "../hooks/useSearchResult";
 import { useResultsToShow } from "../hooks/useResultsToShow";
