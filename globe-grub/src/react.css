@@ -705,6 +705,7 @@ footer {
     font-family: arial; */
   }
 
+  /*GO-TO-TOP BUTTON*/
 .hide-go-to-top {
     bottom: -100px!important;
   /* display: none; */
@@ -768,6 +769,62 @@ footer {
   }
 }
 
+/* ABOUT US PAGE*/
+.headline{
+  padding-left: 10px;
+  padding-bottom: 1rem;
+  margin: 5px
+}
+
+.company-text{
+  padding-left: 10px;
+  padding-bottom: 30px;
+  margin: 10px
+}
+
+.vision-container{
+  
+}
+
+.headline-team{
+  
+}
+
+.text-block{
+  margin-bottom: 1.5rem;
+  align-content: center;
+}
+
+.meet-team-container{
+    
+}
+
+.boss-container{
+  margin: 2rem;
+  padding: 1px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.staff-container{
+  margin: 2rem;
+  padding: 1px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;  
+}
+
+.staff-box{
+  padding: 1rem;
+
+}
+
+.profile-pic{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  
+}
 
 /*****************************************
             DESKTOP (RESPONSIVE)
