@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import RecipeCard from "./RecipeCard";
-import { useResultsToShow } from "../hooks/useResultsToShow";
+import { useResultsToShow } from "../../hooks/useResultsToShow";
 import { shallow } from "zustand/shallow";
 
 // komponent för receptkort (resultat) från antingen rekommendationer

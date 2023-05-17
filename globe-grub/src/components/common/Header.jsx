@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useLocation, NavLink } from "react-router-dom";
-import { useSearchResult } from "../hooks/useSearchResult";
+import { useSearchResult } from "../../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
 import Logo from "./Logo";
-import Map from "./Map";
+// import Map from "../around-the-world/Map";
 
 // komponent för headern som syns på alla sidor
 export default function Header() {

@@ -1,11 +1,11 @@
 import Geo from "./Geo";
 import Search from "./Search";
 import ResultContainer from "./ResultContainer";
-import Ad from "./Ad";
-import Recommendations from "./Recommendations";
-import { useSearchResult } from "../hooks/useSearchResult";
+import Ad from "../common/Ad";
+import { Recommendations } from "./Recommendations";
+import { useSearchResult } from "../../hooks/useSearchResult";
 import { useEffect } from "react";
-import { useChosenFilterAmount } from "../hooks/useChosenFilterAmount";
+import { useChosenFilterAmount } from "../../hooks/useChosenFilterAmount";
 
 // start- och söksidan
 export default function IndexPage() {

@@ -1,11 +1,11 @@
 import Checkbox from "./Checkbox";
-import Tags from "./Tags";
-import Ad from "./Ad";
+import Tags from "../common/Tags";
+import Ad from "../common/Ad";
 
 import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useSearchResult } from "../hooks/useSearchResult";
-import { useKey } from "../hooks/useKey";
+import { useSearchResult } from "../../hooks/useSearchResult";
+import { useKey } from "../../hooks/useKey";
 
 //Komponent för receptsidan (enskilda recept när man klickar på ett receptkort)
 export default function RecipePage() {

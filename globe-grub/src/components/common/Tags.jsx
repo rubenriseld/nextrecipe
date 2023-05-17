@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { shallow } from "zustand/shallow";
-import { urlParameters, cuisineFilters, mealTypeFilters, dietFilters, intoleranceFilters, maxReadyTimeFilters } from "../internal_data/filterArrays";
-import * as apiSearchFunctions from "../modules/apiSearchFunctions";
-import { useKey } from "../hooks/useKey";
-import { useSearchResult } from "../hooks/useSearchResult";
-import { useResultsToShow } from "../hooks/useResultsToShow";
+import { urlParameters, cuisineFilters, mealTypeFilters, dietFilters, intoleranceFilters, maxReadyTimeFilters } from "../../internal_data/filterArrays";
+import * as apiSearchFunctions from "../../modules/apiSearchFunctions";
+import { useKey } from "../../hooks/useKey";
+import { useSearchResult } from "../../hooks/useSearchResult";
+import { useResultsToShow } from "../../hooks/useResultsToShow";
 
 // komponent för taggarna som finns på RecipeCard och RecipePage
 export default function Tags(props) {

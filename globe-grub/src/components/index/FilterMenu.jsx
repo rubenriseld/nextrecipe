@@ -1,14 +1,14 @@
 
 import { useState} from "react";
 // import { useFilterStore } from "../hooks/useFilterStore";
-import { useChosenFilterAmount } from "../hooks/useChosenFilterAmount";
-import { cuisineFilters, dietFilters, intoleranceFilters, maxReadyTimeFilters, mealTypeFilters } from "../internal_data/filterArrays";
+import { useChosenFilterAmount } from "../../hooks/useChosenFilterAmount";
+import { cuisineFilters, dietFilters, intoleranceFilters, maxReadyTimeFilters, mealTypeFilters } from "../../internal_data/filterArrays";
 import { shallow } from "zustand/shallow";
 import { FilterButton } from "./FilterButton";
-import * as apiSearchFunctions from "../modules/apiSearchFunctions";
-import { useKey } from "../hooks/useKey";
-import { useSearchResult } from "../hooks/useSearchResult";
-import { useResultsToShow } from "../hooks/useResultsToShow";
+import * as apiSearchFunctions from "../../modules/apiSearchFunctions";
+import { useKey } from "../../hooks/useKey";
+import { useSearchResult } from "../../hooks/useSearchResult";
+import { useResultsToShow } from "../../hooks/useResultsToShow";
 
 
 export default function FilterMenu({childToParent, visible, refValue}){
