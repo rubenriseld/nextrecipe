@@ -2,13 +2,23 @@ import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import  Tags from "./Tags";
 
+
 // komponent för receptkorten som visas i resultatcontainrar
 export default function RecipeCard(props) {
     
     return (
         <article className="recipe-card">
             <Link to={`/recipe/${props.id}`} state={props.id}>
-                <img src={props.image} alt="Image of recipe" />
+                {/* <img src={props.image} onError={handleImageError} /> */}
+                <div>
+                              {/* Kollar om API saknar bild  */}
+                            {props.image != undefined ?
+                                <img   src={props.image}/>
+                                :   
+                                // Om bild saknas byts den ut
+                                <img src="/images/foodimagenotfound.png"/>
+                            }
+                        </div>
                 <div className="recipe-card-info">
                     <h3 className="recipe-card-title text-color-primary">{props.title}</h3>
                     <div>

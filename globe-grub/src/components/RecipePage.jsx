@@ -19,6 +19,7 @@ export default function RecipePage() {
 
     const location = useLocation();
     const id = location.state;
+    
 
 
     const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key}&includeNutrition=true`;
@@ -29,6 +30,7 @@ export default function RecipePage() {
                 console.log(data);
                 setRecipe(data);
                 setLoading(false);
+                // console.log(recipe.image);
             });
     }, []);
 
@@ -39,6 +41,7 @@ export default function RecipePage() {
             </div>
         ) 
     }
+    
 
     return (
         <>
@@ -54,7 +57,13 @@ export default function RecipePage() {
                     <div className="recipe-visual-container">
                         {/* <!-- Bild på maten --> */}
                         <div>
-                            <img className="recipe-image mr-4 ml-4" src={recipe.image} alt="Image of recipe" />
+                              {/* Kollar om API saknar bild  */}
+                            {recipe.image != undefined ?
+                                <img className="recipe-image mr-4 ml-4"  src={recipe.image}/>
+                                :
+                                // Om bild saknas byts den ut
+                                <img className="recipe-image mr-4 ml-4"  src="/images/foodimagenotfound.png"/>
+                            }
                         </div>
                         {/* <!-- Taggar och likes --> */}
                         <div className="flex flex-separate">
