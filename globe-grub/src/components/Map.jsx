@@ -51,7 +51,7 @@ shallow
   
   const getCuisine = (currentCountry) => {
 
-    for (const x of CountryArray){
+    for (const x of countryArray){
       if(currentCountry == x.value){
         cuisine.push(x.id);
       }
