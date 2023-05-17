@@ -2,6 +2,14 @@
 //array med cuisines som finns i API
 //används i Search.jsx, Recommendations.jsx, Tags.jsx
 
+export const UrlParameters = [
+    "&cuisine=",
+    "&diet=",
+    "&maxReadyTime=",
+    "&type=",
+    "&intolerances="
+]
+
 export const CuisineFilters = [
     {
         name: "Thai",
