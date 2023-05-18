@@ -47,13 +47,31 @@
 
 .filter-menu-title,
 .close-filter-icon {
-    font-size: 3rem;
+    font-size: 2.5rem;
+}
+
+.collapse-btn,
+.close-filter-btn{
+    transition: all 0.1s ease-in;
+    cursor: pointer;
+}
+.collapse-btn:hover,
+.close-filter-btn:hover {
+    color:#044935!important;
+}
+.collapse-btn:active i,
+.close-filter-btn:active {
+    color:#048f65!important;
+    transform: scale(0.8);
+
 }
 
 .filter-title,
 .collapse-icon {
     font-size: 2rem;
     margin: 0.5rem 0 0.5rem 0;
+    transition: all 0.1s ease-in;
+
 }
 
 .clear-filter-btn,
@@ -64,6 +82,7 @@
     margin: 2px;
     transition: all 0.05s ease-in;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 
 .clear-filter-btn,
