@@ -3,7 +3,7 @@
     bottom: -100px!important;
   /* display: none; */
   /* animation: movebtn 0.5s ease-in-out reverse; */
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .go-to-top-btn{
@@ -14,9 +14,17 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  transition: all .5s ease-in-out;
-  border: 2px solid #fff;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
 
+.go-to-top-btn:hover{
+    transition: all 0.1s ease-in;
+    background-color:#044935!important;
+}
+.go-to-top-btn:active{
+    color:#048f65!important;
+    transform: scale(0.8);
 }
 .go-to-top-icon{
     font-size: 1.5rem;

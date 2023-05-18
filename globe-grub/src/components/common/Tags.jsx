@@ -151,9 +151,9 @@ export default function Tags(props) {
             {props.clickable ?
                 // taggar på receptsidan
                 <>
-                    <Link to="/" className="tag color-tag-one text-color-primary" onClick={() =>  searchByTagValue(tagValues[0]) }>{tags[0].toUpperCase()} MIN</Link>
-                    <Link to="/" className="tag color-tag-two text-color-primary" onClick={() =>  searchByTagValue(tagValues[1]) }>{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</Link>
-                    <Link to="/" className="tag color-tag-three text-color-primary" onClick={() =>  searchByTagValue(tagValues[2]) }>{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</Link>
+                    <Link to="/" className="tag tag-clickable color-tag-one text-color-primary" onClick={() =>  searchByTagValue(tagValues[0]) }>{tags[0].toUpperCase()} MIN</Link>
+                    <Link to="/" className="tag tag-clickable color-tag-two text-color-primary" onClick={() =>  searchByTagValue(tagValues[1]) }>{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</Link>
+                    <Link to="/" className="tag tag-clickable color-tag-three text-color-primary" onClick={() =>  searchByTagValue(tagValues[2]) }>{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</Link>
                 </>
                 // taggar på receptkorten
                 : <>

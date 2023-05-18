@@ -81,9 +81,9 @@ export default function Header() {
                     </NavLink>
                 </div>
                 <button
-                    className={`burger `}
+                    className="burger text-color-primary"
                     onClick={() => setShowMobileMenu(!showMobileMenu)}>
-                    <i className={`fa text-color-primary burger-icon ${showMobileMenu ? "fa-close" : "fa-bars"}`}></i>
+                    <i className={`fa  burger-icon ${showMobileMenu ? "fa-close" : "fa-bars"}`}></i>
                 </button>
             </nav>
         </header>

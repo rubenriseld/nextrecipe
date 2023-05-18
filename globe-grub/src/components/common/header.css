@@ -43,6 +43,7 @@ header {
 /*navlänkarna som ligger i hamburgermenyn på mobile*/
 .menu-links {
     margin: 0;
+    padding-top: 1rem;
     width: 100%;
     height: 100%;
 }
@@ -73,6 +74,14 @@ header {
     position: absolute;
     right: 0;
     top: 0;
+    transition: all 0.1s ease-in;
+}
+.burger:hover{
+    color:#044935!important;
+}
+.burger:active{
+    color:#048f65!important;
+    transform: scale(0.8);
 }
 
 .burger-icon {
