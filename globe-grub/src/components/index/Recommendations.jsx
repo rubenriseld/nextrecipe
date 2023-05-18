@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { cuisineFilters} from "../../internal_data/filterArrays";
 import ResultContainer from "./ResultContainer";
 import { useKey } from "../../hooks/useKey";
+import "./recommendations.css";
 
 // komponent för slumpmässigt genererade recept som dyker upp på startsidan
 export function Recommendations(){

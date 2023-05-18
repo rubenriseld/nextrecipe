@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router-dom";
+import "./aboutpage.css";
 
 export default function AboutUs(){
 

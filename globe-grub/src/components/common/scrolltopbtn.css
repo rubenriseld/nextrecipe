@@ -1,0 +1,23 @@
+/*GO-TO-TOP BUTTON*/
+.hide-go-to-top {
+    bottom: -100px!important;
+  /* display: none; */
+  /* animation: movebtn 0.5s ease-in-out reverse; */
+  transition: all .5s ease-in-out;
+}
+
+.go-to-top-btn{
+  position: fixed;
+  bottom: 40px;
+  right: 25px;
+  z-index: 20;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  transition: all .5s ease-in-out;
+  border: 2px solid #fff;
+
+}
+.go-to-top-icon{
+    font-size: 1.5rem;
+}

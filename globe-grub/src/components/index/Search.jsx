@@ -8,6 +8,7 @@ import { useSearchResult } from "../../hooks/useSearchResult";
 import { useResultsToShow } from "../../hooks/useResultsToShow";
 import FilterMenu  from "./FilterMenu";
 import * as apiSearchFunctions from "../../modules/apiSearchFunctions";
+import "./search.css";
 
 export default function Search() {
     

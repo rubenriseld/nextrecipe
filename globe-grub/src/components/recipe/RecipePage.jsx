@@ -6,6 +6,7 @@ import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSearchResult } from "../../hooks/useSearchResult";
 import { useKey } from "../../hooks/useKey";
+import "./recipepage.css";
 
 //Komponent för receptsidan (enskilda recept när man klickar på ett receptkort)
 export default function RecipePage() {

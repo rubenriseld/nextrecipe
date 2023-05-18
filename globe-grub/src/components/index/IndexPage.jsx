@@ -6,6 +6,7 @@ import { Recommendations } from "./Recommendations";
 import { useSearchResult } from "../../hooks/useSearchResult";
 import { useEffect } from "react";
 import { useChosenFilterAmount } from "../../hooks/useChosenFilterAmount";
+import "./indexpage.css";
 
 // start- och söksidan
 export default function IndexPage() {
@@ -39,7 +40,7 @@ export default function IndexPage() {
                     <ResultContainer data={data} title={title} isReco={false} /> {/*data från Search.jsx(data från sökningen) hamnar i resultcontainer */}
                 </>
             }
-            <Ad />
+            <Banner />
         </>
     )
 }

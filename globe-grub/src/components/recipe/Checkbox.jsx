@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./checkbox.css";
 
 // komponent för checkboxar på receptsidan
 export default function Checkbox(props) {

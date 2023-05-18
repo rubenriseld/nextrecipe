@@ -1,0 +1,15 @@
+/*---GEOSEARCH---*/
+/*gemensam section för geo + search*/
+.geosearch {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+@media screen and (min-width: 900px) {
+    .geosearch {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

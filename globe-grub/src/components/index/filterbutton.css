@@ -1,0 +1,9 @@
+/*FILTER*/
+.filter-btn{
+    border: #006a4a 3px solid;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.active-btn{
+    background-color: #006a4a;
+}

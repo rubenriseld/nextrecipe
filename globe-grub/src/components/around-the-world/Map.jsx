@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { countryArray  } from "../../internal_data/countryArray";
 import { useResultsToShow } from "../../hooks/useResultsToShow";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"; //npm paket som innehåller enkla funktioner för att zooma/pana/pincha
+import "./map.css";
+
 
 export default function Map() {
   //En const som används för att navigera till en del på sidan

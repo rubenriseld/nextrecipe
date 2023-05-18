@@ -1,0 +1,28 @@
+/*---RESULTCONTAINER---*/
+/*titel för sökresultat*/
+.result-title {
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+/*container för alla receptkort (sökresultat)*/
+.recipe-card-container {
+    flex-direction: column;
+    display: flex;
+    margin: 1rem 0 1rem 0;
+}
+
+/*SHOW-MORE-BUTTON*/
+/*knapp för att ladda in fler resultat i resultatdelen*/
+.show-more-btn {
+    margin: auto;
+    margin-bottom: 2rem;
+
+    width: 80%;
+}
+
+@media screen and (min-width: 900px) {
+    .show-more-btn {
+        width: 25%;
+    }
+}

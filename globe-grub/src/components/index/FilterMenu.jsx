@@ -9,7 +9,7 @@ import * as apiSearchFunctions from "../../modules/apiSearchFunctions";
 import { useKey } from "../../hooks/useKey";
 import { useSearchResult } from "../../hooks/useSearchResult";
 import { useResultsToShow } from "../../hooks/useResultsToShow";
-
+import "./filtermenu.css"
 
 export default function FilterMenu({childToParent, visible, refValue}){
     

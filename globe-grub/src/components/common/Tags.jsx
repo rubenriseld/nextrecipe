@@ -5,7 +5,7 @@ import * as apiSearchFunctions from "../../modules/apiSearchFunctions";
 import { useKey } from "../../hooks/useKey";
 import { useSearchResult } from "../../hooks/useSearchResult";
 import { useResultsToShow } from "../../hooks/useResultsToShow";
-
+import "./tags.css";
 // komponent för taggarna som finns på RecipeCard och RecipePage
 export default function Tags(props) {
 

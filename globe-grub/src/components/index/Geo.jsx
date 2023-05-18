@@ -6,6 +6,8 @@ import { useKey } from "../../hooks/useKey";
 //fil som innehåller en array med cuisines respektive länder
 import { countryArray } from "../../internal_data/countryArray";
 import { useResultsToShow } from "../../hooks/useResultsToShow";
+import "./geo.css";
+
 
 export default function Geo() {
   const [status, setStatus] = useState(null);

@@ -1,0 +1,106 @@
+/*container för receptets alla delar*/
+.recipe-container {
+    display: flex;
+    flex-direction: column;
+}
+/*gå-tillbaka-länken*/
+.go-back-text{
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/*recepttiteln högst upp*/
+.recipe-title {
+    margin-top: 1.5rem;
+    min-height: 2%;
+    height: auto;
+    color: black;
+}
+
+/*container för receptets bild, taggar och stjärnor*/
+.recipe-visual-container {
+    margin-top: 1rem;
+}
+
+/*receptbilden*/
+.recipe-image {
+    width: 100%;
+    border-radius: 20px;
+}
+
+/*ingredienslistan på receptsidan*/
+.recipe-ingredients {
+    margin-top: 1rem;
+}
+
+/*ingredienslistans titel (typ blabla 4 portioner)*/
+.ingredients-title {
+    margin-bottom: 1rem;
+}
+
+/* enskild ingrediens i ingredienslistan*/
+.ingredient {
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+.tag-container-recipe-page{
+    padding-top: 0.5rem;
+    flex-direction: column;
+}
+
+/* ---LIKES---*/
+.like-icon, .like-number{
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+@media screen and (min-width: 600px) {
+
+    .recipe-card-container {
+        /*container för alla receptkort (sökresultat)*/
+        justify-content: center;
+        flex-direction: row;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: stretch;
+    }
+
+    .tag-container-recipe-page {
+        padding-top: 0.5rem;
+        flex-direction: row;
+    }
+
+}
+
+@media screen and (min-width: 900px) {
+
+
+
+    .recipe-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .recipe-title {
+        font-size: 3rem;
+    }
+
+    .recipe-visual-container {
+        width: 50%;
+        order: 2;
+    }
+
+    .recipe-ingredients {
+        width: 50%;
+    }
+
+    /* container för receptsinstruktionerna (innehåller containrar för checkbox-komponent) */
+    .recipe-instructions {
+        order: 3;
+        align-self: flex-end;
+    }
+
+}
