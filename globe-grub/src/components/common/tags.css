@@ -7,10 +7,23 @@
 .tag {
     font-size: 1rem;
     margin-bottom: 0.2rem;
-    margin-right:0.2rem;
-    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    margin-right:0.5rem;
+    padding: 0.2rem 0.7rem 0.2rem 0.7rem;
     font-weight: bold;
     height: auto;
     width: auto;
     border-radius: 25px;
+}
+.tag-clickable{
+    transition: all 0.1s ease-in;
+    /* border: solid; */
+    /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); */
+}
+.tag-clickable:hover{
+    background-color:#0a4e3a50!important;
+}
+.tag-clickable:active{
+    background-color:#33a784!important;
+    border-color:#33a784!important;
+    transform: scale(0.9);
 }
