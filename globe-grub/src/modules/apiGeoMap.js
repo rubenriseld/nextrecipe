@@ -1,13 +1,14 @@
 import { countryArray  } from "../internal_data/countryArray";
 
 
-export const getCuisine = async (currentCountry) => {
+export const getCuisine = async (key, currentCountry) => {
      let cuisinesOfCurrentCountry = [];
-     
+
     for (const country of countryArray) {
-      if (currentCountry == x.value) {
+      if (currentCountry == country.value) {
         cuisinesOfCurrentCountry.push(country.id);
       }
+      
       //Annars om landet är lika med ett av länderna i arrayer i arrayen så pushas ID:t som är en cuisine till let cuisine
       else {
         if (Array.isArray(country.value) == true) {
@@ -23,12 +24,10 @@ export const getCuisine = async (currentCountry) => {
     if (cuisinesOfCurrentCountry.length == 0) {
       console.log("Country doesn't exist in API");
       return "maperror";
-          //ändras till return "maperror" typ
-      //setSearchResult("maperror");
       //Annars skickas värdet till funktionen fetchCuisine
     } else {
-      const fetchedData = await fetchCuisine(cuisinesOfCurrentCountry);
-      return fetchedData;
+      const fetched = fetchCuisine(key, cuisinesOfCurrentCountry);
+      return fetched;
     }
 
     //If-sats för att sätta en titel på resultatcontainern
@@ -47,8 +46,9 @@ export const getCuisine = async (currentCountry) => {
     // }
   };
 
+
   //Funktion där cuisine skickas in och recept hämtas från Spoonacular API:et
-  export const fetchCuisine = async (cuisines) => {
+  export const fetchCuisine = async (key, cuisines) => {
     let url = "";
     let results = [];
     try {
@@ -63,7 +63,7 @@ export const getCuisine = async (currentCountry) => {
                 results.push(recipe);
               }
             });
-        }
+          }
         //Om cuisine är en så hämtas recept baserat på den cuisinen
       } else {
         url = `https://api.spoonacular.com/recipes/random?number=32&tags=${cuisines}&apiKey=${key}`;
@@ -72,10 +72,11 @@ export const getCuisine = async (currentCountry) => {
           .then((data) => {
             results.push(data);
           });
+        }
+      } catch (e) {
+        console.log(e);
       }
-    } catch (e) {
-      console.log(e);
-    }
-
-    return results;
+      
+      return [results, cuisines];
+      
   };

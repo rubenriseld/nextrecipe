@@ -55,18 +55,32 @@ export default function Geo() {
   };
 
   //Funktion där koordinater skickas in i en URL och sedan hämtas namnet på landet för dom koordinaterna från ett API
-  const getCountry = (x, y) => {
+  const getCountry = async (x, y) => {
     const url = `https://revgeocode.search.hereapi.com/v1/revgeocode?at=${x},${y}&lang=en-US&apiKey=xJgXFjeLZ4yfhudR_y61uPrN315wNvFoaWitAQHeKpc`;
-    fetch(url)
+    const fetchedCountry = await fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        data.items.map((coordinates) => {
-          //Namnet på landet skickas in i funktionen getCuisine
-          setSearchResult(apiGeoFunctions.getCuisine(coordinates.address.countryName));
-          // (apiGeoFunctions.fetchCuisine());
-        });
-      });
-  };
+          return data.items[0].address.countryName;
+    });
+    const result = await apiGeoFunctions.getCuisine(key, fetchedCountry);
+    setResultsToShow(8);
+    setSearchResult(result[0]);
+
+    //If-sats för att sätta en titel på resultatcontainern
+    let title = "";
+    //Om cuisine är en array (om det finns flera cuisines), gör så att titeln börjar med stor bokstav och har ett "&" tecken mellan varje titel
+    if (Array.isArray(result[1]) == true) {
+      for (const cuisine of result[1]) {
+        title += cuisine.charAt(0).toUpperCase() + cuisine.slice(1).toLowerCase() + " & ";
+      }
+      setTitle(title.slice(0, -2));
+    //Om det bara är en cuisine, gör så att titeln börjar med stor bokstav
+    } else {
+      setTitle(
+        result[1].charAt(0).toUpperCase() + result[1].slice(1).toLowerCase()
+      );
+    }
+  }
 
     // //Resultatet skickas till hooken
     // //8st resultat visas
