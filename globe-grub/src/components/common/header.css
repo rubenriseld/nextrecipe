@@ -85,7 +85,7 @@ header {
     .menu {
         display: flex !important;
         justify-content: space-between;
-        margin:0;
+        margin:0 auto;
         padding:0;
     }
     .logo-link{
