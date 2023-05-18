@@ -1,0 +1,70 @@
+/*GEO*/
+/*div med geo-location-knapp (geo-btn) och "find recipes matching your region" (geo-text)*/
+.geo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/*pil-ikoner som pekar på geoknappen, byter mellan vänster
+och uppåt beroende på mobile/desktop-läge*/
+.geo-arrow-icon {
+    font-size: 2rem;
+}
+
+.fa-arrow-left {
+    display: none;
+}
+
+/*geo-ikonen (som ligger i geo-knappen)*/
+.geo-icon {
+    color: #ffffff;
+    font-size: 40px;
+}
+
+/*geo-knappen*/
+.geo-btn {
+    padding: 20px 25px 20px 25px;
+    margin: 4px 0px 15px 0px;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.1s ease-in;
+}
+.geo-btn:hover{
+  background-color: #a72808;
+}
+.geo-btn:active{
+  background-color: #e93a0ed8;
+  transform: scale(0.90);
+}
+
+/*"find recipes matching your region"*/
+.geo-text {
+    font-size: 1.5rem;
+    padding-left: 0.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+@media screen and (min-width: 900px) {
+    .geo-container {
+        flex-direction: row;
+        align-items: left;
+        width: 50%;
+        margin-bottom: 0;
+    }
+
+    .geo-text-container {
+        margin-left: 2rem;
+    }
+
+    .fa-arrow-left {
+        display: inline;
+        padding-left: 0.5rem;
+    }
+    .fa-arrow-up {
+        display: none;
+    }
+}
