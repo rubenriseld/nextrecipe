@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 // import { useSearchParameters } from "../hooks/useSearchParameters";
 import { useRef } from 'react';
 import { shallow } from "zustand/shallow";
-import { useKey } from "../hooks/useKey";
-import { useSearchResult } from "../hooks/useSearchResult";
-import { useResultsToShow } from "../hooks/useResultsToShow";
+import { useKey } from "../../hooks/useKey";
+import { useSearchResult } from "../../hooks/useSearchResult";
+import { useResultsToShow } from "../../hooks/useResultsToShow";
 import FilterMenu  from "./FilterMenu";
-import * as apiSearchFunctions from "../modules/apiSearchFunctions";
+import * as apiSearchFunctions from "../../modules/apiSearchFunctions";
+import "./search.css";
 
 export default function Search() {
     

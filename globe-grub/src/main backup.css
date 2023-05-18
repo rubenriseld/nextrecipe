@@ -138,6 +138,14 @@ nav .burger {
   align-self: center;
   padding: 1rem;
 }
+.btn {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.btn:hover {
+    box-shadow: none;
+    background-color: #b8e2b3!important;
+    cursor: pointer;
+}
 
 body,
 main,
@@ -413,7 +421,7 @@ input:-webkit-autofill:active {
 .filter-line {
     background: #006a4a;
     color: #006a4a3f;
-    border-Color: #006a4a3f;
+    border-color: #006a4a3f;
     height: 1px;
     width: 100%;
     display: flex;

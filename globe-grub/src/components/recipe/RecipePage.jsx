@@ -1,11 +1,12 @@
 import Checkbox from "./Checkbox";
-import Tags from "./Tags";
-import Ad from "./Ad";
+import Tags from "../common/Tags";
+import Banner from "../common/Banner";
 
 import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useSearchResult } from "../hooks/useSearchResult";
-import { useKey } from "../hooks/useKey";
+import { useSearchResult } from "../../hooks/useSearchResult";
+import { useKey } from "../../hooks/useKey";
+import "./recipepage.css";
 
 //Komponent för receptsidan (enskilda recept när man klickar på ett receptkort)
 export default function RecipePage() {
@@ -76,7 +77,7 @@ export default function RecipePage() {
 
     return (
         <>
-            <Ad />
+            <Banner />
             <section className="max-width-container">
                 {/* <!-- Receptnamn --> */}
                 <div>
@@ -155,7 +156,7 @@ export default function RecipePage() {
                     </div>
                 </article>
             </section>
-            <Ad />
+            <Banner />
         </>
     );
 }

@@ -1,8 +1,10 @@
+import "./banner.css";
+
 //komponent för att visa annons
-export default function Ad() {
+export default function Banner() {
     return (
         <>
-            <section className="ad max-width-container background-secondary">
+            <section className="banner max-width-container background-secondary">
                 <h3 className="text-color-primary">Ad space</h3>
             </section>
         </>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useChosenFilterAmount } from "../hooks/useChosenFilterAmount";
+import { useChosenFilterAmount } from "../../hooks/useChosenFilterAmount";
 
 // komponent för filterknapparna i filtermenyn
 export function FilterButton(props){

@@ -1,0 +1,64 @@
+/* ABOUT US PAGE*/
+.headline {
+    padding-left: 10px;
+    padding-bottom: 1rem;
+    margin: 5px
+}
+
+.company-text {
+    padding-left: 10px;
+    padding-bottom: 30px;
+    margin: 10px
+}
+
+.text-block {
+    margin-bottom: 1.5rem;
+    align-content: center;
+}
+
+.boss-container {
+    margin: 2rem;
+    padding: 1px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.staff-container {
+    margin: 2rem;
+    padding: 1px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.staff-box {
+    padding: 1rem;
+    width: 100%;
+}
+
+.profile-pic {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+
+@media screen and (min-width: 600px) {
+    .staff-box{
+        padding: 1rem;
+        width: 50%;
+    }
+}
+@media screen and (min-width: 900px) {
+    .staff-box{
+        padding: 1rem;
+        width: 33%;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .staff-box{
+        padding: 1rem;
+        width: 25%;
+    }
+}

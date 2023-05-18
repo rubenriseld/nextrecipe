@@ -1,6 +1,6 @@
-import Header from "../components/Header"
-import ScrollTopBtn from "../components/ScrollButton";
-import Footer from "../components/Footer"
+import Header from "../components/common/Header"
+import ScrollTopBtn from "../components/common/ScrollTopBtn";
+import Footer from "../components/common/Footer"
 
 
 import {

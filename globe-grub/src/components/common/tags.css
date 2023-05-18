@@ -1,0 +1,16 @@
+/*---TAGS---*/
+/*container för taggarna på receptkort och receptsida*/
+.tag-container {
+    align-items: flex-start;
+}
+/*kategoritaggar på receptkort och receptsida*/
+.tag {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+    margin-right:0.2rem;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    font-weight: bold;
+    height: auto;
+    width: auto;
+    border-radius: 25px;
+}

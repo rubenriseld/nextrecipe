@@ -1,3 +1,5 @@
+import "./logo.css";
+
 export default function Logo({sloganVisible}) {
   
     return (

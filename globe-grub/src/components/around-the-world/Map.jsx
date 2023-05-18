@@ -2,15 +2,16 @@ import { useState, useEffect } from "react";
 import React from "react";
 import World from "@svg-maps/world"; //npm paket med världskarta
 import { SVGMap } from "react-svg-map"; //npm paket med världskarta
-import { useSearchResult } from "../hooks/useSearchResult";
+import { useSearchResult } from "../../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
-import { useKey } from "../hooks/useKey";
+import { useKey } from "../../hooks/useKey";
 import { useNavigate } from "react-router-dom";
 //fil som innehåller en array med cuisines respektive länder
-import { countryArray  } from "../internal_data/countryArray";
-import { useResultsToShow } from "../hooks/useResultsToShow";
+import { countryArray  } from "../../internal_data/countryArray";
+import { useResultsToShow } from "../../hooks/useResultsToShow";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"; //npm paket som innehåller enkla funktioner för att zooma/pana/pincha
 import * as apiGeoFunctions from "../modules/apiGeoMap";
+import "./map.css";
 
 export default function Map() {
   //En const som används för att navigera till en del på sidan

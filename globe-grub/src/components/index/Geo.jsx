@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useSearchResult } from "../hooks/useSearchResult";
+import { useSearchResult } from "../../hooks/useSearchResult";
 import { shallow } from "zustand/shallow";
-import { useKey } from "../hooks/useKey";
+import { useKey } from "../../hooks/useKey";
 //fil som innehåller en array med cuisines respektive länder
-// import { countryArray } from "../internal_data/countryArray";
-import { useResultsToShow } from "../hooks/useResultsToShow";
+import { countryArray } from "../../internal_data/countryArray";
+import { useResultsToShow } from "../../hooks/useResultsToShow";
 import * as apiGeoFunctions from "../modules/apiGeoMap";
+import "./geo.css";
 
 
 // import { getCuisine } from ""

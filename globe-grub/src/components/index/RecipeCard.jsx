@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
-import  Tags from "./Tags";
+import  Tags from "../common/Tags";
+import "./recipecard.css";
 
 
 // komponent för receptkorten som visas i resultatcontainrar

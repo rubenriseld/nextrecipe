@@ -1,0 +1,69 @@
+/*KARTA*/
+.svg-map {
+    width: 100%;
+    margin: auto;
+    height: auto;
+    stroke: #666;
+    max-width: 1600px;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    padding:1rem;
+}
+
+.svg-map__location {
+    fill: #a1d99b;
+    cursor: pointer;
+    touch-action: none;
+}
+
+.svg-map__location:focus,
+.svg-map__location:hover {
+    fill: #b8e2b3;
+    outline: 0;
+}
+
+.svg-map__location[aria-checked=true] {
+    fill: #f4bc44;
+}
+
+.map-container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.transform-component-module_content__FBWxo {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: auto !important;
+}
+
+.transform-component-module_wrapper__SPB86 {
+    width: 90% !important;
+    height: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: auto !important;
+
+}
+
+/* ruta som visar vilket land användaren hovrar över*/
+#infobox {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    z-index: 5;
+    user-select: none;
+    margin-top: 2rem;
+    padding: 0.5rem;
+    transform: translate(-50%, 0);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
