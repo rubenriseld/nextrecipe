@@ -172,6 +172,7 @@ import { urlParameters } from "../internal_data/filterArrays";
                     break;
             }});
             let filterParameters = `${cuisineParameter}${dietParameter}${maxTimeParameter}${mealTypeParameter}${intoleranceParameter}`;
+            console.log(filterParameters);
             return filterParameters;
         }
         
