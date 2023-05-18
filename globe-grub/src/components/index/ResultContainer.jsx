@@ -63,7 +63,7 @@ export default function ResultContainer(props) {
 
             </section>
             {props.isReco === false && resultsToShow < props.data.length ?
-                <button onClick={loadMore} className="show-more-btn color-primary text-color-light">Show More</button>
+                <button onClick={loadMore} className="btn show-more-btn color-primary text-color-light">Show More</button>
                 : <></>
             }
         </>

@@ -8,7 +8,7 @@
     align-items: center;
     width: 100%;
     height: 3.7rem;
-    border-style: solid;
+    border: solid;
 }
 
 /*div för searchbar och filterknapp*/
@@ -68,6 +68,19 @@ input:-webkit-autofill:active {
     border-style: none;
     height: 3rem;
     width: 3rem;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    transition: all 0.05s ease-in;
+    cursor: pointer;
+}
+.search-btn:hover,
+.slider-btn:hover {
+    background-color: #044935!important;
+}
+.search-btn:active,
+.slider-btn:active {
+    background-color: #048f65!important;
+    transform: scale(0.95);
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
 }
 
 .slider-btn {
@@ -86,6 +99,15 @@ input:-webkit-autofill:active {
 .clear-search-btn {
     padding-right: 1rem;
     background: none;
+    cursor: pointer;
+    transition: all 0.05s ease-in;
+}
+.clear-search-btn:hover{
+    color:#044935!important;
+}
+.clear-search-btn:active{
+    color:#048f65!important;
+    transform: scale(0.95);
 }
 
 .clear-search-icon {

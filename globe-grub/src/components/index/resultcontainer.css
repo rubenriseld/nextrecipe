@@ -17,9 +17,25 @@
 .show-more-btn {
     margin: auto;
     margin-bottom: 2rem;
-
     width: 80%;
+    border-radius: 20rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-size: 1.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease-in;
 }
+.show-more-btn:hover {
+    box-shadow: none;
+    background-color: #044935!important;
+    cursor: pointer;
+}
+.show-more-btn:active {
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
+    background-color: #048f65!important;
+    transform: scale(0.8);
+}
+
+    
 
 @media screen and (min-width: 900px) {
     .show-more-btn {

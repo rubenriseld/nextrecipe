@@ -143,7 +143,7 @@ return (
         </div>
         <div className="filter-footer">
             <button className="clear-filter-btn text-color-primary" onClick={() => clearFilters()}>Clear Filters{chosenFilters == 0 ? "" : ` (${chosenFilters})`}</button>
-            <button className="apply-filter-btn color-primary text-color-light" onClick={() => { applyFilters(); childToParent(false) }}>Apply Filters</button>
+            <button className="apply-filter-btn color-primary text-color-light border-color-primary" onClick={() => { applyFilters(); childToParent(false) }}>Apply Filters</button>
         </div>
     </div>
     </>

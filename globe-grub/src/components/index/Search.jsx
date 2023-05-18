@@ -92,8 +92,8 @@ export default function Search() {
                     <div className="flex button-container">
                         {searchInput != "" ?
                             //knapp med "X" för att rensa sökrutan
-                            <button type="button" className="clear-search-btn" onClick={() => clearSearchBar()}>
-                                <i className="fa-solid fa-xmark clear-search-icon text-color-primary"></i>
+                            <button type="button" className="clear-search-btn text-color-primary" onClick={() => clearSearchBar()}>
+                                <i className="fa-solid fa-xmark clear-search-icon"></i>
                             </button>
                             :
                             <></>}
