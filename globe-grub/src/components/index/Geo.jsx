@@ -6,7 +6,7 @@ import { useKey } from "../../hooks/useKey";
 //fil som innehåller en array med cuisines respektive länder
 import { countryArray } from "../../internal_data/countryArray";
 import { useResultsToShow } from "../../hooks/useResultsToShow";
-import * as apiGeoFunctions from "../modules/apiGeoMap";
+import * as apiGeoFunctions from "../../modules/apiGeoMap";
 import "./geo.css";
 
 
