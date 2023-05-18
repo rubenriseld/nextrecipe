@@ -46,6 +46,13 @@ header {
     width: 100%;
     height: 100%;
 }
+.menu-link:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease-in;
+}
+.menu-link:active{
+    background-color: rgba(0,0,0,0.3);
+}
 
 .menu-links-hidden {
     display: none;
@@ -78,9 +85,13 @@ header {
     .menu {
         display: flex !important;
         justify-content: space-between;
-        margin-bottom: 0.5rem;
+        margin:0;
+        padding:0;
     }
-
+    .logo-link{
+        margin: 0;
+        padding:0.3rem 0.5rem 0.8rem 0.5rem;
+    }
     /*navlänkarna som ligger i hamburgermenyn på mobile*/
     .menu-links-desktop {
         display: flex !important;

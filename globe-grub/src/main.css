@@ -18,7 +18,7 @@
   color: #006a4a !important;
 }
 .border-color-primary{
-    border: #006a4a;
+    border-color: #006a4a!important;
 }
 .color-secondary {
   background-color: #006a4a51;
@@ -71,11 +71,8 @@ p {
 
 a {
   text-decoration: none;
-  /*ta bort underline från menylänkar*/
   font-size: 1.5rem;
 }
-
-
 
 /*****************************************
             COMMON COMPONENTS
@@ -115,12 +112,18 @@ a {
   padding: 1rem;
 }
 .btn {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease-in;
 }
 .btn:hover {
     box-shadow: none;
-    background-color: #b8e2b3!important;
+    background-color: #044935!important;
     cursor: pointer;
+}
+.btn:active {
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
+    background-color: #048f65!important;
+    transform: scale(0.8);
 }
 
 body,

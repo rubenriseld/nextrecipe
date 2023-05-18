@@ -28,8 +28,16 @@ och uppåt beroende på mobile/desktop-läge*/
     padding: 20px 25px 20px 25px;
     margin: 4px 0px 15px 0px;
     border-radius: 50%;
-    border-style: none;
     z-index: 1;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.1s ease-in;
+}
+.geo-btn:hover{
+  background-color: #a72808;
+}
+.geo-btn:active{
+  background-color: #e93a0ed8;
+  transform: scale(0.90);
 }
 
 /*"find recipes matching your region"*/
