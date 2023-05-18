@@ -1,6 +1,6 @@
 import Checkbox from "./Checkbox";
 import Tags from "../common/Tags";
-import Ad from "../common/Ad";
+import Banner from "../common/Banner";
 
 import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -44,7 +44,7 @@ export default function RecipePage() {
 
     return (
         <>
-            <Ad />
+            <Banner />
             <section className="max-width-container">
                 {/* <!-- Receptnamn --> */}
                 <div>
@@ -123,7 +123,7 @@ export default function RecipePage() {
                     </div>
                 </article>
             </section>
-            <Ad />
+            <Banner />
         </>
     );
 }

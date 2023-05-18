@@ -1,5 +1,5 @@
 //komponent för att visa annons
-export default function Ad() {
+export default function Banner() {
     return (
         <>
             <section className="ad max-width-container background-secondary">

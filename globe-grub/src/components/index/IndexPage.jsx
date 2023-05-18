@@ -1,7 +1,7 @@
 import Geo from "./Geo";
 import Search from "./Search";
 import ResultContainer from "./ResultContainer";
-import Ad from "../common/Ad";
+import Banner from "../common/Banner";
 import { Recommendations } from "./Recommendations";
 import { useSearchResult } from "../../hooks/useSearchResult";
 import { useEffect } from "react";
@@ -30,7 +30,7 @@ export default function IndexPage() {
                 <>
                     <Recommendations></Recommendations>
                     <Recommendations></Recommendations>
-                    <Ad />
+                    <Banner />
                     <Recommendations></Recommendations>
                     <Recommendations></Recommendations>
                 </>
