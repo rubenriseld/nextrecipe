@@ -633,10 +633,6 @@ footer {
   /*ingredienslistan på receptsidan*/
   margin-top: 1rem;
 }
-.ingredients-title {
-  /*ingredienslistans titel (typ blabla 4 portioner)*/
-  margin-bottom: 1rem;
-}
 .ingredient {
   /* enskild ingrediens i ingredienslistan*/
   margin-bottom: 1rem;
@@ -661,6 +657,26 @@ footer {
   /*instruktionssteg*/
   /* margin-top: 20px; */
   margin-left: 0.5rem;
+}
+.select-box{
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1rem;
+  height: auto;
+}
+.portion-select{
+  border-radius: 20px;
+  border-width: 2px;
+  border-color: black;
+  font-size: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: auto;
+}
+.portion-select:hover{
+  cursor: pointer;
 }
   /*KARTA*/
   .svg-map {
