@@ -752,7 +752,9 @@ footer {
   border-radius: 50%;
   transition: all .5s ease-in-out;
   border: 2px solid #fff;
-
+}
+.go-to-top-btn:hover{
+  cursor: pointer;
 }
 .go-to-top-icon{
     font-size: 1.5rem;
@@ -1016,9 +1018,13 @@ ifall det behöver läggas in ytterligare justeringar för responsivitet senare*
     }
 
 /*SHOW-MORE-BUTTON*/
+/*knapp för att ladda in fler resultat i resultatdelen*/
 .show-more-btn {
     width: 25%;
-  /*knapp för att ladda in fler resultat i resultatdelen*/
+}
+/*Muspekaren blir en hand när man hovrar över knappen*/
+.show-more-btn:hover{
+  cursor: pointer;
 }
   /*---RECIPE---*/
   /*sidan för enskilda recept med all info*/

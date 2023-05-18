@@ -11,6 +11,7 @@ import { useKey } from "../hooks/useKey";
 export default function RecipePage() {
     const [recipe, setRecipe] = useState("");
     const [loading, setLoading] = useState(true);
+    const [selectedPortions, setSelectedPortions] = useState(2);
     const data = useSearchResult((state) => state.searchResult);
     const key = useKey((state) => state.key);
 
@@ -41,6 +42,37 @@ export default function RecipePage() {
         ) 
     }
     
+    //Funktion för att användaren ska få välja antalet portioner den vill se ingredienser för
+    const pickPortions = () => {
+        let portionsAmount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+        //Valda antalet portioner sätts i en useState
+        const handleChange = (e) => {
+            setSelectedPortions(e.target.value);
+        }
+
+        //Drop down select där antalet portioner väljs, default är 4
+        return (
+            <>
+            <select name="portions" className="portion-select" onChange={handleChange} defaultValue={portionsAmount[3]}>
+                {portionsAmount.map((x, index) =>{
+                    return <option value={x} key={index}>{x}</option>  
+                })}
+            </select>
+            </>
+        )
+    }
+
+    //Funktion för att visa rätt mått på ingredienser beroende på valt antal portioner
+    const ingredientsAmount = (amount) => {
+        let portions = "";
+        //portions blir måtten på ingredienser för 1 portion
+        portions = amount / recipe.servings
+        
+        //portions multipliceras med det valda antalet portioner som användaren vill se
+        //Måttet avrundas till två decimaltal
+        return (selectedPortions * portions).toFixed(2);
+    }
 
     return (
         <>
@@ -86,7 +118,7 @@ export default function RecipePage() {
                     <div className="recipe-ingredients">
                         {/* <!-- (antalet portioner) --> */}
                         <h2 className="ingredients-title">
-                            Ingredients for {recipe.servings} portions
+                            Ingredients for {pickPortions()} portions
                         </h2>
                         {/* <!-- Ingrediensmått och ingredienser  --> */}
                         <div className="flex">
@@ -95,7 +127,7 @@ export default function RecipePage() {
                                 {recipe.extendedIngredients.map((x) => {
                                     return (
                                         <p className="ingredient">
-                                            {x.amount} {x.unit}
+                                            {ingredientsAmount(x.amount)} {x.unit}
                                         </p>
                                     );
                                 })}
