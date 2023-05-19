@@ -1,5 +1,3 @@
-import {create} from "zustand"
-
 const keyArray = [
     "13c6c14454a748769e3611a7cf719862",
     "74c179cdd6bf42fab75869c258580b05",
@@ -24,14 +22,5 @@ const getRandomKey = () => {
     const currentKey = keyArray[Math.floor(Math.random()*keyArray.length)];
     return currentKey
 }  
-export const useKey = create((set)=> ({
-    //byt key här för att byta på alla ställen
-    key: getRandomKey(),
-    setKey: (newKey) => 
-        set(() => ({key: newKey})),
-
-    removeKey: () => 
-        set({key: []}),
-
+export const apiKey = getRandomKey();
     
-}));

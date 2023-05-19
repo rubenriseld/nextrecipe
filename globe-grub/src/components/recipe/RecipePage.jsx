@@ -1,24 +1,27 @@
-import Checkbox from "./Checkbox";
-import Tags from "../common/Tags";
-import Banner from "../common/Banner";
-
 import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSearchResult } from "../../hooks/useSearchResult";
-import { useKey } from "../../hooks/useKey";
+import Checkbox from "./Checkbox";
+import Tags from "../common/Tags";
+import Banner from "../common/Banner";
+import { apiKey } from "../../internal_data/apiKey";
 import "./recipepage.css";
 
 //Komponent för receptsidan (enskilda recept när man klickar på ett receptkort)
 export default function RecipePage() {
+    const key = apiKey;
     const [recipe, setRecipe] = useState("");
+
+    //En loading-text som visas medan data hämtas
     const [loading, setLoading] = useState(true);
+    //antalet portioner (justerar ingredienser)
     const [selectedPortions, setSelectedPortions] = useState(2);
+    //receptdata
     const data = useSearchResult((state) => state.searchResult);
-    const key = useKey((state) => state.key);
 
     const location = useLocation();
     const id = location.state;
-    
+
 
     //Url till API:et där enskilt recepts id skickas in
     const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key}&includeNutrition=true`;
@@ -30,19 +33,18 @@ export default function RecipePage() {
                 console.log(data);
                 setRecipe(data);
                 setLoading(false);
-                // console.log(recipe.image);
             });
     }, []);
 
-    //En loading-text så att datan hinner hämtas
+    //En loading-text som visas medan data hämtas
     if (loading) {
         return (
             <div className="max-width-container loading-screen">
                 <p>Loading...</p>
             </div>
-        ) 
+        )
     }
-    
+
     //Funktion för att användaren ska få välja antalet portioner den vill se ingredienser för
     const pickPortions = () => {
         let portionsAmount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -55,11 +57,11 @@ export default function RecipePage() {
         //Drop down select där antalet portioner väljs, default är 4
         return (
             <div className="select-box">
-            <select name="portions" className="portion-select" onChange={handleChange} defaultValue={portionsAmount[3]}>
-                {portionsAmount.map((x, index) =>{
-                    return <option value={x} key={index}>{x}</option>  
-                })}
-            </select>
+                <select name="portions" className="portion-select" onChange={handleChange} defaultValue={portionsAmount[3]}>
+                    {portionsAmount.map((x, index) => {
+                        return <option value={x} key={index}>{x}</option>
+                    })}
+                </select>
             </div>
         )
     }
@@ -69,7 +71,7 @@ export default function RecipePage() {
         let portions = "";
         //portions blir måtten på ingredienser för 1 portion
         portions = amount / recipe.servings
-        
+
         //portions multipliceras med det valda antalet portioner som användaren vill se
         //Måttet avrundas till två decimaltal
         return (selectedPortions * portions).toFixed(2);
@@ -79,7 +81,6 @@ export default function RecipePage() {
         <>
             <Banner />
             <section className="max-width-container">
-                {/* <!-- Receptnamn --> */}
                 <div>
                     <Link to="/" className="go-back-text text-color-primary"><i className="fa-solid fa-chevron-left"></i> Go back to search results</Link>
                 </div>
@@ -87,19 +88,16 @@ export default function RecipePage() {
 
                 <article className="recipe-container">
                     <div className="recipe-visual-container">
-                        {/* <!-- Bild på maten --> */}
                         <div>
-                              {/* Kollar om API saknar bild  */}
+                            {/* Kollar om API saknar bild  */}
                             {recipe.image != undefined ?
-                                <img className="recipe-image mr-4 ml-4"  src={recipe.image}/>
+                                <img className="recipe-image mr-4 ml-4" src={recipe.image} />
                                 :
                                 // Om bild saknas byts den ut
-                                <img className="recipe-image mr-4 ml-4"  src="/images/foodimagenotfound.png"/>
+                                <img className="recipe-image mr-4 ml-4" src="/images/foodimagenotfound.png" />
                             }
                         </div>
-                        {/* <!-- Taggar och likes --> */}
                         <div className="flex flex-separate">
-                            {/* <!-- Taggar --> */}
                             <div className="flex tag-container-recipe-page">
                                 <Tags
                                     time={recipe.time}
@@ -110,7 +108,6 @@ export default function RecipePage() {
                                     vegetarian={recipe.vegetarian}
                                     clickable={true} />
                             </div>
-                            {/* <!-- Likes --> */}
                             <div className="flex">
                                 <p className="text-color-primary like-number"><i className="fa-regular fa-heart like-icon text-color-accent"></i> {recipe.aggregateLikes}</p>
                             </div>
@@ -121,10 +118,9 @@ export default function RecipePage() {
                         <h2 className="select-box">
                             Ingredients for {pickPortions()} portions
                         </h2>
-                        {/* <!-- Ingrediensmått och ingredienser  --> */}
                         <div className="flex">
-                            {/* <!-- Ingrediensmått --> */}
                             <div className="flex flex-column">
+                                {/* <!-- Ingrediensmått --> */}
                                 {recipe.extendedIngredients.map((x) => {
                                     return (
                                         <p className="ingredient">
@@ -133,7 +129,6 @@ export default function RecipePage() {
                                     );
                                 })}
                             </div>
-                            {/* <!-- Ingredienser --> */}
                             <div className="flex flex-column">
                                 {recipe.extendedIngredients.map((ingredient) => {
                                     return <p className="ingredient">{ingredient.name}</p>;
@@ -141,9 +136,8 @@ export default function RecipePage() {
                             </div>
                         </div>
                     </div>
-                    {/* Instruktioner */}
                     <div className="recipe-instructions">
-                        {/* CHECKBOX COMPONENTS */}
+                        {/* checkboxar för stegen i instruktionerna */}
                         {recipe.analyzedInstructions.map((x) => {
                             return (
                                 <>
