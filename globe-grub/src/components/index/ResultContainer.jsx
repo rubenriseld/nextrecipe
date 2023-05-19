@@ -35,10 +35,11 @@ export default function ResultContainer(props) {
                             </>
                             : <h1 className="result-title">Found {props.data.length} recipes matching: {props.title}</h1>
                 }
-                {/* props.data.split(index,--------list*/}
                 <div className="recipe-card-container">
                     {props.data != null && props.data != "empty" && props.data != "maperror"
                         ?
+                        //props.data (det som skickats från indexpage) mappas, 
+                        //relevant data skickas till recipecard som hämtas ur varje enskild recept i result.results 
                         props.data.map((recipe, index) => {
                             //skriver bara ut så många recept som det finns i "resultsToShow"
                             return index < resultsToShow ? (
@@ -53,18 +54,19 @@ export default function ResultContainer(props) {
                                     time={recipe.readyInMinutes}
                                     aggregateLikes={recipe.aggregateLikes}
                                 />
-                            ) :
-                                <></>
+                            ) 
+                            :
+                            <></>
                         })
-                        : <></>}
-                    {/* /*props (property) .data (det som skickats från indexpage) mappas, 
-       relevant data skickas till recipecard som hämtas ur varje enskild recept i result.results  */}
+                        :
+                        <></>}
                 </div>
-
             </section>
             {props.isReco === false && resultsToShow < props.data.length ?
+                //knapp för att hämta fler receptkort från sökresultatet
                 <button onClick={loadMore} className="btn show-more-btn color-primary text-color-light">Show More</button>
-                : <></>
+                : 
+                <></>
             }
         </>
     )

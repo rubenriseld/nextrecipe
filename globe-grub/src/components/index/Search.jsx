@@ -1,45 +1,42 @@
-
 import { useState, useEffect } from "react";
-// import { useSearchParameters } from "../hooks/useSearchParameters";
 import { useRef } from 'react';
-import { shallow } from "zustand/shallow";
-import { useKey } from "../../hooks/useKey";
 import { useSearchResult } from "../../hooks/useSearchResult";
 import { useResultsToShow } from "../../hooks/useResultsToShow";
-import FilterMenu  from "./FilterMenu";
+import { shallow } from "zustand/shallow";
+import FilterMenu from "./FilterMenu";
 import * as apiSearchFunctions from "../../modules/apiSearchFunctions";
+import { apiKey } from "../../internal_data/apiKey";
 import "./search.css";
 
+//komponent för sökrutan
 export default function Search() {
-    
-    //importerade funktioner
-    
-    // const manipulateTitle = apiSearchFunctions.manipulateTitle();
-
     //key som hamnar i url
-    const key = useKey((state) => state.key); 
+    // const key = useKey((state) => state.key);
+    const key = apiKey;
     //setta sökresultat
     const [searchResult, setSearchResult] = useSearchResult((state) =>
         [state.searchResult, state.setSearchResult], shallow);
     //Setta sök/filter titel
     const [title, setTitle] = useSearchResult((state) =>
-        [state.title, state.setTitle],shallow);
+        [state.title, state.setTitle], shallow);
     //ange mängd som ska visas "showmore"
     const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
-        [state.resultsToShow, state.setResultsToShow], shallow); 
-    
+        [state.resultsToShow, state.setResultsToShow], shallow);
 
+    //strängen i sökrutan (för att visa rensa-knapp om den inte är tom)
     const [searchInput, setSearchInput] = useState("");
 
-//______________________________Filtermeny_____________________________//
+    //______________________________Filtermeny_____________________________//
     const [showFilterMenu, setShowFilterMenu] = useState(false);
 
-    const childToParent = (childData) =>{
-        setShowFilterMenu(childData);
+    //funktion för att kunna skicka data från filtermenyn till searchkomponenten
+    //(så man kan öppna/stänga menyn både från search och filtermenu)
+    const filterMenuToSearch = (filterData) => {
+        setShowFilterMenu(filterData);
     }
 
+    //ref som används för att kunna stänga filtermenyn när användare klickar utanför den
     const ref = useRef(null);
-    
     useEffect(() => {
         const Clickout = (e) => {
             if (!ref.current.contains(e.target)) {
@@ -49,32 +46,29 @@ export default function Search() {
         document.addEventListener("mousedown", Clickout);
         return () => {
             document.removeEventListener("mousedown", Clickout);
-        };        
+        };
     });
-    
-//______________________________Event-handlers_____________________________//
-    
+
+    //______________________________Event-handlers_____________________________//
+
     //ClearSearchbar
     const clearSearchBar = () => {
         document.querySelector(".searchbar").value = "";
-        // setInputParameter("");
     }
     //Set searchinput
-    const handleChange = (e) => {     
+    const handleChange = (e) => {
         e.preventDefault();
-        
         setSearchInput(e.target.value);
-        // console.log(inputParameter)
     }
     //Submit
     const handleSubmit = async (e) => {
         e.preventDefault();
         setTitle("");
         let fetchedData = await apiSearchFunctions.fetchRecipes(key, null);
-        console.log("search:");
-        console.log(fetchedData[0]);
         setResultsToShow(8);
         setSearchResult(fetchedData[0]);
+        //justerar sök- och filterparametrarna som returneras av fetchRecipes för att
+        //sätta titel på sökresultatet
         setTitle(apiSearchFunctions.manipulateTitle(fetchedData[1], fetchedData[2]));
     };
 
@@ -97,24 +91,23 @@ export default function Search() {
                             </button>
                             :
                             <></>}
-                            {/* sökknapp */}
+                        {/* sökknapp */}
                         <button
                             type="submit"
                             className="search-btn color-primary">
                             <i className="fa-solid fa-magnifying-glass search-icon"></i>
                         </button>
-                            {/* knapp för att öppna filtermeny */}
+                        {/* knapp för att öppna filtermeny */}
                         <button
                             type="button"
-                            className="slider-btn color-primary" 
+                            className="slider-btn color-primary"
                             onClick={() => setShowFilterMenu(!showFilterMenu)}>
                             <i className="fa-solid fa-sliders slider-icon"></i>
                         </button>
                     </div>
                 </div>
             </form>
-            
-            <FilterMenu childToParent={childToParent} visible={showFilterMenu} refValue={ref}/> 
+            <FilterMenu filterMenuToSearch={filterMenuToSearch} visible={showFilterMenu} refValue={ref} />
         </>
     )
 }
