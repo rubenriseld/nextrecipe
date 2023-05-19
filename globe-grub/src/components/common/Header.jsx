@@ -15,8 +15,7 @@ export default function Header() {
         shallow
     );
 
-    // bool för att toggla så headern hamnar högst upp på skärmen
-    // när användaren scrollar uppåt
+    // bool för att toggla så headern hamnar högst upp på skärmen när användaren scrollar uppåt
     const [sticky, setSticky] = useState(false);
     // senaste scrollposition
     let lastScroll = 0;
@@ -52,10 +51,11 @@ export default function Header() {
         };
     }, []);
 
-    //Funktion som uppdaterar sidan om man är på homepage och trycker på loggan
+    //Funktion som uppdaterar sidan om man är på homepage och trycker på loggan 
+    //(för att hämta nya rekommendationer)
     const updateWindow = () => {
-        if (location.pathname == '/'){
-            window-location.reload(true);
+        if (location.pathname == '/') {
+            window - location.reload(true);
         }
     }
 
@@ -71,12 +71,12 @@ export default function Header() {
                         className="menu-link text-color-primary"
                         onClick={() => { setSearchResult([]); setShowMobileMenu(false); updateWindow(); }}>Home
                     </NavLink>
-                    <NavLink to="/map" 
-                        className="menu-link text-color-primary" 
+                    <NavLink to="/map"
+                        className="menu-link text-color-primary"
                         onClick={() => setShowMobileMenu(false)}>Around The World
                     </NavLink>
-                    <NavLink to="/aboutus" 
-                        className="menu-link text-color-primary" 
+                    <NavLink to="/aboutus"
+                        className="menu-link text-color-primary"
                         onClick={() => setShowMobileMenu(false)}>About Us
                     </NavLink>
                 </div>

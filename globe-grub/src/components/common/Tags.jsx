@@ -1,33 +1,36 @@
 import { Link } from "react-router-dom";
-import { shallow } from "zustand/shallow";
 import { urlParameters, cuisineFilters, mealTypeFilters, dietFilters, intoleranceFilters, maxReadyTimeFilters } from "../../internal_data/filterArrays";
-import * as apiSearchFunctions from "../../modules/apiSearchFunctions";
-import { useKey } from "../../hooks/useKey";
 import { useSearchResult } from "../../hooks/useSearchResult";
 import { useResultsToShow } from "../../hooks/useResultsToShow";
+import { shallow } from "zustand/shallow";
+import * as apiSearchFunctions from "../../modules/apiSearchFunctions";
+import { apiKey } from "../../internal_data/apiKey";
 import "./tags.css";
+
 // komponent för taggarna som finns på RecipeCard och RecipePage
 export default function Tags(props) {
+    //key som hamnar i url
+    const key = apiKey;
+    
+    //setta sökresultat
+    const [searchResult, setSearchResult] = useSearchResult((state) =>
+        [state.searchResult, state.setSearchResult], shallow);
+    //Setta sök/filter titel
+    const [title, setTitle] = useSearchResult((state) =>
+        [state.title, state.setTitle], shallow);
+    //ange mängd som ska visas "showmore"
+    const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
+        [state.resultsToShow, state.setResultsToShow], shallow);
 
-     //key som hamnar i url
-     const key = useKey((state) => state.key); 
-     //setta sökresultat
-     const [searchResult, setSearchResult] = useSearchResult((state) =>
-         [state.searchResult, state.setSearchResult], shallow);
-     //Setta sök/filter titel
-     const [title, setTitle] = useSearchResult((state) =>
-         [state.title, state.setTitle],shallow);
-     //ange mängd som ska visas "showmore"
-     const [resultsToShow, setResultsToShow] = useResultsToShow((state) =>
-         [state.resultsToShow, state.setResultsToShow], shallow); 
-
+    //sammanställer alla filterkategorier med namn & värden i en array
+    //för att kunna matcha och skapa URL-sträng för sökning
     let tagArray = cuisineFilters;
     tagArray = tagArray.concat(mealTypeFilters);
     tagArray = tagArray.concat(dietFilters);
     tagArray = tagArray.concat(intoleranceFilters);
     tagArray = tagArray.concat(maxReadyTimeFilters);
-    // console.log(hej);
 
+    //generera taggar från props-värdena på receptet
     const GenerateTags = () => {
         let time = props.time;
         let cuisines = props.cuisines;
@@ -94,6 +97,8 @@ export default function Tags(props) {
         return tags;
     }
 
+    //generera värden för taggar (så värdet blir en sträng redo för att användas till API:et)
+    //matchar taggnamnen med värden från arrayen med alla filter (namn & värden)
     const GenerateTagValues = () => {
         let tagValues = ["", "", ""];
 
@@ -105,7 +110,7 @@ export default function Tags(props) {
                         case "C":
                             newTag = urlParameters[0];
                             break;
-                       
+
                         case "D":
                             newTag = urlParameters[1];
                             break;
@@ -117,11 +122,11 @@ export default function Tags(props) {
                         case "M":
                             newTag = urlParameters[3];
                             break;
-    
+
                         case "I":
                             newTag = urlParameters[4];
                             break;
-    
+
                     }
                     newTag += filter.value;
                     this[index] = newTag;
@@ -134,15 +139,15 @@ export default function Tags(props) {
     let tags = GenerateTags();
     let tagValues = GenerateTagValues();
 
-    const searchByTagValue = async (tag) =>{
-        console.log("tag clicked: "+ tag);
+    //gör en sökning när man klickat på en tagg (endast på receptsidan)
+    const searchByTagValue = async (tag) => {
+        console.log("tag clicked: " + tag);
         let fetchedData = await apiSearchFunctions.fetchRecipes(key, tag);
         console.log("tag:");
         console.log(fetchedData[0]);
         setResultsToShow(8);
         setSearchResult(fetchedData[0]);
-        // setTag(tagToSet);
-        // setTitle(tag);
+        //justerar tag-värdet för att kunna sätta titel på sökresultatet
         setTitle(apiSearchFunctions.manipulateTitle("", tag));
     }
 
@@ -151,9 +156,9 @@ export default function Tags(props) {
             {props.clickable ?
                 // taggar på receptsidan
                 <>
-                    <Link to="/" className="tag tag-clickable color-tag-one text-color-primary" onClick={() =>  searchByTagValue(tagValues[0]) }>{tags[0].toUpperCase()} MIN</Link>
-                    <Link to="/" className="tag tag-clickable color-tag-two text-color-primary" onClick={() =>  searchByTagValue(tagValues[1]) }>{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</Link>
-                    <Link to="/" className="tag tag-clickable color-tag-three text-color-primary" onClick={() =>  searchByTagValue(tagValues[2]) }>{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</Link>
+                    <Link to="/" className="tag tag-clickable color-tag-one text-color-primary" onClick={() => searchByTagValue(tagValues[0])}>{tags[0].toUpperCase()} MIN</Link>
+                    <Link to="/" className="tag tag-clickable color-tag-two text-color-primary" onClick={() => searchByTagValue(tagValues[1])}>{tags[1] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[1].toUpperCase()}</Link>
+                    <Link to="/" className="tag tag-clickable color-tag-three text-color-primary" onClick={() => searchByTagValue(tagValues[2])}>{tags[2] == "lacto ovo vegetarian" ? "LACTO OVO" : tags[2].toUpperCase()}</Link>
                 </>
                 // taggar på receptkorten
                 : <>

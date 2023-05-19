@@ -1,10 +1,11 @@
+import { useState, useEffect } from "react";
 import "./scrolltopbtn.css";
 
-import { useState, useEffect } from "react";
-
+//knapp för att gå tillbaka till toppen av sidan
 export default function ScrollTopBtn() {
     const [visible, setVisible] = useState(false)
 
+    //om användaren scrollar längre ner än angiven siffra visas knappen
     useEffect(() => {
         window.addEventListener("scroll", () => {
             if (window.scrollY > 300) {
