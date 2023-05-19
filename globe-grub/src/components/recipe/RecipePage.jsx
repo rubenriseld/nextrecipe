@@ -5,7 +5,6 @@ import Checkbox from "./Checkbox";
 import Tags from "../common/Tags";
 import Banner from "../common/Banner";
 import { apiKey } from "../../internal_data/apiKey";
-
 import "./recipepage.css";
 
 //Komponent för receptsidan (enskilda recept när man klickar på ett receptkort)
