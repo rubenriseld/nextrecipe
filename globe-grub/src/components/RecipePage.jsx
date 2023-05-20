@@ -1,7 +1,8 @@
 import Checkbox from "./Checkbox";
 import Tags from "./Tags";
 import Ad from "./Ad";
-
+import RecipeCard from "./RecipeCard";
+import * as apiRecipePageFunction from "../modules/apiRecipePageFunction";
 import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSearchResult } from "../hooks/useSearchResult";
@@ -9,28 +10,59 @@ import { useKey } from "../hooks/useKey";
 
 //Komponent för receptsidan (enskilda recept när man klickar på ett receptkort)
 export default function RecipePage() {
-    const [recipe, setRecipe] = useState("");
+    const [similarRecipes, setSimilarRecipes]= useState("");
     const [loading, setLoading] = useState(true);
     const data = useSearchResult((state) => state.searchResult);
     const key = useKey((state) => state.key);
-
+    
     const location = useLocation();
     const id = location.state;
-    
+    const [recipeData, setRecipe]= useState("");
 
     //Url till API:et där enskilt recepts id skickas in
-    const url = `https://api.spoonacular.com/recipes/${id}/information?&apiKey=${key}&includeNutrition=true`;
-    //Funktion för att hämta receptet
+    
+    
+    console.log(recipeData);
+    
+    
     useEffect(() => {
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setRecipe(data);
-                setLoading(false);
-                // console.log(recipe.image);
-            });
+        
+        const p = Promise.resolve(apiRecipePageFunction.fetchRecipe(id,key));
+        p.then(value=>{
+            console.log(value)
+           setRecipe(value);
+        },[])
+        console.log(recipeData)
     }, []);
+
+    
+//     const fetchSimilarRecipes = (similarRecipes)=>{
+//         let similarRecipesTemp = [];
+//         console.log(similarRecipes);
+//         similarRecipes.map((similarRecipe)=>{
+//             fetch(`https://api.spoonacular.com/recipes/${similarRecipe.id}/information?&apiKey=${key}&includeNutrition=true`)
+//             .then((response)=> response.json())
+//             .then((data)=>{
+//                 similarRecipesTemp.push(data);
+//             })
+//         })
+//        return similarRecipesTemp;
+//     }
+
+//     const fetchRecipe=async()=>{
+//         const response = await fetch(url);
+//         const result = response.json();
+//         return result,[];
+//     }
+
+//     const fetchSimilarRecipesBase = async()=>{
+//         const response = await fetch(similarurl);
+//         const result = response.json();
+//          fetchSimilarRecipes(result,[]);
+//     }
+// console.log(similarRecipes)
+// console.log(recipe)
+// console.log(similarRecipes)
 
     //En loading-text så att datan hinner hämtas
     if (loading) {
@@ -51,7 +83,9 @@ export default function RecipePage() {
                     <Link to="/" className="go-back-text text-color-primary"><i className="fa-solid fa-chevron-left"></i> Go back to search results</Link>
                 </div>
                 <h1 className="recipe-title">{recipe.title}</h1>
-
+                {recipeData.map((recipe)=>{
+                    return(
+                        <>
                 <article className="recipe-container">
                     <div className="recipe-visual-container">
                         {/* <!-- Bild på maten --> */}
@@ -94,7 +128,7 @@ export default function RecipePage() {
                             <div className="flex flex-column">
                                 {recipe.extendedIngredients.map((x) => {
                                     return (
-                                        <p className="ingredient">
+                                        <p key={x.id} className="ingredient">
                                             {x.amount} {x.unit}
                                         </p>
                                     );
@@ -122,7 +156,30 @@ export default function RecipePage() {
                         })}
                     </div>
                 </article>
+                        </>
+                    )
+                })}
             </section>
+           <div className="recipe-card-container">
+            
+           </div>
+                {similarRecipes.map((similarRecipe)=>{
+                    return(
+                        
+                        <RecipeCard
+                        key={similarRecipe.id}
+                        id={similarRecipe.id}
+                        title={similarRecipe.title}
+                        diets={similarRecipe.diets}
+                        image={similarRecipe.image}
+                        cuisines={similarRecipe.cuisines}
+                        dishTypes={similarRecipe.dishTypes}
+                        time={similarRecipe.readyInMinutes}
+                        aggregateLikes={similarRecipe.aggregateLikes}
+                    /> 
+                    )
+                })}
+          
             <Ad />
         </>
     );
