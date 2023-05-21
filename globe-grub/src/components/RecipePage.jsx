@@ -17,53 +17,33 @@ export default function RecipePage() {
     
     const location = useLocation();
     const id = location.state;
-    const [recipeData, setRecipe]= useState("");
+    const [recipe, setRecipe]= useState("");
 
     //Url till API:et där enskilt recepts id skickas in
     
     
-    console.log(recipeData);
-    
+
     
     useEffect(() => {
         
-        const p = Promise.resolve(apiRecipePageFunction.fetchRecipe(id,key));
-        p.then(value=>{
-            console.log(value)
-           setRecipe(value);
+        const fetchRecipe = Promise.resolve(apiRecipePageFunction.fetchRecipe(id,key));
+        
+        const fetchSimilarRecipes =Promise.resolve(apiRecipePageFunction.fetchSimilarRecipes(id,key));
+        
+        fetchRecipe.then(value=>{
+            if(value != ""){
+                setRecipe(value);
+                setLoading(false);
+                fetchSimilarRecipes.then(value=>{
+                    if(value != ""){
+                        setSimilarRecipes(value);
+                    }
+                })
+            }
         },[])
-        console.log(recipeData)
+        console.log(recipe, similarRecipes)
+       
     }, []);
-
-    
-//     const fetchSimilarRecipes = (similarRecipes)=>{
-//         let similarRecipesTemp = [];
-//         console.log(similarRecipes);
-//         similarRecipes.map((similarRecipe)=>{
-//             fetch(`https://api.spoonacular.com/recipes/${similarRecipe.id}/information?&apiKey=${key}&includeNutrition=true`)
-//             .then((response)=> response.json())
-//             .then((data)=>{
-//                 similarRecipesTemp.push(data);
-//             })
-//         })
-//        return similarRecipesTemp;
-//     }
-
-//     const fetchRecipe=async()=>{
-//         const response = await fetch(url);
-//         const result = response.json();
-//         return result,[];
-//     }
-
-//     const fetchSimilarRecipesBase = async()=>{
-//         const response = await fetch(similarurl);
-//         const result = response.json();
-//          fetchSimilarRecipes(result,[]);
-//     }
-// console.log(similarRecipes)
-// console.log(recipe)
-// console.log(similarRecipes)
-
     //En loading-text så att datan hinner hämtas
     if (loading) {
         return (
@@ -73,7 +53,6 @@ export default function RecipePage() {
         ) 
     }
     
-
     return (
         <>
             <Ad />
@@ -83,8 +62,7 @@ export default function RecipePage() {
                     <Link to="/" className="go-back-text text-color-primary"><i className="fa-solid fa-chevron-left"></i> Go back to search results</Link>
                 </div>
                 <h1 className="recipe-title">{recipe.title}</h1>
-                {recipeData.map((recipe)=>{
-                    return(
+ 
                         <>
                 <article className="recipe-container">
                     <div className="recipe-visual-container">
@@ -156,16 +134,13 @@ export default function RecipePage() {
                         })}
                     </div>
                 </article>
-                        </>
-                    )
-                })}
+                        </>    
             </section>
+            {similarRecipes != "" ?
+           <section className="result-container max-width-container">
            <div className="recipe-card-container">
-            
-           </div>
                 {similarRecipes.map((similarRecipe)=>{
-                    return(
-                        
+                    return(                       
                         <RecipeCard
                         key={similarRecipe.id}
                         id={similarRecipe.id}
@@ -176,9 +151,14 @@ export default function RecipePage() {
                         dishTypes={similarRecipe.dishTypes}
                         time={similarRecipe.readyInMinutes}
                         aggregateLikes={similarRecipe.aggregateLikes}
-                    /> 
-                    )
-                })}
+                        /> 
+                        )
+                    })}
+                    </div>
+           </section>
+
+               : <></>
+            }
           
             <Ad />
         </>
