@@ -74,7 +74,7 @@ export default function RecipePage() {
 
         //portions multipliceras med det valda antalet portioner som användaren vill se
         //Måttet avrundas till två decimaltal
-        return (selectedPortions * portions).toFixed(2);
+        return (selectedPortions * portions);
     }
 
     return (

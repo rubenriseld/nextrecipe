@@ -4,6 +4,10 @@
     margin: 1rem 1rem 1rem 0;
 }
 
+.checkbox:hover{
+    cursor: pointer;
+}
+
 /*själva checkbox-elementet*/
 .checkbox {
     zoom: 3;

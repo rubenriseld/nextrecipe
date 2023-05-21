@@ -81,6 +81,12 @@ select option{
     font-weight: bold;
 }
 
+@media screen and (min-width: 370px){
+    .select-box{
+        font-size: 1.2rem;
+    }
+}
+
 @media screen and (min-width: 600px) {
 
     .recipe-card-container {
@@ -97,12 +103,9 @@ select option{
         padding-top: 0.5rem;
         flex-direction: row;
     }
-
 }
 
 @media screen and (min-width: 900px) {
-
-
 
     .recipe-container {
         display: flex;

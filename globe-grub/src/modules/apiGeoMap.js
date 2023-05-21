@@ -23,27 +23,12 @@ export const getCuisine = async (key, currentCountry) => {
     //Om inget värde pushas till cuisine kommer ett felmeddelande
     if (cuisinesOfCurrentCountry.length == 0) {
       console.log("Country doesn't exist in API");
-      return "maperror";
+      return ["maperror", null];
       //Annars skickas värdet till funktionen fetchCuisine
     } else {
       const fetched = fetchCuisine(key, cuisinesOfCurrentCountry);
       return fetched;
     }
-
-    //If-sats för att sätta en titel på resultatcontainern
-    // let title = "";
-    //Om cuisine är en array (om det finns flera cuisines), gör så att titeln börjar med stor bokstav och har ett "&" tecken mellan varje titel
-    // if (Array.isArray(cuisine) == true) {
-    //   for (const x of cuisine) {
-    //     title += x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() + " & ";
-    //   }
-    //   setTitle(title.slice(0, -2));
-    //   //Om det bara är en cuisine, gör så att titeln börjar med stor bokstav
-    // } else {
-    //   setTitle(
-    //     cuisine.charAt(0).toUpperCase() + cuisine.slice(1).toLowerCase()
-    //   );
-    // }
   };
 
 
