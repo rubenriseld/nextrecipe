@@ -67,7 +67,7 @@ export default function FilterMenu({ filterMenuToSearch, visible, refValue }) {
                 <hr className="filter-line"></hr>
                 <div className="menu-body">
                     <div className="filter-container">
-                        <button type="button" className="collapse-btn text-color-primary flex flex-separate background-primary" onClick={() => { setShowCuisineFilter(!showCuisineFilter); setCuisineCollapsed(!cuisineCollapsed) }}>
+                        <button type="button" className="collapse-btn text-color-primary flex flex-separate background-primary" onClick={() => { setCuisineCollapsed(!cuisineCollapsed) }}>
                             <p className="filter-title">Cuisine</p>
                             <i className={`fa-solid collapse-icon ${cuisineCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
@@ -80,7 +80,7 @@ export default function FilterMenu({ filterMenuToSearch, visible, refValue }) {
                     </div>
                     <hr className="filter-line"></hr>
                     <div className="filter-container">
-                        <button className="collapse-btn text-color-primary flex flex-separate background-primary" onClick={() => { setShowDietFilter(!showDietFilter); setDietCollapsed(!dietCollapsed) }}>
+                        <button className="collapse-btn text-color-primary flex flex-separate background-primary" onClick={() => { setDietCollapsed(!dietCollapsed) }}>
                             <p className="filter-title">Diet</p>
                             <i className={`fa-solid collapse-icon ${dietCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
@@ -94,7 +94,7 @@ export default function FilterMenu({ filterMenuToSearch, visible, refValue }) {
                     </div>
                     <hr className="filter-line"></hr>
                     <div className="filter-container">
-                        <button className="collapse-btn text-color-primary flex flex-separate background-primary" onClick={() => { setShowIntoleranceFilter(!showIntoleranceFilter); setIntoleranceCollapsed(!intoleranceCollapsed) }}>
+                        <button className="collapse-btn text-color-primary flex flex-separate background-primary" onClick={() => { setIntoleranceCollapsed(!intoleranceCollapsed) }}>
                             <p className="filter-title">Intolerance</p>
                             <i className={`fa-solid collapse-icon ${intoleranceCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
@@ -108,7 +108,7 @@ export default function FilterMenu({ filterMenuToSearch, visible, refValue }) {
                     </div>
                     <hr className="filter-line"></hr>
                     <div className="filter-container">
-                        <button className="collapse-btn text-color-primary flex flex-separate background-primary" onClick={() => { setShowTimeFilter(!showTimeFilter); setTimeCollapsed(!timeCollapsed) }}>
+                        <button className="collapse-btn text-color-primary flex flex-separate background-primary" onClick={() => { setTimeCollapsed(!timeCollapsed) }}>
                             <p className="filter-title">Time</p>
                             <i className={`fa-solid collapse-icon ${timeCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
@@ -122,7 +122,7 @@ export default function FilterMenu({ filterMenuToSearch, visible, refValue }) {
                     </div>
                     <hr className="filter-line"></hr>
                     <div className="filter-container">
-                        <button className="collapse-btn text-color-primary flex flex-separate background-primary" onClick={() => { setShowMealFilter(!showMealFilter); setMealCollapsed(!mealCollapsed) }}>
+                        <button className="collapse-btn text-color-primary flex flex-separate background-primary" onClick={() => { setMealCollapsed(!mealCollapsed) }}>
                             <p className="filter-title">Meal</p>
                             <i className={`fa-solid collapse-icon ${mealCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`}></i>
                         </button>
