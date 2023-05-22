@@ -1,4 +1,11 @@
 /*KARTA*/
+
+.country-title{
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
 .svg-map {
     width: 100%;
     margin: auto;

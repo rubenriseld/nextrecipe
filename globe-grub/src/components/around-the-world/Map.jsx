@@ -55,6 +55,8 @@ export default function Map() {
     }, []);
 
     return (
+        <>
+        <h1 className="country-title">Click on a country to see recipes</h1>
         <div className="map-container">
             <TransformWrapper
                 defaultScale={1}
@@ -67,6 +69,7 @@ export default function Map() {
                         onLocationClick={async (e) => {
                             const result = await apiGeoFunctions.getCuisine(key, e.target.getAttribute("name"))
                             setResultsToShow(8);
+                            console.log(result[0])
                             setSearchResult(result[0]);
                             //If-sats för att sätta en titel på resultatcontainern
                             let title = "";
@@ -77,10 +80,13 @@ export default function Map() {
                                 }
                                 setTitle(title.slice(0, -2));
                                 //Om det bara är en cuisine, gör så att titeln börjar med stor bokstav
-                            } else {
+                            } else if (result [1] != null) {
                                 setTitle(
                                     result[1].charAt(0).toUpperCase() + result[1].slice(1).toLowerCase()
                                 );
+                            }
+                            else{
+                                setTitle("null");
                             }
                             navigate("/");
                         }}
@@ -108,5 +114,6 @@ export default function Map() {
                 {name}
             </div>
         </div>
+        </>
     );
 }
