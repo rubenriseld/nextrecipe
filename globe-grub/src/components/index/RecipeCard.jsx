@@ -17,7 +17,7 @@ export default function RecipeCard(props) {
                                 <img   src={props.image}/>
                                 :   
                                 // Om bild saknas byts den ut
-                                <img src="/images/foodimagenotfound.png"/>
+                                <img src="/images/imagenotfound.png"/>
                             }
                         </div>
                 <div className="recipe-card-info">

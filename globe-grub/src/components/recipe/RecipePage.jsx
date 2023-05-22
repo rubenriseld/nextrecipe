@@ -74,7 +74,7 @@ export default function RecipePage() {
 
         //portions multipliceras med det valda antalet portioner som användaren vill se
         //Måttet avrundas till två decimaltal
-        return (selectedPortions * portions).toFixed(2);
+        return (selectedPortions * portions);
     }
 
     return (
@@ -94,7 +94,7 @@ export default function RecipePage() {
                                 <img className="recipe-image mr-4 ml-4" src={recipe.image} />
                                 :
                                 // Om bild saknas byts den ut
-                                <img className="recipe-image mr-4 ml-4" src="/images/foodimagenotfound.png" />
+                                <img className="recipe-image mr-4 ml-4"  src="/images/imagenotfound.png"/>
                             }
                         </div>
                         <div className="flex flex-separate">

@@ -5,11 +5,18 @@ import "./footer.css";
 
 // komponent för footern
 export default function Footer() {
+
+    const updateWindow = () => {
+        if (location.pathname == '/') {
+            window - location.reload(true);
+        }
+    }
+
     return (
         <footer>
             <div className="max-width-container flex flex-separate footer-container">
                 <section className="">
-                    <NavLink className="logo-link" to="/">
+                    <NavLink className="logo-link" to="/" onClick={() => { updateWindow(); }}>
                         <Logo sloganVisible={true} />
                     </NavLink>
                 </section>
