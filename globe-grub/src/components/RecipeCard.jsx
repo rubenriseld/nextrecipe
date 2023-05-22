@@ -16,10 +16,10 @@ export default function RecipeCard(props) {
                                 <img   src={props.image}/>
                                 :   
                                 // Om bild saknas byts den ut
-                                <img src="/images/imagenotfound.png"/>
+                                <img src="/images/imagenotfound.png"  />
                             }
                         </div>
-                <div className="recipe-card-info">
+                <div className="recipe-card-info">  
                     <h3 className="recipe-card-title text-color-primary">{props.title}</h3>
                     <div>
                         {/* taggar */}
