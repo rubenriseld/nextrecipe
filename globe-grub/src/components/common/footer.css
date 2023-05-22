@@ -1,0 +1,26 @@
+/*---FOOTER---*/
+footer {
+    width: 100%;
+    padding: 0.2rem;
+    margin-top: 2rem;
+    display: flex !important;
+    justify-content: baseline;
+    flex-direction: row;
+}
+
+.footer-container {
+    flex-direction: column;
+}
+
+/*info/submenyn i footern*/
+.footer-info-section>p,
+.footer-info-section>a {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+@media screen and (min-width: 900px) {
+    .footer-container{
+        flex-direction: row;
+    }
+}

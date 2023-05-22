@@ -1,0 +1,19 @@
+/*CHECKBOX INSTRUCTION*/
+.checkbox-container {
+    /*container för enskild checkbox-komponent*/
+    margin: 1rem 1rem 1rem 0;
+}
+
+/*själva checkbox-elementet*/
+.checkbox {
+    zoom: 3;
+}
+
+.linethrough {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.instruction {
+    margin-left: 0.5rem;
+}

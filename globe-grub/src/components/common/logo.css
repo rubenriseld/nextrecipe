@@ -1,0 +1,13 @@
+/*LOGO*/
+.company-logo {
+    width: auto;
+    max-width: 2.5rem;
+    position: relative;
+    margin-right: 0.5rem;
+    margin-bottom: -0.5rem;
+  }
+
+  .slogan {
+    font-style: italic;
+    margin-top: 0.2rem;
+  }

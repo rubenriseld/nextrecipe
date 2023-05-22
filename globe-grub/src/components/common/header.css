@@ -1,0 +1,113 @@
+/*---HEADER---*/
+header {
+    width: 100%;
+    transform: top 250ms ease-in-out;
+    position: sticky;
+    top: -177px;
+    z-index: 2;
+    transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+}
+
+.header-sticky {
+    top: 0;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+}
+
+.header-fixed {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    transition: none;
+    -moz-transition: none;
+}
+
+/*MENU*/
+/*huvudmenyn i headern*/
+.menu {
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+    margin-top: 0.2rem;
+    padding: 0 0.5rem 0.7rem 0.5rem;
+    z-index: 2;
+}
+
+.logo-link {
+    margin: 0.3rem 0.3rem 0.3rem 0.5rem;
+}
+
+/*navlänkarna som ligger i hamburgermenyn på mobile*/
+.menu-links {
+    margin: 0;
+    padding-top: 1rem;
+    width: 100%;
+    height: 100%;
+}
+.menu-link:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease-in;
+}
+.menu-link:active{
+    background-color: rgba(0,0,0,0.3);
+}
+
+.menu-links-hidden {
+    display: none;
+}
+
+/*navlänkarna*/
+.menu-link,
+.burger {
+    padding: 1rem;
+    display: block;
+    position: relative;
+}
+
+/*hamburgermenyn*/
+.burger {
+    border: none;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all 0.1s ease-in;
+}
+.burger:hover{
+    color:#044935!important;
+}
+.burger:active{
+    color:#048f65!important;
+    transform: scale(0.8);
+}
+
+.burger-icon {
+    font-size: 2rem;
+}
+
+
+@media screen and (min-width: 900px) {
+    /*huvudmenyn i headern*/
+    .menu {
+        display: flex !important;
+        justify-content: space-between;
+        margin:0 auto;
+        padding:0;
+    }
+    .logo-link{
+        margin: 0;
+        padding:0.3rem 0.5rem 0.8rem 0.5rem;
+    }
+    /*navlänkarna som ligger i hamburgermenyn på mobile*/
+    .menu-links-desktop {
+        display: flex !important;
+    }
+
+    /*hamburgermenyn*/
+    .burger {
+        display: none !important;
+    }
+}
