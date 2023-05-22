@@ -62,7 +62,7 @@ export default function RecipePage() {
                                 <img className="recipe-image mr-4 ml-4"  src={recipe.image}/>
                                 :
                                 // Om bild saknas byts den ut
-                                <img className="recipe-image mr-4 ml-4"  src="/images/imagenotfound.png" style={{width:294.5, height:189.66}}/>
+                                <img className="recipe-image mr-4 ml-4"  src="/images/imagenotfound.png"/>
                             }
                         </div>
                         {/* <!-- Taggar och likes --> */}
