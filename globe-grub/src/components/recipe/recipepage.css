@@ -57,18 +57,19 @@
 
 .select-box{
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
 }
 
 select{
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1rem;
     font-weight: bold;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     border-radius: 20px;
     border-width: 2px;
     border-color: black;
+    padding-left: 0.5rem;
 }
 
 select:hover{
@@ -81,7 +82,7 @@ select option{
     font-weight: bold;
 }
 
-@media screen and (min-width: 370px){
+@media screen and (max-width: 370px){
     .select-box{
         font-size: 1.2rem;
     }
