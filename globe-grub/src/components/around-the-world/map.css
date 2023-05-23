@@ -2,8 +2,8 @@
 
 .country-title{
   text-align: center;
-  font-weight: normal;
-  margin-bottom: 10px;
+  font-weight: bolder;
+  margin: 1rem 0 1.8rem 0;
 }
 
 .svg-map {

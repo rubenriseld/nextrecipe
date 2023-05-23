@@ -63,9 +63,12 @@
     font-size: 2rem;
 }
 
+
+/* portion select */
 .select-box{
     display: flex;
     margin-bottom: 0.5rem;
+    font-size: 1.2rem;
 }
 
 select{
@@ -90,16 +93,15 @@ select option{
     font-weight: bold;
 }
 
-@media screen and (max-width: 370px){
-    .select-box{
-        font-size: 1.2rem;
+@media screen and (min-width: 380px) {
+    .select-box {
+        font-size: 1.5rem;
     }
 }
-
 @media screen and (min-width: 600px) {
 
+    /*container för alla receptkort (sökresultat)*/
     .recipe-card-container {
-        /*container för alla receptkort (sökresultat)*/
         justify-content: center;
         flex-direction: row;
         display: flex;
