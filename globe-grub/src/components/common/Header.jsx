@@ -55,7 +55,7 @@ export default function Header() {
     //(för att hämta nya rekommendationer)
     const updateWindow = () => {
         if (location.pathname == '/') {
-            window - location.reload(true);
+            window.location.reload(true);
         }
     }
 

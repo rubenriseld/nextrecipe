@@ -106,7 +106,7 @@ a {
 
 /*ser till så innehållet i containern inte blir hur bred som helst*/
 .max-width-container {
-  max-width: 1200px;
+  max-width: 1366px;
   width: 100%;
   align-self: center;
   padding: 1rem;
