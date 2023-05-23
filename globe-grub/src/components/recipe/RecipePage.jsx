@@ -74,7 +74,9 @@ export default function RecipePage() {
 
         //portions multipliceras med det valda antalet portioner som användaren vill se
         //Måttet avrundas till två decimaltal
-        return (selectedPortions * portions);
+        const recipeAmount = (selectedPortions * portions).toFixed(2).replace(/[.,]00$/, "");
+
+        return recipeAmount;
     }
 
     return (
