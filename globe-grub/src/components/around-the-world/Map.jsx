@@ -56,7 +56,7 @@ export default function Map() {
 
     return (
         <>
-        <h1 className="country-title">Click on a country to see recipes</h1>
+        <h2 className="country-title text-color-primary">Click on a country to find recipes matching that region!</h2>
         <div className="map-container">
             <TransformWrapper
                 defaultScale={1}
@@ -67,28 +67,33 @@ export default function Map() {
                     <SVGMap
                         //När landet på kartan klickas på, så skickas namnet på landet till funktionen getCuisine och sedan navigeras sidan till "start" där receptkorten visas
                         onLocationClick={async (e) => {
-                            const result = await apiGeoFunctions.getCuisine(key, e.target.getAttribute("name"))
-                            setResultsToShow(8);
-                            console.log(result[0])
-                            setSearchResult(result[0]);
-                            //If-sats för att sätta en titel på resultatcontainern
-                            let title = "";
-                            //Om cuisine är en array (om det finns flera cuisines), gör så att titeln börjar med stor bokstav och har ett "&" tecken mellan varje titel
-                            if (Array.isArray(result[1]) == true) {
-                                for (const cuisine of result[1]) {
-                                    title += cuisine.charAt(0).toUpperCase() + cuisine.slice(1).toLowerCase() + " & ";
+                            if(confirm(`Search for recipes matching ${e.target.getAttribute("name")}?`)){
+                                const result = await apiGeoFunctions.getCuisine(key, e.target.getAttribute("name"))
+                                setResultsToShow(8);
+                                console.log(result[0])
+                                setSearchResult(result[0]);
+                                //If-sats för att sätta en titel på resultatcontainern
+                                let title = "";
+                                //Om cuisine är en array (om det finns flera cuisines), gör så att titeln börjar med stor bokstav och har ett "&" tecken mellan varje titel
+                                if (Array.isArray(result[1]) == true) {
+                                    for (const cuisine of result[1]) {
+                                        title += cuisine.charAt(0).toUpperCase() + cuisine.slice(1).toLowerCase() + " & ";
+                                    }
+                                    setTitle(title.slice(0, -2));
+                                    //Om det bara är en cuisine, gör så att titeln börjar med stor bokstav
+                                } else if (result [1] != null) {
+                                    setTitle(
+                                        result[1].charAt(0).toUpperCase() + result[1].slice(1).toLowerCase()
+                                    );
                                 }
-                                setTitle(title.slice(0, -2));
-                                //Om det bara är en cuisine, gör så att titeln börjar med stor bokstav
-                            } else if (result [1] != null) {
-                                setTitle(
-                                    result[1].charAt(0).toUpperCase() + result[1].slice(1).toLowerCase()
-                                );
+                                else{
+                                    setTitle("null");
+                                }
+                                navigate("/");
+                            } else {
+                                return
                             }
-                            else{
-                                setTitle("null");
-                            }
-                            navigate("/");
+                            
                         }}
                         //När musen hålls över ett land på kartan så "setas" namnet
                         onLocationMouseOver={(e) => {
