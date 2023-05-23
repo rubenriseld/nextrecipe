@@ -9,6 +9,14 @@
     font-size: 1.5rem;
 }
 
+/*Loading*/
+.loading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+}
+
 /*recepttiteln högst upp*/
 .recipe-title {
     margin-top: 1.5rem;

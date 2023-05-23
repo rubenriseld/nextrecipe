@@ -40,7 +40,7 @@ export default function RecipePage() {
     if (loading) {
         return (
             <div className="max-width-container loading-screen">
-                <p>Loading...</p>
+                <p className="loading text-color-primary">Loading...</p>
             </div>
         )
     }
