@@ -56,7 +56,7 @@ export default function Map() {
 
     return (
         <>
-        <h1 className="country-title">Click on a country to see recipes</h1>
+        <h2 className="country-title text-color-primary">Click on a country to find recipes matching that region!</h2>
         <div className="map-container">
             <TransformWrapper
                 defaultScale={1}
