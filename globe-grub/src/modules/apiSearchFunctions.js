@@ -1,4 +1,5 @@
 import { urlParameters } from "../internal_data/filterArrays";
+import { intoleranceFilters } from "../internal_data/filterArrays";
 
     //api-anrop_______________
     export const fetchRecipes = async (key, tag) => {
@@ -89,25 +90,37 @@ import { urlParameters } from "../internal_data/filterArrays";
                     }
                 })
             }
-            
+            let isIntolerance = false;
+            let intoleranceValue = "";
             //hantera de manipulerade filterparametrarna
             if(filterValues != ""){
                 filterValues.forEach(filter =>{
                     if(Array.isArray(filter)){
                         filter.forEach(x=>{  
+                            intoleranceFilters.forEach(intolerance=>{
+                                if( x == intolerance.value){isIntolerance = true; intoleranceValue = x};
+                            })
                         if(resultTitle == ""){
-                            if(x.charAt(1) == 0 || x.charAt(1) == 5){
+                            if(isIntolerance == true){
+                                resultTitle += x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() + " intolerance"
+                                console.log(x)
+                            }
+                            else if(x.charAt(1) == 0 || x.charAt(1) == 5){
                                     resultTitle += "Under " + x + " min"
-                                }
-                                else{
+                            }
+                            else if(x != intoleranceValue){
                                 resultTitle += x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() 
                             }
                         }
                         else if(resultTitle != "" ){
-                            if(x.charAt(1) == 0 || x.charAt(1) == 5){
+                            if(isIntolerance == true){
+                                resultTitle += ", " +x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() + " intolerance"
+                                console.log(x)
+                            }
+                            else if(x.charAt(1) == 0 || x.charAt(1) == 5){
                                 resultTitle += ", Under " + x + " min"
                             }
-                            else{
+                           else if (x != intoleranceValue){
                                 resultTitle += ", " + x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() 
                             }
                         }
