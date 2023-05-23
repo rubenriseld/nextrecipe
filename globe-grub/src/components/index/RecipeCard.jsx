@@ -39,8 +39,8 @@ export default function RecipeCard(props) {
                             {/* likes */}
                             <div className="flex">
                                 <p className="text-color-primary like-number">
-                                    <i className="fa-regular fa-heart like-icon text-color-accent"></i> 
-                                    {props.aggregateLikes}
+                                    <i className="fa-regular fa-heart like-icon text-color-accent"></i>
+                                    &nbsp;{props.aggregateLikes}
                                 </p>
                             </div>
                         </div>

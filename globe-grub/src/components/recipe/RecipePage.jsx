@@ -109,7 +109,7 @@ export default function RecipePage() {
                                     clickable={true} />
                             </div>
                             <div className="flex">
-                                <p className="text-color-primary like-number"><i className="fa-regular fa-heart like-icon text-color-accent"></i> {recipe.aggregateLikes}</p>
+                                <p className="text-color-primary like-number"><i className="fa-regular fa-heart like-icon text-color-accent"></i> &nbsp;{recipe.aggregateLikes}</p>
                             </div>
                         </div>
                     </div>
