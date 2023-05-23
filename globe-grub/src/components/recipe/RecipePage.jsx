@@ -56,13 +56,13 @@ export default function RecipePage() {
 
         //Drop down select där antalet portioner väljs, default är 4
         return (
-            <div className="select-box">
+            // <div>
                 <select name="portions" className="portion-select" onChange={handleChange} defaultValue={portionsAmount[3]}>
                     {portionsAmount.map((x, index) => {
                         return <option value={x} key={index}>{x}</option>
                     })}
                 </select>
-            </div>
+            // </div>
         )
     }
 
