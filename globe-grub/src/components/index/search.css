@@ -41,6 +41,8 @@
     margin-top: 0.5rem;
     padding: 1rem 1.5rem 1rem 1.5rem;
     font-size: 1.3rem;
+    /* -webkit-text-fill-color: #044935 !important; */
+
 }
 
 /*tar bort chromes default-färg på text i placeholder*/
@@ -54,8 +56,9 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
-    -webkit-text-fill-color: #fff !important;
+    -webkit-text-fill-color: #044935;
 }
+
 
 .button-container {
     margin-right: 0.2rem;
