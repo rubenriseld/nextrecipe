@@ -143,7 +143,7 @@ export default function Tags(props) {
     const searchByTagValue = async (tag) => {
         console.log("tag clicked: " + tag);
         let fetchedData = await apiSearchFunctions.fetchRecipes(key, tag);
-        console.log("tag:");
+        // console.log("tag:");
         console.log(fetchedData[0]);
         setResultsToShow(8);
         setSearchResult(fetchedData[0]);

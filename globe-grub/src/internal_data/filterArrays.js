@@ -26,6 +26,7 @@ export const cuisineFilters = [
         name: "British",
         value: "british",
         type: "C",
+        tagValue: "English"
     },
     {
         name: "American",
