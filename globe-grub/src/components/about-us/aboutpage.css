@@ -43,6 +43,8 @@
 .profile-pic {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+    max-width: 10rem;
+    border-radius: 5rem;
     /* margin: auto; */
 }
 .role-description {
