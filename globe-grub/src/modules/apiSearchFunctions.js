@@ -10,7 +10,7 @@ import { intoleranceFilters } from "../internal_data/filterArrays";
             let url = "";
         
             if(tag != null){
-                url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&includeIngredients=${tag}&addRecipeInformation=true${tag}&number=16`;
+                url = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&includeIngredients=${tag}&addRecipeInformation=true${tag}&number=32`;
             }else{
                 try {
                     filterParameters = getActiveFilters();
@@ -18,7 +18,7 @@ import { intoleranceFilters } from "../internal_data/filterArrays";
                 } catch {
                     console.log("couldn't find parameters");
                 }
-                url =`https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${searchParameter}&includeIngredients=${searchParameter}&addRecipeInformation=true${filterParameters}&number=16`;
+                url =`https://api.spoonacular.com/recipes/complexSearch?&apiKey=${key}&query=${searchParameter}&includeIngredients=${searchParameter}&addRecipeInformation=true${filterParameters}&number=32`;
             } 
             console.log("url: " + url);
 
