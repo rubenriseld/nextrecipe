@@ -54,6 +54,7 @@ export default function Search() {
     //ClearSearchbar
     const clearSearchBar = () => {
         document.querySelector(".searchbar").value = "";
+        setSearchInput("");
     }
     //Set searchinput
     const handleChange = (e) => {
